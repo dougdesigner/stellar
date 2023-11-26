@@ -56,6 +56,7 @@ class AppleVis {
             .style("font-size", "14px")
             .style("fill", "black")
             .style("font-weight", "bold")
+            .style("fill", "white")
             .text("Chip Model");
 
         // Add the y-axis
@@ -68,6 +69,7 @@ class AppleVis {
             .attr("fill", "#000")
             .attr("font-weight", "bold")
             .attr("text-anchor", "start")
+            .style("fill", "white")
             .text("Transistor Count (Millions)");
 
         // Append a title to the SVG container
@@ -78,6 +80,7 @@ class AppleVis {
             .attr("text-anchor", "middle")
             .style("font-size", "20px")
             .style("font-weight", "bold")
+            .style("fill", "white")
             .text("Apple M Series (ARM) Chips");
 
         vis.wrangleData();
@@ -116,7 +119,7 @@ class AppleVis {
         // Create a color scale for different versions
         vis.colorScale = d3.scaleOrdinal()
             .domain(vis.data.map(d => d.Version))
-            .range(d3.schemeTableau10);
+            .range(d3.schemeBuPu[4]);
 
         // Draw the bars
         vis.versionGroups = vis.svg.selectAll(".versionGroup")
@@ -145,6 +148,7 @@ class AppleVis {
             .attr("text-anchor", "middle")
             .style("fill", "#000")
             .style("font-size", "10px")
+            .style("fill", "white")
             .style("font-weight", "bold");
     }
 }
