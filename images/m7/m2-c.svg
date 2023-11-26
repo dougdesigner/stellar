@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="92px" height="28px" viewBox="0 0 92 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>m2-c</title>
+    <g id="m2-c" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Microsoft" transform="translate(34, 2)" fill-rule="nonzero">
+            <polygon id="Path" fill="#F3F3F3" points="0 0 23 0 23 23 0 23"></polygon>
+            <polygon id="Path" fill="#F35325" points="1 1 11 1 11 11 1 11"></polygon>
+            <polygon id="Path" fill="#81BC06" points="12 1 22 1 22 11 12 11"></polygon>
+            <polygon id="Path" fill="#05A6F0" points="1 12 11 12 11 22 1 22"></polygon>
+            <polygon id="Path" fill="#FFBA08" points="12 12 22 12 22 22 12 22"></polygon>
+        </g>
+    </g>
+</svg>
