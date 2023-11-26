@@ -119,7 +119,7 @@ class AppleVis {
         // Create a color scale for different versions
         vis.colorScale = d3.scaleOrdinal()
             .domain(vis.data.map(d => d.Version))
-            .range(d3.schemeBuPu[4]);
+            .range(d3.schemeTableau10);
 
         // Draw the bars
         vis.versionGroups = vis.svg.selectAll(".versionGroup")

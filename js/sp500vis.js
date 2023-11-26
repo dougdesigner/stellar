@@ -111,7 +111,7 @@ class DonutChart {
             });
         }
 
-        console.log(vis.displayData);
+        // console.log(vis.displayData);
 
         vis.updateVis();
     }
