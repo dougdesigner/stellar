@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="56px" height="56px" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>carousel-microsoft</title>
+    <defs>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#334155" offset="0%"></stop>
+            <stop stop-color="#94A3B8" stop-opacity="0.601" offset="100%"></stop>
+        </linearGradient>
+        <radialGradient cx="48.744%" cy="50.721%" fx="48.744%" fy="50.721%" r="34.598%" id="radialGradient-2">
+            <stop stop-color="#F1F5F9" offset="0%"></stop>
+            <stop stop-color="#F1F5F9" stop-opacity="0" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="carousel-microsoft" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="carousel-icon-01-2" fill-rule="nonzero">
+            <circle id="Oval" fill="url(#linearGradient-1)" cx="28" cy="28" r="28"></circle>
+            <circle id="Oval" fill="#1E293B" cx="28" cy="28" r="27"></circle>
+            <circle id="Oval" fill="url(#radialGradient-2)" opacity="0.079" cx="28" cy="28" r="27"></circle>
+        </g>
+        <g id="Microsoft" transform="translate(13, 13)" fill="#CBD5E1" fill-rule="nonzero">
+            <polygon id="Path" points="0 0 13.962963 0 13.962963 13.962963 0 13.962963"></polygon>
+            <polygon id="Path" points="15.037037 0 29 0 29 13.962963 15.037037 13.962963"></polygon>
+            <polygon id="Path" points="0 15.037037 13.962963 15.037037 13.962963 29 0 29"></polygon>
+            <polygon id="Path" points="15.037037 15.037037 29 15.037037 29 29 15.037037 29"></polygon>
+        </g>
+    </g>
+</svg>

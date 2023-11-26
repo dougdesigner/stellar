@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="56px" height="56px" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>carousel-google</title>
+    <defs>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#334155" offset="0%"></stop>
+            <stop stop-color="#94A3B8" stop-opacity="0.601" offset="100%"></stop>
+        </linearGradient>
+        <radialGradient cx="48.744%" cy="50.721%" fx="48.744%" fy="50.721%" r="34.598%" id="radialGradient-2">
+            <stop stop-color="#F1F5F9" offset="0%"></stop>
+            <stop stop-color="#F1F5F9" stop-opacity="0" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="carousel-google" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="carousel-icon-01-2" fill-rule="nonzero">
+            <circle id="Oval" fill="url(#linearGradient-1)" cx="28" cy="28" r="28"></circle>
+            <circle id="Oval" fill="#1E293B" cx="28" cy="28" r="27"></circle>
+            <circle id="Oval" fill="url(#radialGradient-2)" opacity="0.079" cx="28" cy="28" r="27"></circle>
+        </g>
+        <g id="G" transform="translate(10.5, 10.5)">
+            <path d="M34.3,17.8977273 C34.3,16.6568182 34.1886364,15.4636364 33.9818182,14.3181818 L17.5,14.3181818 L17.5,21.0954545 L26.9181818,21.0954545 C26.5045455,23.275 25.2636364,25.1204545 23.4022727,26.3613636 L23.4022727,30.7681818 L29.0818182,30.7681818 C32.3909091,27.7136364 34.3,23.2272727 34.3,17.8977273 L34.3,17.8977273 Z" id="Path" fill="#CBD5E1" fill-rule="nonzero"></path>
+            <path d="M17.5,35 C22.225,35 26.1863636,33.4409091 29.0818182,30.7681818 L23.4022727,26.3613636 C21.8431818,27.4113636 19.8545455,28.0477273 17.5,28.0477273 C12.95,28.0477273 9.08409091,24.9772727 7.7,20.8409091 L1.87727273,20.8409091 L1.87727273,25.3590909 C4.75681818,31.0704545 10.6590909,35 17.5,35 Z" id="Path" fill="#CBD5E1" fill-rule="nonzero"></path>
+            <path d="M7.7,20.825 C7.35,19.775 7.14318182,18.6613636 7.14318182,17.5 C7.14318182,16.3386364 7.35,15.225 7.7,14.175 L7.7,9.65681818 L1.87727273,9.65681818 C0.684090909,12.0113636 0,14.6681818 0,17.5 C0,20.3318182 0.684090909,22.9886364 1.87727273,25.3431818 L6.41136364,21.8113636 L7.7,20.825 Z" id="Path" fill="#CBD5E1" fill-rule="nonzero"></path>
+            <path d="M17.5,6.96818182 C20.0772727,6.96818182 22.3681818,7.85909091 24.1977273,9.57727273 L29.2090909,4.56590909 C26.1704545,1.73409091 22.225,0 17.5,0 C10.6590909,0 4.75681818,3.92954545 1.87727273,9.65681818 L7.7,14.175 C9.08409091,10.0386364 12.95,6.96818182 17.5,6.96818182 Z" id="Path" fill="#CBD5E1" fill-rule="nonzero"></path>
+            <polygon id="Path" points="0 0 35 0 35 35 0 35"></polygon>
+        </g>
+    </g>
+</svg>

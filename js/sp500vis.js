@@ -134,24 +134,24 @@ class DonutChart {
                 this._current = { startAngle: 0, endAngle: 0 }; 
             })
             .merge(arcs)
-            .on("mouseover", function(event, d) {
-                vis.tooltip.transition()    
-                    .duration(200)    
-                    .style("opacity", 1);    
-                vis.tooltip.html(
-                    `<strong>${d.data.Company}</strong><br/>
-                    Percentage: ${d.data.Percentage}<br/>
-                    Market Cap: ${d.data.MarketCap}<br/>
-                    Return (YTD): ${d.data.ReturnYTD}`
-                )  
-                .style("left", (event.pageX) + "px")   
-                .style("top", (event.pageY - 28) + "px");  
-            })          
-            .on("mouseout", function(d) {   
-                vis.tooltip.transition()    
-                    .duration(500)    
-                    .style("opacity", 0); 
-            })
+            // .on("mouseover", function(event, d) {
+            //     vis.tooltip.transition()    
+            //         .duration(200)    
+            //         .style("opacity", 1);    
+            //     vis.tooltip.html(
+            //         `<strong>${d.data.Company}</strong><br/>
+            //         Percentage: ${d.data.Percentage}<br/>
+            //         Market Cap: ${d.data.MarketCap}<br/>
+            //         Return (YTD): ${d.data.ReturnYTD}`
+            //     )  
+            //     .style("left", (event.pageX) + "px")   
+            //     .style("top", (event.pageY - 28) + "px");  
+            // })          
+            // .on("mouseout", function(d) {   
+            //     vis.tooltip.transition()    
+            //         .duration(500)    
+            //         .style("opacity", 0); 
+            // })
             .transition()
             .duration(1000) // Duration of the transition
             .attrTween('d', function(d) {
@@ -189,9 +189,6 @@ class DonutChart {
             .append('polyline')
             .merge(labelLines)
             .style('opacity', 0)
-            .transition()
-            .duration(1600) // duration of the initial loading animation
-            .style('opacity', 1)
             .attr('points', d => {
                 const pos = outerArc.centroid(d);
                 pos[0] = vis.radius * (midAngle(d) < Math.PI ? 0.9 : -0.9); // Adjusted multiplier for x-coordinate
@@ -199,8 +196,10 @@ class DonutChart {
             })
             .style('fill', 'none')
             .style('stroke', (d, i) => d3.schemeCategory10[i % 10])
-            .style('opacity', 0.3)
-            .style('stroke-width', 1.5);
+            .style('stroke-width', 1.5)
+            .transition()
+            .duration(2000)
+            .style('opacity', 0.3); // duration of the initial loading animation;
 
         labelLines.exit().remove();
 
@@ -213,9 +212,6 @@ class DonutChart {
             .attr('class', 'label-title')
             .merge(labels)
             .style('opacity', 0)
-            .transition()
-            .duration(1200) // duration of the initial loading animation
-            .style('opacity', 1)
             .attr('transform', d => {
                 const pos = outerArc.centroid(d);
                 return `translate(${pos[0]}, ${pos[1]})`;
@@ -224,7 +220,10 @@ class DonutChart {
             .style('text-anchor', d => midAngle(d) < Math.PI ? 'start' : 'end')
             .style('font-weight', 'bold')
             .style('fill', 'whitesmoke')
-            .text(d => `${Number((d.data.proportionalPercentage * 100).toFixed(2))}%`);
+            .text(d => `${Number((d.data.proportionalPercentage * 100).toFixed(2))}%`)
+            .transition()
+            .duration(1200) // duration of the initial loading animation
+            .style('opacity', 1);
 
         labels.exit().remove();
 
@@ -237,9 +236,6 @@ class DonutChart {
             .attr('class', 'label-subtitle')
             .merge(subLabels)
             .style('opacity', 0)
-            .transition()
-            .duration(1200) // duration of the initial loading animation
-            .style('opacity', 1)
             .attr('transform', d => {
                 const pos = outerArc.centroid(d);
                 return `translate(${pos[0]}, ${pos[1] + 20})`;
@@ -249,7 +245,10 @@ class DonutChart {
             .style('font-size', '8px')
             .style('fill', 'whitesmoke')
             .style('font-weight', 'bold')
-            .text(d => d.data.Company);
+            .text(d => d.data.Company)
+            .transition()
+            .duration(1600) // duration of the initial loading animation
+            .style('opacity', 1);
 
         subLabels.exit().remove();
 

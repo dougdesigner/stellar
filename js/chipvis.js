@@ -12,9 +12,9 @@ class ChipVis {
         let vis = this;
 
         // Set dimensions and margins
-        vis.margin = {top: 70, right: 30, bottom: 60, left: 120};
+        vis.margin = {top: 100, right: 30, bottom: 60, left: 120};
         vis.width = 800 - vis.margin.left - vis.margin.right;
-        vis.height = 400 - vis.margin.top - vis.margin.bottom;
+        vis.height = 600 - vis.margin.top - vis.margin.bottom;
 
         // Append SVG object
         vis.svg = d3.select("#" + vis.parentElement)
@@ -40,6 +40,7 @@ class ChipVis {
             .style("font-weight", "bold")
             .style("font-size", "12px")
             .style("text-anchor", "middle")
+            .style("fill", "white")
             .text("Year");
 
         // Add Y axis
@@ -53,28 +54,31 @@ class ChipVis {
         // Add Y axis label
         vis.svg.append("text")
             .attr("transform", "rotate(-90)")
-            .attr("y", -50)
-            .attr("x", -120)
+            .attr("y", -60)
+            .attr("x", -200)
             .style("text-anchor", "middle")
             .style("font-weight", "bold")
             .style("font-size", "12px")
+            .style("fill", "white")
             .text("Transistor Count (Billions)");
 
         // Add title
         vis.svg.append("text")
             .attr("x", vis.width / 2)
-            .attr("y", -40)
+            .attr("y", -80)
             .attr("text-anchor", "middle")
             .style("font-size", "20px")
             .style("font-weight", "bold")
+            .style("fill", "white")
             .text("Moore's Law: Transistors per Microprocessor Doubles every Two Years");
 
         // Add subtitle
         vis.svg.append("text")
             .attr("x", vis.width / 2)
-            .attr("y", -20)
+            .attr("y", -60)
             .attr("text-anchor", "middle")
             .style("font-size", "10px")
+            .style("fill", "whitesmoke")
             .text("Moore's law: The empirical regularity that the number of transistors on integrated circuits doubles approximately every two years.");
 
         vis.wrangleData();
@@ -98,7 +102,7 @@ class ChipVis {
         vis.svg.append("path")
             .datum(vis.mooreData)
             .attr("fill", "none")
-            .attr("stroke", "lightgray")
+            .attr("stroke", "#a855f7")
             .attr("stroke-width", 3)
             .attr("d", line);
 
@@ -111,9 +115,9 @@ class ChipVis {
             .attr("cx", d => vis.x(d.Year))
             .attr("cy", d => vis.y(d.TransistorCount))
             .attr("r", 5)
-            .style("opacity", .7)
-            .style("opacity", d => d.Designer === "Apple" ? "1" : ".7")
-            .style("fill", d => d.Designer === "Apple" ? "#f08326" : "#456e9d");
+            .style('stroke', 'white')
+            .style("opacity", d => d.Designer === "Apple" ? "1" : ".1")
+            .style("fill", d => d.Designer === "Apple" ? "#1f77b4" : "#7f7f7f");
 
         // Legend
         let legend = vis.svg.append("g")
@@ -122,9 +126,9 @@ class ChipVis {
 
         // Data for the legend
         let legendData = [
-            { type: "line", color: "lightgray", text: "Moore's Law" },
-            { type: "circle", color: "#f08326", text: "Apple Microprocessor" },
-            { type: "circle", color: "#456e9d", text: "Other Designer" }
+            { type: "line", color: "#a855f7", text: "Moore's Law" },
+            { type: "circle", color: "#1f77b4", text: "Apple Microprocessor" },
+            { type: "circle", color: "#7f7f7f", text: "Other Designer" }
         ];
 
         // Create legend items
@@ -156,6 +160,7 @@ class ChipVis {
                 .attr("y", 15)
                 .text(item.text)
                 .style("font-size", "12px")
+                .style("fill", "white")
                 .style("font-weight", "bold");
         });
 
