@@ -14,7 +14,7 @@ class ChipVis {
         const element = document.getElementById(vis.parentElement);
         // Set dimensions and margins
         vis.margin = {top: 100, right: 30, bottom: 80, left: 100};
-        vis.width = Math.max(element.offsetWidth, 400) - vis.margin.left - vis.margin.right;
+        vis.width = element.offsetWidth - vis.margin.left - vis.margin.right;
         vis.height = 600 - vis.margin.top - vis.margin.bottom;
 
         // Append SVG object

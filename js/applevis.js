@@ -13,7 +13,7 @@ class AppleVis {
         const element = document.getElementById(vis.parentElement);
         // Set the dimensions and margins
         vis.margin = { top: 60, right: 100, bottom: 80, left: 100 };
-        vis.width = Math.max(element.offsetWidth, 600) - vis.margin.left - vis.margin.right;
+        vis.width = element.offsetWidth - vis.margin.left - vis.margin.right;
         vis.height = 500 - vis.margin.top - vis.margin.bottom;
 
         // Append the svg object
