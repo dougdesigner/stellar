@@ -11,7 +11,7 @@ class AppleVis {
         let vis = this;
 
         // Set the dimensions and margins
-        vis.margin = { top: 30, right: 30, bottom: 80, left: 60 };
+        vis.margin = { top: 30, right: 120, bottom: 80, left: 120 };
         vis.width = 960 - vis.margin.left - vis.margin.right;
         vis.height = 500 - vis.margin.top - vis.margin.bottom;
 

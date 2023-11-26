@@ -116,8 +116,8 @@ class ChipVis {
             .attr("cy", d => vis.y(d.TransistorCount))
             .attr("r", 5)
             .style('stroke', 'white')
-            .style("opacity", d => d.Designer === "Apple" ? "1" : ".1")
-            .style("fill", d => d.Designer === "Apple" ? "#1f77b4" : "#7f7f7f");
+            .style("opacity", d => d.Designer === "Apple" ? "1" : ".25")
+            .style("fill", d => d.Designer === "Apple" ? "#ff7f0e" : "#7f7f7f");
 
         // Legend
         let legend = vis.svg.append("g")
@@ -127,7 +127,7 @@ class ChipVis {
         // Data for the legend
         let legendData = [
             { type: "line", color: "#a855f7", text: "Moore's Law" },
-            { type: "circle", color: "#1f77b4", text: "Apple Microprocessor" },
+            { type: "circle", color: "#ff7f0e", text: "Apple Microprocessor" },
             { type: "circle", color: "#7f7f7f", text: "Other Designer" }
         ];
 
