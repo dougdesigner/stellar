@@ -43,7 +43,7 @@ class DonutChart {
             .attr("x", 0)
             .attr("y", -vis.height / 2 - 100 )
             .attr("text-anchor", "middle")
-            .style("font-size", "18px")
+            .style("font-size", "20px")
             .style("font-weight", "bold")
             .style("fill", "white")
             .text("The 'Magnificent 7' of the S&P 500");
@@ -54,7 +54,7 @@ class DonutChart {
             .attr("y", -vis.height / 2 - 70)
             .attr("text-anchor", "middle")
             .style("font-size", "14px")
-            .style("fill", "white")
+            .style("fill", "#94A3B8")
             .text("Percentage of Apple, Microsoft, Alphabet, Amazon, NVIDIA, Tesla, and Meta");
 
         // Append central label
@@ -219,8 +219,9 @@ class DonutChart {
             .attr('dy', '0.35em')
             .style('text-anchor', d => midAngle(d) < Math.PI ? 'start' : 'end')
             .style('font-weight', 'bold')
-            .style('fill', 'whitesmoke')
-            .text(d => `${Number((d.data.proportionalPercentage * 100).toFixed(2))}%`)
+            .style('font-size', '16px')
+            .style('fill', 'white')
+            .text(d => d.data.Company)
             .transition()
             .duration(1200) // duration of the initial loading animation
             .style('opacity', 1);
@@ -242,10 +243,10 @@ class DonutChart {
             })
             .attr('dy', '0.35em')
             .style('text-anchor', d => midAngle(d) < Math.PI ? 'start' : 'end')
-            .style('font-size', '8px')
-            .style('fill', 'whitesmoke')
+            .style('font-size', '14px')
+            .style('fill', '#94A3B8')
             .style('font-weight', 'bold')
-            .text(d => d.data.Company)
+            .text(d => `${Number((d.data.proportionalPercentage * 100).toFixed(2))}%`)
             .transition()
             .duration(1600) // duration of the initial loading animation
             .style('opacity', 1);

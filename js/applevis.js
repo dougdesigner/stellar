@@ -11,7 +11,7 @@ class AppleVis {
         let vis = this;
 
         // Set the dimensions and margins
-        vis.margin = { top: 30, right: 120, bottom: 80, left: 120 };
+        vis.margin = { top: 60, right: 120, bottom: 80, left: 120 };
         vis.width = 960 - vis.margin.left - vis.margin.right;
         vis.height = 500 - vis.margin.top - vis.margin.bottom;
 
@@ -56,32 +56,39 @@ class AppleVis {
             .style("font-size", "14px")
             .style("fill", "black")
             .style("font-weight", "bold")
-            .style("fill", "white")
-            .text("Chip Model");
+            .style("fill", "#94A3B8")
+            .text("Chip Version");
 
         // Add the y-axis
         vis.svg.append("g")
-            .call(d3.axisLeft(vis.y).ticks(null, "s"))
+            .call(d3.axisLeft(vis.y).tickFormat(d => `${d / 1e9} B`))
             .append("text")
             .attr("x", 2)
-            .attr("y", vis.y(vis.y.ticks().pop()) + 0.5)
-            .attr("dy", "0.32em")
-            .attr("fill", "#000")
-            .attr("font-weight", "bold")
-            .attr("text-anchor", "start")
-            .style("fill", "white")
-            .text("Transistor Count (Millions)");
+            .attr("y", vis.y(vis.y.ticks().pop()) + 0.5);
+
+            // Add Y axis label
+        vis.svg.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", -60)
+            .attr("x", -200)
+            .style("text-anchor", "middle")
+            .style("font-weight", "bold")
+            .style("font-size", "14px")
+            .style("fill", "#94A3B8")
+            .text("Transistor Count (Billions)");
+
+            
 
         // Append a title to the SVG container
         vis.svg.append("text")
             .attr("class", "chart-title")
             .attr("x", vis.width / 2)
-            .attr("y", -10)
+            .attr("y", -40)
             .attr("text-anchor", "middle")
             .style("font-size", "20px")
             .style("font-weight", "bold")
             .style("fill", "white")
-            .text("Apple M Series (ARM) Chips");
+            .text("Apple M Series (ARM Architecture) Chips");
 
         vis.wrangleData();
     }
@@ -98,7 +105,7 @@ class AppleVis {
                 Version: Version,
                 series: series.map(d => ({
                     ChipSeries: d['Chip Series'],
-                    TransistorCount: +d['Transistor Count (Millions)'],
+                    TransistorCount: +d['Transistor Count'],
                     Version
                 })),
             };
@@ -147,7 +154,7 @@ class AppleVis {
             .attr("y", d => vis.y(d.TransistorCount) - 5)
             .attr("text-anchor", "middle")
             .style("fill", "#000")
-            .style("font-size", "10px")
+            .style("font-size", "16px")
             .style("fill", "white")
             .style("font-weight", "bold");
     }

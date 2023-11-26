@@ -46,8 +46,10 @@ function createVis(data) {
 
     appleData.forEach(d => {
         d.ReleaseDate = new Date(d.ReleaseDate);
-        d.TransistorCount = parseInt(d["Transistor Count (Millions)"], 10);
+        d.TransistorCount = parseInt(d["Transistor Count"] , 10);
     });
+
+    console.log(appleData)
 
     // Create visualization instances
     let chipVis = new ChipVis("chipvis", chipData, mooreData);
