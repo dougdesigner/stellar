@@ -3437,6 +3437,10 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 @media (min-width: 768px){
+  .md\:invisible{
+    visibility: hidden;
+  }
+
   .md\:relative{
     position: relative;
   }
