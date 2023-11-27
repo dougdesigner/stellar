@@ -80,14 +80,31 @@ class DonutChart {
         //     .style('font-weight', 'bold')
         //     .text("29%");
 
+        vis.sp500Filter = "allSP500"; // Set the initial view
+
+        // Add event listeners to radio buttons
+        d3.select("#allSP500").on("change", function() {
+            if(this.checked) {
+                vis.sp500Filter = "allSP500";
+            }
+            vis.wrangleData();
+        });
+
+        d3.select("#onlyM7").on("change", function() {
+            if(this.checked) {
+                vis.sp500Filter = "onlyM7";
+            }
+            vis.wrangleData();
+        });
+
         // Update chart with data
-        vis.wrangleData('allSP500');
+        vis.wrangleData();
     }
 
-    wrangleData(selectedOption) {
+    wrangleData() {
         let vis = this;
 
-        if (selectedOption === 'allSP500') {
+        if (vis.sp500Filter === 'allSP500') {
             vis.displayData = vis.data; // Full dataset
             vis.svg.select('.center-label')
                 .text("S&P 500");
@@ -97,7 +114,7 @@ class DonutChart {
                 d.proportionalPercentage = d.Percentage.replace('%', '') / 100;
             });
 
-        } else if (selectedOption === 'onlyM7') {
+        } else if (vis.sp500Filter === 'onlyM7') {
             // Filter out the largest value
             const largestValue = Math.max(...vis.data.map(d => parseFloat(d.Percentage.replace('%', ''))));
             vis.displayData = vis.data.filter(d => parseFloat(d.Percentage.replace('%', '')) !== largestValue);

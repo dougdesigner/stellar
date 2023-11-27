@@ -82,6 +82,14 @@ class ChipVis {
             .style("fill", "#94A3B8")
             .text("The number of transistors on integrated circuits has doubled approximately every two years");
 
+        // Add event listener to the dropdown
+        d3.select("#keyCompany").on("change", function() {
+            vis.selectedDesigner = this.value;
+            vis.wrangleData();
+        });
+
+        vis.selectedDesigner = "Apple"; // Set the initial selected designer
+
         vis.wrangleData();
     }
 
@@ -108,27 +116,41 @@ class ChipVis {
             .attr("d", line);
 
         // Add dots
-        vis.svg.append('g')
-            .selectAll("dot")
+        vis.dots = vis.svg.selectAll("circle")
             .data(vis.filteredData)
-            .enter()
+
+        vis.dots.enter()
             .append("circle")
             .attr("cx", d => vis.x(d.Year))
             .attr("cy", d => vis.y(d.TransistorCount))
             .attr("r", 5)
             .style('stroke', 'white')
-            .style("opacity", d => d.Designer === "Apple" ? "1" : ".25")
-            .style("fill", d => d.Designer === "Apple" ? "#ff7f0e" : "#7f7f7f");
+            .merge(vis.dots)
+            .transition()
+            .duration(600)
+            .style("opacity", d => d.Designer === vis.selectedDesigner ? "1" : ".25")
+            .style("fill", d => d.Designer === vis.selectedDesigner ? "#ff7f0e" : "#7f7f7f")
+            .style("stroke", d => d.Designer === vis.selectedDesigner ? "#ff7f0e" : "white");
+
+        vis.dots.exit().remove();
+
+        vis.svg.select(".legend").remove(); // Remove the existing legend
+        vis.createLegend(vis.selectedDesigner); // Create a new legend with the selected designer
+
+    }
+
+    createLegend(selectedDesigner) {
+        let vis = this;
 
         // Legend
         let legend = vis.svg.append("g")
             .attr("class", "legend")
             .attr("transform", "translate(0," + (vis.height + 60) + ")");
 
-        // Data for the legend
+    
         let legendData = [
             { type: "line", color: "#a855f7", text: "Moore's Law" },
-            { type: "circle", color: "#ff7f0e", text: "Apple Microprocessor" },
+            { type: "circle", color: "#ff7f0e", text: `${selectedDesigner} Design` },
             { type: "circle", color: "#7f7f7f", text: "Other Designer" }
         ];
 
@@ -164,6 +186,5 @@ class ChipVis {
                 .style("fill", "white")
                 .style("font-weight", "bold");
         });
-
     }
 }

@@ -407,8 +407,8 @@
                                         <div class="text-slate-400 font-medium mt-2">Return YTD</div>
                                         <div class="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">+22%</div>
 
-                                        <div class="text-slate-400 font-medium mt-2">S&P 500 Share</div>
-                                        <div class="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">7.07%</div>
+                                        <!-- <div class="text-slate-400 font-medium mt-2">S&P 500 Share</div>
+                                        <div class="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">7.07%</div> -->
 
                                     </div>
 
@@ -427,8 +427,8 @@
                                         <div class="text-slate-400 font-medium mt-2">Return YTD</div>
                                         <div class="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">+45%</div>
 
-                                        <div class="text-slate-400 font-medium mt-2">S&P 500 Share</div>
-                                        <div class="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">6.74%</div>
+                                        <!-- <div class="text-slate-400 font-medium mt-2">S&P 500 Share</div>
+                                        <div class="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">6.74%</div> -->
                                     </div>
                                 </div>
 
@@ -446,8 +446,8 @@
                                         <div class="text-slate-400 font-medium mt-2">Return YTD</div>
                                         <div class="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">+49%</div>
 
-                                        <div class="text-slate-400 font-medium mt-2">S&P 500 Share</div>
-                                        <div class="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">4.08%</div>
+                                        <!-- <div class="text-slate-400 font-medium mt-2">S&P 500 Share</div>
+                                        <div class="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">4.08%</div> -->
                                     </div>
                                 </div>
 
@@ -465,8 +465,8 @@
                                         <div class="text-slate-400 font-medium mt-2">Return YTD</div>
                                         <div class="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">+58%</div>
 
-                                        <div class="text-slate-400 font-medium mt-2">S&P 500 Share</div>
-                                        <div class="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">3.57%</div>
+                                        <!-- <div class="text-slate-400 font-medium mt-2">S&P 500 Share</div>
+                                        <div class="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-0.5">3.57%</div> -->
                                     </div>
                                 </div>
 
@@ -875,20 +875,61 @@
                         </div>
 
                         <!-- Magnificent 7 Chip Select -->
-                        <div class="max-w-md mx-auto text-left pb-12 md:pb-20">
+                        <!-- <div class="max-w-md mx-auto text-left pb-12 md:pb-20">
                             <div>
                                 <label for="keyCompany" class="text-base font-semibold text-gray-50">Highlight</label>
                                 <p class="text-sm text-slate-400">Highlight a 'Magnificent 7' Chip Designer</p>
                                 <select id="keyCompany" name="keyCompany" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 font-medium">
-                                  <option selected>Apple</option>
-                                  <option>Microsoft</option>
-                                  <option>Google</option>
-                                  <option>Amazon</option>
-                                  <option>Nvidia</option>
-                                  <option>Tesla</option>
-                                  <option>Meta</option>
+                                    <option disabled value="" class="font-bold" role="separator">Magnificent 7 (Fabless)</option>
+                                    <option selected>Apple</option>
+                                    <option>Microsoft</option>
+                                    <option>Google</option>
+                                    <option>Amazon</option>
+                                    <option>Nvidia</option>
+                                    <option>Tesla</option>
+                                    <option>Meta</option>
+                                    <option disabled value="" class="font-bold" role="separator">Other (Fabless)</option>
+                                    <option>AMD</option>
+                                    <option>Qualcomm</option>
+                                    <option>IBM</option>
+                                    <option>Intel</option>
                                 </select>
-                              </div>
+                            </div>
+                        </div> -->
+
+                        <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 pb-12 md:pb-20">
+                            <div class="sm:col-span-3">
+                                <label for="keyCompany" class="text-base font-semibold text-gray-50">Highlight</label>
+                                <p class="text-sm text-slate-400">Highlight a 'Magnificent 7' Chip Designer</p>
+                                <select id="keyCompany" name="keyCompany" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 font-medium">
+                                    <option disabled value="" class="font-bold" role="separator">Magnificent 7 (Fabless)</option>
+                                    <option selected>Apple</option>
+                                    <option>Microsoft</option>
+                                    <option>Google</option>
+                                    <option>Amazon</option>
+                                    <option>Nvidia</option>
+                                    <option>Tesla</option>
+                                    <option>Meta</option>
+                                    <option disabled value="" class="font-bold" role="separator">Other (Fabless)</option>
+                                    <option>AMD</option>
+                                    <option>Qualcomm</option>
+                                    <option>IBM</option>
+                                    <option>Intel</option>
+                                    <option disabled value="" class="font-bold" role="separator">Other (Manufacturing & Design)</option>
+                                    <option>Samsung</option>
+                                    <option>Texas Instruments</option>
+                                </select>
+                            </div>
+                    
+                            <div class="sm:col-span-3">
+                                <label for="microTypeC" class="text-base font-semibold text-gray-50">Filter</label>
+                                <p class="text-sm text-slate-400">Filter by Processor</p>
+                                <select id="microType" name="keyCompany" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 font-medium">
+                                    <option selected>CPU (Central Processing Unit)</option>
+                                    <option disabled>GPU (Graphics Processing Unit)</option>
+                                    <option disabled>All Microprocessors</option>
+                                </select>
+                            </div>
                         </div>
                           
 
@@ -1044,9 +1085,10 @@
                                                 <div id="cloudvis" class="w-full"></div>
 
                                                 <div class="relative w-full h-64 md:h-auto overflow-hidden">
-                                                    <img class="absolute bottom-0 left-1/2 -translate-x-1/2 mx-auto max-w-none md:relative md:left-0 md:translate-x-0" src="./images/feature-image-01.png" width="504" height="400" alt="Feature 01">
+                                                    <img class="absolute bottom-0 left-1/2 -translate-x-1/2 mx-auto max-w-none md:relative md:left-0 md:translate-x-0" src="./images/cloudShare.jpg" width="504" height="400" alt="Feature 01">
                                                 </div>
-                                        
+
+                                                <p class="mt-2 text-sm text-slate-400">Placeholder image, d3 visualization in progress.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1054,23 +1096,6 @@
                  
                             </div>
                         </div>
-
-                        <!-- Magnificent 7 Chip Select -->
-                        <!-- <div class="max-w-md mx-auto text-center pb-12 md:pb-20">
-                            <div>
-                                <label for="keyCompany" class="text-base font-semibold text-gray-50">Highlight</label>
-                                <p class="text-sm text-slate-400">Highlight a 'Magnificent 7' Company</p>
-                                <select id="keyCompany" name="keyCompany" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 font-bold">
-                                  <option selected>Apple</option>
-                                  <option>Microsoft</option>
-                                  <option>Google</option>
-                                  <option>Amazon</option>
-                                  <option>Nvidia</option>
-                                  <option>Tesla</option>
-                                  <option>Meta</option>
-                                </select>
-                              </div>
-                        </div> -->
 
                         <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20">
                             <p class="text-lg text-slate-400">Amazon AWS controls a majority of the cloud computing market share, but it has been decreasing as Microsoft Azure’s new revenue grows. This could be related to new AI computing spend on Azure services by OpenAI that utilizes similar specialized microprocessors to train ChatGPT.</p>

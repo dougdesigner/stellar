@@ -49,25 +49,12 @@ function createVis(data) {
         d.TransistorCount = parseInt(d["Transistor Count"] , 10);
     });
 
-    console.log(appleData)
+    // console.log(appleData)
 
     // Create visualization instances
     let chipVis = new ChipVis("chipvis", chipData, mooreData);
     let appleVis = new AppleVis("applevis", appleData);
     let sp500Vis = new DonutChart("sp500vis", sp500Data);
-
-    // Event Listeners
-    document.getElementById('allSP500').addEventListener('change', function() {
-        if(this.checked) {
-            sp500Vis.wrangleData('allSP500');
-        }
-    });
-
-    document.getElementById('onlyM7').addEventListener('change', function() {
-        if(this.checked) {
-            sp500Vis.wrangleData('onlyM7');
-        }
-    });
 
 }
 
