@@ -195,8 +195,8 @@ class DonutChart {
 
         // Define an outer arc for label lines
         const outerArc = d3.arc()
-            .innerRadius(vis.radius * .9)  // Increased radius for label separation
-            .outerRadius(vis.radius * 1.25);
+            .innerRadius(vis.radius * .8)  // Increased radius for label separation
+            .outerRadius(vis.radius * 1.2);
 
         const midAngle = d => d.startAngle + (d.endAngle - d.startAngle) / 2;
 
@@ -208,17 +208,26 @@ class DonutChart {
             .append('polyline')
             .merge(labelLines)
             .style('opacity', 0)
-            .attr('points', d => {
-                const pos = outerArc.centroid(d);
-                pos[0] = vis.radius * (midAngle(d) < Math.PI ? 0.9 : -0.9); // Adjusted multiplier for x-coordinate
-                return [vis.arc.centroid(d), outerArc.centroid(d), pos]; // Use pos directly as the endpoint
+            .attr('points', (d, i) => {
+                // const pos = outerArc.centroid(d);
+                // pos[0] = vis.radius * (midAngle(d) < Math.PI ? 0.9 : -0.9); // Adjusted multiplier for x-coordinate
+                // return [vis.arc.centroid(d), outerArc.centroid(d), pos]; // Use pos directly as the endpoint
+                const outerArcPos = outerArc.centroid(d);
+                const labelOffset = i % 2 * -10; // Adjusted multiplier for y-coordinate
+                outerArcPos[1] += labelOffset; // Add the offset to the y-coordinate of the outerArc's position
+                const pos = [ // Adjust the last point position
+                    vis.radius * (midAngle(d) < Math.PI ? 1 : -1), // This keeps the x-coordinate aligned with left or right
+                    outerArcPos[1] // Use the adjusted y-coordinate
+                ];
+                return [vis.arc.centroid(d), outerArcPos, pos];
+                
             })
             .style('fill', 'none')
             .style('stroke', (d, i) => d3.schemeCategory10[i % 10])
             .style('stroke-width', 1.5)
             .transition()
             .duration(2000)
-            .style('opacity', 0.3); // duration of the initial loading animation;
+            .style('opacity', 0.5); // duration of the initial loading animation;
 
         labelLines.exit().remove();
 
@@ -231,18 +240,26 @@ class DonutChart {
             .attr('class', 'label-title')
             .merge(labels)
             .style('opacity', 0)
-            .attr('transform', d => {
-                const pos = outerArc.centroid(d);
-                return `translate(${pos[0]}, ${pos[1]})`;
-            })
-            .attr('dy', '0.35em')
             .style('text-anchor', d => midAngle(d) < Math.PI ? 'start' : 'end')
             .style('font-weight', 'bold')
             .style('font-size', '16px')
             .style('fill', 'white')
             .text(d => d.data.Company)
             .transition()
-            .duration(1200) // duration of the initial loading animation
+            .duration(1000) // duration of the initial loading animation
+            .attr('transform', (d, i) => {
+                const outerArcPos = outerArc.centroid(d);
+                const labelOffset = i % 2 * -10; // Adjusted multiplier for y-coordinate
+                outerArcPos[1] += labelOffset; // Add the offset to the y-coordinate of the outerArc's position
+                const pos = [ // Adjust the last point position
+                    vis.radius * (midAngle(d) < Math.PI ? 1 : -1), // This keeps the x-coordinate aligned with left or right
+                    outerArcPos[1] // Use the adjusted y-coordinate
+                ];
+                // const pos = outerArc.centroid(d);
+                // pos[0] = vis.radius * (midAngle(d) < Math.PI ? 0.9 : -0.9); // 
+                return `translate(${pos[0]}, ${pos[1]})`;
+            })
+            .attr('dy', '0.35em')
             .style('opacity', 1);
 
         labels.exit().remove();
@@ -256,14 +273,20 @@ class DonutChart {
             .attr('class', 'label-subtitle')
             .merge(subLabels)
             .style('opacity', 0)
-            .attr('transform', d => {
-                const pos = outerArc.centroid(d);
-                return `translate(${pos[0]}, ${pos[1] + 20})`;
+            .attr('transform', (d, i) => {
+                const outerArcPos = outerArc.centroid(d);
+                const labelOffset = i % 2 * -10; // Adjusted multiplier for y-coordinate
+                outerArcPos[1] += labelOffset; // Add the offset to the y-coordinate of the outerArc's position
+                const pos = [ // Adjust the last point position
+                    vis.radius * (midAngle(d) < Math.PI ? 1 : -1), // This keeps the x-coordinate aligned with left or right
+                    outerArcPos[1] // Use the adjusted y-coordinate
+                ];
+                return `translate(${pos[0]}, ${pos[1] +20})`;
             })
             .attr('dy', '0.35em')
             .style('text-anchor', d => midAngle(d) < Math.PI ? 'start' : 'end')
             .style('font-size', '14px')
-            .style('fill', '#94A3B8')
+            .style('fill', 'whitesmoke')
             .style('font-weight', 'bold')
             .text(d => `${Number((d.data.proportionalPercentage * 100).toFixed(2))}%`)
             .transition()

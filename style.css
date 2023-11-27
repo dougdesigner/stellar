@@ -3504,6 +3504,10 @@ input[type="search"]::-webkit-search-results-decoration {
     grid-column: span 7 / span 7;
   }
 
+  .md\:col-span-6{
+    grid-column: span 6 / span 6;
+  }
+
   .md\:block{
     display: block;
   }
@@ -3682,6 +3686,10 @@ input[type="search"]::-webkit-search-results-decoration {
 
   .lg\:col-span-4{
     grid-column: span 4 / span 4;
+  }
+
+  .lg\:col-span-6{
+    grid-column: span 6 / span 6;
   }
 
   .lg\:w-1\/2{
