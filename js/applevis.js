@@ -12,7 +12,7 @@ class AppleVis {
 
         const element = document.getElementById(vis.parentElement);
         // Set the dimensions and margins
-        vis.margin = { top: 100, right: 40, bottom: 80, left: 100 };
+        vis.margin = { top: 100, right: 20, bottom: 80, left: 100 };
         vis.width = element.offsetWidth - vis.margin.left - vis.margin.right;
         vis.height = 500 - vis.margin.top - vis.margin.bottom;
 
@@ -157,6 +157,6 @@ class AppleVis {
             .style("fill", "#000")
             .style("font-size", "16px")
             .style("fill", "white")
-            .style("font-weight", "bold");
+            .style("font-weight", "medium");
     }
 }
