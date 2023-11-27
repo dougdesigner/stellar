@@ -12,7 +12,7 @@ class AppleVis {
 
         const element = document.getElementById(vis.parentElement);
         // Set the dimensions and margins
-        vis.margin = { top: 60, right: 100, bottom: 80, left: 100 };
+        vis.margin = { top: 100, right: 40, bottom: 80, left: 100 };
         vis.width = element.offsetWidth - vis.margin.left - vis.margin.right;
         vis.height = 500 - vis.margin.top - vis.margin.bottom;
 
@@ -71,7 +71,7 @@ class AppleVis {
         vis.svg.append("text")
             .attr("transform", "rotate(-90)")
             .attr("y", -60)
-            .attr("x", -200)
+            .attr("x", -140)
             .style("text-anchor", "middle")
             .style("font-weight", "bold")
             .style("font-size", "14px")
@@ -84,7 +84,7 @@ class AppleVis {
         vis.svg.append("text")
             .attr("class", "chart-title")
             .attr("x", vis.width / 2)
-            .attr("y", -40)
+            .attr("y", -80)
             .attr("text-anchor", "middle")
             .style("font-size", "20px")
             .style("font-weight", "bold")

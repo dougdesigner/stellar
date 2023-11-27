@@ -13,7 +13,7 @@ class ChipVis {
 
         const element = document.getElementById(vis.parentElement);
         // Set dimensions and margins
-        vis.margin = {top: 100, right: 30, bottom: 80, left: 100};
+        vis.margin = {top: 100, right: 40, bottom: 80, left: 100};
         vis.width = element.offsetWidth - vis.margin.left - vis.margin.right;
         vis.height = 600 - vis.margin.top - vis.margin.bottom;
 
@@ -135,7 +135,7 @@ class ChipVis {
         // Create legend items
         legendData.forEach(function (item, index) {
             let legendItem = legend.append("g")
-                .attr("transform", "translate(" + index * 240 + ", 0)");
+                .attr("transform", "translate(" + index * 220 + ", 0)");
 
             // Check the type of legend item
             if (item.type === "line") {
