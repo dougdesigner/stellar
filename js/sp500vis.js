@@ -51,7 +51,8 @@ class DonutChart {
             .style("font-size", "20px")
             .style("font-weight", "bold")
             .style("fill", "white")
-            .text("The 'Magnificent 7' of the S&P 500");
+            .attr('class', 'font-mono')
+            .text("The 'Magnificent 7' represent >28% of the S&P 500");
 
         // Append Subtitle
         vis.svg.append("text")

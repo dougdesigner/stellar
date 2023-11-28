@@ -13,7 +13,7 @@ class ChipVis {
 
         const element = document.getElementById(vis.parentElement);
         // Set dimensions and margins
-        vis.margin = {top: 100, right: 40, bottom: 80, left: 100};
+        vis.margin = {top: 100, right: 100, bottom: 100, left: 100};
         vis.width = element.offsetWidth - vis.margin.left - vis.margin.right;
         vis.height = 600 - vis.margin.top - vis.margin.bottom;
 
@@ -61,7 +61,7 @@ class ChipVis {
             .style("font-weight", "bold")
             .style("font-size", "14px")
             .style("fill", "#94A3B8")
-            .text("Transistor Count (Billions)");
+            .text("Transistor (billions)");
 
         // Add title
         vis.svg.append("text")
@@ -72,14 +72,14 @@ class ChipVis {
             .style("font-weight", "bold")
             .style("fill", "white")
             .attr("class", "font-mono")
-            .text("Transistor Count of Microprocessors Over Time");
+            .text("Apple leads in Chip Design by Tranistor Count");
 
         // Add subtitle
         vis.svg.append("text")
             .attr("x", vis.width / 2)
             .attr("y", -50)
             .attr("text-anchor", "middle")
-            .style("font-size", "14px")
+            .style("font-size", "16px")
             .style("fill", "#94A3B8")
             .text("The number of transistors on integrated circuits has doubled approximately every two years");
 
@@ -129,7 +129,7 @@ class ChipVis {
         vis.dots.enter()
             .append("circle")
             .attr("cx", d => vis.x(d.Year))
-            .attr("cy", d => vis.y(d.TransistorCount))
+            .attr("cy", vis.height)
             .attr("r", 7)
             .style('stroke', 'white')
             .merge(vis.dots)
@@ -158,7 +158,8 @@ class ChipVis {
                     .style("opacity", 0); 
             })
             .transition()
-            .duration(600)
+            .duration(1000)
+            .attr("cy", d => vis.y(d.TransistorCount))
             .style("opacity", d => d.Designer === vis.selectedDesigner ? "1" : ".25")
             .style("fill", d => d.Designer === vis.selectedDesigner ? "#ff7f0e" : "#7f7f7f")
             .style("stroke", "white")
@@ -178,7 +179,7 @@ class ChipVis {
         // Legend
         let legend = vis.svg.append("g")
             .attr("class", "legend")
-            .attr("transform", "translate(0," + (vis.height + 60) + ")");
+            .attr("transform", "translate(0," + (vis.height + 80) + ")");
 
     
         let legendData = [
@@ -207,7 +208,7 @@ class ChipVis {
                 legendItem.append("circle")
                     .attr("cx", 10)
                     .attr("cy", 10)
-                    .attr("r", 5)
+                    .attr("r", 7)
                     .attr("stroke", "white")
                     .style("fill", item.color);
             }
@@ -216,7 +217,7 @@ class ChipVis {
                 .attr("x", 30)
                 .attr("y", 15)
                 .text(item.text)
-                .style("font-size", "16px")
+                .style("font-size", "14px")
                 .style("fill", "white")
                 .style("font-weight", "bold");
         });

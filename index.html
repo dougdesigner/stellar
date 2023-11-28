@@ -525,24 +525,24 @@
                                 </div>
                                 <div class="px-6 flex flex-col justify-end">
                                     <div class="flex items-center h-full border-b border-slate-800 py-2 text-slate-400">
-                                        <!-- <svg class="shrink-0 fill-purple-500 mr-3" xmlns="http://www.w3.org/2000/svg" width="12" height="9">
+                                        <svg class="shrink-0 fill-purple-500 mr-3" xmlns="http://www.w3.org/2000/svg" width="12" height="9">
                                             <path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
-                                        </svg> -->
-                                        <span><span class="md:hidden">Copilots: </span>None</span>
+                                        </svg>
+                                        <span><span class="md:hidden">Copilots: </span>Q</span>
                                     </div>
                                 </div>
 
 
                                 <!-- Social Connections -->
                                 <div class="px-6 flex flex-col justify-end">
-                                    <div class="py-2 text-slate-400 border-b border-slate-800 max-md:hidden">Code Specific</div>
+                                    <div class="py-2 text-slate-400 border-b border-slate-800 max-md:hidden">Code Assistant</div>
                                 </div>
                                 <div class="px-6 flex flex-col justify-end">
                                     <div class="flex items-center h-full border-b border-slate-800 py-2 text-slate-400">
                                         <!-- <svg class="shrink-0 fill-purple-500 mr-3" xmlns="http://www.w3.org/2000/svg" width="12" height="9">
                                             <path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
                                         </svg> -->
-                                        <span><span class="md:hidden">Code Specific: </span>None</span>
+                                        <span><span class="md:hidden">Code Assistant: </span>None</span>
                                     </div>
                                 </div>
                                 <div class="px-6 flex flex-col justify-end">
@@ -550,7 +550,7 @@
                                         <svg class="shrink-0 fill-purple-500 mr-3" xmlns="http://www.w3.org/2000/svg" width="12" height="9">
                                             <path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
                                         </svg>
-                                        <span><span class="md:hidden">Code Specific: </span>Github Copilot</span>
+                                        <span><span class="md:hidden">Code Assistant: </span>Github Copilot</span>
                                     </div>
                                 </div>
                                 <div class="px-6 flex flex-col justify-end">
@@ -558,7 +558,7 @@
                                         <svg class="shrink-0 fill-purple-500 mr-3" xmlns="http://www.w3.org/2000/svg" width="12" height="9">
                                             <path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
                                         </svg>
-                                        <span><span class="md:hidden">Code Specific: </span>Duet AI</span>
+                                        <span><span class="md:hidden">Code Assistant: </span>Duet AI</span>
                                     </div>
                                 </div>
                                 <div class="px-6 flex flex-col justify-end">
@@ -566,7 +566,7 @@
                                         <svg class="shrink-0 fill-purple-500 mr-3" xmlns="http://www.w3.org/2000/svg" width="12" height="9">
                                             <path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
                                         </svg>
-                                        <span><span class="md:hidden">Code Specific: </span>CodeWhisperer</span>
+                                        <span><span class="md:hidden">Code Assistant: </span>CodeWhisperer</span>
                                     </div>
                                 </div>
                                 
@@ -1026,7 +1026,7 @@
                                             <div class="flex flex-col flex-row items-center justify-between py-12">
                                                 
                                                 <div id="applevis" class="w-full"></div>
-                                        
+            
                                             </div>
                                         </div>
                                     </div>
@@ -1042,19 +1042,19 @@
                               <!-- Content goes here -->
                               <div>
                                 <p class="text-base font-semibold text-gray-50">Sort</p>
-                                <p class="text-sm text-slate-400">Sort by Chip Version or Release Date</p>
+                                <p class="text-sm text-slate-400">Sort by Version or Generation</p>
                                 <fieldset class="mt-4">
                                     <legend class="sr-only">Sort By</legend>
                                     <div class="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
                                         
                                         <div class="flex items-center">
-                                        <input id="byVersion" name="MChip" type="radio" checked class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
-                                        <label for="byVersion" class="ml-3 block text-sm font-medium leading-6 text-slate-50">Chip Version</label>
+                                            <input checked id="byVersion" name="MChip" type="radio" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                                            <label for="byVersion" class="ml-3 block text-sm font-medium leading-6 text-slate-50">Version</label>
                                         </div>
 
                                         <div class="flex items-center">
-                                        <input id="byDate" name="MChip" type="radio" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
-                                        <label for="byDate" class="ml-3 block text-sm font-medium leading-6 text-slate-50"> Release Date</label>
+                                            <input id="bySeries" name="MChip" type="radio"  class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                                            <label for="bySeries" class="ml-3 block text-sm font-medium leading-6 text-slate-50">Generation</label>
                                         </div>
 
                                     </div>
@@ -1072,7 +1072,6 @@
                     </div>
                 </div>
             </section>
-
 
             <!-- Features #2 -->
             <section id="cloudAI" class="relative">
@@ -1457,8 +1456,9 @@
     <!-- Visualization objects -->
     <script src="./js/sp500vis.js"></script>
     <script src="./js/chipvis.js"></script>
-    <script src="./js/applevis.js"></script>
+    <!-- <script src="./js/applevis.js"></script> -->
     <script src="./js/cloudvis.js"></script>
+    <script src="./js/barvis.js"></script>
 
     <!-- Load data, create visualizations -->
     <script src="./js/vis.js"></script>

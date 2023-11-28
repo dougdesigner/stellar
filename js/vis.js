@@ -45,7 +45,7 @@ function createVis(data) {
     });
 
     appleData.forEach(d => {
-        d.ReleaseDate = new Date(d.ReleaseDate);
+        d.ReleaseDate = d["Release Date"];
         d.TransistorCount = parseInt(d["Transistor Count"] , 10);
     });
 
@@ -53,9 +53,6 @@ function createVis(data) {
 
     // Create visualization instances
     let chipVis = new ChipVis("chipvis", chipData, mooreData);
-    let appleVis = new AppleVis("applevis", appleData);
+    let appleVis = new BarVis("applevis", appleData);
     let sp500Vis = new DonutChart("sp500vis", sp500Data);
-
 }
-
-
