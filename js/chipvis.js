@@ -90,6 +90,11 @@ class ChipVis {
 
         vis.selectedDesigner = "Apple"; // Set the initial selected designer
 
+        vis.tooltip = d3.select("body").append("div") 
+            .attr("class", "tooltip")    
+            .attr("id", "chip-tooltip")   
+            .style("opacity", 0);
+
         vis.wrangleData();
     }
 
@@ -126,6 +131,30 @@ class ChipVis {
             .attr("r", 5)
             .style('stroke', 'white')
             .merge(vis.dots)
+            .on("mouseover", function(event, d) {
+                vis.tooltip.transition()    
+                    .duration(200)    
+                    .style("opacity", 1);    
+                vis.tooltip.html(
+                    `<span class="text-lg font-bold text-slate-600">${d.Processor}</span><<br/>
+                    <span class="text-base font-medium text-slate-500">Transistors: 
+                        <span class="text-slate-500 font-bold">${d3.format(".4s")(d.TransistorCount)}</span>
+                    </span><br/>
+                    <span class="text-base font-medium text-slate-500">Designer: 
+                        <span class="text-slate-500 font-bold">${d.Designer}</span>
+                    </span><br/>
+                    <span class="text-base font-medium text-slate-500">Year: 
+                        <span class="text-slate-500 font-bold">${d.Year.getFullYear()}</span>
+                    </span><br/>`
+                )  
+                .style("left", (event.pageX + 20) + "px")   
+                .style("top", (event.pageY - 20) + "px");  
+            })          
+            .on("mouseout", function(d) {   
+                vis.tooltip.transition()    
+                    .duration(500)    
+                    .style("opacity", 0); 
+            })
             .transition()
             .duration(600)
             .style("opacity", d => d.Designer === vis.selectedDesigner ? "1" : ".25")

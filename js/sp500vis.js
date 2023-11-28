@@ -186,7 +186,7 @@ class DonutChart {
                     .style("opacity", 0); 
             })
             .transition()
-            .duration(1000) // Duration of the transition
+            .duration(600) // Duration of the transition
             .attrTween('d', function(d) {
                 var interpolate = d3.interpolate(this._current, d);
                 this._current = interpolate(0);
@@ -241,6 +241,7 @@ class DonutChart {
             .style('opacity', 0)
             .transition()
             .duration(1000)
+            .delay(1000)
             .style('opacity', displayLabels ? 1 : 0);
 
         labelLines.exit().remove();
@@ -259,8 +260,6 @@ class DonutChart {
             .style('font-size', '16px')
             .style('fill', 'white')
             .text(d => d.data.Company)
-            .transition()
-            .duration(1000) // duration of the initial loading animation
             .attr('transform', (d, i) => {
                 const outerArcPos = outerArc.centroid(d);
                 const labelOffset = i % 2 * -10; // Adjusted multiplier for y-coordinate
@@ -272,6 +271,8 @@ class DonutChart {
                 return `translate(${pos[0]}, ${pos[1]})`;
             })
             .attr('dy', '0.35em')
+            .transition()
+            .duration(1000) // duration of the initial loading animation
             .style('opacity', displayLabels ? 1 : 0);
 
         labels.exit().remove();
@@ -302,7 +303,7 @@ class DonutChart {
             .style('font-weight', 'bold')
             .text(d => `${Number((d.data.proportionalPercentage * 100).toFixed(2))}%`)
             .transition()
-            .duration(1600) // duration of the initial loading animation
+            .duration(1500) // duration of the initial loading animation
             .style('opacity', displayLabels ? 1 : 0);
 
         subLabels.exit().remove();
@@ -322,6 +323,7 @@ class DonutChart {
         legendItem.append('rect')
             .attr('width', 20)  // Size of the color box
             .attr('height', 20)
+            .attr('stroke', 'white')
             .attr('rx', 5)  // Rounded corners
             .attr('fill', d => d.Color);
 
