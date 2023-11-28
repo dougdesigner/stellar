@@ -27,7 +27,7 @@ function createVis(data) {
         { Company: 'Microsoft', Percentage: '6.74%', MarketCap: '$2.81 trillion', ReturnYTD: '+45%' },
         { Company: 'Google', Percentage: '4.08%', MarketCap: '$1.701 trillion', ReturnYTD: '+49%' },
         { Company: 'Amazon', Percentage: '3.57%', MarketCap: '$1.49 trillion', ReturnYTD: '+58%' },
-        { Company: 'NVIDIA', Percentage: '2.88%', MarketCap: '$1.20 trillion', ReturnYTD: '+241%' },
+        { Company: 'Nvidia', Percentage: '2.88%', MarketCap: '$1.20 trillion', ReturnYTD: '+241%' },
         { Company: 'Tesla', Percentage: '1.79%', MarketCap: '$744.82 billion', ReturnYTD: '+67%' },
         { Company: 'Meta', Percentage: '2.06%', MarketCap: '$861.01 billion', ReturnYTD: '+150%' },
         { Company: 'Other Companies', Percentage: '71.81%', MarketCap: '$35.94 trillion', ReturnYTD: '+6%' }

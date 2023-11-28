@@ -12,7 +12,7 @@ class DonutChart {
 
         const element = document.getElementById(vis.parentElement);
         // Set dimensions and margins
-        vis.margin = { top: 160, right: 20, bottom: 60, left: 20 };
+        vis.margin = { top: 160, right: 20, bottom: 100, left: 20 };
         // vis.width = 800 - vis.margin.left - vis.margin.right;
         vis.width = element.offsetWidth - vis.margin.left - vis.margin.right;
         vis.height = 600 - vis.margin.top - vis.margin.bottom;
@@ -33,11 +33,14 @@ class DonutChart {
         // Arc generator
         vis.arc = d3.arc()
             .innerRadius(vis.radius * 0.4)
-            .outerRadius(vis.radius * 0.8);
+            .outerRadius(vis.radius * 0.8)
+            .cornerRadius(2)
+            .padAngle(.02);
 
         // Tooltip
-        vis.tooltip = vis.svg.append("div") 
-            .attr("class", "tooltip")       
+        vis.tooltip = d3.select('body').append('div')
+            .attr("class", "tooltip")
+            .attr("id", "donut-tooltip")      
             .style("opacity", 0);
         
         // Append Title
@@ -55,20 +58,25 @@ class DonutChart {
             .attr("x", 0)
             .attr("y", -vis.height / 2 - 70)
             .attr("text-anchor", "middle")
-            .style("font-size", "14px")
+            .style("font-size", "16px")
             .style("fill", "#94A3B8")
-            .text("Percentage of Apple, Microsoft, Alphabet, Amazon, NVIDIA, Tesla, and Meta");
+            .text("Share of Apple, Microsoft, Alphabet, Amazon, NVIDIA, Tesla, and Meta by Market Cap");
 
         // Append central label
         vis.svg.append("text")
-            .attr("class", "center-label")
+            .attr("class", "center-label fill-slate-200")
             .attr("text-anchor", "middle")
             .attr("dy", ".5em")  // Adjust for vertical alignment
             // .attr("dy", "-0.5em")  // Adjust for vertical alignment
-            // .style("font-size", "20px")  // Adjust font size as needed
+            .style("font-size", "16px")  // Adjust font size as needed
             .style("font-weight", "bold")
-            .style("fill", "white")
             .text("S&P 500");
+
+            
+        // Append legend group to your SVG
+        vis.legend = vis.svg.append('g')
+        .attr('class', 'legend')
+        .attr('transform', `translate(-${vis.width / 2}, ${vis.height / 2 + 40})`);  // Adjust this to position your legend
 
         // Append central subtitle
         // vis.svg.append("text")
@@ -96,7 +104,7 @@ class DonutChart {
             }
             vis.wrangleData();
         });
-
+        
         // Update chart with data
         vis.wrangleData();
     }
@@ -142,7 +150,7 @@ class DonutChart {
         let arcs = vis.svg.selectAll('path')
             .data(vis.pie(vis.displayData), d => d.data.Company);
 
-
+        // Add donut chart arcs
         arcs.enter()
             .append('path')
             .attr('fill', (d, i) => d3.schemeCategory10[i % 10]) // Change color scheme if needed
@@ -153,24 +161,30 @@ class DonutChart {
                 this._current = { startAngle: 0, endAngle: 0 }; 
             })
             .merge(arcs)
-            // .on("mouseover", function(event, d) {
-            //     vis.tooltip.transition()    
-            //         .duration(200)    
-            //         .style("opacity", 1);    
-            //     vis.tooltip.html(
-            //         `<strong>${d.data.Company}</strong><br/>
-            //         Percentage: ${d.data.Percentage}<br/>
-            //         Market Cap: ${d.data.MarketCap}<br/>
-            //         Return (YTD): ${d.data.ReturnYTD}`
-            //     )  
-            //     .style("left", (event.pageX) + "px")   
-            //     .style("top", (event.pageY - 28) + "px");  
-            // })          
-            // .on("mouseout", function(d) {   
-            //     vis.tooltip.transition()    
-            //         .duration(500)    
-            //         .style("opacity", 0); 
-            // })
+            .on("mouseover", function(event, d) {
+                vis.tooltip.transition()    
+                    .duration(200)    
+                    .style("opacity", 1);    
+                vis.tooltip.html(
+                    `<span class="text-lg font-bold text-slate-600">${d.data.Company}</span><<br/>
+                    <span class="text-base font-medium text-slate-500">Percentage: 
+                        <span class="text-slate-500 font-bold">${Number((d.data.proportionalPercentage * 100).toFixed(2))}%</span>
+                    </span><br/>
+                    <span class="text-base font-medium text-slate-500">Market Cap: 
+                        <span class="text-slate-500 font-bold">${d.data.MarketCap}</span>
+                    </span><br/>
+                    <span class="text-base font-medium text-slate-500">Return YTD: 
+                        <span class="text-emerald-500 font-bold">${d.data.ReturnYTD}
+                    </span>`
+                )  
+                .style("left", (event.pageX + 20) + "px")   
+                .style("top", (event.pageY - 20) + "px");  
+            })          
+            .on("mouseout", function(d) {   
+                vis.tooltip.transition()    
+                    .duration(500)    
+                    .style("opacity", 0); 
+            })
             .transition()
             .duration(1000) // Duration of the transition
             .attrTween('d', function(d) {
@@ -193,6 +207,9 @@ class DonutChart {
             };
         }
 
+        // Add labels for manficent 7
+        const displayLabels = vis.displayData.length === 7;
+
         // Define an outer arc for label lines
         const outerArc = d3.arc()
             .innerRadius(vis.radius * .8)  // Increased radius for label separation
@@ -207,11 +224,7 @@ class DonutChart {
         labelLines.enter()
             .append('polyline')
             .merge(labelLines)
-            .style('opacity', 0)
             .attr('points', (d, i) => {
-                // const pos = outerArc.centroid(d);
-                // pos[0] = vis.radius * (midAngle(d) < Math.PI ? 0.9 : -0.9); // Adjusted multiplier for x-coordinate
-                // return [vis.arc.centroid(d), outerArc.centroid(d), pos]; // Use pos directly as the endpoint
                 const outerArcPos = outerArc.centroid(d);
                 const labelOffset = i % 2 * -10; // Adjusted multiplier for y-coordinate
                 outerArcPos[1] += labelOffset; // Add the offset to the y-coordinate of the outerArc's position
@@ -225,9 +238,10 @@ class DonutChart {
             .style('fill', 'none')
             .style('stroke', (d, i) => d3.schemeCategory10[i % 10])
             .style('stroke-width', 1.5)
+            .style('opacity', 0)
             .transition()
-            .duration(2000)
-            .style('opacity', 0.5); // duration of the initial loading animation;
+            .duration(1000)
+            .style('opacity', displayLabels ? 1 : 0);
 
         labelLines.exit().remove();
 
@@ -255,12 +269,10 @@ class DonutChart {
                     vis.radius * (midAngle(d) < Math.PI ? 1 : -1), // This keeps the x-coordinate aligned with left or right
                     outerArcPos[1] // Use the adjusted y-coordinate
                 ];
-                // const pos = outerArc.centroid(d);
-                // pos[0] = vis.radius * (midAngle(d) < Math.PI ? 0.9 : -0.9); // 
                 return `translate(${pos[0]}, ${pos[1]})`;
             })
             .attr('dy', '0.35em')
-            .style('opacity', 1);
+            .style('opacity', displayLabels ? 1 : 0);
 
         labels.exit().remove();
 
@@ -291,11 +303,37 @@ class DonutChart {
             .text(d => `${Number((d.data.proportionalPercentage * 100).toFixed(2))}%`)
             .transition()
             .duration(1600) // duration of the initial loading animation
-            .style('opacity', 1);
+            .style('opacity', displayLabels ? 1 : 0);
 
         subLabels.exit().remove();
 
-    }
+        // Data for legend
+        const legendData = vis.displayData.map(d => ({ Company: d.Company, Color: d3.schemeCategory10[vis.displayData.indexOf(d) % 10] }));
 
+        // Create legend items
+        const legendItem = vis.legend.selectAll('.legend-item')
+            .data(legendData)
+            .enter()
+            .append('g')
+            .attr('class', 'legend-item')
+            .attr('transform', (d, i) => `translate(${i * 110}, 0)`);  // Adjust spacing between legend items
+
+        // Draw rectangles for color indicators
+        legendItem.append('rect')
+            .attr('width', 20)  // Size of the color box
+            .attr('height', 20)
+            .attr('rx', 5)  // Rounded corners
+            .attr('fill', d => d.Color);
+
+        // Add company names as labels
+        legendItem.append('text')
+            .attr('x', 25)  // Position text to the right of the color box
+            .attr('y', 15)  // Adjust vertical position to align with the box
+            .text(d => d.Company)
+            .style('font-size', '14px')
+            .attr('class', 'fill-slate-50 font-bold')
+            .attr('text-anchor', 'start');
+        
+    }
 
 }
