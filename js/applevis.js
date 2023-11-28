@@ -85,6 +85,12 @@ class AppleVis {
             .style("fill", "white")
             .text("Apple M Series (ARM Architecture) Chips");
 
+        // Tooltip
+        vis.tooltip = d3.select('body').append('div')
+            .attr("class", "tooltip")
+            .attr("id", "bar-tooltip")      
+            .style("opacity", 0);
+
         vis.sort = "byVersion"; // Set the initial view
 
         // Add event listener for the "Sort by Version" radio button
@@ -116,6 +122,8 @@ class AppleVis {
             return {
                 Version: Version,
                 series: series.map(d => ({
+                    Product: d['Product'],
+                    ReleaseDate: d['Release Date'],
                     ChipSeries: d['Chip Series'],
                     TransistorCount: +d['Transistor Count'],
                     Version
@@ -148,9 +156,33 @@ class AppleVis {
             .enter().append("rect")
             .attr("x", d => vis.x1(d.ChipSeries))
             .attr("y", d => vis.y(d.TransistorCount))
+            .attr('rx', '6')
+            .attr('stroke', 'white')
+            .attr('stroke-width', '2')
             .attr("width", vis.x1.bandwidth())
             .attr("height", d => vis.height - vis.y(d.TransistorCount))
-            .style("fill", d => vis.colorScale(d.Version));
+            .style("fill", d => vis.colorScale(d.Version))
+            .on("mouseover", function(event, d) {
+                vis.tooltip.transition()    
+                    .duration(200)    
+                    .style("opacity", 1);    
+                vis.tooltip.html(
+                    `<span class="text-lg font-bold text-slate-600">${d.Product}</span><<br/>
+                    <span class="text-base font-medium text-slate-500">Transistors: 
+                        <span class="text-slate-500 font-bold">${d3.format(".4s")(d.TransistorCount)}</span>
+                    </span><br/>
+                    <span class="text-base font-medium text-slate-500">Release Date: 
+                        <span class="text-slate-500 font-bold">${d.ReleaseDate}</span>
+                    </span><br/>`
+                )  
+                .style("left", (event.pageX + 20) + "px")   
+                .style("top", (event.pageY - 20) + "px");  
+            })          
+            .on("mouseout", function(d) {   
+                vis.tooltip.transition()    
+                    .duration(500)    
+                    .style("opacity", 0); 
+            });
 
         // Add text labels above each bar
         vis.versionGroups.selectAll(".chipSeriesLabel")
@@ -193,6 +225,7 @@ class AppleVis {
             .attr('width', legendRectSize)
             .attr('height', legendRectSize)
             .attr('rx','6')
+            .attr('stroke', 'white')
             .style('fill', vis.colorScale);
 
         // Add text labels to legend

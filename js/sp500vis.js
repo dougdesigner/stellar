@@ -240,8 +240,8 @@ class DonutChart {
             .style('stroke-width', 1.5)
             .style('opacity', 0)
             .transition()
+            .delay(500)
             .duration(1000)
-            .delay(1000)
             .style('opacity', displayLabels ? 1 : 0);
 
         labelLines.exit().remove();

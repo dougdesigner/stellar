@@ -71,6 +71,7 @@ class ChipVis {
             .style("font-size", "20px")
             .style("font-weight", "bold")
             .style("fill", "white")
+            .attr("class", "font-mono")
             .text("Transistor Count of Microprocessors Over Time");
 
         // Add subtitle
@@ -118,6 +119,7 @@ class ChipVis {
             .attr("fill", "none")
             .attr("stroke", "#a855f7")
             .attr("stroke-width", 3)
+            .attr("stroke-linecap", "round")
             .attr("d", line);
 
         // Add dots
@@ -128,7 +130,7 @@ class ChipVis {
             .append("circle")
             .attr("cx", d => vis.x(d.Year))
             .attr("cy", d => vis.y(d.TransistorCount))
-            .attr("r", 5)
+            .attr("r", 7)
             .style('stroke', 'white')
             .merge(vis.dots)
             .on("mouseover", function(event, d) {
@@ -136,12 +138,12 @@ class ChipVis {
                     .duration(200)    
                     .style("opacity", 1);    
                 vis.tooltip.html(
-                    `<span class="text-lg font-bold text-slate-600">${d.Processor}</span><<br/>
+                    `<span class="text-lg font-bold text-slate-600">${d.Designer}</span><<br/>
+                    <span class="text-base font-medium text-slate-500">Processor: 
+                        <span class="text-slate-500 font-bold">${d.Processor}</span>
+                    </span><br/>
                     <span class="text-base font-medium text-slate-500">Transistors: 
                         <span class="text-slate-500 font-bold">${d3.format(".4s")(d.TransistorCount)}</span>
-                    </span><br/>
-                    <span class="text-base font-medium text-slate-500">Designer: 
-                        <span class="text-slate-500 font-bold">${d.Designer}</span>
                     </span><br/>
                     <span class="text-base font-medium text-slate-500">Year: 
                         <span class="text-slate-500 font-bold">${d.Year.getFullYear()}</span>
@@ -159,7 +161,9 @@ class ChipVis {
             .duration(600)
             .style("opacity", d => d.Designer === vis.selectedDesigner ? "1" : ".25")
             .style("fill", d => d.Designer === vis.selectedDesigner ? "#ff7f0e" : "#7f7f7f")
-            .style("stroke", d => d.Designer === vis.selectedDesigner ? "#ff7f0e" : "white");
+            .style("stroke", "white")
+            .attr('stroke-width', 2);
+            // .style("stroke", d => d.Designer === vis.selectedDesigner ? "#ff7f0e" : "white");
 
         vis.dots.exit().remove();
 
@@ -204,6 +208,7 @@ class ChipVis {
                     .attr("cx", 10)
                     .attr("cy", 10)
                     .attr("r", 5)
+                    .attr("stroke", "white")
                     .style("fill", item.color);
             }
 
