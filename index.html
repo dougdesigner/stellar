@@ -943,9 +943,10 @@
                         <div class="max-w-3xl mx-auto pb-12 md:pb-12 grid grid-cols-2 gap-8">
 
                             <div class="col-span-2 md:col-span-1">
-                                <label for="keyCompany" class="text-base font-semibold text-gray-50">Highlight</label>
+                                <label for="keyCompany" class="text-base font-semibold text-gray-50">Filter and Highlight</label>
                                 <p class="text-sm text-slate-400">Highlight a 'Magnificent 7' Chip Designer</p>
                                 <select id="keyCompany" name="keyCompany" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 font-medium">
+                                    <option>All</option>
                                     <option disabled value="" class="font-bold" role="separator">Magnificent 7 (Fabless)</option>
                                     <option selected>Apple</option>
                                     <option>Microsoft</option>
@@ -966,12 +967,12 @@
                             </div>
                     
                             <div class="col-span-2 md:col-span-1">
-                                <label for="microTypeC" class="text-base font-semibold text-gray-50">Filter</label>
+                                <label for="microType" class="text-base font-semibold text-gray-50">Filter</label>
                                 <p class="text-sm text-slate-400">Filter by Processor</p>
-                                <select id="microType" name="keyCompany" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 font-medium">
-                                    <option selected>CPU (Central Processing Unit)</option>
-                                    <option disabled>GPU (Graphics Processing Unit)</option>
-                                    <option disabled>All Microprocessors</option>
+                                <select id="microType" name="microType" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 font-medium">
+                                    <option>All</option>
+                                    <option selected>CPU</option>
+                                    <option>GPU</option>
                                 </select>
                             </div>
                         </div>

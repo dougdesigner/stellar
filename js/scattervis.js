@@ -31,6 +31,7 @@ class ChipVis {
             .range([0, vis.width]);
 
         let xAxisGroup = vis.svg.append("g")
+            .attr("class", "x-axis")
             .attr("transform", "translate(0," + vis.height + ")")
             .call(d3.axisBottom(vis.x));
 
@@ -72,7 +73,7 @@ class ChipVis {
             .style("font-weight", "bold")
             .style("fill", "white")
             .attr("class", "font-mono")
-            .text("Apple leads in Chip Design by Tranistor Count");
+            .text("Apple leads in CPU Transistor Design");
 
         // Add subtitle
         vis.svg.append("text")
@@ -83,9 +84,15 @@ class ChipVis {
             .style("fill", "#94A3B8")
             .text("The number of transistors on integrated circuits has doubled approximately every two years");
 
-        // Add event listener to the dropdown
+        // Add event listener to the Highlight dropdown
         d3.select("#keyCompany").on("change", function() {
             vis.selectedDesigner = this.value;
+            vis.wrangleData();
+        });
+
+        // Add event listener to the Filter dropdown
+        d3.select("#microType").on("change", function() {
+            vis.selectedType = this.value;
             vis.wrangleData();
         });
 
@@ -102,6 +109,22 @@ class ChipVis {
     wrangleData() {
         let vis = this;
 
+        // Apply filters based on selectedDesigner and selectedType
+        vis.filteredData = vis.data.filter(d => {
+            return (vis.selectedDesigner === "All" || !vis.selectedDesigner || d.Designer === vis.selectedDesigner) &&
+                   (vis.selectedType === "All" || !vis.selectedType || d.Type === vis.selectedType);
+        });
+
+        // Determine the extent of the year range in the filteredData
+        vis.yearExtent = d3.extent(vis.filteredData, d => d.Year);
+        // Modify vis.yearExtent[0] to decrement by 1 year
+        vis.yearExtent[0] = new Date(vis.yearExtent[0].getFullYear() - 1, 0);
+
+        // Filter mooreData based on this year range
+        vis.filteredMooreData = vis.mooreData.filter(d => {
+            return d.Year >= vis.yearExtent[0] && d.Year <= vis.yearExtent[1];
+        });
+
         vis.updateVis();
     }
 
@@ -114,13 +137,32 @@ class ChipVis {
             .y(d => vis.y(d.TransistorCount))
             .curve(d3.curveMonotoneX);
 
-        vis.svg.append("path")
-            .datum(vis.mooreData)
+        // Update x and y scale domains based on the new filteredData
+        vis.x.domain(vis.yearExtent);
+        vis.y.domain([0, d3.max(vis.filteredData, d => d.TransistorCount) + 10000000000]);
+
+        // Update the x-axis with the new scale
+        vis.svg.select(".x-axis")
+            .transition()
+            .duration(1000)
+            .call(d3.axisBottom(vis.x));
+
+         // Update the Moore's Law line
+        let mooreLine = vis.svg.selectAll(".moore-line")
+            .data([vis.filteredMooreData]); // Binding data as an array of one element
+
+        mooreLine.enter().append("path")
+            .attr("class", "moore-line")
+            .merge(mooreLine)
+            .transition()
+            .duration(1000)
             .attr("fill", "none")
             .attr("stroke", "#a855f7")
             .attr("stroke-width", 3)
             .attr("stroke-linecap", "round")
             .attr("d", line);
+
+        mooreLine.exit().remove();
 
         // Add dots
         vis.dots = vis.svg.selectAll("circle")
@@ -128,12 +170,16 @@ class ChipVis {
 
         vis.dots.enter()
             .append("circle")
+            .merge(vis.dots)
             .attr("cx", d => vis.x(d.Year))
             .attr("cy", vis.height)
             .attr("r", 7)
             .style('stroke', 'white')
-            .merge(vis.dots)
             .on("mouseover", function(event, d) {
+                if (d.TransistorCount > 1e9) {
+
+                }
+                const trans = d.value / 1e9
                 vis.tooltip.transition()    
                     .duration(200)    
                     .style("opacity", 1);    

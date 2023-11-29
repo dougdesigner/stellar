@@ -1,10 +1,11 @@
 // Load data with promises
 let promises = [
-    d3.csv("data/transistors-cpu.csv"),
     d3.csv("data/moore.csv"),
     d3.csv("data/apple.csv"),
     d3.csv("data/aws.csv"),
-    d3.csv("data/azure.csv")
+    d3.csv("data/azure.csv"),
+    d3.csv("data/transistors-cpu.csv"),
+    d3.csv("data/transistors-gpu.csv"),
 ];
 
 Promise.all(promises)
@@ -16,11 +17,14 @@ Promise.all(promises)
     });
 
 function createVis(data) {
-    let chipData = data[0];
-    let mooreData = data[1];
-    let appleData = data[2];
-    let awsData = data[3];
-    let azureData = data[4];
+    let mooreData = data[0];
+    let appleData = data[1];
+    let awsData = data[2];
+    let azureData = data[3];
+    let cpuData = data[4];
+    let gpuData = data[5];
+
+    let chipData = cpuData.concat(gpuData);
 
     let sp500Data = [
         { Company: 'Apple', Percentage: '7.07%', MarketCap: '$2.950 trillion', ReturnYTD: '+22%' },
@@ -35,12 +39,12 @@ function createVis(data) {
 
     // Parse the data
     chipData.forEach(d => {
-        d.Year = new Date(d.Year.trim());
+        d.Year = new Date(d.Year.trim(),0);
         d.TransistorCount = parseInt(d["Transistor count"].replace(/,/g, ''), 10);
     });
 
     mooreData.forEach(d => {
-        d.Year = new Date(d.Year.trim());
+        d.Year = new Date(d.Year.trim(),0);
         d.TransistorCount = parseInt(d["TransistorCount"].replace(/,/g, ''), 10);
     });
 
