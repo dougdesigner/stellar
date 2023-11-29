@@ -1,6 +1,6 @@
 // Load data with promises
 let promises = [
-    d3.csv("data/transistors.csv"),
+    d3.csv("data/transistors-cpu.csv"),
     d3.csv("data/moore.csv"),
     d3.csv("data/apple.csv"),
     d3.csv("data/aws.csv"),
@@ -30,7 +30,7 @@ function createVis(data) {
         { Company: 'Nvidia', Percentage: '2.88%', MarketCap: '$1.20 trillion', ReturnYTD: '+241%' },
         { Company: 'Tesla', Percentage: '1.79%', MarketCap: '$744.82 billion', ReturnYTD: '+67%' },
         { Company: 'Meta', Percentage: '2.06%', MarketCap: '$861.01 billion', ReturnYTD: '+150%' },
-        { Company: 'Other Companies', Percentage: '71.81%', MarketCap: '$35.94 trillion', ReturnYTD: '+6%' }
+        { Company: 'S&P 493', Percentage: '71.81%', MarketCap: '$35.94 trillion', ReturnYTD: '+6%' }
     ];
 
     // Parse the data

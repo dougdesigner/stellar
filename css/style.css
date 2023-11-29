@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=fallback');
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800&display=swap');
+
 /* @import 'additional-styles/custom-fonts'; */
 
 @import 'tailwindcss/base';
@@ -15,11 +18,12 @@
     display: none;
 }
 
+/* Custom D3 styles */
 .tooltip {
     position: absolute;
     text-align: left;
     padding: 8px;
-    font: 12px sans-serif;
+    font: 12px;
     background: white;
     border: 0px;
     border-radius: 8px;

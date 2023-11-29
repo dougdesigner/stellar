@@ -187,12 +187,12 @@ class BarVis {
                     .duration(200)      
                     .style("opacity", 1);      
                 vis.tooltip.html(
-                    `<span class="text-lg font-bold text-slate-600">${d.product}</span><<br/>
+                    `<span class="text-lg font-bold text-slate-700">${d.product}</span><<br/>
                     <span class="text-base font-medium text-slate-500">Transistors: 
-                        <span class="text-slate-500 font-bold">${trans} billion</span>
+                        <span class="text-slate-600 font-bold">${trans} billion</span>
                     </span><br/>
                     <span class="text-base font-medium text-slate-500">Release Date: 
-                        <span class="text-slate-500 font-bold">${d.date}</span>
+                        <span class="text-slate-600 font-bold">${d.date}</span>
                     </span>`
                 )
                 .style("left", (event.pageX) + "px")     

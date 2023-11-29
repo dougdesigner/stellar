@@ -167,12 +167,12 @@ class DonutChart {
                     .duration(200)    
                     .style("opacity", 1);    
                 vis.tooltip.html(
-                    `<span class="text-lg font-bold text-slate-600">${d.data.Company}</span><<br/>
+                    `<span class="text-lg font-bold text-slate-700">${d.data.Company}</span><<br/>
                     <span class="text-base font-medium text-slate-500">Percentage: 
-                        <span class="text-slate-500 font-bold">${Number((d.data.proportionalPercentage * 100).toFixed(2))}%</span>
+                        <span class="text-slate-600 font-bold">${Number((d.data.proportionalPercentage * 100).toFixed(2))}%</span>
                     </span><br/>
                     <span class="text-base font-medium text-slate-500">Market Cap: 
-                        <span class="text-slate-500 font-bold">${d.data.MarketCap}</span>
+                        <span class="text-slate-600 font-bold">${d.data.MarketCap}</span>
                     </span><br/>
                     <span class="text-base font-medium text-slate-500">Return YTD: 
                         <span class="text-emerald-500 font-bold">${d.data.ReturnYTD}

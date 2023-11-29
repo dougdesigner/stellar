@@ -138,15 +138,18 @@ class ChipVis {
                     .duration(200)    
                     .style("opacity", 1);    
                 vis.tooltip.html(
-                    `<span class="text-lg font-bold text-slate-600">${d.Designer}</span><<br/>
+                    `<span class="text-lg font-bold text-slate-700">${d.Designer}</span><<br/>
                     <span class="text-base font-medium text-slate-500">Processor: 
-                        <span class="text-slate-500 font-bold">${d.Processor}</span>
+                        <span class="text-slate-600 font-bold">${d.Processor}</span>
+                    </span><br/>
+                    <span class="text-base font-medium text-slate-500">Type: 
+                        <span class="text-slate-600 font-bold">${d.Type}</span>
                     </span><br/>
                     <span class="text-base font-medium text-slate-500">Transistors: 
-                        <span class="text-slate-500 font-bold">${d3.format(".4s")(d.TransistorCount)}</span>
+                        <span class="text-slate-600 font-bold">${d3.format(".4s")(d.TransistorCount)}</span>
                     </span><br/>
                     <span class="text-base font-medium text-slate-500">Year: 
-                        <span class="text-slate-500 font-bold">${d.Year.getFullYear()}</span>
+                        <span class="text-slate-600 font-bold">${d.Year.getFullYear()}</span>
                     </span><br/>`
                 )  
                 .style("left", (event.pageX + 20) + "px")   
