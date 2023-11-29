@@ -99,7 +99,7 @@ class BarVis {
         // Initialize the legend group
         vis.legend = vis.svg.append("g")
             .attr("class", "legend")
-            .attr("transform", `translate(0,${vis.height + 80})`);
+            .attr("transform", `translate(0,${vis.height + 70})`);
 
         // Tooltip
         vis.tooltip = d3.select('body').append('div')
