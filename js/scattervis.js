@@ -233,8 +233,8 @@ class ChipVis {
     
         let legendData = [
             { type: "line", color: "#a855f7", text: "Moore's Law" },
-            { type: "circle", color: "#ff7f0e", text: `${selectedDesigner} Design` },
-            { type: "circle", color: "#7f7f7f", text: "Other Designer" }
+            { type: "circle", color: "#ff7f0e", text: `${selectedDesigner}` },
+            { type: "circle", color: "#1f77b4", text: "Other" }
         ];
 
         // Create legend items
