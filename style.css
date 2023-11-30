@@ -2412,6 +2412,11 @@ input[type="search"]::-webkit-search-results-decoration {
   color: rgb(192 132 252 / var(--tw-text-opacity));
 }
 
+.text-emerald-600{
+  --tw-text-opacity: 1;
+  color: rgb(5 150 105 / var(--tw-text-opacity));
+}
+
 .underline{
   text-decoration-line: underline;
 }

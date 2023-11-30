@@ -1,4 +1,4 @@
-class ChipVis {
+class ScatterVis {
     constructor(_parentElement, _data, _mooreData) {
         this.parentElement = _parentElement;
         this.data = _data;
@@ -329,7 +329,7 @@ class ChipVis {
                 .attr("x", 30)
                 .attr("y", 15)
                 .text(item.text)
-                .style("font-size", "14px")
+                .style("font-size", "16px")
                 .style("fill", "white")
                 .style("font-weight", "bold");
         });

@@ -34,7 +34,7 @@ class BarVis {
         // Color scale for Chip Series
         vis.colorScale = d3.scaleOrdinal()
             .domain(["Baseline", "Pro", "Max", "Ultra"])
-            .range(d3.schemeTableau10);
+            .range(d3.schemeCategory10);
 
         vis.sort = "byVersion"; // Set the initial view
 
@@ -117,8 +117,8 @@ class BarVis {
         if (vis.sort === "bySeries") {
             vis.groupings = ["Baseline", "Pro", "Max", "Ultra"];
             vis.nestedData = d3.group(vis.displayData, d => d["Chip Series"]);
-
             d3.selectAll(".sortAxisLabel").text("Generation");
+
         } else if (vis.sort === "byVersion") {
             vis.groupings = ["M1", "M2", "M3"];
             vis.nestedData = d3.group(vis.displayData, d => d.Version);
@@ -229,7 +229,7 @@ class BarVis {
             .attr("fill", d => vis.colorScale(d));
 
         legendEntries.append("text")
-            .attr("x", 25)
+            .attr("x", 30)
             .attr("y", 12)
             .text(d => d)
             .style("fill", "white")

@@ -980,7 +980,7 @@
                                 <div class="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">Shifting Semiconductor Chip Architectures</div>
                             </div>
                             <h2 class="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">Apple's Transition from x86 to ARM</h2>
-                            <p class="text-lg text-slate-400">Apple led a paradigm shift in chip architectures when they transitioned from traditional x86 (Intel) to ARM with launch of their M Series Apple Silicon. Six of the top ten chips, and eight of the top fifteen chips are Apple Silicon specialized for personal hardware. Below we compare their top 11 chips used for the MacBook Pro and Mac Studio lines.</p>
+                            <p class="text-lg text-slate-400">Apple led a paradigm shift in chip architectures when they transitioned from traditional x86 (Intel) to ARM with launch of their M Series Apple Silicon. Six of the top ten chips, and eight of the top fifteen chips are Apple Silicon specialized for personal hardware. Below we compare Apple's chips available for MacBook Pros and Mac Studios.</p>
                         </div>
 
                         <!-- Highlighted boxes -->
@@ -1074,9 +1074,9 @@
                                 <div class="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">Capitalizing across The Generative AI Stack</div>
                             </div>
                             <h2 class="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">Cloud AI Infrastructure</h2>
-                            <p class="text-lg text-slate-400">AWS, Microsoft Azure, and Google Cloud play a crucial role across all layers of The Generative AI Stack, though they are the only three that are Cloud Infrastructure Providers. Apple is the leader in chip design, but it is the only company in the top 4 of the Magnificent 7 that does not offer Cloud Infrastructure as a Service.</p>
+                            <p class="text-lg text-slate-400">AWS, Azure, and Google Cloud play a crucial role across all layers of The Generative AI Stack, though they are the only three that are Cloud Infrastructure Providers. Apple is the leader in chip design, but it is the only company in the top 4 of the Magnificent 7 that does not offer Cloud Infrastructure as a Service.</p>
                             <p class="text-lg text-slate-400 mt-8">
-                                Cloud infrastructure providers are integral to the entire AI tech stack, offering the foundational hardware at the bottom, tools and platforms for model development in the middle, and services for application deployment and scaling at the top. They enable the AI ecosystem to function seamlessly, from hardware to user-facing applications and stand to benefit from the entire AI Tech Stack.</p>
+                                Cloud infrastructure providers are integral to the entire Generative AI stack, offering the foundational hardware at the bottom, tools and platforms for model development in the middle, and services for application deployment and scaling at the top. They enable the AI ecosystem to function seamlessly, from hardware to user-facing applications.</p>
                         </div>
 
 
@@ -1105,13 +1105,13 @@
                                                 
                                                 <div id="cloudvis" class="w-full"></div>
 
-                                                <div class="relative w-full h-64 md:h-auto overflow-hidden">
+                                                <!-- <div class="relative w-full h-64 md:h-auto overflow-hidden">
                                                     <img class="absolute bottom-0 left-1/2 -translate-x-1/2 mx-auto max-w-none md:relative md:left-0 md:translate-x-0" src="./images/cloudShare.jpg" width="504" height="400" alt="Feature 01">
                                                 </div>
 
                                                 <div id="chart-container"></div>
 
-                                                <p class="mt-2 text-sm text-slate-400">Placeholder image, d3 visualization in progress. Data fidelity and cleaning pending.</p>
+                                                <p class="mt-2 text-sm text-slate-400">Placeholder image, d3 visualization in progress. Data fidelity and cleaning pending.</p> -->
                                             </div>
                                         </div>
                                     </div>
@@ -1120,8 +1120,44 @@
                             </div>
                         </div>
 
+
+
+                        <!-- Filter -->
+                        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-12 md:pb-20">
+                            <!-- We've used 3xl here, but feel free to try other max-widths based on your needs -->
+                            <div class="mx-auto max-w-3xl">
+                              <!-- Content goes here -->
+                              <div>
+                                <p class="text-base font-semibold text-gray-50">Views</p>
+                                <p class="text-sm text-slate-400">View Market Share by Revenue or YoY Growth Rate</p>
+                                <fieldset class="mt-4">
+                                    <legend class="sr-only">View</legend>
+                                    <div class="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
+                                        
+                                        <div class="flex items-center">
+                                            <input checked id="cloudShare" name="cloud" type="radio" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                                            <label for="cloudShare" class="ml-3 block text-sm font-medium leading-6 text-slate-50">Market Share</label>
+                                        </div>
+
+                                        <!-- <div class="flex items-center">
+                                            <input id="cloudGrowth" name="cloud" type="radio"  class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                                            <label for="cloudGrowth" class="ml-3 block text-sm font-medium leading-6 text-slate-50">Growth Rate</label>
+                                        </div> -->
+
+                                    </div>
+                                </fieldset>
+                              </div>
+                            </div>
+                        </div>
+
+
+
                         <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-                            <p class="text-lg text-slate-400">Amazon AWS controls a majority of the cloud computing market share, but it has been decreasing as Microsoft Azure’s new revenue grows. This could be related to new AI computing spend on Azure services by OpenAI that utilizes similar specialized microprocessors to train ChatGPT.</p>
+                            <p class="text-lg text-slate-400">Amazon Web Services controls a majority of the cloud computing market share, but it has been slowly decreasing as Microsoft Azure’s new revenue grows. AWS's growth has stabalized after enterprises focused on cost optimization for the last year. Combined the three main cloud providers have grown by 18%. These are amazing businesses in a industry this continues to grow, with AI providng long term growth opportunities with new workloads.</p>
+                        </div>
+
+                        <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20">
+                            <p class="text-lg text-slate-400">In the rapidly evolving tech landscape, the 'Magnificent 7' - Apple, Microsoft, Google, Amazon, NVIDIA, Tesla, and Meta - epitomize the winner-take-all phenomenon. Their combined market influence, accounting for more than 28% of the S&P 500, is a direct result of leveraging AI technologies and cloud infrastructure. This consolidation of power, driven by advancements in AI-specific semiconductors and cloud computing, highlights a significant market shift. These tech giants are not just leading in technology; they are redefining market dynamics, creating an environment where their AI-driven strategies and investments increasingly concentrate wealth and influence within a select few, exemplifying the winner-take-all dynamic in the digital age.</p>
                         </div>
 
                     </div>
@@ -1312,7 +1348,7 @@
                                         <img src="./images/logo.svg" width="38" height="38" alt="Stellar">
                                     </a>
                                 </div> -->
-                                <div class="text-sm text-slate-300">&copy; Douglas Sanchez</div>
+                                <div class="text-sm text-slate-300">&copy; Douglas Sanchez, Trevor Jones</div>
                                 <div class="text-sm text-slate-300">All rights reserved.</div>
                                 <div class="text-sm text-slate-300">Made with  silicon.</div>
                             </div>

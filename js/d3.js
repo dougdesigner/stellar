@@ -6,6 +6,7 @@ let promises = [
     d3.csv("data/azure.csv"),
     d3.csv("data/transistors-cpu.csv"),
     d3.csv("data/transistors-gpu.csv"),
+    d3.csv("data/clouds.csv")
 ];
 
 Promise.all(promises)
@@ -23,6 +24,7 @@ function createVis(data) {
     let azureData = data[3];
     let cpuData = data[4];
     let gpuData = data[5];
+    let cloudData = data[6];
 
     let chipData = cpuData.concat(gpuData);
 
@@ -53,10 +55,14 @@ function createVis(data) {
         d.TransistorCount = parseInt(d["Transistor Count"] , 10);
     });
 
-    // console.log(appleData)
+    cloudData.forEach(d => {
+        d.GrowthRate = parseFloat(d["Growth Rate"].replace(/,/g, ''), 10);
+        d.MarketShare = parseFloat(d["Market Share"].replace(/,/g, ''), 10);
+    });
 
     // Create visualization instances
-    let chipVis = new ChipVis("chipvis", chipData, mooreData);
+    let chipVis = new ScatterVis("chipvis", chipData, mooreData);
     let appleVis = new BarVis("applevis", appleData);
     let sp500Vis = new DonutChart("sp500vis", sp500Data);
+    let cloudVis = new LineVis("cloudvis", cloudData);
 }
