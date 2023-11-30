@@ -241,7 +241,6 @@ class DonutChart {
             .style('stroke-width', 1.5)
             .style('opacity', 0)
             .transition()
-            .delay(500)
             .duration(1000)
             .style('opacity', displayLabels ? 1 : 0);
 
@@ -304,7 +303,7 @@ class DonutChart {
             .style('font-weight', 'bold')
             .text(d => `${Number((d.data.proportionalPercentage * 100).toFixed(2))}%`)
             .transition()
-            .duration(1500) // duration of the initial loading animation
+            .duration(2000) // duration of the initial loading animation
             .style('opacity', displayLabels ? 1 : 0);
 
         subLabels.exit().remove();

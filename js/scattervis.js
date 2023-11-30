@@ -47,10 +47,11 @@ class ChipVis {
 
         // Add Y axis
         vis.y = d3.scaleLinear()
-            .domain([0, d3.max(vis.filteredData, d => d.TransistorCount) + 10000000000])
+            .domain([0, d3.max(vis.filteredData, d => d.TransistorCount) + 5000000000])
             .range([vis.height, 0]);
 
         let yAxisGroup = vis.svg.append("g")
+            .attr("class", "y-axis")
             .call(d3.axisLeft(vis.y).tickFormat(d => `${d / 1e9} B`));
 
         // Add Y axis label
@@ -62,7 +63,7 @@ class ChipVis {
             .style("font-weight", "bold")
             .style("font-size", "14px")
             .style("fill", "#94A3B8")
-            .text("Transistor (billions)");
+            .text("Transistors (billion)");
 
         // Add title
         vis.svg.append("text")
@@ -98,6 +99,8 @@ class ChipVis {
 
         vis.selectedDesigner = "Apple"; // Set the initial selected designer
 
+        vis.selectedType = "All"; // Set the initial selected designer
+
         vis.tooltip = d3.select("body").append("div") 
             .attr("class", "tooltip")    
             .attr("id", "chip-tooltip")   
@@ -107,8 +110,8 @@ class ChipVis {
         vis.svg.append("defs").append("clipPath")
             .attr("id", "clip")
             .append("rect")
-            .attr("width", vis.width)
-            .attr("height", vis.height);
+            .attr("width", vis.width + 8)
+            .attr("height", vis.height + 8);
 
         vis.wrangleData();
     }
@@ -116,56 +119,42 @@ class ChipVis {
     wrangleData() {
         let vis = this;
 
-        // // Apply filters based on selectedDesigner and selectedType
-        // vis.filteredData = vis.data.filter(d => {
-        //     return (vis.selectedDesigner === "All" || !vis.selectedDesigner || d.Designer === vis.selectedDesigner) &&
-        //            (vis.selectedType === "All" || !vis.selectedType || d.Type === vis.selectedType);
-        // });
-
-        // // Determine the extent of the year range in the filteredData
-        // vis.yearExtent = d3.extent(vis.filteredData, d => d.Year);
-        // // Modify vis.yearExtent[0] to decrement by 1 year
-        // vis.yearExtent[0] = new Date(vis.yearExtent[0].getFullYear() - 1, 0);
-
-
-
-
-
-        // // Calculate the year range for the selected designer
-        // if (vis.selectedDesigner !== "All") {
-        //     let designerData = vis.data.filter(d => d.Designer === vis.selectedDesigner);
-        //     vis.designerYearExtent = d3.extent(designerData, d => d.Year);
-        //     // Optional: Expand the range slightly for better visualization
-        //     vis.designerYearExtent[0] = new Date(vis.designerYearExtent[0].getFullYear() - 1, 0);
-        //     vis.designerYearExtent[1] = new Date(vis.designerYearExtent[1].getFullYear() + 1, 0);
-        // } else {
-        //     vis.designerYearExtent = d3.extent(vis.data, d => d.Year);
-        // }
-
-        // // Filter mooreData based on this year range
-        // vis.filteredMooreData = vis.mooreData.filter(d => {
-        //     return d.Year >= vis.designerYearExtent[0] && d.Year <= vis.designerYearExtent[1];
-        // });
-
-
-        // Filter data based on selectedDesigner and selectedType
-        vis.filteredData = vis.data.filter(d => {
-            return (vis.selectedDesigner === "All" || !vis.selectedDesigner || d.Designer === vis.selectedDesigner) &&
-                (vis.selectedType === "All" || !vis.selectedType || d.Type === vis.selectedType);
+        // Filter data based on the selected processor type
+        let typeFilteredData = vis.data.filter(d => {
+            return vis.selectedType === "All" || !vis.selectedType || d.Type === vis.selectedType;
         });
 
         // Calculate the year range for the selected designer
         if (vis.selectedDesigner !== "All") {
-            let designerData = vis.filteredData.filter(d => d.Designer === vis.selectedDesigner);
+            let designerData = typeFilteredData.filter(d => d.Designer === vis.selectedDesigner);
             vis.designerYearExtent = d3.extent(designerData, d => d.Year);
             // Optional: Expand the range slightly for better visualization
             vis.designerYearExtent[0] = new Date(vis.designerYearExtent[0].getFullYear() - 1, 0);
             vis.designerYearExtent[1] = new Date(vis.designerYearExtent[1].getFullYear() + 1, 0);
         } else {
-            vis.designerYearExtent = d3.extent(vis.data, d => d.Year);
+            vis.designerYearExtent = d3.extent(typeFilteredData, d => d.Year);
         }
 
-        // Filter mooreData based on this year range
+        // Apply type filter to the main data
+        vis.filteredData = typeFilteredData;
+
+        // Filter data based on the selected type and designer year extent
+        vis.filteredData = typeFilteredData.filter(d => {
+            return d.Year >= vis.designerYearExtent[0] && d.Year <= vis.designerYearExtent[1];
+        });
+
+        // Check if filteredData is empty
+        if (vis.filteredData.length === 0) {
+            // Update x-axis range to that of the selected designer's data
+            vis.x.domain(vis.designerYearExtent);
+
+            // Filter all original data to the selected designer's year range
+            vis.filteredData = vis.data.filter(d => {
+                return d.Year >= vis.designerYearExtent[0] && d.Year <= vis.designerYearExtent[1];
+            });
+        }
+
+        // Filter mooreData based on the designer year range
         vis.filteredMooreData = vis.mooreData.filter(d => {
             return d.Year >= vis.designerYearExtent[0] && d.Year <= vis.designerYearExtent[1];
         });
@@ -180,11 +169,11 @@ class ChipVis {
         let line = d3.line()
             .x(d => vis.x(d.Year))
             .y(d => vis.y(d.TransistorCount))
-            .curve(d3.curveMonotoneX);
+            // .curve(d3.curveMonotoneX);
 
         // Update x and y scale domains
         vis.x.domain(vis.selectedDesigner !== "All" ? vis.designerYearExtent : d3.extent(vis.data, d => d.Year));
-        vis.y.domain([0, d3.max(vis.data, d => d.TransistorCount) + 10000000000]);
+        vis.y.domain([0, d3.max(vis.data, d => d.TransistorCount) + 5000000000]);
 
 
         // Update the x-axis with the new scale
@@ -197,16 +186,27 @@ class ChipVis {
         let mooreLine = vis.svg.selectAll(".moore-line")
             .data([vis.filteredMooreData]); // Binding data as an array of one element
 
-        mooreLine.enter().append("path")
+        // Enter + Update
+        mooreLine.enter()
+            .append("path")
             .attr("class", "moore-line")
             .merge(mooreLine)
-            .transition()
-            .duration(1000)
             .attr("fill", "none")
             .attr("stroke", "#a855f7")
             .attr("stroke-width", 3)
-            .attr("stroke-linecap", "round")
-            .attr("d", line);
+            .attr("d", line)
+            // Set the initial stroke dash array and offset
+            .attr("stroke-dasharray", function() {
+                var totalLength = this.getTotalLength();
+                return totalLength + " " + totalLength;
+            })
+            .attr("stroke-dashoffset", function() {
+                return this.getTotalLength();
+            })
+            // Animate the line drawing
+            .transition()
+            .duration(1500)
+            .attr("stroke-dashoffset", 0);
 
         mooreLine.exit().remove();
 
@@ -216,12 +216,16 @@ class ChipVis {
 
         vis.dots.enter()
             .append("circle")
-            .attr("clip-path", "url(#clip)")
+            // .attr("clip-path", "url(#clip)")
             .merge(vis.dots)
             .attr("cx", d => vis.x(d.Year))
             .attr("cy", vis.height)
             .attr("r", 7)
             .style('stroke', 'white')
+            .style("opacity", d => d.Designer === vis.selectedDesigner ? "1" : ".25")
+            .style("fill", d => d.Designer === vis.selectedDesigner ? "#ff7f0e" : "#1f77b4")
+            .style("stroke", "white")
+            .attr('stroke-width', 2)
             .on("mouseover", function(event, d) {
                 if (d.TransistorCount > 1e9) {
 
@@ -255,11 +259,7 @@ class ChipVis {
             })
             .transition()
             .duration(1000)
-            .attr("cy", d => vis.y(d.TransistorCount))
-            .style("opacity", d => d.Designer === vis.selectedDesigner ? "1" : ".5")
-            .style("fill", d => d.Designer === vis.selectedDesigner ? "#ff7f0e" : "#1f77b4")
-            .style("stroke", "white")
-            .attr('stroke-width', 2);
+            .attr("cy", d => vis.y(d.TransistorCount));
             // .style("stroke", d => d.Designer === vis.selectedDesigner ? "#ff7f0e" : "white");
 
         vis.dots.exit().remove();
@@ -286,10 +286,18 @@ class ChipVis {
                 { type: "circle", color: "#1f77b4", text: "Other Designer" }
             ];
         } else {
-            vis.legendData = [
-                { type: "line", color: "#a855f7", text: "Moore's Law" },
-                { type: "circle", color: "#1f77b4", text: "Microprocessor" }
-            ];
+            if (vis.selectedType === "CPU") {
+                vis.legendData = [
+                    { type: "line", color: "#a855f7", text: "Moore's Law" },
+                    { type: "circle", color: "#1f77b4", text: "CPU" }
+                ];
+            } else {
+                vis.legendData = [
+                    { type: "line", color: "#a855f7", text: "Moore's Law" },
+                    { type: "circle", color: "#1f77b4", text: "GPU" }
+                ];
+            }
+            
         }
     
         // Create legend items

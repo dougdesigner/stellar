@@ -69,12 +69,12 @@ class BarVis {
         vis.svg.append("text")
             .attr("transform", "rotate(-90)")
             .attr("y", -60)
-            .attr("x", -200)
+            .attr("x", -140)
             .style("text-anchor", "middle")
             .style("font-weight", "bold")
             .style("font-size", "14px")
             .style("fill", "#94A3B8")
-            .text("Transistor Count (Billions)");
+            .text("Transistors (billion)");
 
         // Add title
         vis.svg.append("text")
@@ -181,7 +181,7 @@ class BarVis {
             .attr("height", d => 0)
             .attr("fill", d => d.version ? vis.colorScale(d.version) : "#ccc")
             .on("mouseover", function(event, d) {
-                console.log(d.date)
+                // console.log(d.date)
                 const trans = d.value / 1e9
                 vis.tooltip.transition()        
                     .duration(200)      

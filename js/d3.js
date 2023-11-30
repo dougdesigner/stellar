@@ -1,6 +1,6 @@
 // Load data with promises
 let promises = [
-    d3.csv("data/moore.csv"),
+    d3.csv("data/moore-complete.csv"),
     d3.csv("data/apple.csv"),
     d3.csv("data/aws.csv"),
     d3.csv("data/azure.csv"),
