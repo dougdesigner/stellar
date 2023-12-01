@@ -35,7 +35,7 @@ class LineVis {
       d3.select('#cloudShare').on('change', function() {
           if (this.checked) {
               vis.view = "Market Share";
-              vis.wrangleData();
+              vis.updateVis();
           }
       });
 
@@ -43,7 +43,7 @@ class LineVis {
       d3.select('#cloudGrowth').on('change', function() {
           if (this.checked) {
               vis.view = "Growth Rate";
-              vis.wrangleData();
+              vis.updateVis();
           }
       });
 
@@ -136,6 +136,7 @@ class LineVis {
     vis.companies = vis.svg.selectAll(".company")
         .data(vis.companyData, d => d.key)
         .enter().append("g")
+        // .merge(vis.companies)
         .attr("class", "company");
 
     // Define line generator
@@ -148,13 +149,10 @@ class LineVis {
         .datum(d => d.value)
         .attr("fill", "none")
         .attr("stroke", d => {
-          // console.log("Company Key:", d[0].Company);
           return colorScale(d[0].Company);
         })
         .attr("stroke-width", 4)
         .attr("stroke-linecap", "round")
-        // .transition()
-        // .duration(1000)
         .attr("d", vis.line);
 
     // Draw circles for each data point
@@ -192,8 +190,8 @@ class LineVis {
               .duration(500)      
               .style("opacity", 0);   
       })
-      // .transition()
-      //   .duration(1000)
+      .transition()
+        .duration(1000)
         .attr("cy", d => vis.y(d[vis.view]));
 
     vis.dots.exit().remove();
@@ -203,18 +201,17 @@ class LineVis {
         .call(d3.axisBottom(vis.x));
 
     vis.svg.selectAll(".y-axis")
-      .transition()
-      .duration(1000)
+      // .transition()
+      // .duration(1000)
       .call(d3.axisLeft(vis.y).tickFormat(d3.format(".0%")));
 
     // Create a legend group at the bottom of the SVG
     const legend = vis.svg.append("g")
         .attr("class", "legend")
-        .attr("transform", `translate(0, ${vis.height + 80})`);
+        .attr("transform", `translate(0, ${vis.height + 75})`);
 
     // Determine spacing for the legend items
     const legendItemWidth = 150;
-    const legendItemHeight = 20;
 
     // Add legend items for each company
     companyNames.forEach((company, index) => {

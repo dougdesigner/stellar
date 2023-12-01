@@ -110,8 +110,8 @@ class ScatterVis {
         vis.svg.append("defs").append("clipPath")
             .attr("id", "clip")
             .append("rect")
-            .attr("width", vis.width + 8)
-            .attr("height", vis.height + 8);
+            .attr("width", vis.width + 10)
+            .attr("height", vis.height + 10);
 
         vis.wrangleData();
     }
@@ -178,8 +178,9 @@ class ScatterVis {
 
         // Update the x-axis with the new scale
         vis.svg.select(".x-axis")
-            .transition()
-            .duration(1000)
+            // .transition()
+            // .duration(1000)
+            // .attr("clip-path", "url(#clip)")
             .call(d3.axisBottom(vis.x));
 
          // Update the Moore's Law line
