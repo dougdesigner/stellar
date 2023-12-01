@@ -28,11 +28,6 @@ class LineVis {
       vis.x = d3.scalePoint().range([0, vis.width]);
       vis.y = d3.scaleLinear().range([vis.height, 0]);
 
-      // Define line generator
-      vis.line = d3.line()
-          .x(d => vis.x(d.Quarter))
-          .y(d => vis.y(d['Market Share']));
-
       // Initialize view to Market Share
       vis.view = "Market Share";
 
@@ -99,17 +94,14 @@ class LineVis {
       .attr("id", "line-tooltip")      
       .style("opacity", 0);
 
+      vis.svg.append("g")
+        .attr("class", "y-axis")
+
       vis.wrangleData();
   }
 
   wrangleData() {
       let vis = this;
-
-      // Convert market share to numeric values
-      vis.data.forEach(d => {
-          d['Market Share'] = +d['Market Share'].replace('%', '')  / 100;
-          d['Growth Rate'] = +d['Growth Rate'].replace('%', '')  / 100;
-      });
 
       // Process data to group by company
       vis.companyData = Array.from(d3.group(vis.data, d => d.Company), ([key, value]) => ({ key, value }));
@@ -122,7 +114,9 @@ class LineVis {
 
     // Set domains for the scales
     vis.x.domain([...new Set(vis.data.map(d => d.Quarter))]);
-    vis.y.domain([0, d3.max(vis.data, d => d['Market Share'])]);
+    // Update the y-scale domain based on the selected view
+    vis.y.domain([0, d3.max(vis.data, d => d[vis.view])]);
+    // vis.y.domain([0, d3.max(vis.data, d => d['Market Share'])]);
 
     // Create a color scale based on company names
     const companyNames = vis.companyData.map(d => d.key);
@@ -138,6 +132,11 @@ class LineVis {
         .data(vis.companyData, d => d.key)
         .enter().append("g")
         .attr("class", "company");
+
+    // Define line generator
+    vis.line = d3.line()
+      .x(d => vis.x(d.Quarter))
+      .y(d => vis.y(d[vis.view]));
 
     // Draw lines for each company
     vis.companies.append("path")
@@ -159,8 +158,8 @@ class LineVis {
         .attr("stroke", "white")
         .attr("stroke-width", 2)
         .attr("cx", d => vis.x(d.Quarter))
-        .attr("cy", d => vis.y(d['Market Share']))
         .attr("r", 6)
+        .attr("cy", d => vis.y(d[vis.view]))
         .on("mouseover", function(event, d) {
           vis.tooltip.transition()        
               .duration(200)      
@@ -188,11 +187,12 @@ class LineVis {
 
     // Create axes
     vis.svg.append("g")
+        .attr("class", "x-axis")
         .attr("transform", `translate(0, ${vis.height})`)
         .call(d3.axisBottom(vis.x));
 
-    vis.svg.append("g")
-        .call(d3.axisLeft(vis.y).tickFormat(d3.format(".0%")));
+    vis.svg.selectAll(".y-axis")
+      .call(d3.axisLeft(vis.y).tickFormat(d3.format(".0%")));
 
     // Create a legend group at the bottom of the SVG
     const legend = vis.svg.append("g")

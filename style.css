@@ -2187,6 +2187,10 @@ input[type="search"]::-webkit-search-results-decoration {
   padding-top: 1.5rem;
 }
 
+.pb-1{
+  padding-bottom: 0.25rem;
+}
+
 .text-left{
   text-align: left;
 }

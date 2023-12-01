@@ -58,6 +58,8 @@ function createVis(data) {
     cloudData.forEach(d => {
         d.GrowthRate = parseFloat(d["Growth Rate"].replace(/,/g, ''), 10);
         d.MarketShare = parseFloat(d["Market Share"].replace(/,/g, ''), 10);
+        d['Market Share'] = +d['Market Share'].replace('%', '')  / 100;
+        d['Growth Rate'] = +d['Growth Rate'].replace('%', '')  / 100;
     });
 
     // Create visualization instances
