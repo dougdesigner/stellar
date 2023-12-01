@@ -94,8 +94,13 @@ class LineVis {
       .attr("id", "line-tooltip")      
       .style("opacity", 0);
 
+      // Add axes groups
       vis.svg.append("g")
         .attr("class", "y-axis")
+
+      vis.svg.append("g")
+        .attr("class", "x-axis")
+        .attr("transform", `translate(0, ${vis.height})`)
 
       vis.wrangleData();
   }
@@ -139,7 +144,7 @@ class LineVis {
       .y(d => vis.y(d[vis.view]));
 
     // Draw lines for each company
-    vis.companies.append("path")
+    vis.lines = vis.companies.append("path")
         .datum(d => d.value)
         .attr("fill", "none")
         .attr("stroke", d => {
@@ -148,18 +153,21 @@ class LineVis {
         })
         .attr("stroke-width", 4)
         .attr("stroke-linecap", "round")
+        // .transition()
+        // .duration(1000)
         .attr("d", vis.line);
 
     // Draw circles for each data point
-    vis.companies.selectAll("circle")
-        .data(d => d.value)
-        .enter().append("circle")
+    vis.dots = vis.companies.selectAll("circle")
+        .data(d => d.value, d => d.Quarter)
+
+    vis.dots.enter().append("circle")
+        .merge(vis.dots)
         .attr("fill", d => colorScale(d.Company))
         .attr("stroke", "white")
         .attr("stroke-width", 2)
         .attr("cx", d => vis.x(d.Quarter))
         .attr("r", 6)
-        .attr("cy", d => vis.y(d[vis.view]))
         .on("mouseover", function(event, d) {
           vis.tooltip.transition()        
               .duration(200)      
@@ -183,15 +191,20 @@ class LineVis {
           vis.tooltip.transition()        
               .duration(500)      
               .style("opacity", 0);   
-      });
+      })
+      // .transition()
+      //   .duration(1000)
+        .attr("cy", d => vis.y(d[vis.view]));
 
-    // Create axes
-    vis.svg.append("g")
-        .attr("class", "x-axis")
-        .attr("transform", `translate(0, ${vis.height})`)
+    vis.dots.exit().remove();
+
+    // Call axes
+    vis.svg.selectAll(".x-axis")
         .call(d3.axisBottom(vis.x));
 
     vis.svg.selectAll(".y-axis")
+      .transition()
+      .duration(1000)
       .call(d3.axisLeft(vis.y).tickFormat(d3.format(".0%")));
 
     // Create a legend group at the bottom of the SVG
