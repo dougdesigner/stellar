@@ -223,7 +223,8 @@ class ScatterVis {
             .attr("cy", vis.height)
             .attr("r", 7)
             .style('stroke', 'white')
-            .style("opacity", d => d.Designer === vis.selectedDesigner ? "1" : ".25")
+            .attr("class", d => d.Designer === vis.selectedDesigner ? "selected" : "pointer-events-none")
+            .style("opacity", d => d.Designer === vis.selectedDesigner ? ".99" : ".22")
             .style("fill", d => d.Designer === vis.selectedDesigner ? "#ff7f0e" : "#1f77b4")
             .style("stroke", "white")
             .attr('stroke-width', 2)
@@ -234,7 +235,8 @@ class ScatterVis {
                 const trans = d.value / 1e9
                 vis.tooltip.transition()    
                     .duration(200)    
-                    .style("opacity", 1);    
+                    .style("opacity", 1); 
+                       
                 vis.tooltip.html(
                     `<span class="text-lg font-bold text-slate-700">${d.Designer}</span><<br/>
                     <span class="text-base font-medium text-slate-500">Processor: 

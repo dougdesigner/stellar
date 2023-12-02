@@ -34,7 +34,7 @@ class BarVis {
         // Color scale for Chip Series
         vis.colorScale = d3.scaleOrdinal()
             .domain(["Baseline", "Pro", "Max", "Ultra"])
-            .range(d3.schemeCategory10);
+            .range(d3.schemeBuPu[4]);
 
         vis.sort = "byVersion"; // Set the initial view
 
@@ -56,13 +56,13 @@ class BarVis {
 
         // Add X axis label
         vis.svg.append("text")
+            .attr("class", "sortAxisLabel")
             .attr("x", vis.width / 2)
             .attr("y", vis.height + 40)
             .style("font-weight", "bold")
             .style("font-size", "14px")
             .style("text-anchor", "middle")
             .style("fill", "#94A3B8")
-            .attr("class", "sortAxisLabel")
             .text("Generation");
 
         // Add Y axis label
@@ -120,7 +120,7 @@ class BarVis {
             d3.selectAll(".sortAxisLabel").text("Generation");
 
         } else if (vis.sort === "byVersion") {
-            vis.groupings = ["M1", "M2", "M3"];
+            vis.groupings = ["M1", "M2", "M3"];
             vis.nestedData = d3.group(vis.displayData, d => d.Version);
             d3.selectAll(".sortAxisLabel").text("Version");
         }
@@ -171,6 +171,7 @@ class BarVis {
             }, d => d.key);
             
         bars.enter().append("rect")
+            .attr("class", "bar")
             .merge(bars)
             .attr("x", d => vis.xScale1(d.key))
             .attr("rx", "6")

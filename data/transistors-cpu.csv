@@ -212,7 +212,7 @@ HiSilicon Kirin 990 5G,"10,300,000,000",2019,Huawei,7 nm,113.31 mm 2,"90,900,0
 "Qualcomm Snapdragon 865 (octa-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","10,300,000,000",2019,Qualcomm,7 nm,83.54 mm 2 [147],"123,300,000",CPU
 "TI Jacinto TDA4VM (ARM A72, DSP, SRAM)","3,500,000,000",2020,Texas Instruments,16 nm,?,?,CPU
 "Apple A14 Bionic (hexa-core 64-bit ARM64 ""mobile SoC"", SIMD , caches)","11,800,000,000",2020,Apple,5 nm,88 mm 2,"134,100,000",CPU
-"Apple M1 (octa-core 64-bit ARM64 SoC, SIMD , caches)","16,000,000,000",2020,Apple,5 nm,119 mm 2,"134,500,000",CPU
+"M1 (octa-core 64-bit ARM64 SoC, SIMD , caches)","16,000,000,000",2020,Apple,5 nm,119 mm 2,"134,500,000",CPU
 HiSilicon Kirin 9000s,"9,510,000,000",2023,Huawei,7 nm,107 mm 2,"107,690,000",CPU
 HiSilicon Kirin 9000,"15,300,000,000",2020,Huawei,5 nm,114 mm 2,"134,200,000",CPU
 "AMD Zen 3 CCX (core complex unit: 8 cores, 32 MB L3 cache)","4,080,000,000",2020,AMD,7 nm,68 mm²,"60,000,000",CPU
@@ -221,23 +221,23 @@ AMD Zen 3 CCD (core complex die),"4,150,000,000",2020,AMD,7 nm,81 mm²,"51,230
 "AMD Ryzen 7 5800H (64-bit, SIMD , caches, I/O and GPU)","10,700,000,000",2021,AMD,7 nm,180 mm 2,"59,440,000",CPU
 Apple A15,"15,000,000,000",2021,Apple,5 nm,107.68 mm 2,"139,300,000",CPU
 Apple A17,"19,000,000,000",2023,Apple,3 nm,103.8 mm²,"183,044,315",CPU
-"Apple M1 Pro (10-core, 64-bit)","33,700,000,000",2021,Apple,5 nm,245 mm 2 [164],"137,600,000",CPU
-"Apple M1 Max (10-core, 64-bit)","57,000,000,000",2021,Apple,5 nm,420.2 mm 2 [166],"135,600,000",CPU
+"M1 Pro (10-core, 64-bit)","33,700,000,000",2021,Apple,5 nm,245 mm 2 [164],"137,600,000",CPU
+"M1 Max (10-core, 64-bit)","57,000,000,000",2021,Apple,5 nm,420.2 mm 2 [166],"135,600,000",CPU
 Power10 dual-chip module (30 SMT8 cores or 60 SMT4 cores),"36,000,000,000",2021,IBM,7 nm,"1,204 mm 2","29,900,000",CPU
 Dimensity 9000 (ARM64 SoC),"15,300,000,000",2021,Mediatek,4 nm (TSMC N4),?,?,CPU
-"Apple M1 Ultra (dual-chip module, 2×10 cores)","114,000,000,000",2022,Apple,5 nm,840.5 mm 2 [166],"135,600,000",CPU
+"M1 Ultra (dual-chip module, 2×10 cores)","114,000,000,000",2022,Apple,5 nm,840.5 mm 2 [166],"135,600,000",CPU
 "AMD Epyc 7773X (Milan-X) (multi-chip module, 64 cores, 768 MB L3 cache)","26,000,000,000",2022,AMD,7 & 12 nm ( TSMC ),"1,352 mm 2 (Milan + 8×36) [172]",?,CPU
 "IBM Telum dual-chip module (2×8 cores, 2×256 MB cache)","45,000,000,000",2022,IBM,7 nm (Samsung),"1,060 mm 2","42,450,000",CPU
-"Apple M2 (deca-core 64-bit ARM64 SoC, SIMD , caches)","20,000,000,000",2022,Apple,5 nm,?,?,CPU
-"Apple M3 (octa-core 64-bit ARM64 SoC, SIMD , caches)","25,000,000,000",2023,Apple,3 nm,?,?,CPU
-"Apple M3 Pro (dodeca-core 64-bit ARM64 SoC, SIMD , caches)","37,000,000,000",2023,Apple,3 nm,?,?,CPU
-"Apple M3 Max (hexadeca-core 64-bit ARM64 SoC, SIMD , caches)","92,000,000,000",2023,Apple,3 nm,?,?,CPU
+"M2 (deca-core 64-bit ARM64 SoC, SIMD , caches)","20,000,000,000",2022,Apple,5 nm,?,?,CPU
+"M3 (octa-core 64-bit ARM64 SoC, SIMD , caches)","25,000,000,000",2023,Apple,3 nm,?,?,CPU
+"M3 Pro (dodeca-core 64-bit ARM64 SoC, SIMD , caches)","37,000,000,000",2023,Apple,3 nm,?,?,CPU
+"M3 Max (hexadeca-core 64-bit ARM64 SoC, SIMD , caches)","92,000,000,000",2023,Apple,3 nm,?,?,CPU
 Apple A16 (ARM64 SoC),"16,000,000,000",2022,Apple,4 nm,?,?,CPU
 Dimensity 9200 (ARM64 SoC),"17,000,000,000",2022,Mediatek,4 nm (TSMC N4P),?,?,CPU
 "Qualcomm Snapdragon 8 Gen 2 (octa-core ARM64 ""mobile SoC"", SIMD , caches)","16,000,000,000",2022,Qualcomm,4 nm,268 mm 2,"59,701,492",CPU
 AMD EPYC Genoa (4th gen/9004 series) 13-chip module (up to 96 cores and 384 MB (L3) + 96 MB (L2) cache) [183],"90,000,000,000",2022,AMD,5 nm (CCD) 6 nm (IOD),"1,263.34 mm² 12×72.225 (CCD) 396.64 (IOD) [187] [188]","71,240,000",CPU
 Sapphire Rapids quad-chip module (up to 60 cores and 112.5 MB of cache) [189],"48,000,000,000",2023,Intel,10 nm ESF (Intel 7),"1,600 mm 2","27,500,000– 30,000,000",CPU
-"Apple M2 Pro (12-core 64-bit ARM64 SoC, SIMD , caches)","40,000,000,000",2023,Apple,5 nm,?,?,CPU
-"Apple M2 Max (12-core 64-bit ARM64 SoC, SIMD , caches)","67,000,000,000",2023,Apple,5 nm,?,?,CPU
-Apple M2 Ultra (two M2 Max dies),"134,000,000,000",2023,Apple,5 nm,?,?,CPU
+"M2 Pro (12-core 64-bit ARM64 SoC, SIMD , caches)","40,000,000,000",2023,Apple,5 nm,?,?,CPU
+"M2 Max (12-core 64-bit ARM64 SoC, SIMD , caches)","67,000,000,000",2023,Apple,5 nm,?,?,CPU
+M2 Ultra (two M2 Max dies),"134,000,000,000",2023,Apple,5 nm,?,?,CPU
 AMD EPYC Bergamo (4th gen/97X4 series) 9-chip module (up to 128 cores and 256 MB (L3) + 128 MB (L2) cache),"82,000,000,000",2023,AMD,5 nm (CCD) 6 nm (IOD),?,?,CPU

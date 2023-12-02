@@ -1637,6 +1637,10 @@ input[type="search"]::-webkit-search-results-decoration {
   max-width: 80rem;
 }
 
+.max-w-lg{
+  max-width: 32rem;
+}
+
 .max-w-md{
   max-width: 28rem;
 }
@@ -1655,10 +1659,6 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .max-w-xs{
   max-width: 20rem;
-}
-
-.max-w-lg{
-  max-width: 32rem;
 }
 
 .shrink-0{
@@ -2187,14 +2187,6 @@ input[type="search"]::-webkit-search-results-decoration {
   padding-top: 1.5rem;
 }
 
-.pb-1{
-  padding-bottom: 0.25rem;
-}
-
-.text-left{
-  text-align: left;
-}
-
 .text-center{
   text-align: center;
 }
@@ -2282,14 +2274,19 @@ input[type="search"]::-webkit-search-results-decoration {
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
-.text-emerald-50{
+.text-emerald-400{
   --tw-text-opacity: 1;
-  color: rgb(236 253 245 / var(--tw-text-opacity));
+  color: rgb(52 211 153 / var(--tw-text-opacity));
 }
 
 .text-emerald-500{
   --tw-text-opacity: 1;
   color: rgb(16 185 129 / var(--tw-text-opacity));
+}
+
+.text-emerald-600{
+  --tw-text-opacity: 1;
+  color: rgb(5 150 105 / var(--tw-text-opacity));
 }
 
 .text-gray-50{
@@ -2325,6 +2322,11 @@ input[type="search"]::-webkit-search-results-decoration {
 .text-purple-300{
   --tw-text-opacity: 1;
   color: rgb(216 180 254 / var(--tw-text-opacity));
+}
+
+.text-purple-400{
+  --tw-text-opacity: 1;
+  color: rgb(192 132 252 / var(--tw-text-opacity));
 }
 
 .text-purple-500{
@@ -2389,36 +2391,6 @@ input[type="search"]::-webkit-search-results-decoration {
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-emerald-200{
-  --tw-text-opacity: 1;
-  color: rgb(167 243 208 / var(--tw-text-opacity));
-}
-
-.text-emerald-300{
-  --tw-text-opacity: 1;
-  color: rgb(110 231 183 / var(--tw-text-opacity));
-}
-
-.text-emerald-400{
-  --tw-text-opacity: 1;
-  color: rgb(52 211 153 / var(--tw-text-opacity));
-}
-
-.text-purple-200{
-  --tw-text-opacity: 1;
-  color: rgb(233 213 255 / var(--tw-text-opacity));
-}
-
-.text-purple-400{
-  --tw-text-opacity: 1;
-  color: rgb(192 132 252 / var(--tw-text-opacity));
-}
-
-.text-emerald-600{
-  --tw-text-opacity: 1;
-  color: rgb(5 150 105 / var(--tw-text-opacity));
 }
 
 .underline{
@@ -2649,6 +2621,10 @@ input[type="search"]::-webkit-search-results-decoration {
   opacity: 0;
   z-index: 50;
 }
+
+/* .bar {
+    mix-blend-mode: hard-light;
+} */
 
 .before\:pointer-events-none::before{
   content: var(--tw-content);

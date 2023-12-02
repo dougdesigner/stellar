@@ -59,6 +59,7 @@ class LineVis {
 
       // Add Y axis label
       vis.svg.append("text")
+        .attr("class", "y-label")
         .attr("transform", "rotate(-90)")
         .attr("y", -60)
         .attr("x", -200)
@@ -102,14 +103,14 @@ class LineVis {
         .attr("class", "x-axis")
         .attr("transform", `translate(0, ${vis.height})`)
 
+        // Process data to group by company
+        vis.companyData = Array.from(d3.group(vis.data, d => d.Company), ([key, value]) => ({ key, value }));
+
       vis.wrangleData();
   }
 
   wrangleData() {
       let vis = this;
-
-      // Process data to group by company
-      vis.companyData = Array.from(d3.group(vis.data, d => d.Company), ([key, value]) => ({ key, value }));
 
       vis.updateVis();
   }
@@ -126,83 +127,101 @@ class LineVis {
     // Create a color scale based on company names
     const companyNames = vis.companyData.map(d => d.key);
     const colorScale = d3.scaleOrdinal()
-                         .domain(companyNames)
-                         .range(d3.schemeCategory10);
+      .domain(companyNames)
+      .range(d3.schemeCategory10);
 
-    // Remove any existing companies to prevent duplicates
-    vis.svg.selectAll(".company").remove();
-
-    // Create a group for each company and bind data
+    // Bind data to company groups
     vis.companies = vis.svg.selectAll(".company")
-        .data(vis.companyData, d => d.key)
-        .enter().append("g")
-        // .merge(vis.companies)
-        .attr("class", "company");
+        .data(vis.companyData, d => d.key);
 
-    // Define line generator
-    vis.line = d3.line()
-      .x(d => vis.x(d.Quarter))
-      .y(d => vis.y(d[vis.view]));
+    // Enter selection: Create new groups for new data
+    vis.companies.enter().append("g")
+        .attr("class", "company")
+        .merge(vis.companies) // Merge enter and update selections
+        .each(function(d) {
+            let companyGroup = d3.select(this);
 
-    // Draw lines for each company
-    vis.lines = vis.companies.append("path")
-        .datum(d => d.value)
-        .attr("fill", "none")
-        .attr("stroke", d => {
-          return colorScale(d[0].Company);
-        })
-        .attr("stroke-width", 4)
-        .attr("stroke-linecap", "round")
-        .attr("d", vis.line);
+            // Define line generator
+            vis.line = d3.line()
+                .x(d => vis.x(d.Quarter))
+                .y(d => vis.y(d[vis.view]));
 
-    // Draw circles for each data point
-    vis.dots = vis.companies.selectAll("circle")
-        .data(d => d.value, d => d.Quarter)
+            // Draw lines for each company
+            let lines = companyGroup.selectAll(".line")
+                .data([d.value]); // Wrap data in an array to create one line per group
 
-    vis.dots.enter().append("circle")
-        .merge(vis.dots)
-        .attr("fill", d => colorScale(d.Company))
-        .attr("stroke", "white")
-        .attr("stroke-width", 2)
-        .attr("cx", d => vis.x(d.Quarter))
-        .attr("r", 6)
-        .on("mouseover", function(event, d) {
-          vis.tooltip.transition()        
-              .duration(200)      
-              .style("opacity", 1);      
-          vis.tooltip.html(
-              `<span class="text-lg font-bold text-slate-700">${d.Company}</span><<br/>
-              <span class="text-base font-medium text-slate-500">Market Share: 
-                  <span class="text-slate-600 font-bold">${d.MarketShare}%</span>
-              </span><br/>
-              <span class="text-base font-medium text-slate-500">Quarter: 
-                  <span class="text-slate-600 font-bold">${d.Quarter}</span>
-              </span><br/>
-              <span class="text-base font-medium text-slate-500">YoY Growth Rate: 
-                  <span class="text-emerald-600 font-bold">+${d.GrowthRate}%</span>
-              </span>`
-          )
-          .style("left", (event.pageX) + "px")     
-          .style("top", (event.pageY - 28) + "px");
-      })                  
-      .on("mouseout", function(d) {       
-          vis.tooltip.transition()        
-              .duration(500)      
-              .style("opacity", 0);   
-      })
-      .transition()
-        .duration(1000)
-        .attr("cy", d => vis.y(d[vis.view]));
+            lines.enter().append("path")
+                .attr("class", "line")
+                .merge(lines)
+                .attr("fill", "none")
+                .attr("stroke", d => colorScale(d[0].Company))
+                .attr("stroke-width", 4)
+                .attr("stroke-linecap", "round")
+                .transition()
+                .duration(1000)
+                .attr("d", vis.line);
 
-    vis.dots.exit().remove();
+            lines.exit().remove();
+
+            // Draw circles for each data point
+            let dots = companyGroup.selectAll("circle")
+                .data(d.value, d => d.Quarter);
+
+            dots.enter().append("circle")
+                .merge(dots)
+                .attr("fill", d => colorScale(d.Company))
+                .attr("stroke", "white")
+                .attr("stroke-width", 2)
+                .attr("cx", d => vis.x(d.Quarter))
+                .attr("r", 6)
+                .on("mouseover", function(event, d) {
+                  vis.tooltip.transition()        
+                    .duration(200)      
+                    .style("opacity", 1);
+
+                  vis.tooltip.html(
+                      `<span class="text-lg font-bold text-slate-700">${d.Company}</span><<br/>
+                      <span class="text-base font-medium text-slate-500">Market Share: 
+                          <span class="text-slate-600 font-bold">${d.MarketShare}%</span>
+                      </span><br/>
+                      <span class="text-base font-medium text-slate-500">Quarter: 
+                          <span class="text-slate-600 font-bold">${d.Quarter}</span>
+                      </span><br/>
+                      <span class="text-base font-medium text-slate-500">YoY Growth Rate: 
+                          <span class="text-emerald-600 font-bold">+${d.GrowthRate}%</span>
+                      </span>`)
+                      .style("left", (event.pageX + 20) + "px")   
+                      .style("top", (event.pageY - 20) + "px");
+                })
+                .on("mouseout", d => {
+                  vis.tooltip.transition()        
+                  .duration(500)      
+                  .style("opacity", 0);
+                })
+                .transition()
+                .duration(1000)
+                .attr("cy", d => vis.y(d[vis.view]));
+
+            dots.exit().remove();
+        });
+
+    // Exit selection: Remove old groups
+    vis.companies.exit().remove();
+
+    if (vis.view === "Market Share") {
+    d3.selectAll(".y-label").text("Market Share (%)");
+
+    } else {
+        d3.selectAll(".y-label").text("YoY Growth (%)");
+    }
 
     // Call axes
     vis.svg.selectAll(".x-axis")
         .call(d3.axisBottom(vis.x));
 
     vis.svg.selectAll(".y-axis")
-      // .transition()
-      // .duration(1000)
+      .transition()
+      .duration(1000)
       .call(d3.axisLeft(vis.y).tickFormat(d3.format(".0%")));
 
     // Create a legend group at the bottom of the SVG
