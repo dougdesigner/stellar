@@ -289,17 +289,22 @@ class ScatterVis {
                 { type: "circle", color: "#1f77b4", text: "Other Designer" }
             ];
         } else {
-            if (vis.selectedType === "CPU") {
-                vis.legendData = [
-                    { type: "line", color: "#a855f7", text: "Moore's Law" },
-                    { type: "circle", color: "#1f77b4", text: "CPU" }
-                ];
-            } else {
-                vis.legendData = [
-                    { type: "line", color: "#a855f7", text: "Moore's Law" },
-                    { type: "circle", color: "#1f77b4", text: "GPU" }
-                ];
-            }
+            // if (vis.selectedType === "CPU") {
+            //     vis.legendData = [
+            //         { type: "line", color: "#a855f7", text: "Moore's Law" },
+            //         { type: "circle", color: "#1f77b4", text: "CPU" }
+            //     ];
+            // } else {
+            //     vis.legendData = [
+            //         { type: "line", color: "#a855f7", text: "Moore's Law" },
+            //         { type: "circle", color: "#1f77b4", text: "GPU" }
+            //     ];
+            // }
+
+            vis.legendData = [
+                { type: "line", color: "#a855f7", text: "Moore's Law" },
+                { type: "circle", color: "#1f77b4", text: "Mircoprocessor" }
+            ];
             
         }
     
