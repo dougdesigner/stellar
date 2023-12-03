@@ -1,0 +1,16 @@
+Processor,Transistor count,Year,Designer,Process ( nm ),Area ( mm 2 ),Transistor density (tr./mm 2 ),Type
+Graviton,,,Amazon,?,?,?,CPU
+Graviton3,,,Amazon,?,?,?,CPU
+Graviton4,,,Amazon,?,?,?,CPU
+Tranium,,,Amazon,?,?,?,CPU
+Tranium2,,,Amazon,?,?,?,CPU
+Inferentia,,,Amazon,?,?,?,CPU
+Inferentia2,,,Amazon,?,?,?,CPU
+Maia,,,Microsoft,?,?,?,CPU
+Cobalt,,,Microsoft,?,?,?,CPU
+Tensor Processing Units,,,Google,?,?,?,CPU
+Tesla,,,Nvidia,?,?,?,GPU
+Ampere,,,Nvidia,?,?,?,GPU
+FSD Chip,,,Tesla,?,?,?,CPU
+D1 Chip,,,Tesla,?,?,?,CPU
+Training and Inference Accelerator,,,Meta,?,?,?,CPU

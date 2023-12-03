@@ -15,7 +15,7 @@ class DonutChart {
         vis.margin = { top: 160, right: 20, bottom: 100, left: 20 };
         // vis.width = 800 - vis.margin.left - vis.margin.right;
         vis.width = element.offsetWidth - vis.margin.left - vis.margin.right;
-        vis.height = 600 - vis.margin.top - vis.margin.bottom;
+        vis.height = 700 - vis.margin.top - vis.margin.bottom;
         vis.radius = Math.min(vis.width, vis.height) / 2;
 
         // Append SVG object

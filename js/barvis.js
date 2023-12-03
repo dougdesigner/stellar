@@ -13,7 +13,7 @@ class BarVis {
         const element = document.getElementById(vis.parentElement);
         vis.margin = { top: 100, right: 40, bottom: 100, left: 100 };
         vis.width = element.offsetWidth - vis.margin.left - vis.margin.right;
-        vis.height = 600 - this.margin.top - this.margin.bottom;
+        vis.height = 500 - this.margin.top - this.margin.bottom;
 
         // Create SVG canvas
         vis.svg = d3.select("#" + vis.parentElement)
