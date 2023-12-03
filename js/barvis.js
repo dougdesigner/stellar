@@ -171,8 +171,8 @@ class BarVis {
             }, d => d.key);
             
         bars.enter().append("rect")
-            .attr("class", "bar")
             .merge(bars)
+            .attr("class", d => `bar ${d.version}`)
             .attr("x", d => vis.xScale1(d.key))
             .attr("rx", "6")
             .attr("stroke", "white")

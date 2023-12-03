@@ -78,7 +78,7 @@ class LineVis {
         .style("font-weight", "bold")
         .style("fill", "white")
         .attr("class", "font-mono")
-        .text("AWS is the Market Leader in Cloud Computing");
+        .text("Amazon Web Services (AWS) is the Market Leader in Cloud Computing");
 
       // Add subtitle
       vis.svg.append("text")
@@ -126,9 +126,17 @@ class LineVis {
 
     // Create a color scale based on company names
     const companyNames = vis.companyData.map(d => d.key);
+    // const colorScale = d3.scaleOrdinal()
+    //   .domain(companyNames)
+    //   .range(d3.schemeCategory10);
+
+    // Define your array of hex colors
+    const myColors = ['#05A6F0', '#FBBC05', '#FF9900'];
+
+    // Create a scale
     const colorScale = d3.scaleOrdinal()
-      .domain(companyNames)
-      .range(d3.schemeCategory10);
+        .domain(["Microsoft", "Google", "Amazon"])
+        .range(myColors);
 
     // Bind data to company groups
     vis.companies = vis.svg.selectAll(".company")
@@ -163,6 +171,25 @@ class LineVis {
 
             lines.exit().remove();
 
+            const companyCloud = [
+                { company: "Amazon", cloud: "Amazon Web Services" },
+                { company: "Microsoft", cloud: "Microsoft Azure" },
+                { company: "Google", cloud: "Google Cloud" },
+            ];
+
+            const companyImages = [
+                { company: "Amazon", imageUrl: "/images/m7/AWS.svg" },
+                { company: "Microsoft", imageUrl: "/images/m7/Azure.svg" },
+                { company: "Google", imageUrl: "/images/m7/GoogleCloud.svg" },
+            ];
+
+            const companyImagesLight = [
+                { company: "Amazon", imageUrl: "/images/m7/AWS-Light.svg" },
+                { company: "Microsoft", imageUrl: "/images/m7/Azure.svg" },
+                { company: "Google", imageUrl: "/images/m7/GoogleCloud.svg" },
+            ];
+
+
             // Draw circles for each data point
             let dots = companyGroup.selectAll("circle")
                 .data(d.value, d => d.Quarter);
@@ -175,12 +202,18 @@ class LineVis {
                 .attr("cx", d => vis.x(d.Quarter))
                 .attr("r", 6)
                 .on("mouseover", function(event, d) {
+
+                let matchingCompany = companyCloud.find(c => c.company === d.Company).cloud;
+                let imageUrl = companyImagesLight.find(img => img.company === d.Company).imageUrl;
+
                   vis.tooltip.transition()        
                     .duration(200)      
                     .style("opacity", 1);
 
                   vis.tooltip.html(
-                      `<span class="text-lg font-bold text-slate-700">${d.Company}</span><<br/>
+                      `
+                      <img class="tooltip-company-img" src="${imageUrl}" width="40" height="40" />
+                      <span class="text-lg font-bold text-slate-700">${matchingCompany}</span><br/>
                       <span class="text-base font-medium text-slate-500">Market Share: 
                           <span class="text-slate-600 font-bold">${d.MarketShare}%</span>
                       </span><br/>
@@ -202,7 +235,34 @@ class LineVis {
                 .duration(1000)
                 .attr("cy", d => vis.y(d[vis.view]));
 
+            // Find the last data point for each company
+            let lastDataPoint = d.value[d.value.length - 1];
+
+            // Append an image at the last data point
+            companyGroup.selectAll(".company-img").data([lastDataPoint])
+                .enter().append("image")
+                .merge(companyGroup.selectAll(".company-img"))
+                .attr("class", "company-img")
+                .attr("xlink:href", function(d) {
+                    // Find the imageUrl for the current company
+                    let imageUrl = companyImages.find(img => img.company === d.Company).imageUrl;
+                    return imageUrl;
+                })
+                .attr("x", d => vis.x(d.Quarter) + 20) // Position slightly right to the last circle
+                .transition()
+                .duration(1000)
+                .attr("y", d => vis.y(d[vis.view]) - 20) // Adjust y position based on your needs
+                .attr("width", 40)   // Set image width
+                .attr("height", 40); // Set image height
+
             dots.exit().remove();
+
+
+      
+
+
+ 
+
         });
 
     // Exit selection: Remove old groups

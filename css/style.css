@@ -35,3 +35,7 @@
 /* .bar {
     mix-blend-mode: hard-light;
 } */
+
+.Max {
+    fill: radial-gradient(circle at center, #5577FF 0%, #7766FF 30%, #9944FF 50%, #BB22FF 70%, #DD00FF 100%);
+}

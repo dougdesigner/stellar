@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Google-g</title>
+    <g id="Google-g" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="G" transform="translate(3.5, 3.5)">
+            <path d="M32.34,16.875 C32.34,15.705 32.235,14.58 32.04,13.5 L16.5,13.5 L16.5,19.89 L25.38,19.89 C24.99,21.945 23.82,23.685 22.065,24.855 L22.065,29.01 L27.42,29.01 C30.54,26.13 32.34,21.9 32.34,16.875 L32.34,16.875 Z" id="Path" fill="#4285F4" fill-rule="nonzero"></path>
+            <path d="M16.5,33 C20.955,33 24.69,31.53 27.42,29.01 L22.065,24.855 C20.595,25.845 18.72,26.445 16.5,26.445 C12.21,26.445 8.565,23.55 7.26,19.65 L1.77,19.65 L1.77,23.91 C4.485,29.295 10.05,33 16.5,33 Z" id="Path" fill="#34A853" fill-rule="nonzero"></path>
+            <path d="M7.26,19.635 C6.93,18.645 6.735,17.595 6.735,16.5 C6.735,15.405 6.93,14.355 7.26,13.365 L7.26,9.105 L1.77,9.105 C0.645,11.325 0,13.83 0,16.5 C0,19.17 0.645,21.675 1.77,23.895 L6.045,20.565 L7.26,19.635 Z" id="Path" fill="#FBBC05" fill-rule="nonzero"></path>
+            <path d="M16.5,6.57 C18.93,6.57 21.09,7.41 22.815,9.03 L27.54,4.305 C24.675,1.635 20.955,0 16.5,0 C10.05,0 4.485,3.705 1.77,9.105 L7.26,13.365 C8.565,9.465 12.21,6.57 16.5,6.57 Z" id="Path" fill="#EA4335" fill-rule="nonzero"></path>
+            <polygon id="Path" points="0 0 33 0 33 33 0 33"></polygon>
+        </g>
+    </g>
+</svg>

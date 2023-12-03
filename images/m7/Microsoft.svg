@@ -1,1 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23"><path fill="#f3f3f3" d="M0 0h23v23H0z"/><path fill="#f35325" d="M1 1h10v10H1z"/><path fill="#81bc06" d="M12 1h10v10H12z"/><path fill="#05a6f0" d="M1 12h10v10H1z"/><path fill="#ffba08" d="M12 12h10v10H12z"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Microsoft</title>
+    <g id="Microsoft" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(4, 4)" fill-rule="nonzero" id="Path">
+            <polygon fill="#F3F3F3" points="0 0 32 0 32 32 0 32"></polygon>
+            <polygon fill="#F35325" points="1.39130435 1.39130435 15.3043478 1.39130435 15.3043478 15.3043478 1.39130435 15.3043478"></polygon>
+            <polygon fill="#81BC06" points="16.6956522 1.39130435 30.6086957 1.39130435 30.6086957 15.3043478 16.6956522 15.3043478"></polygon>
+            <polygon fill="#05A6F0" points="1.39130435 16.6956522 15.3043478 16.6956522 15.3043478 30.6086957 1.39130435 30.6086957"></polygon>
+            <polygon fill="#FFBA08" points="16.6956522 16.6956522 30.6086957 16.6956522 30.6086957 30.6086957 16.6956522 30.6086957"></polygon>
+        </g>
+    </g>
+</svg>

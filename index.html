@@ -157,10 +157,10 @@
                                         <img src="./images/m7/m5.svg" alt="Nvidia" width="110" height="21" />
                                     </div>
                                     <div class="swiper-slide !w-auto">
-                                        <img src="./images/m7/m6.svg" alt="Tesla" width="110" height="21" />
+                                        <img src="./images/m7/m7.svg" alt="Meta" width="110" height="21" />
                                     </div>
                                     <div class="swiper-slide !w-auto">
-                                        <img src="./images/m7/m7.svg" alt="Meta" width="110" height="21" />
+                                        <img src="./images/m7/m6-s.svg" alt="Tesla" width="110" height="21" />
                                     </div>
                                     <!-- <div class="swiper-slide !w-auto">
                                         <img src="./images/client-01.svg" alt="Facebook" width="110" height="21" />
@@ -786,17 +786,17 @@
                             <div class="mx-auto max-w-3xl">
                               <!-- Content goes here -->
                               <div>
-                                <p class="text-base font-semibold text-gray-50">Filter</p>
+                                <p class="text-base font-semibold text-slate-50">Filter</p>
                                 <p class="text-sm text-slate-400">Compare the shares of S&P 500 vs. the 'Magnificent 7'</p>
                                 <fieldset class="mt-4">
                                 <legend class="sr-only">Select View</legend>
                                 <div class="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
                                     <div class="flex items-center">
-                                        <input id="allSP500" name="sp500Donut" type="radio" checked class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                                        <input id="allSP500" name="sp500Donut" type="radio" checked class="h-4 w-4 border-slate-300 text-indigo-600 focus:ring-indigo-600">
                                         <label for="allSP500" class="ml-3 block text-sm font-medium leading-6 text-slate-50">S&P 500</label>
                                     </div>
                                     <div class="flex items-center">
-                                        <input id="onlyM7" name="sp500Donut" type="radio" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                                        <input id="onlyM7" name="sp500Donut" type="radio" class="h-4 w-4 border-slate-300 text-indigo-600 focus:ring-indigo-600">
                                         <label for="onlyM7" class="ml-3 block text-sm font-medium leading-6 text-slate-50">'Magnificent 7'</label>
                                     </div>
                                 </div>
@@ -828,7 +828,7 @@
                                                 </svg> -->
                                                 <h4 class="text-3xl text-slate-50"><span class="font-bold text-purple-400">>28%</span>  Share</h4>
                                             </div>
-                                            <p class="text-sm text-slate-400">Apple, Microsoft, Google, Amazon, NVIDIA, Tesla, and Meta represent more than 28% of the S&P 500 Index, an all time high.
+                                            <p class="text-sm text-slate-400">Apple, Microsoft, Google, Amazon, NVIDIA, Meta, and Tesla represent more than 28% of the S&P 500 Index, an all time high.
                                             </p>
                                         </div>
                                         <!-- Feature -->
@@ -921,9 +921,9 @@
                         <div class="max-w-3xl mx-auto pb-12 md:pb-12 grid grid-cols-2 gap-8">
 
                             <div class="col-span-2 md:col-span-1">
-                                <label for="keyCompany" class="text-base font-semibold text-gray-50">Highlight</label>
+                                <label for="keyCompany" class="text-base font-semibold text-slate-50">Highlight</label>
                                 <p class="text-sm text-slate-400">Highlight a 'Magnificent 7' Chip Designer</p>
-                                <select id="keyCompany" name="keyCompany" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 font-medium">
+                                <select id="keyCompany" name="keyCompany" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-slate-900 ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 font-medium">
                                     <!-- <option disabled value="" class="font-bold" role="separator">Magnificent 7 (Fabless)</option> -->
                                     <option selected>Apple</option>
                                     <option disabled>Microsoft</option>
@@ -959,14 +959,14 @@
 
 
                             <div class="col-span-2 md:col-span-1">
-                                <p class="text-base font-semibold text-gray-50">Tooltips</p>
+                                <p class="text-base font-semibold text-slate-50">Tooltips</p>
                                 <p class="text-sm text-slate-400">Enable for All or only the Highlighted Designer</p>
                                 <div class="flex mt-2 items-center py-1.5" x-data="{ on: false }">
-                                    <button type="button" class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 bg-indigo-600" role="switch" aria-checked="true" x-ref="switch" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'bg-indigo-600': on, 'bg-gray-200': !(on) }" aria-labelledby="annual-billing-label" :aria-checked="on.toString()" @click="on = !on">
+                                    <button type="button" class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 bg-indigo-600" role="switch" aria-checked="true" x-ref="switch" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'bg-indigo-600': on, 'bg-slate-200': !(on) }" aria-labelledby="annual-billing-label" :aria-checked="on.toString()" @click="on = !on">
                                       <span aria-hidden="true" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-5" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'translate-x-5': on, 'translate-x-0': !(on) }"></span>
                                     </button>
                                     <span class="ml-3 text-sm" id="annual-billing-label" @click="on = !on; $refs.switch.focus()">
-                                      <span class="font-medium text-gray-50">All</span>
+                                      <span class="font-medium text-slate-50">All</span>
                                       <!-- space -->
                                       <!-- <span class="text-gray-500">(Save 10%)</span> -->
                                     </span>
@@ -1062,19 +1062,19 @@
                             <div class="mx-auto max-w-3xl">
                               <!-- Content goes here -->
                               <div>
-                                <p class="text-base font-semibold text-gray-50">Sort</p>
+                                <p class="text-base font-semibold text-slate-50">Sort</p>
                                 <p class="text-sm text-slate-400">Sort by Version or Generation</p>
                                 <fieldset class="mt-4">
                                     <legend class="sr-only">Sort By</legend>
                                     <div class="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
                                         
                                         <div class="flex items-center">
-                                            <input checked id="byVersion" name="MChip" type="radio" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                                            <input checked id="byVersion" name="MChip" type="radio" class="h-4 w-4 border-slate-300 text-indigo-600 focus:ring-indigo-600">
                                             <label for="byVersion" class="ml-3 block text-sm font-medium leading-6 text-slate-50">Version</label>
                                         </div>
 
                                         <div class="flex items-center">
-                                            <input id="bySeries" name="MChip" type="radio"  class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                                            <input id="bySeries" name="MChip" type="radio"  class="h-4 w-4 border-slate-300 text-indigo-600 focus:ring-indigo-600">
                                             <label for="bySeries" class="ml-3 block text-sm font-medium leading-6 text-slate-50">Generation</label>
                                         </div>
 
@@ -1168,19 +1168,19 @@
                             <div class="mx-auto max-w-3xl">
                               <!-- Content goes here -->
                               <div>
-                                <p class="text-base font-semibold text-gray-50">Views</p>
+                                <p class="text-base font-semibold text-slate-50">Views</p>
                                 <p class="text-sm text-slate-400">View Market Share (%) by Revenue or YoY Growth (%) - Relative to Own 12-Month History</p>
                                 <fieldset class="mt-4">
                                     <legend class="sr-only">View</legend>
                                     <div class="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
                                         
                                         <div class="flex items-center">
-                                            <input checked id="cloudShare" name="cloud" type="radio" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                                            <input checked id="cloudShare" name="cloud" type="radio" class="h-4 w-4 border-slate-300 text-indigo-600 focus:ring-indigo-600">
                                             <label for="cloudShare" class="ml-3 block text-sm font-medium leading-6 text-slate-50">Market Share</label>
                                         </div>
 
                                         <div class="flex items-center">
-                                            <input id="cloudGrowth" name="cloud" type="radio"  class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                                            <input id="cloudGrowth" name="cloud" type="radio"  class="h-4 w-4 border-slate-300 text-indigo-600 focus:ring-indigo-600">
                                             <label for="cloudGrowth" class="ml-3 block text-sm font-medium leading-6 text-slate-50">YoY Growth</label>
                                         </div>
 

@@ -61,7 +61,7 @@ class DonutChart {
             .attr("text-anchor", "middle")
             .style("font-size", "16px")
             .style("fill", "#94A3B8")
-            .text("Share of Apple, Microsoft, Alphabet, Amazon, NVIDIA, Tesla, and Meta by Market Cap");
+            .text("Share of Apple, Microsoft, Alphabet, Amazon, Nvidia, Meta, and Tesla by Market Cap");
 
         // Append central label
         vis.svg.append("text")
@@ -147,14 +147,33 @@ class DonutChart {
     updateVis() {
         let vis = this;
 
+        const companyImages = [
+            { company: "Apple", imageUrl: "/images/m7/Apple.svg" },
+            { company: "Microsoft", imageUrl: "/images/m7/Microsoft.svg" },
+            { company: "Google", imageUrl: "/images/m7/Google-g.svg" },
+            { company: "Amazon", imageUrl: "/images/m7/Amazon-a.svg" },
+            { company: "Nvidia", imageUrl: "/images/m7/Nvidia-n.svg" },
+            { company: "Meta", imageUrl: "/images/m7/Meta-m.svg" },
+            { company: "Tesla", imageUrl: "/images/m7/Tesla-T.svg" },
+            { company: "S&P 493", imageUrl: "/images/m7/S&P.svg" },
+        ];
+
         // Bind data to path elements
         let arcs = vis.svg.selectAll('path')
             .data(vis.pie(vis.displayData), d => d.data.Company);
 
+        // Define your array of hex colors
+        const myColors = ['#000000', '#05A6F0', '#FBBC05', '#FF9900', '#77B900', '#0065E2', '#E82127', '#64748B'];
+
+        // Create a scale
+        const colorScale = d3.scaleOrdinal()
+            .domain(["Apple", "Microsoft", "Google", "Amazon", "Nvidia", "Meta", "Tesla", "S&P 493"])
+            .range(myColors);
+
         // Add donut chart arcs
         arcs.enter()
             .append('path')
-            .attr('fill', (d, i) => d3.schemeCategory10[i % 10]) // Change color scheme if needed
+            .attr('fill', (d) => colorScale(d.data.Company)) // Change color scheme if needed
             .attr('stroke', 'white')
             .style('stroke-width', '2px')
             .each(function(d) { 
@@ -163,11 +182,15 @@ class DonutChart {
             })
             .merge(arcs)
             .on("mouseover", function(event, d) {
+                let imageUrl = companyImages.find(img => img.company === d.data.Company).imageUrl;
+
                 vis.tooltip.transition()    
                     .duration(200)    
                     .style("opacity", 1);    
                 vis.tooltip.html(
-                    `<span class="text-lg font-bold text-slate-700">${d.data.Company}</span><<br/>
+                    `
+                    <img class="tooltip-company-img" src="${imageUrl}" width="40" height="40" />
+                    <span class="text-lg font-bold text-slate-700">${d.data.Company}</span><<br/>
                     <span class="text-base font-medium text-slate-500">Percentage: 
                         <span class="text-slate-600 font-bold">${Number((d.data.proportionalPercentage * 100).toFixed(2))}%</span>
                     </span><br/>
@@ -218,6 +241,8 @@ class DonutChart {
 
         const midAngle = d => d.startAngle + (d.endAngle - d.startAngle) / 2;
 
+        vis.svg.selectAll('polyline').remove();
+
         // Handle label lines
         let labelLines = vis.svg.selectAll('polyline')
             .data(vis.pie(vis.displayData), d => d.data.Company);
@@ -237,7 +262,7 @@ class DonutChart {
                 
             })
             .style('fill', 'none')
-            .style('stroke', (d, i) => d3.schemeCategory10[i % 10])
+            .style('stroke', (d) => colorScale(d.data.Company))
             .style('stroke-width', 1.5)
             .style('opacity', 0)
             .transition()
@@ -245,6 +270,9 @@ class DonutChart {
             .style('opacity', displayLabels ? 1 : 0);
 
         labelLines.exit().remove();
+
+        // Remove existing labels
+        vis.svg.selectAll('text.label-title').remove();
 
         // Handle company name labels (title)
         let labels = vis.svg.selectAll('text.label-title')
@@ -271,11 +299,14 @@ class DonutChart {
                 return `translate(${pos[0]}, ${pos[1]})`;
             })
             .attr('dy', '0.35em')
+            .attr('dx', d => midAngle(d) < Math.PI ? 10 : -10)
             .transition()
             .duration(1000) // duration of the initial loading animation
             .style('opacity', displayLabels ? 1 : 0);
 
         labels.exit().remove();
+
+        vis.svg.selectAll('text.label-subtitle').remove();
 
         // Handle percentage labels (subtitle)
         let subLabels = vis.svg.selectAll('text.label-subtitle')
@@ -297,6 +328,7 @@ class DonutChart {
                 return `translate(${pos[0]}, ${pos[1] +20})`;
             })
             .attr('dy', '0.35em')
+            .attr('dx', d => midAngle(d) < Math.PI ? 10 : -10)
             .style('text-anchor', d => midAngle(d) < Math.PI ? 'start' : 'end')
             .style('font-size', '14px')
             .style('fill', 'whitesmoke')
@@ -309,7 +341,7 @@ class DonutChart {
         subLabels.exit().remove();
 
         // Data for legend
-        const legendData = vis.displayData.map(d => ({ Company: d.Company, Color: d3.schemeCategory10[vis.displayData.indexOf(d) % 10] }));
+        const legendData = vis.displayData.map(d => ({ Company: d.Company, Color: colorScale(d.Company) }));
 
         // Create legend items
         const legendItem = vis.legend.selectAll('.legend-item')
