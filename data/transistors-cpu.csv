@@ -144,31 +144,31 @@ Six-core Core i7 (Gulftown),"1,170,000,000",2010,Intel,32 nm,240 mm 2,"4,875,0
 "Six-core zEC12 (64-bit, SIMD , large caches)","2,750,000,000",2012,IBM,32 nm,597 mm 2,"4,606,000",CPU
 "Itanium Poulson (8-core 64-bit, SIMD , caches)","3,100,000,000",2012,Intel,32 nm,544 mm 2,"5,699,000",CPU
 "Xeon Phi (61-core 32-bit, 512-bit SIMD , caches)","5,000,000,000",2012,Intel,22 nm,720 mm 2,"6,944,000",CPU
-"Apple A7 (dual-core 64/32-bit ARM64 , ""mobile SoC "", SIMD , caches)","1,000,000,000",2013,Apple,28 nm,102 mm 2,"9,804,000",CPU
+"Apple A7 (dual-core 64/32-bit ARM64 , ""mobile SoC "", SIMD , caches)","1,000,000,000",2013,Apple,28 nm,102 mm 2,"9,804,000",SoC
 "Six-core Core i7 Ivy Bridge E (64-bit, SIMD , caches)","1,860,000,000",2013,Intel,22 nm,256 mm 2,"7,266,000",CPU
 "POWER8 (12-core 64-bit, SIMD , caches)","4,200,000,000",2013,IBM,22 nm,650 mm 2,"6,462,000",CPU
 "Xbox One main SoC (64-bit, SIMD , caches)","5,000,000,000",2013,"Microsoft , AMD",28 nm,363 mm 2,"13,770,000",CPU
 "Quad-core + GPU Core i7 Haswell (64-bit, SIMD , caches)","1,400,000,000",2014,Intel,22 nm,177 mm 2,"7,910,000",CPU
-"Apple A8 (dual-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","2,000,000,000",2014,Apple,20 nm,89 mm 2,"22,470,000",CPU
+"Apple A8 (dual-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","2,000,000,000",2014,Apple,20 nm,89 mm 2,"22,470,000",SoC
 "Core i7 Haswell-E (8-core 64-bit, SIMD , caches)","2,600,000,000",2014,Intel,22 nm,355 mm 2,"7,324,000",CPU
-"Apple A8X (tri-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","3,000,000,000",2014,Apple,20 nm,128 mm 2,"23,440,000",CPU
+"Apple A8X (tri-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","3,000,000,000",2014,Apple,20 nm,128 mm 2,"23,440,000",SoC
 "Xeon Ivy Bridge-EX (15-core 64-bit, SIMD , caches)","4,310,000,000",2014,Intel,22 nm,541 mm 2,"7,967,000",CPU
 "Xeon Haswell-E5 (18-core 64-bit, SIMD , caches)","5,560,000,000",2014,Intel,22 nm,661 mm 2,"8,411,000",CPU
 "Quad-core + GPU GT2 Core i7 Skylake K (64-bit, SIMD , caches)","1,750,000,000",2015,Intel,14 nm,122 mm 2,"14,340,000",CPU
 "Dual-core + GPU Iris Core i7 Broadwell-U (64-bit, SIMD , caches)","1,900,000,000",2015,Intel,14 nm,133 mm 2,"14,290,000",CPU
-"Apple A9 (dual-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","2,000,000,000",2015,Apple,14 nm ( Samsung ),96 mm 2 ( Samsung ),"20,800,000",CPU
-"Apple A9X (dual core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","3,000,000,000",2015,Apple,16 nm,143.9 mm 2,"20,800,000",CPU
+"Apple A9 (dual-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","2,000,000,000",2015,Apple,14 nm ( Samsung ),96 mm 2 ( Samsung ),"20,800,000",SoC
+"Apple A9X (dual core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","3,000,000,000",2015,Apple,16 nm,143.9 mm 2,"20,800,000",SoC
 "IBM z13 (64-bit, caches)","3,990,000,000",2015,IBM,22 nm,678 mm 2,"5,885,000",CPU
 IBM z13 Storage Controller,"7,100,000,000",2015,IBM,22 nm,678 mm 2,"10,472,000",CPU
 "SPARC M7 (32-core 64-bit, SIMD , caches)","10,000,000,000",2015,Oracle,20 nm,?,?,CPU
 "Core i7 Broadwell-E (10-core 64-bit, SIMD , caches)","3,200,000,000",2016,Intel,14 nm,246 mm 2 [106],"13,010,000",CPU
-"Apple A10 Fusion (quad-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","3,300,000,000",2016,Apple,16 nm,125 mm 2,"26,400,000",CPU
+"Apple A10 Fusion (quad-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","3,300,000,000",2016,Apple,16 nm,125 mm 2,"26,400,000",SoC
 "HiSilicon Kirin 960 (octa-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","4,000,000,000",2016,Huawei,16 nm,110.00 mm 2,"36,360,000",CPU
 "Xeon Broadwell-E5 (22-core 64-bit, SIMD , caches)","7,200,000,000",2016,Intel,14 nm,456 mm 2,"15,790,000",CPU
 "Xeon Phi (72-core 64-bit, 512-bit SIMD , caches)","8,000,000,000",2016,Intel,14 nm,683 mm 2,"11,710,000",CPU
 "Zip CPU (32-bit, for FPGAs )","1,286",2016,Gisselquist Technology,?,?,?,CPU
 "Qualcomm Snapdragon 835 (octa-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","3,000,000,000",2016,Qualcomm,10 nm,72.3 mm 2,"41,490,000",CPU
-"Apple A11 Bionic (hexa-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","4,300,000,000",2017,Apple,10 nm,89.23 mm 2,"48,190,000",CPU
+"Apple A11 Bionic (hexa-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","4,300,000,000",2017,Apple,10 nm,89.23 mm 2,"48,190,000",SoC
 "AMD Zen CCX (core complex unit: 4 cores, 8 MB L3 cache)","1,400,000,000",2017,AMD,14 nm (GF 14LPP),44 mm²,"31,800,000",CPU
 "AMD Zeppelin SoC Ryzen (64-bit, SIMD , caches)","4,800,000,000",2017,AMD,14 nm,192 mm 2,"25,000,000",CPU
 "AMD Ryzen 5 1600 Ryzen (64-bit, SIMD , caches)","4,800,000,000",2017,AMD,14 nm,213 mm 2,"22,530,000",CPU
@@ -181,16 +181,16 @@ Xeon (unspecified),"7,100,000,000",2017,Intel,14 nm,672 mm²,"10,570,000",CPU
 "POWER9 (64-bit, SIMD , caches)","8,000,000,000",2017,IBM,14 nm,695 mm 2,"11,500,000",CPU
 "Freedom U500 Base Platform Chip (E51, 4×U54) RISC-V (64-bit, caches)","250,000,000",2017,SiFive,28 nm,~30 mm 2,"8,330,000",CPU
 "SPARC64 XII (12-core 64-bit, SIMD , caches)","5,450,000,000",2017,Fujitsu,20 nm,795 mm 2,"6,850,000",CPU
-"Apple A10X Fusion (hexa-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","4,300,000,000",2017,Apple,10 nm,96.40 mm 2,"44,600,000",CPU
+"Apple A10X Fusion (hexa-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","4,300,000,000",2017,Apple,10 nm,96.40 mm 2,"44,600,000",SoC
 "Centriq 2400 (64/32-bit, SIMD , caches)","18,000,000,000",2017,Qualcomm,10 nm,398 mm 2,"45,200,000",CPU
 "AMD Epyc (32-core 64-bit, SIMD , caches)","19,200,000,000",2017,AMD,14 nm,768 mm 2,"25,000,000",CPU
 "Qualcomm Snapdragon 845 (octa-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","5,300,000,000",2017,Qualcomm,10 nm,94 mm 2,"56,400,000",CPU
 "Qualcomm Snapdragon 850 (octa-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","5,300,000,000",2017,Qualcomm,10 nm,94 mm 2,"56,400,000",CPU
 "HiSilicon Kirin 710 (octa-core ARM64 ""mobile SoC"", SIMD , caches)","5,500,000,000",2018,Huawei,12 nm,?,?,CPU
-"Apple A12 Bionic (hexa-core ARM64 ""mobile SoC"", SIMD , caches)","6,900,000,000",2018,Apple,7 nm,83.27 mm 2,"82,900,000",CPU
+"Apple A12 Bionic (hexa-core ARM64 ""mobile SoC"", SIMD , caches)","6,900,000,000",2018,Apple,7 nm,83.27 mm 2,"82,900,000",SoC
 "HiSilicon Kirin 980 (octa-core ARM64 ""mobile SoC"", SIMD , caches)","6,900,000,000",2018,Huawei,7 nm,74.13 mm 2,"93,100,000",CPU
 "Qualcomm Snapdragon 8cx / SCX8180 (octa-core ARM64 ""mobile SoC"", SIMD , caches)","8,500,000,000",2018,Qualcomm,7 nm,112 mm 2,"75,900,000",CPU
-"Apple A12X Bionic (octa-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","10,000,000,000",2018,Apple,7 nm,122 mm 2,"82,000,000",CPU
+"Apple A12X Bionic (octa-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","10,000,000,000",2018,Apple,7 nm,122 mm 2,"82,000,000",SoC
 "Fujitsu A64FX (64/32-bit, SIMD , caches)","8,786,000,000",2018,Fujitsu,7 nm,?,?,CPU
 Tegra Xavier SoC (64/32-bit),"9,000,000,000",2018,Nvidia,12 nm,350 mm 2,"25,700,000",CPU
 "Qualcomm Snapdragon 855 (octa-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","6,700,000,000",2018,Qualcomm,7 nm,73 mm²,"91,800,000",CPU
@@ -202,7 +202,7 @@ AMD Zen 2 server I/O die,"8,340,000,000",2019,AMD,12 nm,416 mm²,"20,050,000",
 AMD Zen 2 Renoir die,"9,800,000,000",2019,AMD,7 nm,156 mm²,"62,820,000",CPU
 "AMD Ryzen 7 3700X (64-bit, SIMD , caches, I/O die)","5,990,000,000",2019,AMD,7 & 12 nm ( TSMC ),199 (74+125) mm 2,"30,100,000",CPU
 HiSilicon Kirin 990 4G,"8,000,000,000",2019,Huawei,7 nm,90.00 mm 2,"89,000,000",CPU
-"Apple A13 (hexa-core 64-bit ARM64 ""mobile SoC"", SIMD , caches)","8,500,000,000",2019,Apple,7 nm,98.48 mm 2,"86,300,000",CPU
+"Apple A13 (hexa-core 64-bit ARM64 ""mobile SoC"", SIMD , caches)","8,500,000,000",2019,Apple,7 nm,98.48 mm 2,"86,300,000",SoC
 "IBM z15 CP chip (12 cores, 256 MB L3 cache)","9,200,000,000",2019,IBM,14 nm,696 mm 2,"13,220,000",CPU
 IBM z15 SC chip (960 MB L4 cache),"12,200,000,000",2019,IBM,14 nm,696 mm 2,"17,530,000",CPU
 "AMD Ryzen 9 3900X (64-bit, SIMD , caches, I/O die)","9,890,000,000",2019,AMD,7 & 12 nm ( TSMC ),273 mm 2,"36,230,000",CPU
@@ -211,33 +211,49 @@ HiSilicon Kirin 990 5G,"10,300,000,000",2019,Huawei,7 nm,113.31 mm 2,"90,900,0
 "AMD Epyc Rome (64-bit, SIMD , caches)","39,540,000,000",2019,AMD,7 & 12 nm ( TSMC ),"1,008 mm 2","39,226,000",CPU
 "Qualcomm Snapdragon 865 (octa-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","10,300,000,000",2019,Qualcomm,7 nm,83.54 mm 2 [147],"123,300,000",CPU
 "TI Jacinto TDA4VM (ARM A72, DSP, SRAM)","3,500,000,000",2020,Texas Instruments,16 nm,?,?,CPU
-"Apple A14 Bionic (hexa-core 64-bit ARM64 ""mobile SoC"", SIMD , caches)","11,800,000,000",2020,Apple,5 nm,88 mm 2,"134,100,000",CPU
-"M1 (octa-core 64-bit ARM64 SoC, SIMD , caches)","16,000,000,000",2020,Apple,5 nm,119 mm 2,"134,500,000",CPU
+"Apple A14 Bionic (hexa-core 64-bit ARM64 ""mobile SoC"", SIMD , caches)","11,800,000,000",2020,Apple,5 nm,88 mm 2,"134,100,000",SoC
+"M1 (octa-core 64-bit ARM64 SoC, SIMD , caches)","16,000,000,000",2020,Apple,5 nm,119 mm 2,"134,500,000",SoC
 HiSilicon Kirin 9000s,"9,510,000,000",2023,Huawei,7 nm,107 mm 2,"107,690,000",CPU
 HiSilicon Kirin 9000,"15,300,000,000",2020,Huawei,5 nm,114 mm 2,"134,200,000",CPU
 "AMD Zen 3 CCX (core complex unit: 8 cores, 32 MB L3 cache)","4,080,000,000",2020,AMD,7 nm,68 mm²,"60,000,000",CPU
 AMD Zen 3 CCD (core complex die),"4,150,000,000",2020,AMD,7 nm,81 mm²,"51,230,000",CPU
 "Core 11th gen Rocket Lake (8-core 64-bit, SIMD , large caches)","6,000,000,000",2021,Intel,14 nm +++ 14 nm,276 mm 2 [156],"37,500,000 or 21,800,000+ [157]",CPU
 "AMD Ryzen 7 5800H (64-bit, SIMD , caches, I/O and GPU)","10,700,000,000",2021,AMD,7 nm,180 mm 2,"59,440,000",CPU
-Apple A15,"15,000,000,000",2021,Apple,5 nm,107.68 mm 2,"139,300,000",CPU
-Apple A17,"19,000,000,000",2023,Apple,3 nm,103.8 mm²,"183,044,315",CPU
-"M1 Pro (10-core, 64-bit)","33,700,000,000",2021,Apple,5 nm,245 mm 2 [164],"137,600,000",CPU
-"M1 Max (10-core, 64-bit)","57,000,000,000",2021,Apple,5 nm,420.2 mm 2 [166],"135,600,000",CPU
+Apple A15,"15,000,000,000",2021,Apple,5 nm,107.68 mm 2,"139,300,000",SoC
+Apple A17,"19,000,000,000",2023,Apple,3 nm,103.8 mm²,"183,044,315",SoC
+"M1 Pro (10-core, 64-bit)","33,700,000,000",2021,Apple,5 nm,245 mm 2 [164],"137,600,000",SoC
+"M1 Max (10-core, 64-bit)","57,000,000,000",2021,Apple,5 nm,420.2 mm 2 [166],"135,600,000",SoC
 Power10 dual-chip module (30 SMT8 cores or 60 SMT4 cores),"36,000,000,000",2021,IBM,7 nm,"1,204 mm 2","29,900,000",CPU
 Dimensity 9000 (ARM64 SoC),"15,300,000,000",2021,Mediatek,4 nm (TSMC N4),?,?,CPU
-"M1 Ultra (dual-chip module, 2×10 cores)","114,000,000,000",2022,Apple,5 nm,840.5 mm 2 [166],"135,600,000",CPU
+"M1 Ultra (dual-chip module, 2×10 cores)","114,000,000,000",2022,Apple,5 nm,840.5 mm 2 [166],"135,600,000",SoC
 "AMD Epyc 7773X (Milan-X) (multi-chip module, 64 cores, 768 MB L3 cache)","26,000,000,000",2022,AMD,7 & 12 nm ( TSMC ),"1,352 mm 2 (Milan + 8×36) [172]",?,CPU
 "IBM Telum dual-chip module (2×8 cores, 2×256 MB cache)","45,000,000,000",2022,IBM,7 nm (Samsung),"1,060 mm 2","42,450,000",CPU
-"M2 (deca-core 64-bit ARM64 SoC, SIMD , caches)","20,000,000,000",2022,Apple,5 nm,?,?,CPU
-"M3 (octa-core 64-bit ARM64 SoC, SIMD , caches)","25,000,000,000",2023,Apple,3 nm,?,?,CPU
-"M3 Pro (dodeca-core 64-bit ARM64 SoC, SIMD , caches)","37,000,000,000",2023,Apple,3 nm,?,?,CPU
-"M3 Max (hexadeca-core 64-bit ARM64 SoC, SIMD , caches)","92,000,000,000",2023,Apple,3 nm,?,?,CPU
-Apple A16 (ARM64 SoC),"16,000,000,000",2022,Apple,4 nm,?,?,CPU
+"M2 (deca-core 64-bit ARM64 SoC, SIMD , caches)","20,000,000,000",2022,Apple,5 nm,?,?,SoC
+"M3 (octa-core 64-bit ARM64 SoC, SIMD , caches)","25,000,000,000",2023,Apple,3 nm,?,?,SoC
+"M3 Pro (dodeca-core 64-bit ARM64 SoC, SIMD , caches)","37,000,000,000",2023,Apple,3 nm,?,?,SoC
+"M3 Max (hexadeca-core 64-bit ARM64 SoC, SIMD , caches)","92,000,000,000",2023,Apple,3 nm,?,?,SoC
+Apple A16 (ARM64 SoC),"16,000,000,000",2022,Apple,4 nm,?,?,SoC
 Dimensity 9200 (ARM64 SoC),"17,000,000,000",2022,Mediatek,4 nm (TSMC N4P),?,?,CPU
 "Qualcomm Snapdragon 8 Gen 2 (octa-core ARM64 ""mobile SoC"", SIMD , caches)","16,000,000,000",2022,Qualcomm,4 nm,268 mm 2,"59,701,492",CPU
 AMD EPYC Genoa (4th gen/9004 series) 13-chip module (up to 96 cores and 384 MB (L3) + 96 MB (L2) cache),"90,000,000,000",2022,AMD,5 nm (CCD) 6 nm (IOD),"1,263.34 mm² 12×72.225 (CCD) 396.64 (IOD) [187] [188]","71,240,000",CPU
 Sapphire Rapids quad-chip module (up to 60 cores and 112.5 MB of cache),"48,000,000,000",2023,Intel,10 nm ESF (Intel 7),"1,600 mm 2","27,500,000– 30,000,000",CPU
-"M2 Pro (12-core 64-bit ARM64 SoC, SIMD , caches)","40,000,000,000",2023,Apple,5 nm,?,?,CPU
-"M2 Max (12-core 64-bit ARM64 SoC, SIMD , caches)","67,000,000,000",2023,Apple,5 nm,?,?,CPU
-M2 Ultra (two M2 Max dies),"134,000,000,000",2023,Apple,5 nm,?,?,CPU
+"M2 Pro (12-core 64-bit ARM64 SoC, SIMD , caches)","40,000,000,000",2023,Apple,5 nm,?,?,SoC
+"M2 Max (12-core 64-bit ARM64 SoC, SIMD , caches)","67,000,000,000",2023,Apple,5 nm,?,?,SoC
+M2 Ultra (two M2 Max dies),"134,000,000,000",2023,Apple,5 nm,?,?,SoC
 AMD EPYC Bergamo (4th gen/97X4 series) 9-chip module (up to 128 cores and 256 MB (L3) + 128 MB (L2) cache),"82,000,000,000",2023,AMD,5 nm (CCD) 6 nm (IOD),?,?,CPU
+AWS Graviton,?,2018,Amazon,?,?,?,CPU
+AWS Graviton3,?,2022,Amazon,?,?,?,CPU
+AWS Graviton4,100000000000,2023,Amazon,?,?,?,CPU
+AWS Tranium,?,2020,Amazon,?,?,?,GPU
+AWS Tranium2,?,2023,Amazon,?,?,?,GPU
+AWS Inferentia,?,2018,Amazon,?,?,?,AI Accelerator
+AWS Inferentia2,?,2023,Amazon,?,?,?,AI Accelerator
+Azure Maia 100,"105,000,000,000",2023,Microsoft,?,?,?,GPU
+Azure Cobalt 100,?,2023,Microsoft,?,?,?,CPU
+TPUv1,"2,500,000,000",2016,Google,?,?,?,AI Accelerator
+TPUv2,?,2017,Google,?,?,?,AI Accelerator
+TPUv3,10000000000,2018,Google,?,?,?,AI Accelerator
+TPUv4,22000000000,2021,Google,?,?,?,AI Accelerator
+TPUv5,?,2023,Google,?,?,?,AI Accelerator
+FSD Chip,6000000000,2017,Tesla,?,?,?,CPU
+D1 Chip,50000000000,2021,Tesla,?,?,?,CPU

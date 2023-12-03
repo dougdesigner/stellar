@@ -74,7 +74,7 @@ class ScatterVis {
             .style("font-weight", "bold")
             .style("fill", "white")
             .attr("class", "font-mono")
-            .text("Apple leads in CPU Transistor Design");
+            .text("Apple leads in System on a Chip (SoC) Design");
 
         // Add subtitle
         vis.svg.append("text")
@@ -250,6 +250,11 @@ class ScatterVis {
             .domain(["Apple", "Microsoft", "Google", "Amazon", "Nvidia", "Meta", "Tesla", "S&P 493"])
             .range(myColors);
 
+        // A function to determine the Y position of each circle
+        function circleYPosition(d) {
+            return isNaN(d.TransistorCount) ? vis.height : vis.y(d.TransistorCount);
+        }
+
         // Add dots
         vis.dots = vis.svg.selectAll("circle")
             .data(vis.filteredData)
@@ -283,6 +288,10 @@ class ScatterVis {
 
                 if (d.TransistorCount > 1e9) {
                     translateValue = d.TransistorCount / 1e9 + " billion";
+                }
+
+                if (isNaN(d.TransistorCount)) {
+                    translateValue = "Not Publicly Available";
                 }
 
                 const trans = d.value / 1e9
@@ -319,7 +328,7 @@ class ScatterVis {
             })
             .transition()
             .duration(1000)
-            .attr("cy", d => vis.y(d.TransistorCount));
+            .attr("cy", d => circleYPosition(d));
             // .style("stroke", d => d.Designer === vis.selectedDesigner ? "#ff7f0e" : "white");
 
         vis.dots.exit().remove();
