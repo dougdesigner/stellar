@@ -2240,6 +2240,10 @@ input[type="search"]::-webkit-search-results-decoration {
   padding-top: 1.5rem;
 }
 
+.text-left{
+  text-align: left;
+}
+
 .text-center{
   text-align: center;
 }
@@ -3144,6 +3148,10 @@ input[type="search"]::-webkit-search-results-decoration {
 
   .max-md\:hidden{
     display: none;
+  }
+
+  .max-md\:text-left{
+    text-align: left;
   }
 
   .max-md\:text-center{
