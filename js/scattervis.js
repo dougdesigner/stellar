@@ -186,6 +186,16 @@ class ScatterVis {
     updateVis() {
         let vis = this;
 
+        const companyImages = [
+            { company: "Apple", imageUrl: "/images/m7/Apple.svg" },
+            { company: "Microsoft", imageUrl: "/images/m7/Microsoft.svg" },
+            { company: "Google", imageUrl: "/images/m7/Google-g.svg" },
+            { company: "Amazon", imageUrl: "/images/m7/Amazon-a.svg" },
+            { company: "Nvidia", imageUrl: "/images/m7/Nvidia-n.svg" },
+            { company: "Meta", imageUrl: "/images/m7/Meta-m.svg" },
+            { company: "Tesla", imageUrl: "/images/m7/Tesla-T.svg" },
+        ];
+
         // Add the Moore's Law line
         let line = d3.line()
             .x(d => vis.x(d.Year))
@@ -240,11 +250,6 @@ class ScatterVis {
             .domain(["Apple", "Microsoft", "Google", "Amazon", "Nvidia", "Meta", "Tesla", "S&P 493"])
             .range(myColors);
 
-
-        // vis.isToggleOn = () => document.querySelector('.scatter-toggle-button').getAttribute('aria-checked') === 'true';
-
-        // console.log(vis.isToggleOn());
-
         // Add dots
         vis.dots = vis.svg.selectAll("circle")
             .data(vis.filteredData)
@@ -270,16 +275,24 @@ class ScatterVis {
             .style("stroke", "white")
             .attr('stroke-width', 2)
             .on("mouseover", function(event, d) {
+                let imageObj = companyImages.find(img => img.company === d.Designer);
+                let imageUrl = imageObj ? imageObj.imageUrl : null;
+
+                // console.log(imageUrl);
+
                 if (d.TransistorCount > 1e9) {
 
                 }
+
                 const trans = d.value / 1e9
                 vis.tooltip.transition()    
                     .duration(200)    
                     .style("opacity", 1); 
                        
                 vis.tooltip.html(
-                    `<span class="text-lg font-bold text-slate-700">${d.Designer}</span><<br/>
+                    `
+                    ${imageUrl ? `<img class="tooltip-company-img" src="${imageUrl}" width="40" height="40" />` : ''}
+                    <span class="text-lg font-bold text-slate-700">${d.Designer}</span><<br/>
                     <span class="text-base font-medium text-slate-500">Processor: 
                         <span class="text-slate-600 font-bold">${d.Processor}</span>
                     </span><br/>
