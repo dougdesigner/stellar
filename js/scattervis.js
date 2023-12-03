@@ -13,7 +13,7 @@ class ScatterVis {
 
         const element = document.getElementById(vis.parentElement);
         // Set dimensions and margins
-        vis.margin = {top: 100, right: 100, bottom: 100, left: 100};
+        vis.margin = {top: 100, right: 80, bottom: 100, left: 100};
         vis.width = element.offsetWidth - vis.margin.left - vis.margin.right;
         vis.height = 600 - vis.margin.top - vis.margin.bottom;
 
@@ -200,10 +200,12 @@ class ScatterVis {
             { company: "AMD", imageUrl: "/images/amd.svg" },
         ];
 
+        const lineOffset = 7; // The same offset used for the dots
+
         // Add the Moore's Law line
         let line = d3.line()
             .x(d => vis.x(d.Year))
-            .y(d => vis.y(d.TransistorCount))
+            .y(d => vis.y(d.TransistorCount) - lineOffset)
             // .curve(d3.curveMonotoneX);
 
         // Update x and y scale domains
@@ -259,6 +261,9 @@ class ScatterVis {
             return isNaN(d.TransistorCount) ? vis.height : vis.y(d.TransistorCount);
         }
 
+        // A counter to alternate the offset of each circle (Jitter)
+        let counter = 0; // Initialize counter
+
         // Add dots
         vis.dots = vis.svg.selectAll("circle")
             .data(vis.filteredData)
@@ -268,7 +273,12 @@ class ScatterVis {
             // .attr("clip-path", "url(#clip)")
             .merge(vis.dots)
             .attr("class", null) // Remove the class from the dots
-            .attr("cx", d => vis.x(d.Year) + (Math.random() - 0.5) * 20)
+            .attr("cx", function(d) {
+                // Calculate offset
+                let offset = (counter % 2 === 0 ? -1 : 1) * 7; // Alternate between -5 and 5, for example
+                counter++; // Increment counter
+                return vis.x(d.Year) + offset; // Apply offset
+            })
             .attr("cy", vis.height)
             .attr("r", 7)
             .style('stroke', 'white')
