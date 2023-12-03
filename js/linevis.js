@@ -71,14 +71,14 @@ class LineVis {
 
       // Add title
       vis.svg.append("text")
-        .attr("x", vis.width / 2)
+        .attr("x", (vis.width / 2) - vis.margin.left)
         .attr("y", -80)
         .attr("text-anchor", "middle")
         .style("font-size", "20px")
         .style("font-weight", "bold")
         .style("fill", "white")
         .attr("class", "font-mono")
-        .text("Amazon Web Services (AWS) is the Market Leader in Cloud Computing");
+        .text("Amazon is the Market Leader in Cloud Computing");
 
       // Add subtitle
       vis.svg.append("text")
@@ -184,7 +184,7 @@ class LineVis {
             ];
 
             const companyImagesLight = [
-                { company: "Amazon", imageUrl: "/images/m7/AWS-Light.svg" },
+                { company: "Amazon", imageUrl: "/images/m7/AWS-light.svg" },
                 { company: "Microsoft", imageUrl: "/images/m7/Azure.svg" },
                 { company: "Google", imageUrl: "/images/m7/GoogleCloud.svg" },
             ];
