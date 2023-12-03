@@ -85,11 +85,7 @@ class ScatterVis {
             .style("fill", "#94A3B8")
             .text("The number of transistors on integrated circuits has doubled approximately every two years");
 
-        // Add event listener to the Highlight dropdown
-        d3.select("#keyCompany").on("change", function() {
-            vis.selectedDesigner = this.value;
-            vis.wrangleData();
-        });
+       
 
         // Add event listener to the Filter dropdown
         d3.select("#microType").on("change", function() {
@@ -97,9 +93,34 @@ class ScatterVis {
             vis.wrangleData();
         });
 
+        // Add event listener to the Filter dropdown
+        d3.select("#scatter-toggle-button").on("click", function() {
+            vis.toggle = this.getAttribute('aria-checked') === 'true';
+            console.log(vis.toggle);
+            vis.updateTooltip();
+        });
+
+        vis.toggle = false;
+   
         vis.selectedDesigner = "Apple"; // Set the initial selected designer
 
         vis.selectedType = "All"; // Set the initial selected designer
+
+         // Add event listener to the Highlight dropdown
+         d3.select("#keyCompany").on("change", function() {
+            vis.selectedDesigner = this.value;
+            // console.log(vis.selectedDesigner);
+
+            if (vis.selectedDesigner === "All" && vis.toggle === false ) {
+                const button = d3.select("#scatter-toggle-button");
+                // Programmatically trigger a click event
+                button.attr("aria-checked", "true")
+                button.node().click();
+                vis.updateTooltip();
+            }
+
+            vis.wrangleData();
+        });
 
         vis.tooltip = d3.select("body").append("div") 
             .attr("class", "tooltip")    
@@ -211,6 +232,19 @@ class ScatterVis {
 
         mooreLine.exit().remove();
 
+        // Define your array of hex colors
+        const myColors = ['#E2E8F0', '#05A6F0', '#FBBC05', '#FF9900', '#77B900', '#0065E2', '#E82127', '#64748B'];
+
+        // Create a scale
+        const colorScale = d3.scaleOrdinal()
+            .domain(["Apple", "Microsoft", "Google", "Amazon", "Nvidia", "Meta", "Tesla", "S&P 493"])
+            .range(myColors);
+
+
+        // vis.isToggleOn = () => document.querySelector('.scatter-toggle-button').getAttribute('aria-checked') === 'true';
+
+        // console.log(vis.isToggleOn());
+
         // Add dots
         vis.dots = vis.svg.selectAll("circle")
             .data(vis.filteredData)
@@ -219,13 +253,20 @@ class ScatterVis {
             .append("circle")
             // .attr("clip-path", "url(#clip)")
             .merge(vis.dots)
+            .attr("class", null) // Remove the class from the dots
             .attr("cx", d => vis.x(d.Year))
             .attr("cy", vis.height)
             .attr("r", 7)
             .style('stroke', 'white')
-            .attr("class", d => d.Designer === vis.selectedDesigner ? "selected" : "pointer-events-none")
+            .attr("class", d => {
+                if (d.Designer === vis.selectedDesigner) {
+                  return "selected";
+                } else {
+                  return !vis.toggle ? "circle pointer-events-none" : "circle";
+                }
+              })
             .style("opacity", d => d.Designer === vis.selectedDesigner ? ".99" : ".22")
-            .style("fill", d => d.Designer === vis.selectedDesigner ? "#ff7f0e" : "#1f77b4")
+            .style("fill", d => d.Designer === vis.selectedDesigner ? `${colorScale(vis.selectedDesigner)}` : "#1e293b")
             .style("stroke", "white")
             .attr('stroke-width', 2)
             .on("mouseover", function(event, d) {
@@ -272,8 +313,33 @@ class ScatterVis {
 
     }
 
+    updateTooltip() {
+        let vis = this;
+
+        // Add dots
+        vis.dots = vis.svg.selectAll("circle")
+            .data(vis.filteredData)
+
+        vis.dots.attr("class", null) // Remove the class from the dots
+            .attr("class", d => {
+                if (d.Designer === vis.selectedDesigner) {
+                  return "selected";
+                } else {
+                  return !vis.toggle ? "circle pointer-events-none" : "circle";
+                }
+              });
+    }
+
     createLegend(selectedDesigner) {
         let vis = this;
+
+        // Define your array of hex colors
+        const myColors = ['#E2E8F0', '#05A6F0', '#FBBC05', '#FF9900', '#77B900', '#0065E2', '#E82127', '#64748B'];
+
+        // Create a scale
+        const colorScale = d3.scaleOrdinal()
+            .domain(["Apple", "Microsoft", "Google", "Amazon", "Nvidia", "Meta", "Tesla", "S&P 493"])
+            .range(myColors);
 
         // Legend
         let legend = vis.svg.append("g")
@@ -285,8 +351,8 @@ class ScatterVis {
         if (vis.selectedDesigner !== "All") {
             vis.legendData = [
                 { type: "line", color: "#a855f7", text: "Moore's Law" },
-                { type: "circle", color: "#ff7f0e", text: `${selectedDesigner} Design` },
-                { type: "circle", color: "#1f77b4", text: "Other Designer" }
+                { type: "circle", color: `${colorScale(selectedDesigner)}`, text: `${selectedDesigner} Design` },
+                { type: "circle", color: "#1e293b", text: "Other Designer" }
             ];
         } else {
             // if (vis.selectedType === "CPU") {
@@ -303,7 +369,7 @@ class ScatterVis {
 
             vis.legendData = [
                 { type: "line", color: "#a855f7", text: "Moore's Law" },
-                { type: "circle", color: "#1f77b4", text: "Mircoprocessor" }
+                { type: "circle", color: "#1e293b", text: "Mircoprocessor" }
             ];
             
         }
@@ -330,6 +396,7 @@ class ScatterVis {
                     .attr("cy", 10)
                     .attr("r", 7)
                     .attr("stroke", "white")
+                    .attr("stroke-width", 2)
                     .style("fill", item.color);
             }
 
@@ -341,5 +408,7 @@ class ScatterVis {
                 .style("fill", "white")
                 .style("font-weight", "bold");
         });
+
     }
 }
+

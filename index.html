@@ -959,10 +959,12 @@
 
 
                             <div class="col-span-2 md:col-span-1">
-                                <p class="text-base font-semibold text-slate-50">Tooltips</p>
+
+                                <p class="text-base font-semibold text-slate-50">Tooltip</p>
                                 <p class="text-sm text-slate-400">Enable for All or only the Highlighted Designer</p>
+
                                 <div class="flex mt-2 items-center py-1.5" x-data="{ on: false }">
-                                    <button type="button" class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 bg-indigo-600" role="switch" aria-checked="true" x-ref="switch" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'bg-indigo-600': on, 'bg-slate-200': !(on) }" aria-labelledby="annual-billing-label" :aria-checked="on.toString()" @click="on = !on">
+                                    <button type="button" class="scatter-toggle-button relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 bg-indigo-600" role="switch" aria-checked="true" x-ref="switch" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'bg-indigo-600': on, 'bg-slate-200': !(on) }" aria-labelledby="annual-billing-label" :aria-checked="on.toString()" @click="on = !on" id="scatter-toggle-button">
                                       <span aria-hidden="true" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-5" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'translate-x-5': on, 'translate-x-0': !(on) }"></span>
                                     </button>
                                     <span class="ml-3 text-sm" id="annual-billing-label" @click="on = !on; $refs.switch.focus()">
