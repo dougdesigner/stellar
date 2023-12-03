@@ -14,7 +14,7 @@ class LineVis {
       // Set dimensions and margins
       vis.margin = { top: 100, right: 140, bottom: 100, left: 100 };
       vis.width = element.offsetWidth - vis.margin.left - vis.margin.right;
-      vis.height = 500 - vis.margin.top - vis.margin.bottom;
+      vis.height = 600 - vis.margin.top - vis.margin.bottom;
 
       // Append SVG object
       vis.svg = d3.select("#" + vis.parentElement)
