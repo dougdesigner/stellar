@@ -33,7 +33,7 @@ class ScatterVis {
         let xAxisGroup = vis.svg.append("g")
             .attr("class", "x-axis")
             .attr("transform", "translate(0," + vis.height + ")")
-            .call(d3.axisBottom(vis.x));
+            .call(d3.axisBottom(vis.x).ticks(d3.timeYear));
 
         // Add X axis label
         vis.svg.append("text")
@@ -218,7 +218,7 @@ class ScatterVis {
             // .transition()
             // .duration(1000)
             // .attr("clip-path", "url(#clip)")
-            .call(d3.axisBottom(vis.x));
+            .call(d3.axisBottom(vis.x).ticks(d3.timeYear));
 
          // Update the Moore's Law line
         let mooreLine = vis.svg.selectAll(".moore-line")
@@ -249,7 +249,7 @@ class ScatterVis {
         mooreLine.exit().remove();
 
         // Define your array of hex colors
-        const myColors = ['#E2E8F0', '#05A6F0', '#FBBC05', '#FF9900', '#77B900', '#0065E2', '#E82127', '#64748B'];
+        const myColors = ['#E2E8F0', '#05A6F0', '#4285F4', '#FF9900', '#77B900', '#0065E2', '#E82127', '#64748B'];
 
         // Create a scale
         const colorScale = d3.scaleOrdinal()
@@ -373,7 +373,7 @@ class ScatterVis {
         let vis = this;
 
         // Define your array of hex colors
-        const myColors = ['#E2E8F0', '#05A6F0', '#FBBC05', '#FF9900', '#77B900', '#0065E2', '#E82127', '#64748B'];
+        const myColors = ['#E2E8F0', '#05A6F0', '#4285F4', '#FF9900', '#77B900', '#0065E2', '#E82127', '#64748B'];
 
         // Create a scale
         const colorScale = d3.scaleOrdinal()

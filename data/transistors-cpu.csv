@@ -241,11 +241,10 @@ Sapphire Rapids quad-chip module (up to 60 cores and 112.5 MB of cache),"48,000,
 "M2 Max (12-core 64-bit ARM64 SoC, SIMD , caches)","67,000,000,000",2023,Apple,5 nm,?,?,SoC
 M2 Ultra (two M2 Max dies),"134,000,000,000",2023,Apple,5 nm,?,?,SoC
 AMD EPYC Bergamo (4th gen/97X4 series) 9-chip module (up to 128 cores and 256 MB (L3) + 128 MB (L2) cache),"82,000,000,000",2023,AMD,5 nm (CCD) 6 nm (IOD),?,?,CPU
-AWS Graviton,?,2018,Amazon,?,?,?,CPU
-AWS Graviton3,?,2022,Amazon,?,?,?,CPU
+AWS Graviton,5000000000,2018,Amazon,?,?,?,CPU
+AWS Graviton3,55000000000,2022,Amazon,?,?,?,CPU
 AWS Graviton4,100000000000,2023,Amazon,?,?,?,CPU
 AWS Tranium,?,2020,Amazon,?,?,?,GPU
-AWS Tranium2,?,2023,Amazon,?,?,?,GPU
 AWS Inferentia,?,2018,Amazon,?,?,?,AI Accelerator
 AWS Inferentia2,?,2023,Amazon,?,?,?,AI Accelerator
 Azure Maia 100,"105,000,000,000",2023,Microsoft,?,?,?,GPU
@@ -257,3 +256,4 @@ TPUv4,22000000000,2021,Google,?,?,?,AI Accelerator
 TPUv5,?,2023,Google,?,?,?,AI Accelerator
 FSD Chip,6000000000,2017,Tesla,?,?,?,CPU
 D1 Chip,50000000000,2021,Tesla,?,?,?,CPU
+AWS Tranium2,?,2023,Amazon,?,?,?,GPU

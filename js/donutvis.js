@@ -163,7 +163,7 @@ class DonutChart {
             .data(vis.pie(vis.displayData), d => d.data.Company);
 
         // Define your array of hex colors
-        const myColors = ['#E2E8F0', '#05A6F0', '#FBBC05', '#FF9900', '#77B900', '#0065E2', '#E82127', '#1e293b'];
+        const myColors = ['#E2E8F0', '#05A6F0', '#4285F4', '#FF9900', '#77B900', '#0065E2', '#E82127', '#1e293b'];
 
         // Create a scale
         const colorScale = d3.scaleOrdinal()

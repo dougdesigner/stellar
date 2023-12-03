@@ -131,7 +131,7 @@ class LineVis {
     //   .range(d3.schemeCategory10);
 
     // Define your array of hex colors
-    const myColors = ['#05A6F0', '#FBBC05', '#FF9900'];
+    const myColors = ['#05A6F0', '#4285F4', '#FF9900'];
 
     // Create a scale
     const colorScale = d3.scaleOrdinal()
