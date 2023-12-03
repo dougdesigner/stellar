@@ -2009,9 +2009,9 @@ input[type="search"]::-webkit-search-results-decoration {
   background-color: rgb(168 85 247 / var(--tw-bg-opacity));
 }
 
-.bg-slate-200{
+.bg-slate-400{
   --tw-bg-opacity: 1;
-  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
 }
 
 .bg-slate-800{
@@ -2031,16 +2031,6 @@ input[type="search"]::-webkit-search-results-decoration {
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-slate-300{
-  --tw-bg-opacity: 1;
-  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
-}
-
-.bg-slate-400{
-  --tw-bg-opacity: 1;
-  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-25{
@@ -2314,6 +2304,14 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .font-semibold{
   font-weight: 600;
+}
+
+.font-extrabold{
+  font-weight: 800;
+}
+
+.font-black{
+  font-weight: 900;
 }
 
 .italic{
@@ -2710,8 +2708,26 @@ input[type="search"]::-webkit-search-results-decoration {
     mix-blend-mode: hard-light;
 } */
 
-.Max {
-  fill: radial-gradient(circle at center, #5577FF 0%, #7766FF 30%, #9944FF 50%, #BB22FF 70%, #DD00FF 100%);
+/* .Max {
+    fill: radial-gradient(circle at center, #5577FF 0%, #7766FF 30%, #9944FF 50%, #BB22FF 70%, #DD00FF 100%);
+} */
+
+.axis
+{
+  font: 10px sans-serif;
+}
+
+.axis path
+{
+  display: none;
+}
+
+.axis path,
+.axis line
+{
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
 }
 
 .before\:pointer-events-none::before{
@@ -3234,16 +3250,12 @@ input[type="search"]::-webkit-search-results-decoration {
     grid-column: span 3 / span 3;
   }
 
-  .md\:col-span-6{
-    grid-column: span 6 / span 6;
-  }
-
-  .md\:col-span-8{
-    grid-column: span 8 / span 8;
-  }
-
   .md\:col-span-4{
     grid-column: span 4 / span 4;
+  }
+
+  .md\:col-span-6{
+    grid-column: span 6 / span 6;
   }
 
   .md\:block{
@@ -3382,10 +3394,6 @@ input[type="search"]::-webkit-search-results-decoration {
 
   .lg\:col-span-4{
     grid-column: span 4 / span 4;
-  }
-
-  .lg\:col-span-6{
-    grid-column: span 6 / span 6;
   }
 
   .lg\:w-1\/2{

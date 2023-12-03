@@ -68,3 +68,23 @@ function createVis(data) {
     let sp500Vis = new DonutChart("sp500vis", sp500Data);
     let cloudVis = new LineVis("cloudvis", cloudData);
 }
+
+function calculateDataStaleness() {
+    const lastUpdatedDate = new Date("2023-11-01"); // Adjust this to your actual last update date
+    const currentDate = new Date();
+
+    const differenceInTime = currentDate.getTime() - lastUpdatedDate.getTime();
+    const differenceInDays = Math.ceil(differenceInTime / (1000 * 3600 * 24));
+
+    return differenceInDays;
+}
+
+function displayDataStaleness() {
+    const daysStale = calculateDataStaleness();
+    const stalenessInfo = `Data freshness: <span class='font-black'>${daysStale}</span> days since last update.`;
+    
+    const dataStalenessElement = document.getElementById("dataStalenessInfo");
+    dataStalenessElement.innerHTML = stalenessInfo;
+}
+
+displayDataStaleness();

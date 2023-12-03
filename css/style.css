@@ -36,6 +36,24 @@
     mix-blend-mode: hard-light;
 } */
 
-.Max {
+/* .Max {
     fill: radial-gradient(circle at center, #5577FF 0%, #7766FF 30%, #9944FF 50%, #BB22FF 70%, #DD00FF 100%);
+} */
+
+.axis
+{
+  font: 10px sans-serif;
+}
+
+.axis path
+{
+  display: none;
+}
+
+.axis path,
+.axis line
+{
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
 }
