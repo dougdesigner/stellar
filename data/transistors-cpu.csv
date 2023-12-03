@@ -38,7 +38,7 @@ NEC V60 [35] (32-bit; no cache),"375,000",1986,NEC,"1,500 nm",?,?,CPU
 "ARM 2 (32-bit, 84-pin; no cache)","27,000",1986,Acorn,"2,000 nm",30.25 mm 2,890,CPU
 Z80000 (32-bit; very small cache),"91,000",1986,Zilog,?,?,?,CPU
 NEC V70 [35] (32-bit; no cache),"385,000",1987,NEC,"1,500 nm",?,?,CPU
-Hitachi Gmicro/200 [37],"730,000",1987,Hitachi,"1,000 nm",?,?,CPU
+Hitachi Gmicro/200,"730,000",1987,Hitachi,"1,000 nm",?,?,CPU
 "Motorola 68030 (32-bit, very small caches)","273,000",1987,Motorola,800 nm,102 mm 2,"2,680",CPU
 TI Explorer 's 32-bit Lisp machine chip,"553,000",1987,Texas Instruments,"2,000 nm [39]",?,?,CPU
 DEC WRL MultiTitan,"180,000",1988,DEC WRL,"1,500 nm",61 mm 2,"2,950",CPU
@@ -76,7 +76,7 @@ F21 (21-bit; includes e.g. video ),"15,000",1997,Offete Enterprises,?,?,?,CPU
 "Pentium II Deschutes (32-bit, large cache)","7,500,000",1998,Intel,250 nm,113 mm 2,"66,000",CPU
 Alpha 21264 EV6 (64-bit),"15,200,000",1998,DEC,350 nm,313.96 mm 2,"48,400",CPU
 "Alpha 21164PC PCA57 (64-bit, 48 kB cache)","5,700,000",1998,Samsung,280 nm,100.5 mm 2,"56,700",CPU
-"Hitachi SH-4 (32-bit, caches) [62]","3,200,000",1998,Hitachi,250 nm,57.76 mm 2,"55,400",CPU
+"Hitachi SH-4 (32-bit, caches)","3,200,000",1998,Hitachi,250 nm,57.76 mm 2,"55,400",CPU
 "ARM 9TDMI (32-bit, no cache)","111,000",1999,Acorn,350 nm,4.8 mm 2,"23,100",CPU
 "Pentium III Katmai (32-bit, 128-bit SIMD, caches)","9,500,000",1999,Intel,250 nm,128 mm 2,"74,000",CPU
 "Emotion Engine (64-bit, 128-bit SIMD , cache)","13,500,000",1999,"Sony , Toshiba",250 nm,239.7 mm 2 [64],"43,800 56,300",CPU
@@ -207,7 +207,7 @@ HiSilicon Kirin 990 4G,"8,000,000,000",2019,Huawei,7 nm,90.00 mm 2,"89,000,000
 IBM z15 SC chip (960 MB L4 cache),"12,200,000,000",2019,IBM,14 nm,696 mm 2,"17,530,000",CPU
 "AMD Ryzen 9 3900X (64-bit, SIMD , caches, I/O die)","9,890,000,000",2019,AMD,7 & 12 nm ( TSMC ),273 mm 2,"36,230,000",CPU
 HiSilicon Kirin 990 5G,"10,300,000,000",2019,Huawei,7 nm,113.31 mm 2,"90,900,000",CPU
-"AWS Graviton2 (64-bit, 64-core ARM-based, SIMD , caches) [144] [145]","30,000,000,000",2019,Amazon,7 nm,?,?,CPU
+"AWS Graviton2 (64-bit, 64-core ARM-based, SIMD , caches)","30,000,000,000",2019,Amazon,7 nm,?,?,CPU
 "AMD Epyc Rome (64-bit, SIMD , caches)","39,540,000,000",2019,AMD,7 & 12 nm ( TSMC ),"1,008 mm 2","39,226,000",CPU
 "Qualcomm Snapdragon 865 (octa-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","10,300,000,000",2019,Qualcomm,7 nm,83.54 mm 2 [147],"123,300,000",CPU
 "TI Jacinto TDA4VM (ARM A72, DSP, SRAM)","3,500,000,000",2020,Texas Instruments,16 nm,?,?,CPU
@@ -235,8 +235,8 @@ Dimensity 9000 (ARM64 SoC),"15,300,000,000",2021,Mediatek,4 nm (TSMC N4),?,?,CP
 Apple A16 (ARM64 SoC),"16,000,000,000",2022,Apple,4 nm,?,?,CPU
 Dimensity 9200 (ARM64 SoC),"17,000,000,000",2022,Mediatek,4 nm (TSMC N4P),?,?,CPU
 "Qualcomm Snapdragon 8 Gen 2 (octa-core ARM64 ""mobile SoC"", SIMD , caches)","16,000,000,000",2022,Qualcomm,4 nm,268 mm 2,"59,701,492",CPU
-AMD EPYC Genoa (4th gen/9004 series) 13-chip module (up to 96 cores and 384 MB (L3) + 96 MB (L2) cache) [183],"90,000,000,000",2022,AMD,5 nm (CCD) 6 nm (IOD),"1,263.34 mm² 12×72.225 (CCD) 396.64 (IOD) [187] [188]","71,240,000",CPU
-Sapphire Rapids quad-chip module (up to 60 cores and 112.5 MB of cache) [189],"48,000,000,000",2023,Intel,10 nm ESF (Intel 7),"1,600 mm 2","27,500,000– 30,000,000",CPU
+AMD EPYC Genoa (4th gen/9004 series) 13-chip module (up to 96 cores and 384 MB (L3) + 96 MB (L2) cache),"90,000,000,000",2022,AMD,5 nm (CCD) 6 nm (IOD),"1,263.34 mm² 12×72.225 (CCD) 396.64 (IOD) [187] [188]","71,240,000",CPU
+Sapphire Rapids quad-chip module (up to 60 cores and 112.5 MB of cache),"48,000,000,000",2023,Intel,10 nm ESF (Intel 7),"1,600 mm 2","27,500,000– 30,000,000",CPU
 "M2 Pro (12-core 64-bit ARM64 SoC, SIMD , caches)","40,000,000,000",2023,Apple,5 nm,?,?,CPU
 "M2 Max (12-core 64-bit ARM64 SoC, SIMD , caches)","67,000,000,000",2023,Apple,5 nm,?,?,CPU
 M2 Ultra (two M2 Max dies),"134,000,000,000",2023,Apple,5 nm,?,?,CPU

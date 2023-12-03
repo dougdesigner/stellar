@@ -13,7 +13,7 @@ class BarVis {
         const element = document.getElementById(vis.parentElement);
         vis.margin = { top: 100, right: 40, bottom: 100, left: 100 };
         vis.width = element.offsetWidth - vis.margin.left - vis.margin.right;
-        vis.height = 500 - this.margin.top - this.margin.bottom;
+        vis.height = 600 - this.margin.top - this.margin.bottom;
 
         // Create SVG canvas
         vis.svg = d3.select("#" + vis.parentElement)
@@ -183,14 +183,14 @@ class BarVis {
             .attr("fill", d => d.version ? vis.colorScale(d.version) : "#ccc")
             .on("mouseover", function(event, d) {
                 // console.log(d.date)
-                const trans = d.value / 1e9
+                const translateValue = d.value / 1e9
                 vis.tooltip.transition()        
                     .duration(200)      
                     .style("opacity", 1);      
                 vis.tooltip.html(
                     `<span class="text-lg font-bold text-slate-700">${d.product}</span><<br/>
                     <span class="text-base font-medium text-slate-500">Transistors: 
-                        <span class="text-slate-600 font-bold">${trans} billion</span>
+                        <span class="text-slate-600 font-bold">${translateValue} billion</span>
                     </span><br/>
                     <span class="text-base font-medium text-slate-500">Release Date: 
                         <span class="text-slate-600 font-bold">${d.date}</span>

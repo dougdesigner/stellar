@@ -624,7 +624,7 @@
                                         <svg class="shrink-0 fill-purple-500 mr-3" xmlns="http://www.w3.org/2000/svg" width="12" height="9">
                                             <path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z" />
                                         </svg>
-                                        <span><span class="md:hidden">Large Language Models: </span>Bedrock</span>
+                                        <span><span class="md:hidden">Large Language Models: </span>Bedrock, Titan (FM)</span>
                                     </div>
                                 </div>
                                
@@ -886,7 +886,7 @@
 
 
                         <!-- Highlighted boxes -->
-                        <div class="relative pb-6">
+                        <div class="max-w-6xl relative pb-6">
                             <!-- Blurred shape -->
                             <div class="absolute bottom-0 -mb-20 left-1/2 -translate-x-1/2 blur-2xl opacity-50 pointer-events-none" aria-hidden="true">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="434" height="427">
@@ -901,7 +901,7 @@
                             </div>
                             <!-- Grid -->
 
-                            <div class="max-w-3xl mx-auto" data-highlighter>
+                            <div class="mx-auto" data-highlighter>
                                 <!-- Box #1 -->
                                 <div class="md:col-span-12" data-aos="fade-down">
                                     <div class="relative h-full bg-slate-800 rounded-3xl p-px before:absolute before:w-96 before:h-96 before:-left-48 before:-top-48 before:bg-purple-500 before:rounded-full before:opacity-0 before:pointer-events-none before:transition-opacity before:duration-500 before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)] before:hover:opacity-20 before:z-30 before:blur-[100px] after:absolute after:inset-0 after:rounded-[inherit] after:opacity-0 after:transition-opacity after:duration-500 after:[background:_radial-gradient(250px_circle_at_var(--mouse-x)_var(--mouse-y),theme(colors.slate.400),transparent)] after:group-hover:opacity-100 after:z-10 overflow-hidden">
@@ -964,7 +964,7 @@
                                 <p class="text-sm text-slate-400">Enable for All or only the Highlighted Designer</p>
 
                                 <div class="flex mt-2 items-center py-1.5" x-data="{ on: false }">
-                                    <button type="button" class="scatter-toggle-button relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 bg-indigo-600" role="switch" aria-checked="true" x-ref="switch" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'bg-indigo-600': on, 'bg-slate-200': !(on) }" aria-labelledby="annual-billing-label" :aria-checked="on.toString()" @click="on = !on" id="scatter-toggle-button">
+                                    <button type="button" class="scatter-toggle-button relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 bg-indigo-600" role="switch" aria-checked="true" x-ref="switch" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'bg-indigo-600': on, 'bg-slate-400': !(on) }" aria-labelledby="annual-billing-label" :aria-checked="on.toString()" @click="on = !on" id="scatter-toggle-button">
                                       <span aria-hidden="true" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-5" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'translate-x-5': on, 'translate-x-0': !(on) }"></span>
                                     </button>
                                     <span class="ml-3 text-sm" id="annual-billing-label" @click="on = !on; $refs.switch.focus()">

@@ -279,9 +279,10 @@ class ScatterVis {
                 let imageUrl = imageObj ? imageObj.imageUrl : null;
 
                 // console.log(imageUrl);
+                let translateValue = d3.format(",.2r")(d.TransistorCount);
 
                 if (d.TransistorCount > 1e9) {
-
+                    translateValue = d.TransistorCount / 1e9 + " billion";
                 }
 
                 const trans = d.value / 1e9
@@ -296,15 +297,17 @@ class ScatterVis {
                     <span class="text-base font-medium text-slate-500">Processor: 
                         <span class="text-slate-600 font-bold">${d.Processor}</span>
                     </span><br/>
-                    <span class="text-base font-medium text-slate-500">Type: 
-                        <span class="text-slate-600 font-bold">${d.Type}</span>
-                    </span><br/>
+                    
                     <span class="text-base font-medium text-slate-500">Transistors: 
-                        <span class="text-slate-600 font-bold">${d3.format(".4s")(d.TransistorCount)}</span>
+                        <span class="text-slate-600 font-bold">${translateValue}</span>
                     </span><br/>
                     <span class="text-base font-medium text-slate-500">Year: 
                         <span class="text-slate-600 font-bold">${d.Year.getFullYear()}</span>
-                    </span><br/>`
+                    </span><br/>
+                    <span class="text-base font-medium text-slate-500">Type: 
+                        <span class="text-slate-600 font-bold">${d.Type}</span>
+                    </span><br/>
+                    `
                 )  
                 .style("left", (event.pageX + 20) + "px")   
                 .style("top", (event.pageY - 20) + "px");  
