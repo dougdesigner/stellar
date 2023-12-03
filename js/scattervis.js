@@ -194,6 +194,10 @@ class ScatterVis {
             { company: "Nvidia", imageUrl: "/images/m7/Nvidia-n.svg" },
             { company: "Meta", imageUrl: "/images/m7/Meta-m.svg" },
             { company: "Tesla", imageUrl: "/images/m7/Tesla-T.svg" },
+            { company: "IBM", imageUrl: "/images/ibm.svg" },
+            { company: "Qualcomm", imageUrl: "/images/qualcomm.svg" },
+            { company: "Intel", imageUrl: "/images/intel.svg" },
+            { company: "AMD", imageUrl: "/images/amd.svg" },
         ];
 
         // Add the Moore's Law line
@@ -264,7 +268,7 @@ class ScatterVis {
             // .attr("clip-path", "url(#clip)")
             .merge(vis.dots)
             .attr("class", null) // Remove the class from the dots
-            .attr("cx", d => vis.x(d.Year))
+            .attr("cx", d => vis.x(d.Year) + (Math.random() - 0.5) * 20)
             .attr("cy", vis.height)
             .attr("r", 7)
             .style('stroke', 'white')
