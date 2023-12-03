@@ -2059,6 +2059,12 @@ input[type="search"]::-webkit-search-results-decoration {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
+.from-slate-400\/60{
+  --tw-gradient-from: rgb(148 163 184 / 0.6) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(148 163 184 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
 .via-slate-200{
   --tw-gradient-to: rgb(226 232 240 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), #e2e8f0 var(--tw-gradient-via-position), var(--tw-gradient-to);
@@ -2079,6 +2085,10 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .to-white\/80{
   --tw-gradient-to: rgb(255 255 255 / 0.8) var(--tw-gradient-to-position);
+}
+
+.to-slate-400\/60{
+  --tw-gradient-to: rgb(148 163 184 / 0.6) var(--tw-gradient-to-position);
 }
 
 .bg-clip-text{
