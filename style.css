@@ -1485,6 +1485,10 @@ input[type="search"]::-webkit-search-results-decoration {
   margin-top: 2rem;
 }
 
+.mb-12{
+  margin-bottom: 3rem;
+}
+
 .block{
   display: block;
 }
@@ -3311,6 +3315,10 @@ input[type="search"]::-webkit-search-results-decoration {
 
   .md\:col-span-7{
     grid-column: span 7 / span 7;
+  }
+
+  .md\:mb-20{
+    margin-bottom: 5rem;
   }
 
   .md\:block{
