@@ -78,9 +78,9 @@ class BarVis {
 
         // Add title
         vis.svg.append("text")
-            .attr("x", vis.width / 2)
+            .attr("x", 0)
             .attr("y", -80)
-            .attr("text-anchor", "middle")
+            .attr("text-anchor", "left")
             .style("font-size", "20px")
             .style("font-weight", "bold")
             .style("fill", "white")
@@ -89,9 +89,9 @@ class BarVis {
 
         // Add subtitle
         vis.svg.append("text")
-            .attr("x", vis.width / 2)
+            .attr("x", 0)
             .attr("y", -50)
-            .attr("text-anchor", "middle")
+            .attr("text-anchor", "left")
             .style("font-size", "16px")
             .style("fill", "#94A3B8")
             .text("Each new generation of Apple Silicon has increased in transistor count except for the Pro Version");

@@ -71,9 +71,9 @@ class LineVis {
 
       // Add title
       vis.svg.append("text")
-        .attr("x", (vis.width / 2) - vis.margin.left)
+        .attr("x", 0)
         .attr("y", -80)
-        .attr("text-anchor", "middle")
+        .attr("text-anchor", "left")
         .style("font-size", "20px")
         .style("font-weight", "bold")
         .style("fill", "white")
@@ -82,9 +82,9 @@ class LineVis {
 
       // Add subtitle
       vis.svg.append("text")
-          .attr("x", vis.width / 2)
+          .attr("x", 0)
           .attr("y", -50)
-          .attr("text-anchor", "middle")
+          .attr("text-anchor", "left")
           .style("font-size", "16px")
           .style("fill", "#94A3B8")
           .text("Cloud computing power is consolidated in the hands of Amazon, Microsoft, and Google");

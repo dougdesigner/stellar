@@ -45,9 +45,9 @@ class DonutChart {
         
         // Append Title
         vis.svg.append("text")
-            .attr("x", 0)
+            .attr("x", -vis.width / 2 + vis.margin.left)
             .attr("y", -vis.height / 2 - 100 )
-            .attr("text-anchor", "middle")
+            .attr("text-anchor", "left")
             .style("font-size", "20px")
             .style("font-weight", "bold")
             .style("fill", "white")
@@ -56,9 +56,9 @@ class DonutChart {
 
         // Append Subtitle
         vis.svg.append("text")
-            .attr("x", 0)
+            .attr("x", -vis.width / 2 + vis.margin.left)
             .attr("y", -vis.height / 2 - 70)
-            .attr("text-anchor", "middle")
+            .attr("text-anchor", "left")
             .style("font-size", "16px")
             .style("fill", "#94A3B8")
             .text("Share of Apple, Microsoft, Alphabet, Amazon, Nvidia, Meta, and Tesla by Market Cap");

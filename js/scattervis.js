@@ -67,9 +67,9 @@ class ScatterVis {
 
         // Add title
         vis.svg.append("text")
-            .attr("x", vis.width / 2)
+            .attr("x", 0)
             .attr("y", -80)
-            .attr("text-anchor", "middle")
+            .attr("text-anchor", "left")
             .style("font-size", "20px")
             .style("font-weight", "bold")
             .style("fill", "white")
@@ -78,9 +78,9 @@ class ScatterVis {
 
         // Add subtitle
         vis.svg.append("text")
-            .attr("x", vis.width / 2)
+            .attr("x", 0)
             .attr("y", -50)
-            .attr("text-anchor", "middle")
+            .attr("text-anchor", "left")
             .style("font-size", "16px")
             .style("fill", "#94A3B8")
             .text("The number of transistors on integrated circuits has doubled approximately every two years");
