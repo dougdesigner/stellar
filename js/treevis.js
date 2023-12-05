@@ -16,7 +16,7 @@ const element = document.getElementById("customvis");
             .attr("height", height)
         
         var tree = d3.tree()
-            .size([height - 100, width - marginRight]);
+            .size([height - 40, width - marginRight]);
         
         var cluster = d3.cluster()
             .size([height, width - marginRight]);
@@ -46,7 +46,7 @@ const element = document.getElementById("customvis");
         
           node.append("circle")
                 .attr("stroke", "#fff")
-                .attr("stroke-width", 2)
+                .attr("stroke-width", 1)
                 .attr("r", 5);
         
           node.append("text")
