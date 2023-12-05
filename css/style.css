@@ -57,3 +57,50 @@
   stroke: #000;
   shape-rendering: crispEdges;
 }
+
+.grid line {
+   stroke: lightgrey;
+   stroke-opacity: 0.7;
+   shape-rendering: crispEdges;
+}
+
+/* Custom Vis */
+.node circle {
+  fill: #999;
+}
+
+.node text {
+  font: 12px sans-serif;
+  fill: white;
+}
+
+.node--internal circle {
+  fill: #c084fc;
+}
+
+.node--internal text {
+  /* text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff; */
+  fill: white;
+  font-weight: bold;
+}
+
+.node--leaf circle {
+  fill: #c084fc;
+}
+
+.node--leaf text {
+  fill: white;
+}
+
+.link {
+  fill: none;
+  stroke: #a855f7;
+  stroke-opacity: 0.4;
+  stroke-width: 1.5px;
+}
+
+.custom-form {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
