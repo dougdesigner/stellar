@@ -59,7 +59,7 @@ class LineVis {
 
       // Add Y axis label
       vis.svg.append("text")
-        .attr("class", "y-label")
+        .attr("class", "y-label y-label-line")
         .attr("transform", "rotate(-90)")
         .attr("y", -60)
         .attr("x", -200)
@@ -106,6 +106,9 @@ class LineVis {
         // Process data to group by company
         vis.companyData = Array.from(d3.group(vis.data, d => d.Company), ([key, value]) => ({ key, value }));
 
+        // Set domains for the scales
+        vis.x.domain([...new Set(vis.data.map(d => d.Quarter))]);
+
       vis.wrangleData();
   }
 
@@ -117,18 +120,13 @@ class LineVis {
 
   updateVis() {
     let vis = this;
+    // console.log("Line vis updated");
 
-    // Set domains for the scales
-    vis.x.domain([...new Set(vis.data.map(d => d.Quarter))]);
     // Update the y-scale domain based on the selected view
     vis.y.domain([0, d3.max(vis.data, d => d[vis.view])]);
-    // vis.y.domain([0, d3.max(vis.data, d => d['Market Share'])]);
 
     // Create a color scale based on company names
     const companyNames = vis.companyData.map(d => d.key);
-    // const colorScale = d3.scaleOrdinal()
-    //   .domain(companyNames)
-    //   .range(d3.schemeCategory10);
 
     // Define your array of hex colors
     const myColors = ['#05A6F0', '#4285F4', '#FF9900'];
@@ -269,10 +267,10 @@ class LineVis {
     vis.companies.exit().remove();
 
     if (vis.view === "Market Share") {
-    d3.selectAll(".y-label").text("Market Share (%)");
+    d3.selectAll(".y-label-line").text("Market Share (%)");
 
     } else {
-        d3.selectAll(".y-label").text("YoY Growth (%)");
+        d3.selectAll(".y-label-line").text("YoY Growth (%)");
     }
 
     // Call axes

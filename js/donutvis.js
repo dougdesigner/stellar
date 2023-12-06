@@ -198,7 +198,7 @@ class DonutChart {
                         <span class="text-slate-600 font-bold">${d.data.MarketCap}</span>
                     </span><br/>
                     <span class="text-base font-medium text-slate-500">Return YTD: 
-                        <span class="text-emerald-500 font-bold">${d.data.ReturnYTD}
+                        <span class="text-emerald-600 font-bold">${d.data.ReturnYTD}
                     </span>`
                 )  
                 .style("left", (event.pageX + 20) + "px")   

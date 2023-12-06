@@ -11,7 +11,7 @@ Generative AI Stack.Applications.Copilots.Google.Bard,
 Generative AI Stack.Applications.Code Assistants,
 Generative AI Stack.Applications.Code Assistants.Amazon,
 Generative AI Stack.Applications.Code Assistants.Amazon.CodeWhisperer,
-Generative AI Stack.Applications.Code Assistants.Microsoft,
+Generative AI Stack.Applications.Code Assistants.Microsoft,https://copilot.microsoft.com/
 Generative AI Stack.Applications.Code Assistants.Microsoft.Github Copilot,
 Generative AI Stack.Applications.Code Assistants.Google,
 Generative AI Stack.Applications.Code Assistants.Google.Duet AI,

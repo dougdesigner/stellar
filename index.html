@@ -28,7 +28,7 @@
                     <div class="shrink-0 mr-4">
                         <!-- Logo -->
                         <a class="block" href="index.html" aria-label="Cruip">
-                            <h3 class="h3 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60">🪄</h3>
+                            <h3 class="h3">🧠</h3>
                             <!-- <img src="./images/logo.svg" width="38" height="38" alt="Stellar"> -->
                         </a>
                     </div>
@@ -208,6 +208,12 @@
                         </div>
                     </div>
 
+
+
+
+
+
+
                     <div class="pt-16 pb-12 md:pt-52 md:pb-20">
 
                         <div x-data="{ tab: '1' }">
@@ -351,8 +357,279 @@
                         </div>
 
                     </div>
+
+
+
+                    <!-- Highlighted boxes -->
+                    <div class="relative pb-12 md:pb-20">
+                        <!-- Blurred shape -->
+                        <div class="absolute bottom-0 -mb-20 left-1/2 -translate-x-1/2 blur-2xl opacity-50 pointer-events-none" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="434" height="427">
+                                <defs>
+                                    <linearGradient id="bs2-a" x1="19.609%" x2="50%" y1="14.544%" y2="100%">
+                                        <stop offset="0%" stop-color="#6366F1" />
+                                        <stop offset="100%" stop-color="#6366F1" stop-opacity="0" />
+                                    </linearGradient>
+                                </defs>
+                                <path fill="url(#bs2-a)" fill-rule="evenodd" d="m346 898 461 369-284 58z" transform="translate(-346 -898)" />
+                            </svg>
+                        </div>
+                        <!-- Grid -->
+                        <div class="grid md:grid-cols-12 gap-6 group" data-highlighter>
+                            <!-- Box #1 -->
+                            <div class="md:col-span-12" data-aos="fade-down">
+                                <div class="relative h-full bg-slate-800 rounded-3xl p-px before:absolute before:w-96 before:h-96 before:-left-48 before:-top-48 before:bg-purple-500 before:rounded-full before:opacity-0 before:pointer-events-none before:transition-opacity before:duration-500 before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)] before:hover:opacity-20 before:z-30 before:blur-[100px] after:absolute after:inset-0 after:rounded-[inherit] after:opacity-0 after:transition-opacity after:duration-500 after:[background:_radial-gradient(250px_circle_at_var(--mouse-x)_var(--mouse-y),theme(colors.slate.400),transparent)] after:group-hover:opacity-100 after:z-10 overflow-hidden">
+                                    <div class="relative h-full bg-slate-900 rounded-[inherit] z-20 overflow-hidden">
+                                        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                                            <!-- Blurred shape -->
+                                            <div class="absolute right-0 top-0 blur-2xl" aria-hidden="true">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="342" height="393">
+                                                    <defs>
+                                                        <linearGradient id="bs-a" x1="19.609%" x2="50%" y1="14.544%" y2="100%">
+                                                            <stop offset="0%" stop-color="#6366F1" />
+                                                            <stop offset="100%" stop-color="#6366F1" stop-opacity="0" />
+                                                        </linearGradient>
+                                                    </defs>
+                                                    <path fill="url(#bs-a)" fill-rule="evenodd" d="m104 .827 461 369-284 58z" transform="translate(0 -112.827)" opacity=".7" />
+                                                </svg>
+                                            </div>
+                                            <!-- Radial gradient -->
+                                            <!-- <div class="absolute flex items-center justify-center bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none -z-10 h-full aspect-square" aria-hidden="true">
+                                                <div class="absolute inset-0 translate-z-0 bg-purple-500 rounded-full blur-[120px] opacity-70"></div>
+                                                <div class="absolute w-1/4 h-1/4 translate-z-0 bg-purple-400 rounded-full blur-[40px]"></div>
+                                            </div>
+    -->
+
+                                            <!-- Text -->
+                                            <div class="w-full p-6">
+                                                
+                                                <!-- Filter -->
+                                                <div class="custom-form mx-auto max-w-7xl px-4 py-4">
+                                                    <!-- We've used 3xl here, but feel free to try other max-widths based on your needs -->
+                                                    <div class="mx-auto max-w-3xl">
+                                                        <!-- Content goes here -->
+                                                        <div>
+                                                        <p class="text-base font-semibold text-slate-50">View</p>
+                                                        <p class="text-sm text-slate-400">Generative AI Stack as Dendrogram or Tree</p>
+
+                                                        <fieldset class="mt-2">
+                                                            <legend class="sr-only">View</legend>
+                                                            <div class="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
+                                                                
+                                                                <div class="flex items-center">
+
+                                                                    <input id="viewDendo" class="custom-input h-4 w-4 border-slate-300 text-indigo-600 focus:ring-indigo-600" type="radio" name="mode" value="cluster" checked>
+                                                                    <label for="viewDendo" class="ml-3 block text-sm font-medium leading-6 text-slate-50" >Dendrogram</label>
+                                                                </div>
+                        
+                                                                <div class="flex items-center">
+
+                                                                    <input id="viewTree" class="custom-input h-4 w-4 border-slate-300 text-indigo-600 focus:ring-indigo-600" type="radio" name="mode" value="tree">
+                                                                    <label for="viewTree" class="ml-3 block text-sm font-medium leading-6 text-slate-50">Tree</label>
+                                                                </div>
+                        
+                                                            </div>
+                                                        </fieldset>
+                                                        
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="customvis" class="w-full"></div>
+        
+
+                                                <div>
+                                                    <!-- <a class="btn-sm text-slate-300 hover:text-white transition duration-150 ease-in-out group [background:linear-gradient(theme(colors.slate.900),_theme(colors.slate.900))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] relative before:absolute before:inset-0 before:bg-slate-800/30 before:rounded-full before:pointer-events-none" href="#0">
+                                                        <span class="relative inline-flex items-center">
+                                                            Learn more <span class="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
+                                                        </span>
+                                                    </a> -->
+                                                </div>
+                                            </div>
+
+                                            <!-- Image -->
+                                            <!-- <div class="relative w-full h-64 md:h-auto overflow-hidden">
+                                                <img class="absolute bottom-0 left-1/2 -translate-x-1/2 mx-auto max-w-none md:relative md:left-0 md:translate-x-0" src="./images/feature-image-01.png" width="504" height="400" alt="Feature 01">
+                                            </div> -->
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <!-- Box #2 -->
+                            <div class="hidden md:col-span-7" data-aos="fade-down">
+                                <div class="relative h-full bg-slate-800 rounded-3xl p-px before:absolute before:w-96 before:h-96 before:-left-48 before:-top-48 before:bg-purple-500 before:rounded-full before:opacity-0 before:pointer-events-none before:transition-opacity before:duration-500 before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)] before:hover:opacity-20 before:z-30 before:blur-[100px] after:absolute after:inset-0 after:rounded-[inherit] after:opacity-0 after:transition-opacity after:duration-500 after:[background:_radial-gradient(250px_circle_at_var(--mouse-x)_var(--mouse-y),theme(colors.slate.400),transparent)] after:group-hover:opacity-100 after:z-10 overflow-hidden">
+                                    <div class="relative h-full bg-slate-900 rounded-[inherit] z-20 overflow-hidden">
+                                        <div class="flex flex-col">
+
+
+                                            <!-- Radial gradient -->
+                                            <div class="absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none -z-10 w-1/2 aspect-square" aria-hidden="true">
+                                                <div class="absolute inset-0 translate-z-0 bg-slate-800 rounded-full blur-[80px]"></div>
+                                            </div>
+
+
+                                            <!-- Text -->
+                                            <div class="shrink-0 order-1 md:order-none p-6 pt-0 md:p-8">
+                                                <div>
+
+                                                    <!-- <h3 class="inline-flex text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-1">[Placeholder] Extensibility</h3>
+                                                    <p class="text-slate-400">Your login box must find the right balance between user convenience, privacy and security.</p> -->
+
+                                                    <div class="not-prose relative bg-slate-50 rounded-xl overflow-hidden dark:bg-slate-800/25">
+                                                        <div style="background-position:10px 10px" class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))] dark:bg-grid-slate-700/25 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]"></div>
+                                                        <div class="relative rounded-xl overflow-auto">
+                                                            <div class="shadow-sm overflow-hidden my-8">
+                                                                <table class="border-collapse table-auto w-full text-sm">
+                                                                    <thead>
+                                                                        <tr>
+                                                                        <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Microprocessor</th>
+                                                                        <th class="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Release Date</th>
+                                                                        <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Type</th>
+                                                                        <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Transistors</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody class="bg-white dark:bg-slate-800">
+                                                                        <tr>
+                                                                        <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                                                                        <td class="border-b border-slate-100 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">Malcolm Lockyer</td>
+                                                                        <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">1961</td>
+                                                                        <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">1961</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                        <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">Witchy Woman</td>
+                                                                        <td class="border-b border-slate-100 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">The Eagles</td>
+                                                                        <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">1972</td>
+                                                                        <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">1961</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                        <td class="border-b border-slate-200 dark:border-slate-600 p-4 pl-8 text-slate-500 dark:text-slate-400">Shining Star</td>
+                                                                        <td class="border-b border-slate-200 dark:border-slate-600 p-4 text-slate-500 dark:text-slate-400">Earth, Wind, and Fire</td>
+                                                                        <td class="border-b border-slate-200 dark:border-slate-600 p-4 pr-8 text-slate-500 dark:text-slate-400">1975</td>
+                                                                        <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">1961</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <div class="absolute inset-0 pointer-events-none border border-black/5 rounded-xl dark:border-white/5"></div>
+                                                    </div>
+
+                                                    
+                                    
+
+                                                </div>
+                                            </div>
+                                            <!-- Image -->
+                                            <!-- <div class="relative w-full h-64 md:h-auto overflow-hidden md:pb-8">
+                                                <img class="absolute bottom-0 left-1/2 -translate-x-1/2 mx-auto max-w-none md:max-w-full md:relative md:left-0 md:translate-x-0" src="./images/feature-image-02.png" width="536" height="230" alt="Feature 02">
+                                            </div> -->
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- Box #3 -->
+                            <div class="hidden md:col-span-5" data-aos="fade-down">
+                                <div class="relative h-full bg-slate-800 rounded-3xl p-px before:absolute before:w-96 before:h-96 before:-left-48 before:-top-48 before:bg-purple-500 before:rounded-full before:opacity-0 before:pointer-events-none before:transition-opacity before:duration-500 before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)] before:hover:opacity-20 before:z-30 before:blur-[100px] after:absolute after:inset-0 after:rounded-[inherit] after:opacity-0 after:transition-opacity after:duration-500 after:[background:_radial-gradient(250px_circle_at_var(--mouse-x)_var(--mouse-y),theme(colors.slate.400),transparent)] after:group-hover:opacity-100 after:z-10 overflow-hidden">
+                                    <div class="relative h-full bg-slate-900 rounded-[inherit] z-20 overflow-hidden">
+                                        <div class="flex flex-col">
+
+                                            <!-- Radial gradient -->
+                                            <div class="absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none -z-10 w-1/2 aspect-square" aria-hidden="true">
+                                                <div class="absolute inset-0 translate-z-0 bg-slate-800 rounded-full blur-[80px]"></div>
+                                            </div>
+
+                                            <!-- Text -->
+                                            <div class="md:max-w-[480px] shrink-0 order-1 md:order-none p-6 pt-0 md:p-8">
+                                                <div>
+
+                                                        <dl class="grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+                                                            <div class="px-4 py-5 sm:p-6">
+                                                            <dt class="text-base font-normal text-gray-900">Market Cap</dt>
+                                                            <dd class="mt-1 flex items-baseline justify-between md:block lg:flex">
+                                                                <div class="flex items-baseline text-2xl font-semibold text-indigo-600">
+                                                                $2.95
+                                                                <span class="ml-2 text-sm font-medium text-gray-500">trillion</span>
+                                                                </div>
+                                                        
+                                                                <div class="inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium bg-green-100 text-green-800 md:mt-2 lg:mt-0">
+                                                                <svg class="-ml-1 mr-0.5 h-5 w-5 flex-shrink-0 self-center text-green-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                                    <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd" />
+                                                                </svg>
+                                                                <span class="sr-only"> Year to Date Return </span>
+                                                                22%
+                                                                </div>
+                                                            </dd>
+                                                            </div>
+                                                            <div class="px-4 py-5 sm:p-6">
+                                                            <dt class="text-base font-normal text-gray-900">Magnificent 7</dt>
+                                                            <dd class="mt-1 flex items-baseline justify-between md:block lg:flex">
+                                                                <div class="flex items-baseline text-2xl font-semibold text-indigo-600">
+                                                                25%
+                                                                <span class="ml-2 text-sm font-medium text-gray-500">Index Share</span>
+                                                                </div>
+                                                            
+                                                        
+                                                                <div class="inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium bg-blue-100 text-blue-800 md:mt-2 lg:mt-0">
+                                                                <!-- <svg class="-ml-1 mr-0.5 h-5 w-5 flex-shrink-0 self-center text-blue-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                                    <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd" />
+                                                                </svg> -->
+                                                                <span class="text-blue-500 font-bold">#&nbsp</span>
+                                                                <span class="sr-only"> Rank </span>
+                                                                1
+                                                                </div>
+                                                            </dd>
+                                                            </div>
+                                                            <div class="px-4 py-5 sm:p-6">
+                                                            <dt class="text-base font-normal text-gray-900">S&P 500</dt>
+                                                            <dd class="mt-1 flex items-baseline justify-between md:block lg:flex">
+                                                                <div class="flex items-baseline text-2xl font-semibold text-indigo-600">
+                                                                7%
+                                                                <span class="ml-2 text-sm font-medium text-gray-500">Index Share</span>
+                                                                </div>
+                                                            
+                                                        
+                                                                <div class="inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium bg-blue-100 text-blue-800 md:mt-2 lg:mt-0">
+                                                                <!-- <svg class="-ml-1 mr-0.5 h-5 w-5 flex-shrink-0 self-center text-blue-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                                    <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd" />
+                                                                </svg> -->
+                                                                <span class="text-blue-500 font-bold">#&nbsp</span>
+                                                                <span class="sr-only"> Rank </span>
+                                                                1
+                                                                </div>
+                                                            </dd>
+                                                            </div>
+                                                        </dl>
+                                                        
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
                 </div>
             </section>
+            
 
             <!-- Pricing -->
             <section id="foundationalTech" class="relative">
@@ -1148,6 +1425,8 @@
                                                 
                                                 <div id="cloudvis" class="w-full"></div>
                                                
+                                                <div id="stackedvis" class="w-full"></div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -1164,7 +1443,7 @@
                             <div class="mx-auto max-w-3xl">
                               <!-- Content goes here -->
                               <div>
-                                <p class="text-base font-semibold text-slate-50">Views</p>
+                                <p class="text-base font-semibold text-slate-50">View</p>
                                 <p class="text-sm text-slate-400">View Market Share (%) by Revenue or YoY Growth (%) - Relative to Own 12-Month History</p>
                                 <fieldset class="mt-4">
                                     <legend class="sr-only">View</legend>
@@ -1192,9 +1471,9 @@
                             <p class="text-lg text-slate-400">Amazon Web Services (AWS) still leads the cloud computing market, though its share is subtly declining as Microsoft Azure’s revenue climbs. AWS’s growth has steadied, reflecting a recent attenuation of enterprise focus on cost optimization. Together, the top three cloud providers, including AWS, Azure, and Google Cloud, have seen an 18% growth surge. This sector, propelled by AI advancements, presents robust business opportunities and long-term growth prospects driven by new AI-based workloads.</p>
                         </div>
 
-                        <!-- <div class="max-w-3xl mx-auto text-left pb-8 md:pb-20">
-                            <p class="text-lg text-slate-400">In the rapidly evolving tech landscape, the 'Magnificent 7' - Apple, Microsoft, Google, Amazon, NVIDIA, Tesla, and Meta - epitomize the winner-take-all phenomenon. Their combined market influence, accounting for more than 28% of the S&P 500, is a direct result of leveraging AI technologies and cloud infrastructure. This consolidation of power, driven by advancements in AI-specific semiconductors and cloud computing, highlights a significant market shift. These tech giants are not just leading in technology; they are redefining market dynamics, creating an environment where their AI-driven strategies and investments increasingly concentrate wealth and influence within a select few, exemplifying the winner-take-all dynamic in the digital age.</p>
-                        </div> -->
+
+
+
 
                     </div>
                 </div>
@@ -1225,8 +1504,65 @@
                             <p class="text-lg text-slate-400">Delve into the realms of Large Language Models (LLMs), Foundation Models (FMs), and innovative applications like AI Copilots and Code Assistants. Here, the intricate tapestry of tech giants' AI strategies unfolds, offering a unique lens into the future they are shaping.</p>
                         </div>
 
+
+
+
+                        <div class="max-w-3xl mx-auto relative pb-6">
+                            <!-- Blurred shape -->
+                            <div class="absolute bottom-0 -mb-20 left-1/2 -translate-x-1/2 blur-2xl opacity-50 pointer-events-none" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="434" height="427">
+                                    <defs>
+                                        <linearGradient id="bs2-a" x1="19.609%" x2="50%" y1="14.544%" y2="100%">
+                                            <stop offset="0%" stop-color="#6366F1" />
+                                            <stop offset="100%" stop-color="#6366F1" stop-opacity="0" />
+                                        </linearGradient>
+                                    </defs>
+                                    <path fill="url(#bs2-a)" fill-rule="evenodd" d="m346 898 461 369-284 58z" transform="translate(-346 -898)" />
+                                </svg>
+                            </div>
+                            <!-- Grid -->
+
+                            <div class="grid md:grid-cols-12 gap-6 group" data-highlighter>
+                                <!-- Box #1 -->
+                                <div class="md:col-span-12" data-aos="fade-down">
+                                    <div class="relative h-full bg-slate-800 rounded-3xl p-px before:absolute before:w-96 before:h-96 before:-left-48 before:-top-48 before:bg-purple-500 before:rounded-full before:opacity-0 before:pointer-events-none before:transition-opacity before:duration-500 before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)] before:hover:opacity-20 before:z-30 before:blur-[100px] after:absolute after:inset-0 after:rounded-[inherit] after:opacity-0 after:transition-opacity after:duration-500 after:[background:_radial-gradient(250px_circle_at_var(--mouse-x)_var(--mouse-y),theme(colors.slate.400),transparent)] after:group-hover:opacity-100 after:z-10 overflow-hidden">
+                                        <div class="relative h-full bg-slate-900 rounded-[inherit] z-20 overflow-hidden">
+                                            <div class="flex flex-col flex-row items-center justify-between">
+                                                
+                                                <div id="my_dataviz" class="w-full"></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                            </div>
+                        </div>
+
+
+                        <div class="max-w-3xl mx-auto pb-12 md:pb-12 grid grid-cols-2 gap-8">
+
+                            <div class="col-span-2 md:col-span-1">
+                                <label for="keyCompany" class="text-base font-semibold text-slate-50">View</label>
+                                <p class="text-sm text-slate-400">View a Cloud Provider's Market Share and Growth Rate</p>
+                                <select id="keyCompany" name="keyCompany" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-slate-900 ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 font-medium">
+                                
+                                    <option>Amazon Web Services</option>
+                                    <option>Microsoft Azure</option>
+                                    <option>Google Cloud</option>
+
+                                </select>
+                            </div>
+
+                            <div class="col-span-2 md:col-span-1">
+
+                            </div>
+
+                        </div>
+
+
                         <!-- Highlighted boxes -->
-                        <div class="relative pb-12 md:pb-20">
+                        <div class=" hidden relative pb-12 md:pb-20">
                             <!-- Blurred shape -->
                             <div class="absolute bottom-0 -mb-20 left-1/2 -translate-x-1/2 blur-2xl opacity-50 pointer-events-none" aria-hidden="true">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="434" height="427">
@@ -1269,15 +1605,14 @@
                                                 <div class="w-full p-6">
                                                     
                                                     <!-- Filter -->
-                                                    <div class="custom-form mx-auto max-w-7xl px-4 py-4">
-                                                        <!-- We've used 3xl here, but feel free to try other max-widths based on your needs -->
+                                                    <!-- <div class="custom-form mx-auto max-w-7xl px-4 py-4">
                                                         <div class="mx-auto max-w-3xl">
-                                                          <!-- Content goes here -->
-                                                          <div>
+
+                                                            <div>
                                                             <p class="text-base font-semibold text-slate-50">View</p>
                                                             <p class="text-sm text-slate-400">Generative AI Stack as Dendrogram or Tree</p>
 
-                                                            <fieldset class="mt-4">
+                                                            <fieldset class="mt-2">
                                                                 <legend class="sr-only">View</legend>
                                                                 <div class="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
                                                                     
@@ -1298,18 +1633,26 @@
                                                             
                                                           </div>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
 
-                                                    <div id="customvis" class="w-full"></div>
+                                                    <!-- <div id="customvis" class="w-full"></div> -->
             
 
-                                                    <div>
-                                                        <!-- <a class="btn-sm text-slate-300 hover:text-white transition duration-150 ease-in-out group [background:linear-gradient(theme(colors.slate.900),_theme(colors.slate.900))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] relative before:absolute before:inset-0 before:bg-slate-800/30 before:rounded-full before:pointer-events-none" href="#0">
+                                                    <!-- <div>
+                                                        <a class="btn-sm text-slate-300 hover:text-white transition duration-150 ease-in-out group [background:linear-gradient(theme(colors.slate.900),_theme(colors.slate.900))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] relative before:absolute before:inset-0 before:bg-slate-800/30 before:rounded-full before:pointer-events-none" href="#0">
                                                             <span class="relative inline-flex items-center">
                                                                 Learn more <span class="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
                                                             </span>
-                                                        </a> -->
-                                                    </div>
+                                                        </a>
+                                                    </div> -->
+
+                                                                            <!-- Highlighted boxes -->
+ 
+
+
+
+
+
                                                 </div>
 
                                                 <!-- Image -->
@@ -1483,9 +1826,33 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                     </div>
                 </div>
@@ -1824,7 +2191,9 @@
     <script src="./js/scattervis.js"></script>
     <script src="./js/treevis.js"></script>
     <script src="./js/linevis.js"></script>
+    <script src="./js/stackedbarvis.js"></script>
     <script src="./js/barvis.js"></script>
+    <script src="./js/customvis.js"></script>
 
     <!-- Load data, create visualizations -->
     <script src="./js/d3.js"></script>

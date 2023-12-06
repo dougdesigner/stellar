@@ -28,8 +28,8 @@ class BarVis {
         vis.xScale1 = d3.scaleBand().padding(0.05);
         vis.yScale = d3.scaleLinear().rangeRound([vis.height, 0]);
 
-        vis.xAxis = vis.svg.append("g").attr("class", "x axis");
-        vis.yAxis = vis.svg.append("g").attr("class", "y axis");
+        vis.xAxis = vis.svg.append("g").attr("class", "x-axis");
+        vis.yAxis = vis.svg.append("g").attr("class", "y-axis");
 
         // Color scale for Chip Series
         vis.colorScale = d3.scaleOrdinal()

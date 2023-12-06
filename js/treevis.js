@@ -1,11 +1,8 @@
 const element = document.getElementById("customvis");
         var elementWidth = element.offsetWidth;
 
-        console.log(elementWidth);
-
         var marginRight = 300
         var marginLeft = 100
-
 
         var svg = d3.select("#customvis").append("svg"),
             width = elementWidth,
@@ -25,9 +22,7 @@ const element = document.getElementById("customvis");
             .parentId(function(d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
         
         d3.csv("data/stack.csv").then(data => {
-          
-          console.log(data);
-            
+                      
           var root = stratify(data);
         
           cluster(root);

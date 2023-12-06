@@ -1,3 +1,5 @@
+let chipVis, appleVis, sp500Vis, cloudVis, stackedVis, customVis;
+
 // Load data with promises
 let promises = [
     d3.csv("data/moore-complete.csv"),
@@ -56,18 +58,24 @@ function createVis(data) {
     });
 
     cloudData.forEach(d => {
-        d.GrowthRate = parseFloat(d["Growth Rate"].replace(/,/g, ''), 10);
+        d.MarketShareValue = parseFloat(d['Market Share'].replace('%', ''));
+        d.GrowthRateValue = +d['Growth Rate'].replace('%', '');
         d.MarketShare = parseFloat(d["Market Share"].replace(/,/g, ''), 10);
-        d['Market Share'] = +d['Market Share'].replace('%', '')  / 100;
+        d.GrowthRate = parseFloat(d["Growth Rate"].replace(/,/g, ''), 10);
+        d['Market Share'] = parseFloat(d['Market Share'].replace('%', '')) / 100;
         d['Growth Rate'] = +d['Growth Rate'].replace('%', '')  / 100;
     });
 
     // Create visualization instances
-    let chipVis = new ScatterVis("chipvis", chipData, mooreData);
-    let appleVis = new BarVis("applevis", appleData);
-    let sp500Vis = new DonutChart("sp500vis", sp500Data);
-    let cloudVis = new LineVis("cloudvis", cloudData);
+    chipVis = new ScatterVis("chipvis", chipData, mooreData);
+    appleVis = new BarVis("applevis", appleData);
+    sp500Vis = new DonutChart("sp500vis", sp500Data);
+    cloudVis = new LineVis("cloudvis", cloudData);
+    stackedVis = new StackedBarVis("stackedvis", cloudData);
+    customVis = new CustomVis("my_dataviz", cloudData);
 }
+
+// Additional Helper Functions
 
 function calculateDataStaleness() {
     const lastUpdatedDate = new Date("2023-11-01"); // Adjust this to your actual last update date
@@ -88,3 +96,35 @@ function displayDataStaleness() {
 }
 
 displayDataStaleness();
+
+function brushed() {
+    // React to 'brushed' event
+    let selectionRange = d3.brushSelection(d3.select(".brush").node());
+
+    console.log(selectionRange);
+
+    // // Check if the selection is not null or empty
+    // if (selectionRange) {
+    //     // Custom function to map pixel position to domain value for scaleBand
+    //     const invertScaleBand = (scale, value) => {
+    //         const eachBand = scale.step();
+    //         const index = Math.floor((value - scale.range()[0]) / eachBand);
+    //         return scale.domain()[index];
+    //     };
+
+    //     // Map the selection to domain values
+    //     let selectionDomain = selectionRange.map(d => invertScaleBand(stackedVis.x, d));
+
+    //     // Ensure the domain is valid (not undefined)
+    //     selectionDomain = selectionDomain.filter(d => d !== undefined);
+
+    //     // Check if the selection domain has valid values
+    //     if (selectionDomain.length === 2) {
+    //         // Update the x domain of the cloudVis chart (assuming cloudVis is another chart instance)
+    //         cloudVis.x.domain(selectionDomain);
+
+    //         // Update the chart
+    //         cloudVis.wrangleData();
+    //     }
+    // }
+}
