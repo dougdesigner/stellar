@@ -29,21 +29,24 @@ class StackedBarVis {
         vis.y = d3.scaleLinear().range([vis.height, 0]);
 
         // Group data by quarter and reshape for stacking
-        let dataByQuarter = Array.from(d3.group(vis.data, d => d.Quarter))
+        vis.dataByQuarter = Array.from(d3.group(vis.data, d => d.Quarter))
             .map(([quarter, values]) => {
                 let obj = { Quarter: quarter };
                 values.forEach(v => {
-                    obj[v.Company] = v['Market Share'];
+                    obj[v.Company] = +v['Growth Rate'];
                 });
                 return obj;
             });
 
         // Set x-domain and stack keys
-        vis.x.domain(dataByQuarter.map(d => d.Quarter));
+        vis.x.domain(vis.dataByQuarter.map(d => d.Quarter));
         vis.stack = d3.stack().keys(['Amazon', 'Microsoft', 'Google']);
 
         // Stack data
-        vis.stackedData = vis.stack(dataByQuarter);
+        vis.stackedData = vis.stack(vis.dataByQuarter);
+
+        vis.y.domain([0, d3.max(vis.stackedData, d => d3.max(d, d => d[1]))]).nice();
+        
 
         // Add X axis label
         vis.svg.append("text")
@@ -55,17 +58,17 @@ class StackedBarVis {
             .style("fill", "#94A3B8")
             .text("Quarter");
 
-        // // Add Y axis label
-        // vis.svg.append("text")
-        //     .attr("class", "y-label")
-        //     .attr("transform", "rotate(-90)")
-        //     .attr("y", -60)
-        //     .attr("x", -vis.height / 2)
-        //     .style("text-anchor", "middle")
-        //     .style("font-weight", "bold")
-        //     .style("font-size", "14px")
-        //     .style("fill", "#94A3B8")
-        //     .text("Market Share (%)");
+        // Add Y axis label
+        vis.svg.append("text")
+            .attr("class", "y-label")
+            .attr("transform", "rotate(-90)")
+            .attr("y", -60)
+            .attr("x", -vis.height / 2)
+            .style("text-anchor", "middle")
+            .style("font-weight", "bold")
+            .style("font-size", "14px")
+            .style("fill", "#94A3B8")
+            .text("Total Cloud Growth (%)");
 
         // Add axes groups
         vis.svg.append("g")
@@ -128,7 +131,7 @@ class StackedBarVis {
         vis.svg.select(".y-axis")
             .transition()
             .duration(1000)
-            .call(d3.axisLeft(vis.y).ticks(5).tickFormat(d => `${d * 100}%`));
+            .call(d3.axisLeft(vis.y).ticks(5).tickFormat(d3.format(".0%")));
 
         // Initialize brush component
 		let brush = d3.brushX()

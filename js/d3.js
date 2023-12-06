@@ -1,4 +1,4 @@
-let chipVis, appleVis, sp500Vis, cloudVis, stackedVis, customVis;
+let scatterVis, barVis, donutVis, lineVis, stackedVis, customVisAWS, customVisAzure, customVisGC;
 
 // Load data with promises
 let promises = [
@@ -67,12 +67,15 @@ function createVis(data) {
     });
 
     // Create visualization instances
-    chipVis = new ScatterVis("chipvis", chipData, mooreData);
-    appleVis = new BarVis("applevis", appleData);
-    sp500Vis = new DonutChart("sp500vis", sp500Data);
-    cloudVis = new LineVis("cloudvis", cloudData);
+    scatterVis = new ScatterVis("chipvis", chipData, mooreData);
+    barVis = new BarVis("applevis", appleData);
+    donutVis = new DonutChart("sp500vis", sp500Data);
+    lineVis = new LineVis("cloudvis", cloudData);
     stackedVis = new StackedBarVis("stackedvis", cloudData);
-    customVis = new CustomVis("my_dataviz", cloudData);
+    customVisAWS = new CustomVis("custom-aws", cloudData, "Amazon");
+    customVisAzure = new CustomVis("custom-azure", cloudData, "Microsoft");
+    customVisGC = new CustomVis("custom-gc", cloudData, "Google");
+
 }
 
 // Additional Helper Functions
@@ -101,7 +104,7 @@ function brushed() {
     // React to 'brushed' event
     let selectionRange = d3.brushSelection(d3.select(".brush").node());
 
-    console.log(selectionRange);
+    // console.log(selectionRange);
 
     // // Check if the selection is not null or empty
     // if (selectionRange) {

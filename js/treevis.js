@@ -1,12 +1,12 @@
-const element = document.getElementById("customvis");
+const element = document.getElementById("treevis");
         var elementWidth = element.offsetWidth;
 
         var marginRight = 300
         var marginLeft = 100
 
-        var svg = d3.select("#customvis").append("svg"),
+        var svg = d3.select("#treevis").append("svg"),
             width = elementWidth,
-            height = 500,
+            height = 600,
             g = svg.append("g").attr("transform", "translate(122,0)");
 
         svg.attr("width", width)
@@ -49,6 +49,7 @@ const element = document.getElementById("customvis");
               .attr("x", function(d) { return d.children ? -12 : 12; })
               .style("text-anchor", function(d) { return d.children ? "end" : "start"; })
               .text(function(d) { return d.id.substring(d.id.lastIndexOf(".") + 1); });
+            
         
           // Add Event Listener
           d3.selectAll(".custom-input")
