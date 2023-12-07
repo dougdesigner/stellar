@@ -84,7 +84,12 @@ class TreeVis {
             .data(vis.root.descendants())
             .enter().append("g")
             .attr("class", function(d) { return "node" + (d.children ? " node--internal" : " node--leaf"); })
-            .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+            .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
+            .on("click", function (e, d) {
+                if (!d.children) {
+                    vis.handleLeafNodeClick(d.data.value);
+                }
+            });
 
         vis.nodes.append("circle")
             .attr("stroke", "#fff")
@@ -142,7 +147,7 @@ class TreeVis {
         vis.animateOut = function(path, totalLength) {    
             path
                 .transition()
-                .duration(1500) // Duration for the animation out
+                .duration(2000) // Duration for the animation out
                 .ease(d3.easePolyOut) // Change the easing function if needed
                 .attr("stroke-dashoffset", -totalLength)
                 .on("end", () => {
