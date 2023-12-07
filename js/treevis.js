@@ -31,18 +31,62 @@ const element = document.getElementById("treevis");
               .data(root.descendants().slice(1))
             .enter().append("path")
               .attr("class", "link")
+              .style("stroke", "#64748B")
               .attr("d", diagonal);
+
+        var animatedLink = g.selectAll(".animated-link")
+            .data(root.descendants().slice(1))
+        .enter().append("path")
+        .attr("class", "animated-link")
+        .attr("d", diagonal)
+        .style("fill", "none")
+        .style("stroke", "#9333EA");
+
+
+        function applyContinuousTransition() {
+            var path = d3.select(this);
+
+            // Clear any existing transition to avoid conflicts
+            path.interrupt();
+
+            var totalLength = path.node().getTotalLength();
+            path.attr("stroke-dasharray", totalLength + " " + totalLength + " " + totalLength)
+                .attr("stroke-dashoffset", totalLength)
+                .transition()
+                .duration(1000) // Adjust duration as needed
+                .ease(d3.easePolyIn) // You can change the easing function
+                .attr("stroke-dashoffset", 0)
+                .on("end", () => animateOut(path, totalLength)); // Start the animation out
+        }
+
+        function animateOut(path, totalLength) {
+            path.transition()
+                .duration(1000) // Duration for the animation out
+                .ease(d3.easePolyOut) // Change the easing function if needed
+                .attr("stroke-dashoffset", -totalLength)
+                .on("end", function() {
+                    setTimeout(() => applyContinuousTransition.call(this), 1500); // Add a delay before restarting
+                });
+        }
+
         
           var node = g.selectAll(".node")
               .data(root.descendants())
             .enter().append("g")
-              .attr("class", function(d) { return "node" + (d.children ? " node--internal" : " node--leaf"); })
+              .attr("class", function(d) { return "node" + (d.children ? " node--internal" : " node--leaf cursor-pointer"); })
               .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
         
           node.append("circle")
                 .attr("stroke", "#fff")
                 .attr("stroke-width", 1)
-                .attr("r", 5);
+                .attr("r", 5)
+                .on("click", function(e, d) {
+                    // Check if the node is a leaf node (has no children)
+                    if (!d.children) {
+                        // console.log(d);
+                        handleLeafNodeClick(d.data.value);
+                    }
+                });
         
           node.append("text")
               .attr("dy", 3)
@@ -56,6 +100,7 @@ const element = document.getElementById("treevis");
               .on("change", changed);
         
           var timeout = setTimeout(function() {
+            animatedLink.interrupt();
             d3.select("input[value=\"tree\"]")
                 .property("checked", true)
                 .dispatch("change");
@@ -67,15 +112,31 @@ const element = document.getElementById("treevis");
             var t = d3.transition().duration(750);
             node.transition(t).attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
             link.transition(t).attr("d", diagonal);
+            animatedLink.interrupt();
+            animatedLink.transition(t).attr("d", diagonal);
+
+            // Wait for the transition to complete before reapplying the animation
+            animatedLink.transition(t).attr("d", diagonal).on("end", () => {
+                animatedLink.each(applyContinuousTransition);
+            });
           }
 
         }).catch(error => {
             console.error("Error loading CSV: ", error);
         });
+
         
         function diagonal(d) {
           return "M" + d.y + "," + d.x
               + "C" + (d.parent.y + 100) + "," + d.x
               + " " + (d.parent.y + 100) + "," + d.parent.x
               + " " + d.parent.y + "," + d.parent.x;
+        }
+
+        function handleLeafNodeClick(url) {
+            // console.log("URL: ", url);
+            // Only open the URL if it's defined
+            if (url) {
+                window.open(url, '_blank');
+            }
         }

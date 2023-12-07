@@ -75,7 +75,7 @@
 }
 
 .node--internal circle {
-  fill: #c084fc;
+  fill: #64748B;
 }
 
 .node--internal text {
@@ -85,7 +85,14 @@
 }
 
 .node--leaf circle {
-  fill: #c084fc;
+  fill: #7C3AED;
+}
+
+.node--leaf circle:hover {
+  fill: #7C3AED;
+  stroke: #7C3AED;
+  stroke-width: 3px;
+  cursor: pointer;
 }
 
 .node--leaf text {
@@ -94,7 +101,6 @@
 
 .link {
   fill: none;
-  stroke: #a855f7;
   stroke-opacity: 0.4;
   stroke-width: 1.5px;
 }

@@ -3,50 +3,57 @@ Generative AI Stack,
 Generative AI Stack.Applications,
 Generative AI Stack.Applications.Copilots,
 Generative AI Stack.Applications.Copilots.Amazon,
-Generative AI Stack.Applications.Copilots.Amazon.Q,
+Generative AI Stack.Applications.Copilots.Amazon.Q,https://aws.amazon.com/q/
 Generative AI Stack.Applications.Copilots.Microsoft,
-Generative AI Stack.Applications.Copilots.Microsoft.Copilot,
+Generative AI Stack.Applications.Copilots.Microsoft.Copilot,https://www.microsoft.com/en-us/microsoft-copilot
+Generative AI Stack.Applications.Copilots.Microsoft.ChatGPT (OpenAI),https://openai.com/chatgpt
 Generative AI Stack.Applications.Copilots.Google,
-Generative AI Stack.Applications.Copilots.Google.Bard,
+Generative AI Stack.Applications.Copilots.Google.Bard,https://bard.google.com/chat
+Generative AI Stack.Applications.Copilots.Google.Duet AI (Workspaces),https://workspace.google.com/solutions/ai/
+Generative AI Stack.Applications.Copilots.Google.Duet AI (Google Cloud),https://cloud.google.com/duet-ai
 Generative AI Stack.Applications.Code Assistants,
 Generative AI Stack.Applications.Code Assistants.Amazon,
-Generative AI Stack.Applications.Code Assistants.Amazon.CodeWhisperer,
+Generative AI Stack.Applications.Code Assistants.Amazon.CodeWhisperer,https://aws.amazon.com/codewhisperer
 Generative AI Stack.Applications.Code Assistants.Microsoft,
-Generative AI Stack.Applications.Code Assistants.Microsoft.Github Copilot,
-Generative AI Stack.Applications.Code Assistants.Google,
-Generative AI Stack.Applications.Code Assistants.Google.Duet AI,
+Generative AI Stack.Applications.Code Assistants.Microsoft.Github Copilot,https://github.com/features/copilot
 Generative AI Stack.Foundational Models,
 Generative AI Stack.Foundational Models.Amazon,
-Generative AI Stack.Foundational Models.Amazon.Bedrock,
-Generative AI Stack.Foundational Models.Amazon.Bedrock.Titan (Amazon),
-Generative AI Stack.Foundational Models.Amazon.Bedrock.Jurassic-2 (AI21 Labs),
-Generative AI Stack.Foundational Models.Amazon.Bedrock.Claude (Anthropic),
-Generative AI Stack.Foundational Models.Amazon.Bedrock.Command (Cohere),
-Generative AI Stack.Foundational Models.Amazon.Bedrock.Llama2 (Meta),
-Generative AI Stack.Foundational Models.Amazon.Bedrock.Stable Diffusion (Stability AI),
+Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS),
+Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS).Titan (Amazon),https://aws.amazon.com/bedrock/titan/
+Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS).Jurassic-2 (AI21 Labs),https://aws.amazon.com/bedrock/jurassic/
+Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS).Claude (Anthropic),https://aws.amazon.com/bedrock/claude/
+Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS).Command (Cohere),https://aws.amazon.com/bedrock/cohere-command/
+Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS).Llama2 (Meta),https://aws.amazon.com/bedrock/llama-2/
+Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS).Stable Diffusion (Stability AI),https://aws.amazon.com/bedrock/stable-diffusion/
 Generative AI Stack.Foundational Models.Microsoft,
-Generative AI Stack.Foundational Models.Microsoft.GPT-4 (OpenAI),
-Generative AI Stack.Foundational Models.Microsoft.Dall-E 3 (OpenAI),
-Generative AI Stack.Foundational Models.Microsoft.Code Interpreter (OpenAI),
-Generative AI Stack.Foundational Models.Microsoft.Llama2 (Meta),
+Generative AI Stack.Foundational Models.Microsoft.Turing,https://turing.microsoft.com/
+Generative AI Stack.Foundational Models.Microsoft.GPT-4 (OpenAI),https://openai.com/gpt-4
+Generative AI Stack.Foundational Models.Microsoft.Dall-E 3 (OpenAI),https://openai.com/dall-e-3
+Generative AI Stack.Foundational Models.Microsoft.Llama2 (Meta),https://ai.meta.com/llama/
 Generative AI Stack.Foundational Models.Google,
-Generative AI Stack.Foundational Models.Google.LaMDA,
-Generative AI Stack.Foundational Models.Google.Claude (Anthropic),
+Generative AI Stack.Foundational Models.Google.Vertex AI (Google Cloud),
+Generative AI Stack.Foundational Models.Google.Vertex AI (Google Cloud).Gemini,https://deepmind.google/technologies/gemini
+Generative AI Stack.Foundational Models.Google.Vertex AI (Google Cloud).PaLM,https://ai.google/discover/palm2/
+Generative AI Stack.Foundational Models.Google.Vertex AI (Google Cloud).Imagen,https://cloud.google.com/vertex-ai/docs/generative-ai/image/overview
+Generative AI Stack.Foundational Models.Google.Vertex AI (Google Cloud).Codey,https://cloud.google.com/vertex-ai/docs/generative-ai/code/code-models-overview
+Generative AI Stack.Foundational Models.Google.Vertex AI (Google Cloud).Chirp,https://cloud.google.com/vertex-ai/docs/generative-ai/speech/speech-to-text
+Generative AI Stack.Foundational Models.Google.Vertex AI (Google Cloud).Llama2 (Meta),https://ai.meta.com/llama/
+Generative AI Stack.Foundational Models.Google.Vertex AI (Google Cloud).Claude (Anthropic),https://www.anthropic.com/index/claude-2
 Generative AI Stack.AI Infrastructure,
 Generative AI Stack.AI Infrastructure.Cloud Infrastructure,
 Generative AI Stack.AI Infrastructure.Cloud Infrastructure.Amazon,
-Generative AI Stack.AI Infrastructure.Cloud Infrastructure.Amazon.AWS,
+Generative AI Stack.AI Infrastructure.Cloud Infrastructure.Amazon.AWS,https://aws.amazon.com/
 Generative AI Stack.AI Infrastructure.Cloud Infrastructure.Microsoft,
-Generative AI Stack.AI Infrastructure.Cloud Infrastructure.Microsoft.Azure,
+Generative AI Stack.AI Infrastructure.Cloud Infrastructure.Microsoft.Azure,https://azure.microsoft.com/
 Generative AI Stack.AI Infrastructure.Cloud Infrastructure.Google,
-Generative AI Stack.AI Infrastructure.Cloud Infrastructure.Google.Google Cloud,
+Generative AI Stack.AI Infrastructure.Cloud Infrastructure.Google.Google Cloud,https://cloud.google.com/
 Generative AI Stack.AI Infrastructure.Compute Hardware,
 Generative AI Stack.AI Infrastructure.Compute Hardware.Amazon,
-Generative AI Stack.AI Infrastructure.Compute Hardware.Amazon.Graviton,
-Generative AI Stack.AI Infrastructure.Compute Hardware.Amazon.Inferentia,
-Generative AI Stack.AI Infrastructure.Compute Hardware.Amazon.Trainium,
+Generative AI Stack.AI Infrastructure.Compute Hardware.Amazon.Graviton,https://aws.amazon.com/ec2/graviton/
+Generative AI Stack.AI Infrastructure.Compute Hardware.Amazon.Inferentia,https://aws.amazon.com/machine-learning/inferentia/
+Generative AI Stack.AI Infrastructure.Compute Hardware.Amazon.Trainium,https://aws.amazon.com/machine-learning/trainium/
 Generative AI Stack.AI Infrastructure.Compute Hardware.Microsoft,
-Generative AI Stack.AI Infrastructure.Compute Hardware.Microsoft.Maia,
-Generative AI Stack.AI Infrastructure.Compute Hardware.Microsoft.Cobalt,
+Generative AI Stack.AI Infrastructure.Compute Hardware.Microsoft.Maia,https://news.microsoft.com/source/features/ai/in-house-chips-silicon-to-service-to-meet-ai-demand/
+Generative AI Stack.AI Infrastructure.Compute Hardware.Microsoft.Cobalt,https://news.microsoft.com/source/features/ai/in-house-chips-silicon-to-service-to-meet-ai-demand/
 Generative AI Stack.AI Infrastructure.Compute Hardware.Google,
-Generative AI Stack.AI Infrastructure.Compute Hardware.Google.TPUs,
+Generative AI Stack.AI Infrastructure.Compute Hardware.Google.TPU,https://cloud.google.com/tpu
