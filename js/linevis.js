@@ -12,7 +12,7 @@ class LineVis {
 
       const element = document.getElementById(vis.parentElement);
       // Set dimensions and margins
-      vis.margin = { top: 100, right: 140, bottom: 100, left: 100 };
+      vis.margin = { top: 100, right: 100, bottom: 100, left: 100 };
       vis.width = element.offsetWidth - vis.margin.left - vis.margin.right;
       vis.height = 600 - vis.margin.top - vis.margin.bottom;
 

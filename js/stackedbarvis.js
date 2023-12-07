@@ -12,7 +12,7 @@ class StackedBarVis {
 
         const element = document.getElementById(vis.parentElement);
         // Set dimensions and margins
-        vis.margin = { top: 60, right: 140, bottom: 40, left: 100 };
+        vis.margin = { top: 60, right: 100, bottom: 40, left: 100 };
         vis.width = element.offsetWidth - vis.margin.left - vis.margin.right;
         vis.height = 280 - vis.margin.top - vis.margin.bottom;
 
