@@ -18,27 +18,27 @@ Generative AI Stack.Applications.Code Assistants.Microsoft,
 Generative AI Stack.Applications.Code Assistants.Microsoft.Github Copilot,https://github.com/features/copilot
 Generative AI Stack.Foundational Models,
 Generative AI Stack.Foundational Models.Amazon,
-Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS),
-Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS).Titan,https://aws.amazon.com/bedrock/titan/
-Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS).Jurassic-2 (AI21 Labs),https://aws.amazon.com/bedrock/jurassic/
-Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS).Claude (Anthropic),https://aws.amazon.com/bedrock/claude/
-Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS).Command (Cohere),https://aws.amazon.com/bedrock/cohere-command/
-Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS).Llama2 (Meta),https://aws.amazon.com/bedrock/llama-2/
-Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS).Stable Diffusion (Stability AI),https://aws.amazon.com/bedrock/stable-diffusion/
+Generative AI Stack.Foundational Models.Amazon.Bedrock,
+Generative AI Stack.Foundational Models.Amazon.Bedrock.Titan,https://aws.amazon.com/bedrock/titan/
+Generative AI Stack.Foundational Models.Amazon.Bedrock.Jurassic-2 (AI21 Labs),https://aws.amazon.com/bedrock/jurassic/
+Generative AI Stack.Foundational Models.Amazon.Bedrock.Claude (Anthropic),https://aws.amazon.com/bedrock/claude/
+Generative AI Stack.Foundational Models.Amazon.Bedrock.Command (Cohere),https://aws.amazon.com/bedrock/cohere-command/
+Generative AI Stack.Foundational Models.Amazon.Bedrock.Llama2 (Meta),https://aws.amazon.com/bedrock/llama-2/
+Generative AI Stack.Foundational Models.Amazon.Bedrock.Stable Diffusion (Stability AI),https://aws.amazon.com/bedrock/stable-diffusion/
 Generative AI Stack.Foundational Models.Microsoft,
 Generative AI Stack.Foundational Models.Microsoft.Turing,https://turing.microsoft.com/
 Generative AI Stack.Foundational Models.Microsoft.GPT-4 (OpenAI),https://openai.com/gpt-4
 Generative AI Stack.Foundational Models.Microsoft.Dall-E 3 (OpenAI),https://openai.com/dall-e-3
 Generative AI Stack.Foundational Models.Microsoft.Llama2 (Meta),https://ai.meta.com/llama/
 Generative AI Stack.Foundational Models.Google,
-Generative AI Stack.Foundational Models.Google.Vertex AI (Google Cloud),
-Generative AI Stack.Foundational Models.Google.Vertex AI (Google Cloud).Gemini,https://deepmind.google/technologies/gemini
-Generative AI Stack.Foundational Models.Google.Vertex AI (Google Cloud).PaLM,https://ai.google/discover/palm2/
-Generative AI Stack.Foundational Models.Google.Vertex AI (Google Cloud).Imagen,https://cloud.google.com/vertex-ai/docs/generative-ai/image/overview
-Generative AI Stack.Foundational Models.Google.Vertex AI (Google Cloud).Codey,https://cloud.google.com/vertex-ai/docs/generative-ai/code/code-models-overview
-Generative AI Stack.Foundational Models.Google.Vertex AI (Google Cloud).Chirp,https://cloud.google.com/vertex-ai/docs/generative-ai/speech/speech-to-text
-Generative AI Stack.Foundational Models.Google.Vertex AI (Google Cloud).Llama2 (Meta),https://ai.meta.com/llama/
-Generative AI Stack.Foundational Models.Google.Vertex AI (Google Cloud).Claude (Anthropic),https://www.anthropic.com/index/claude-2
+Generative AI Stack.Foundational Models.Google.Vertex AI,
+Generative AI Stack.Foundational Models.Google.Vertex AI.Gemini,https://deepmind.google/technologies/gemini
+Generative AI Stack.Foundational Models.Google.Vertex AI.PaLM,https://ai.google/discover/palm2/
+Generative AI Stack.Foundational Models.Google.Vertex AI.Imagen,https://cloud.google.com/vertex-ai/docs/generative-ai/image/overview
+Generative AI Stack.Foundational Models.Google.Vertex AI.Codey,https://cloud.google.com/vertex-ai/docs/generative-ai/code/code-models-overview
+Generative AI Stack.Foundational Models.Google.Vertex AI.Chirp,https://cloud.google.com/vertex-ai/docs/generative-ai/speech/speech-to-text
+Generative AI Stack.Foundational Models.Google.Vertex AI.Llama2 (Meta),https://ai.meta.com/llama/
+Generative AI Stack.Foundational Models.Google.Vertex AI.Claude (Anthropic),https://www.anthropic.com/index/claude-2
 Generative AI Stack.AI Infrastructure,
 Generative AI Stack.AI Infrastructure.Cloud Infrastructure,
 Generative AI Stack.AI Infrastructure.Cloud Infrastructure.Amazon,

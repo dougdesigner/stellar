@@ -1,143 +1,185 @@
-const element = document.getElementById("treevis");
-        var elementWidth = element.offsetWidth;
+class TreeVis {
+    constructor(_parentElement, _data) {
+        this.parentElement = _parentElement;
+        this.data = _data;
+        this.displayData = this.data;
 
-        var marginRight = 300
-        var marginLeft = 100
+        this.initVis();
+    }
 
-        var svg = d3.select("#treevis").append("svg"),
-            width = elementWidth,
-            height = 600,
-            g = svg.append("g").attr("transform", "translate(122,0)");
+    initVis() {
+        let vis = this;
 
-        svg.attr("width", width)
-            .attr("height", height)
-        
-        var tree = d3.tree()
-            .size([height - 40, width - marginRight]);
-        
-        var cluster = d3.cluster()
-            .size([height, width - marginRight]);
-        
-        var stratify = d3.stratify()
-            .parentId(function(d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
-        
-        d3.csv("data/stack.csv").then(data => {
-                      
-          var root = stratify(data);
-        
-          cluster(root);
-        
-          var link = g.selectAll(".link")
-              .data(root.descendants().slice(1))
-              .enter().append("path")
-              .attr("class", "link")
-              .style("stroke", "#64748B")
-              .attr("d", diagonal);
+        // Initialize SVG drawing area
+        vis.margin = { top: 10, right: 160, bottom: 10, left: 120 };
+        vis.width = document.getElementById(vis.parentElement).offsetWidth - vis.margin.left - vis.margin.right;
+        vis.height = 600 - vis.margin.top - vis.margin.bottom;
 
-        var animatedLink = g.selectAll(".animated-link")
-            .data(root.descendants().slice(1))
+        vis.svg = d3.select("#" + vis.parentElement)
+            .append("svg")
+            .attr("width", vis.width + vis.margin.left + vis.margin.right)
+            .attr("height", vis.height + vis.margin.top + vis.margin.bottom);
+
+        vis.g = vis.svg
+            .append("g")
+            .attr(
+                "transform",
+                "translate(" + vis.margin.left + "," + vis.margin.top + ")"
+            );
+
+        // Tree setup
+        vis.tree = d3.tree().size([vis.height, vis.width]);
+
+        vis.cluster = d3.cluster().size([vis.height, vis.width]);
+
+        vis.stratify = d3.stratify().parentId(function (d) {
+            return d.id.substring(0, d.id.lastIndexOf("."));
+        });
+        
+        vis.wrangleData();
+    }
+
+    wrangleData() {
+        let vis = this;
+
+        vis.updateVis();
+    }
+
+    updateVis() {
+        let vis = this;
+
+        // Create root hierarchy from data
+        vis.root = vis.stratify(vis.data);
+
+        // Layout the tree structure
+        vis.cluster(vis.root);
+
+        // Define diagonal path generator
+        vis.diagonal = function(d) {
+            return "M" + d.y + "," + d.x 
+            + "C" + (d.parent.y + 100) + "," + d.x 
+            + " " + (d.parent.y + 100) + "," + d.parent.x 
+            + " " + d.parent.y + "," + d.parent.x;
+        };
+
+        // Draw links (paths)
+        vis.link = vis.g.selectAll(".link")
+            .data(vis.root.descendants().slice(1))
+            .enter().append("path")
+            .attr("class", "link")
+            .style("stroke", "#64748B")
+            .attr("d", vis.diagonal);
+
+        // Draw animated links (paths)
+        vis.animatedLink = vis.g.selectAll(".animated-link")
+            .data(vis.root.descendants().slice(1))
             .enter().append("path")
             .attr("class", "animated-link")
-            .attr("d", diagonal)
+            .attr("d", vis.diagonal)
             .style("fill", "none")
             .style("stroke", "#9333EA");
 
+        // Draw nodes (circles and text)
+        vis.nodes = vis.g.selectAll(".node")
+            .data(vis.root.descendants())
+            .enter().append("g")
+            .attr("class", function(d) { return "node" + (d.children ? " node--internal" : " node--leaf"); })
+            .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
 
-        function applyContinuousTransition() {
-            var path = d3.select(this);
+        vis.nodes.append("circle")
+            .attr("stroke", "#fff")
+            .attr("stroke-width", 1)
+            .attr("r", 5);
 
-            // Clear any existing transition to avoid conflicts
-            path.interrupt();
+        vis.nodes.append("text")
+            .attr("dy", 3)
+            .attr("x", function(d) { return d.children ? -12 : 12; })
+            .style("text-anchor", function(d) { return d.children ? "end" : "start"; })
+            .text(function(d) { return d.id.substring(d.id.lastIndexOf(".") + 1); });
 
-            var totalLength = path.node().getTotalLength();
-            path.attr("stroke-dasharray", totalLength + " " + totalLength + " " + totalLength)
-                .attr("stroke-dashoffset", totalLength)
-                .transition()
-                .duration(1000) // Adjust duration as needed
-                .ease(d3.easePolyIn) // You can change the easing function
-                .attr("stroke-dashoffset", 0)
-                .on("end", () => animateOut(path, totalLength)); // Start the animation out
-        }
+        // Add Event Listener
+        d3.selectAll(".custom-input")
+            .on("change", function() { vis.changed(); });
 
-        function animateOut(path, totalLength) {
-            path.transition()
-                .duration(1000) // Duration for the animation out
-                .ease(d3.easePolyOut) // Change the easing function if needed
-                .attr("stroke-dashoffset", -totalLength)
-                .on("end", function() {
-                    setTimeout(() => applyContinuousTransition.call(this), 1500); // Add a delay before restarting
-                });
-        }
-
-        
-          var node = g.selectAll(".node")
-              .data(root.descendants())
-              .enter().append("g")
-              .attr("class", function(d) { return "node" + (d.children ? " node--internal" : " node--leaf"); })
-              .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
-              .on("click", function(e, d) {
-                // Check if the node is a leaf node (has no children)
-                    if (!d.children) {
-                        // console.log(d);
-                        handleLeafNodeClick(d.data.value);
-                    }
-                });
-        
-          node.append("circle")
-                .attr("stroke", "#fff")
-                .attr("stroke-width", 1)
-                .attr("r", 5)
-                ;
-        
-          node.append("text")
-              .attr("dy", 3)
-              .attr("x", function(d) { return d.children ? -12 : 12; })
-              .style("text-anchor", function(d) { return d.children ? "end" : "start"; })
-              .text(function(d) { return d.id.substring(d.id.lastIndexOf(".") + 1); });
-            
-        
-          // Add Event Listener
-          d3.selectAll(".custom-input")
-              .on("change", changed);
-        
-          var timeout = setTimeout(function() {
-            animatedLink.interrupt();
+        vis.timeout = setTimeout(function() {
+            vis.animatedLink.interrupt();
             d3.select("input[value=\"tree\"]")
                 .property("checked", true)
                 .dispatch("change");
-          }, 1000);
-        
-          function changed() {
-            timeout = clearTimeout(timeout);
-            (this.value === "tree" ? tree : cluster)(root);
-            var t = d3.transition().duration(750);
-            node.transition(t).attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
-            link.transition(t).attr("d", diagonal);
-            animatedLink.interrupt();
-            animatedLink.transition(t).attr("d", diagonal);
+        }, 1000);
 
-            // Wait for the transition to complete before reapplying the animation
-            animatedLink.transition(t).attr("d", diagonal).on("end", () => {
-                animatedLink.each(applyContinuousTransition);
+        vis.applyContinuousTransition = function() {    
+            vis.animatedLink.each(function() {
+                var path = d3.select(this); // Fixed context of 'this'
+    
+                // Clear any existing transition to avoid conflicts
+                path.interrupt();
+    
+                var totalLength = path.node().getTotalLength();
+                path
+                    .attr("stroke-dasharray", totalLength + " " + totalLength)
+                    .attr("stroke-dashoffset", totalLength)
+                    .transition()
+                    .duration(1000) // Adjust duration as needed
+                    .ease(d3.easePolyIn) // You can change the easing function
+                    .attr("stroke-dashoffset", 0)
+                    .on("end", () => vis.animateOut(path, totalLength)); // Start the animation out
             });
-          }
+        };
 
-        }).catch(error => {
-            console.error("Error loading CSV: ", error);
-        });
 
-        
-        function diagonal(d) {
-          return "M" + d.y + "," + d.x
-              + "C" + (d.parent.y + 100) + "," + d.x
-              + " " + (d.parent.y + 100) + "," + d.parent.x
-              + " " + d.parent.y + "," + d.parent.x;
-        }
+        vis.animateOut = function(path, totalLength) {    
+            path
+                .transition()
+                .duration(1000) // Duration for the animation out
+                .ease(d3.easePolyOut) // Change the easing function if needed
+                .attr("stroke-dashoffset", -totalLength)
+                .on("end", () => {
+                    setTimeout(() => path.call(vis.applyContinuousTransition.bind(vis)), 1500); // Fixed context of 'this'
+                });
+        };
 
-        function handleLeafNodeClick(url) {
-            // console.log("URL: ", url);
-            // Only open the URL if it's defined
+        vis.animateOut = function(path, totalLength) {    
+            path
+                .transition()
+                .duration(1000) // Duration for the animation out
+                .ease(d3.easePolyOut) // Change the easing function if needed
+                .attr("stroke-dashoffset", -totalLength)
+                .on("end", () => {
+                    setTimeout(() => path.call(vis.applyContinuousTransition.bind(vis)), 1500); // Fixed context of 'this'
+                });
+        };
+    
+        vis.handleLeafNodeClick = function(url) {
             if (url) {
-                window.open(url, '_blank');
+                window.open(url, "_blank");
             }
         }
+
+        vis.changed = function() {
+            console.log("changed");
+            vis.timeout = clearTimeout(vis.timeout);
+
+
+            // (this.value === "tree" ? vis.tree : vis.cluster)(vis.root);
+            // Correctly get the value of the changed element
+            let selectedValue = d3.select('input[name="mode"]:checked').node().value;
+            (selectedValue === "tree" ? vis.tree : vis.cluster)(vis.root);
+
+            console.log(selectedValue);
+
+            var t = d3.transition().duration(750);
+            vis.nodes.transition(t).attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+            vis.link.transition(t).attr("d", vis.diagonal);
+            vis.animatedLink.interrupt();
+            vis.animatedLink.transition(t).attr("d", vis.diagonal);
+
+            // Wait for the transition to complete before reapplying the animation
+            vis.animatedLink.transition(t).attr("d", vis.diagonal).on("end", () => {
+                vis.animatedLink.each(vis.applyContinuousTransition);
+            });
+        }
+        
+
+    }
+}

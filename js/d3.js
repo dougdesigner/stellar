@@ -1,4 +1,4 @@
-let scatterVis, barVis, donutVis, lineVis, stackedVis, customVisAWS, customVisAzure, customVisGC;
+let scatterVis, barVis, donutVis, lineVis, stackedVis, customVisAWS, customVisAzure, customVisGC, treeVis;
 
 // Load data with promises
 let promises = [
@@ -8,7 +8,8 @@ let promises = [
     d3.csv("data/azure.csv"),
     d3.csv("data/transistors-cpu.csv"),
     d3.csv("data/transistors-gpu.csv"),
-    d3.csv("data/clouds.csv")
+    d3.csv("data/clouds.csv"),
+    d3.csv("data/stack.csv")
 ];
 
 Promise.all(promises)
@@ -22,11 +23,12 @@ Promise.all(promises)
 function createVis(data) {
     let mooreData = data[0];
     let appleData = data[1];
-    let awsData = data[2];
-    let azureData = data[3];
+    // let awsData = data[2];
+    // let azureData = data[3];
     let cpuData = data[4];
     let gpuData = data[5];
     let cloudData = data[6];
+    let aiStackData = data[7];
 
     let chipData = cpuData.concat(gpuData);
 
@@ -75,7 +77,7 @@ function createVis(data) {
     customVisAWS = new CustomVis("custom-aws", cloudData, "Amazon");
     customVisAzure = new CustomVis("custom-azure", cloudData, "Microsoft");
     customVisGC = new CustomVis("custom-gc", cloudData, "Google");
-
+    treeVis = new TreeVis("treevis",aiStackData);
 }
 
 // Additional Helper Functions
@@ -103,31 +105,4 @@ displayDataStaleness();
 function brushed() {
     // React to 'brushed' event
     let selectionRange = d3.brushSelection(d3.select(".brush").node());
-
-    // console.log(selectionRange);
-
-    // // Check if the selection is not null or empty
-    // if (selectionRange) {
-    //     // Custom function to map pixel position to domain value for scaleBand
-    //     const invertScaleBand = (scale, value) => {
-    //         const eachBand = scale.step();
-    //         const index = Math.floor((value - scale.range()[0]) / eachBand);
-    //         return scale.domain()[index];
-    //     };
-
-    //     // Map the selection to domain values
-    //     let selectionDomain = selectionRange.map(d => invertScaleBand(stackedVis.x, d));
-
-    //     // Ensure the domain is valid (not undefined)
-    //     selectionDomain = selectionDomain.filter(d => d !== undefined);
-
-    //     // Check if the selection domain has valid values
-    //     if (selectionDomain.length === 2) {
-    //         // Update the x domain of the cloudVis chart (assuming cloudVis is another chart instance)
-    //         cloudVis.x.domain(selectionDomain);
-
-    //         // Update the chart
-    //         cloudVis.wrangleData();
-    //     }
-    // }
 }
