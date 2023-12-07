@@ -274,10 +274,24 @@ class ScatterVis {
             .merge(vis.dots)
             .attr("class", null) // Remove the class from the dots
             .attr("cx", function(d) {
-                // Calculate offset
-                let offset = (counter % 2 === 0 ? -1 : 1) * 7; // Alternate between -5 and 5, for example
-                counter++; // Increment counter
-                return vis.x(d.Year) + offset; // Apply offset
+                // Choose from four positions based on a random number: 0, 1, 2, or 3
+                let position = Math.floor(Math.random() * 4); // Generates a random number 0, 1, 2, or 3
+                let offset;
+                switch (position) {
+                    case 0: 
+                        offset = -24; // Far Left
+                        break;
+                    case 1:
+                        offset = -8; // Slightly Left
+                        break;
+                    case 2:
+                        offset = 8; // Slightly Right
+                        break;
+                    case 3:
+                        offset = 24; // Far Right
+                        break;
+                }
+                return vis.x(d.Year) + offset;
             })
             .attr("cy", vis.height)
             .attr("r", 7)
