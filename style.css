@@ -3546,6 +3546,10 @@ input[type="search"]::-webkit-search-results-decoration {
     grid-column: span 7 / span 7;
   }
 
+  .md\:col-span-8{
+    grid-column: span 8 / span 8;
+  }
+
   .md\:mb-20{
     margin-bottom: 5rem;
   }
@@ -3700,6 +3704,10 @@ input[type="search"]::-webkit-search-results-decoration {
 
   .md\:pt-52{
     padding-top: 13rem;
+  }
+
+  .md\:pr-0{
+    padding-right: 0px;
   }
 }
 

@@ -142,11 +142,11 @@ class TreeVis {
         vis.animateOut = function(path, totalLength) {    
             path
                 .transition()
-                .duration(1000) // Duration for the animation out
+                .duration(1500) // Duration for the animation out
                 .ease(d3.easePolyOut) // Change the easing function if needed
                 .attr("stroke-dashoffset", -totalLength)
                 .on("end", () => {
-                    setTimeout(() => path.call(vis.applyContinuousTransition.bind(vis)), 1500); // Fixed context of 'this'
+                    setTimeout(() => path.call(vis.applyContinuousTransition.bind(vis)), 2000); // Fixed context of 'this'
                 });
         };
     
