@@ -29,18 +29,18 @@ const element = document.getElementById("treevis");
         
           var link = g.selectAll(".link")
               .data(root.descendants().slice(1))
-            .enter().append("path")
+              .enter().append("path")
               .attr("class", "link")
               .style("stroke", "#64748B")
               .attr("d", diagonal);
 
         var animatedLink = g.selectAll(".animated-link")
             .data(root.descendants().slice(1))
-        .enter().append("path")
-        .attr("class", "animated-link")
-        .attr("d", diagonal)
-        .style("fill", "none")
-        .style("stroke", "#9333EA");
+            .enter().append("path")
+            .attr("class", "animated-link")
+            .attr("d", diagonal)
+            .style("fill", "none")
+            .style("stroke", "#9333EA");
 
 
         function applyContinuousTransition() {
@@ -72,21 +72,22 @@ const element = document.getElementById("treevis");
         
           var node = g.selectAll(".node")
               .data(root.descendants())
-            .enter().append("g")
-              .attr("class", function(d) { return "node" + (d.children ? " node--internal" : " node--leaf cursor-pointer"); })
-              .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
-        
-          node.append("circle")
-                .attr("stroke", "#fff")
-                .attr("stroke-width", 1)
-                .attr("r", 5)
-                .on("click", function(e, d) {
-                    // Check if the node is a leaf node (has no children)
+              .enter().append("g")
+              .attr("class", function(d) { return "node" + (d.children ? " node--internal" : " node--leaf"); })
+              .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
+              .on("click", function(e, d) {
+                // Check if the node is a leaf node (has no children)
                     if (!d.children) {
                         // console.log(d);
                         handleLeafNodeClick(d.data.value);
                     }
                 });
+        
+          node.append("circle")
+                .attr("stroke", "#fff")
+                .attr("stroke-width", 1)
+                .attr("r", 5)
+                ;
         
           node.append("text")
               .attr("dy", 3)

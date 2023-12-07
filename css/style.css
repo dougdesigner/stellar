@@ -85,14 +85,21 @@
 }
 
 .node--leaf circle {
-  fill: #7C3AED;
+  fill: #9333EA;
 }
 
-.node--leaf circle:hover {
-  fill: #7C3AED;
-  stroke: #7C3AED;
-  stroke-width: 3px;
+.node--leaf:hover {
   cursor: pointer;
+}
+
+.node--leaf:hover circle {
+  fill: #7E22CE;
+  stroke: #7E22CE;
+  stroke-width: 3px;
+}
+
+.node--leaf:hover text {
+  fill: #b787f5;
 }
 
 .node--leaf text {
