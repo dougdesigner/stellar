@@ -14,11 +14,11 @@ class CustomVis {
 
         vis.element = document.getElementById(vis.parentElement);
 
-        vis.margin = {top: 100, right: 0, bottom: 100, left: 0},
+        vis.margin = {top: 20, right: 0, bottom: 20, left: 0},
         vis.width = vis.element.offsetWidth - vis.margin.left - vis.margin.right,
-        vis.height = 600 - vis.margin.top - vis.margin.bottom,
+        vis.height = 260 - vis.margin.top - vis.margin.bottom,
 
-        vis.innerRadius = 120,
+        vis.innerRadius = 40,
         vis.outerRadius = Math.min(vis.width, vis.height) / 2;
 
         // Define tooltip
@@ -150,6 +150,9 @@ class CustomVis {
                         </span><br/>
                         <span class="text-base font-medium text-slate-500">Market Share: 
                             <span class="text-purple-600 font-bold">${d.MarketShareValue}%</span>
+                        </span><br/>
+                        <span class="text-base font-medium text-slate-500">YoY Growth Rate: 
+                            <span class="text-emerald-600 font-bold">+${d.GrowthRateValue}%</span>
                         </span>
                         `
                     )  
@@ -188,6 +191,9 @@ class CustomVis {
                     <span class="text-base font-medium text-slate-500">Quarter: 
                         <span class="text-slate-600 font-bold">${d.Quarter}</span>
                     </span><br/>
+                    <span class="text-base font-medium text-slate-500">Market Share: 
+                            <span class="text-purple-600 font-bold">${d.MarketShareValue}%</span>
+                        </span><br/>
                     <span class="text-base font-medium text-slate-500">YoY Growth Rate: 
                         <span class="text-emerald-600 font-bold">+${d.GrowthRateValue}%</span>
                     </span>`
@@ -210,8 +216,8 @@ class CustomVis {
             .attr("transform", function(d) { return "rotate(" + ((vis.x(d.Quarter) + vis.x.bandwidth() / 2) * 180 / Math.PI - 90) + ")"+"translate(" + (vis.y(d.MarketShareValue)+10) + ",0)"; })
             .attr("class", "outer-label")
             .append("text")
-            .text(d => d.MarketShareValue + "% - " + d.Quarter)
-            .attr("class", "text-base font-medium fill-purple-500")
+            .text(d => d.MarketShareValue + "%")
+            .attr("class", "text-base font-medium fill-purple-400")
             .attr("transform", function(d) { return (vis.x(d.Quarter) + vis.x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)"; })
             .style("font-size", "11px")
             .attr("alignment-baseline", "middle");
@@ -220,10 +226,10 @@ class CustomVis {
             // Assuming you want to add the image of the first company in companyImage array
             vis.svg.append("image")
                 .attr("xlink:href", getCenterImage(vis.company))
-                .attr("x", -40) // Adjust x, y, width, and height as needed
-                .attr("y", -40)
-                .attr("width", 80)
-                .attr("height", 80);
+                .attr("x", -18) // Adjust x, y, width, and height as needed
+                .attr("y", -18)
+                .attr("width", 36)
+                .attr("height", 36);
             
 
             const legendData = [

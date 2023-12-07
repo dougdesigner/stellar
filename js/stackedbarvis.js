@@ -14,7 +14,7 @@ class StackedBarVis {
         // Set dimensions and margins
         vis.margin = { top: 60, right: 140, bottom: 40, left: 100 };
         vis.width = element.offsetWidth - vis.margin.left - vis.margin.right;
-        vis.height = 240 - vis.margin.top - vis.margin.bottom;
+        vis.height = 280 - vis.margin.top - vis.margin.bottom;
 
         // Append SVG object
         vis.svg = d3.select("#" + vis.parentElement)

@@ -2205,6 +2205,22 @@ input[type="search"]::-webkit-search-results-decoration {
   fill: #f8fafc;
 }
 
+.fill-slate-400{
+  fill: #94a3b8;
+}
+
+.fill-slate-500{
+  fill: #64748b;
+}
+
+.fill-purple-300{
+  fill: #d8b4fe;
+}
+
+.fill-purple-400{
+  fill: #c084fc;
+}
+
 .p-1{
   padding: 0.25rem;
 }

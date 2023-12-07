@@ -120,13 +120,14 @@ class LineVis {
 
   updateVis() {
     let vis = this;
-    // console.log("Line vis updated");
+    console.log("Line vis updated");
 
     // Update the y-scale domain based on the selected view
     vis.y.domain([0, d3.max(vis.data, d => d[vis.view])]);
 
     // Create a color scale based on company names
     const companyNames = vis.companyData.map(d => d.key);
+
 
     // Define your array of hex colors
     const myColors = ['#05A6F0', '#4285F4', '#FF9900'];
