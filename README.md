@@ -9,7 +9,7 @@ The current growth in the S&P 500 is significantly influenced by the 'Magnificen
 * [Screencast (Youtube)](https://github.com/dougdesigner/stellar)
 
 ## Project Overview
-* Project D3 Visualization Classes
+* Project d3.js Visualization Classes
     * `js/barvis.js`
     * `js/customvis.js`
     * `js/donutvis.js`
@@ -29,7 +29,7 @@ The current growth in the S&P 500 is significantly influenced by the 'Magnificen
     * `css/style.css`
     * `js/maind3.js`
 * Libraries Used
-    * [D3](https://d3js.org/)
+    * [d3.js](https://d3js.org/)
     * [Tailwind CSS](https://tailwindcss.com/)
     * [Alpine.js](https://alpinejs.dev/)
     * [AOS.js](https://michalsnik.github.io/aos/)
