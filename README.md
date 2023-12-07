@@ -1,6 +1,6 @@
 # The 'Magnificent 7' in the Generative AI Era
 
-The current growth in the S&P 500 is significantly influenced by the 'Magnificent 7' (Apple, Microsoft, Google, Amazon, NVIDIA, Tesla, and Meta). This has been fueled by foundational advancements across the Generative AI Stack, including purpose-built chips for generative AI and the ability of cloud providers to offer access to their scalable compute power. This project uses d3.js to build bespoke visualiztions to better understand the 'Magnificent 7's and their role across the Generative AI Stack.
+The current growth in the S&P 500 is significantly influenced by the 'Magnificent 7' (Apple, Microsoft, Google, Amazon, NVIDIA, Tesla, and Meta). This has been fueled by foundational advancements across the Generative AI Stack, including purpose-built chips for generative AI and the ability of cloud providers to offer access to their scalable compute power. This project uses d3.js to build bespoke visualizations to better understand the 'Magnificent 7's and their role across the Generative AI Stack.
 
 ## Project Links
 * [Live Site](https://ai.doug.design)
