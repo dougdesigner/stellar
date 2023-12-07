@@ -19,7 +19,7 @@ Generative AI Stack.Applications.Code Assistants.Microsoft.Github Copilot,https:
 Generative AI Stack.Foundational Models,
 Generative AI Stack.Foundational Models.Amazon,
 Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS),
-Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS).Titan (Amazon),https://aws.amazon.com/bedrock/titan/
+Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS).Titan,https://aws.amazon.com/bedrock/titan/
 Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS).Jurassic-2 (AI21 Labs),https://aws.amazon.com/bedrock/jurassic/
 Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS).Claude (Anthropic),https://aws.amazon.com/bedrock/claude/
 Generative AI Stack.Foundational Models.Amazon.Bedrock (AWS).Command (Cohere),https://aws.amazon.com/bedrock/cohere-command/
