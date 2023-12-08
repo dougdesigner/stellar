@@ -12,7 +12,7 @@ class LineVis {
 
       const element = document.getElementById(vis.parentElement);
       // Set dimensions and margins
-      vis.margin = { top: 100, right: 100, bottom: 100, left: 100 };
+      vis.margin = { top: 140, right: 100, bottom: 140, left: 100 };
       vis.width = element.offsetWidth - vis.margin.left - vis.margin.right;
       vis.height = 600 - vis.margin.top - vis.margin.bottom;
 
@@ -87,7 +87,7 @@ class LineVis {
           .attr("text-anchor", "left")
           .style("font-size", "16px")
           .style("fill", "#94A3B8")
-          .text("Cloud computing power is consolidated in the hands of Amazon, Microsoft, and Google");
+          .text("Cloud computing power is consolidated among three major players");
 
       // Tooltip
       vis.tooltip = d3.select('body').append('div')
