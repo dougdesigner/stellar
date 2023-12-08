@@ -2189,6 +2189,10 @@ input[type="search"]::-webkit-search-results-decoration {
   fill: currentColor;
 }
 
+.fill-purple-400{
+  fill: #c084fc;
+}
+
 .fill-purple-500{
   fill: #a855f7;
 }
@@ -2203,22 +2207,6 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .fill-slate-50{
   fill: #f8fafc;
-}
-
-.fill-slate-400{
-  fill: #94a3b8;
-}
-
-.fill-slate-500{
-  fill: #64748b;
-}
-
-.fill-purple-300{
-  fill: #d8b4fe;
-}
-
-.fill-purple-400{
-  fill: #c084fc;
 }
 
 .p-1{
@@ -2361,10 +2349,6 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .pb-6{
   padding-bottom: 1.5rem;
-}
-
-.pb-8{
-  padding-bottom: 2rem;
 }
 
 .pl-3{
@@ -3720,10 +3704,6 @@ input[type="search"]::-webkit-search-results-decoration {
 
   .md\:pt-52{
     padding-top: 13rem;
-  }
-
-  .md\:pr-0{
-    padding-right: 0px;
   }
 }
 
