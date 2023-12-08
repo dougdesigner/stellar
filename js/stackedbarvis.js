@@ -45,6 +45,7 @@ class StackedBarVis {
         // Stack data
         vis.stackedData = vis.stack(vis.dataByQuarter);
 
+        // Set y-domain
         vis.y.domain([0, d3.max(vis.stackedData, d => d3.max(d, d => d[1]))]).nice();
         
 

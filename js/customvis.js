@@ -35,6 +35,10 @@ class CustomVis {
             .append("g")
                 .attr("transform", `translate(${vis.width/2 + vis.margin.left}, ${vis.height/2 + vis.margin.top})`);
 
+        // Isometric top view
+        // vis.svg.append("g")
+        //     .attr("transform", "rotate(-30) skewX(30) scaleY(0.86062)");
+
         // Tooltip
         vis.tooltip = d3.select('body').append('div')
             .attr("class", "tooltip")
@@ -122,115 +126,149 @@ class CustomVis {
             .range(["#065F46", "#34d399"]);
             
         // Add the outer bars
-        vis.svg.append("g")
-            .selectAll("path")
-            .data(vis.data)
-            .join("path")
-            .attr("fill", d => vis.purpleColorScale(d.MarketShareValue))
-            .attr("d", d3.arc()
-                .innerRadius(vis.innerRadius)
-                .outerRadius(d => vis.y(d.MarketShareValue))
-                .startAngle(d => vis.x(d.Quarter))
-                .endAngle(d => vis.x(d.Quarter) + vis.x.bandwidth())
-                .padAngle(0.01)
-                .padRadius(vis.innerRadius))
-                .on("mouseover", function(event, d) {
-                    // let imageUrl = companyImages.find(img => img.company === d.data.Company).imageUrl;
+        // vis.svg.append("g")
+        //     .selectAll("path")
+        //     .data(vis.data)
+        //     .join("path")
+        //     .attr("fill", d => vis.purpleColorScale(d.MarketShareValue))
+        //     .attr("d", d3.arc()
+        //         .innerRadius(vis.innerRadius)
+        //         .outerRadius(d => vis.y(d.MarketShareValue))
+        //         .startAngle(d => vis.x(d.Quarter))
+        //         .endAngle(d => vis.x(d.Quarter) + vis.x.bandwidth())
+        //         .padAngle(0.01)
+        //         .padRadius(vis.innerRadius))
+        //         .on("mouseover", function(event, d) {
+        //             // let imageUrl = companyImages.find(img => img.company === d.data.Company).imageUrl;
         
-                    vis.tooltip.transition()    
-                        .duration(200)    
-                        .style("opacity", 1);    
-                    vis.tooltip.html(
-                        `
-                        <img class="tooltip-company-img" src="${getTooltipImage(vis.company)}" width="40" height="40" />
+        //             vis.tooltip.transition()    
+        //                 .duration(200)    
+        //                 .style("opacity", 1);    
+        //             vis.tooltip.html(
+        //                 `
+        //                 <img class="tooltip-company-img" src="${getTooltipImage(vis.company)}" width="40" height="40" />
                         
-                        <span class="text-lg font-bold text-slate-700">${getCloudCompany(vis.company)}</span><br/>
-                        <span class="text-base font-medium text-slate-500">Quarter: 
-                            <span class="text-slate-600 font-bold">${d.Quarter}</span>
-                        </span><br/>
-                        <span class="text-base font-medium text-slate-500">Market Share: 
-                            <span class="text-purple-600 font-bold">${d.MarketShareValue}%</span>
-                        </span><br/>
-                        <span class="text-base font-medium text-slate-500">YoY Growth Rate: 
-                            <span class="text-emerald-600 font-bold">+${d.GrowthRateValue}%</span>
-                        </span>
-                        `
-                    )  
-                    .style("left", (event.pageX + 20) + "px")   
-                    .style("top", (event.pageY - 20) + "px");  
-                })          
-                .on("mouseout", function(d) {   
-                    vis.tooltip.transition()    
-                        .duration(500)    
-                        .style("opacity", 0); 
-                });
+        //                 <span class="text-lg font-bold text-slate-700">${getCloudCompany(vis.company)}</span><br/>
+        //                 <span class="text-base font-medium text-slate-500">Quarter: 
+        //                     <span class="text-slate-600 font-bold">${d.Quarter}</span>
+        //                 </span><br/>
+        //                 <span class="text-base font-medium text-slate-500">Market Share: 
+        //                     <span class="text-purple-600 font-bold">${d.MarketShareValue}%</span>
+        //                 </span><br/>
+        //                 <span class="text-base font-medium text-slate-500">YoY Growth Rate: 
+        //                     <span class="text-emerald-600 font-bold">+${d.GrowthRateValue}%</span>
+        //                 </span>
+        //                 `
+        //             )  
+        //             .style("left", (event.pageX + 20) + "px")   
+        //             .style("top", (event.pageY - 20) + "px");  
+        //         })          
+        //         .on("mouseout", function(d) {   
+        //             vis.tooltip.transition()    
+        //                 .duration(500)    
+        //                 .style("opacity", 0); 
+        //         });
 
         // Add the inner bars
-        vis.svg.append("g")
-            .selectAll("path")
-            .data(vis.data)
-            .join("path")
-            .attr("fill", d => vis.emeraldColorScale(d.GrowthRateValue))
-            .attr("d", d3.arc()
-                .innerRadius(d => vis.ybis(0))
-                .outerRadius(d => vis.ybis(d.GrowthRateValue))
-                .startAngle(d => vis.x(d.Quarter))
-                .endAngle(d => vis.x(d.Quarter) + vis.x.bandwidth())
-                .padAngle(0.01)
-                .padRadius(vis.innerRadius))
-            .on("mouseover", function(event, d) {
-                // let imageUrl = companyImages.find(img => img.company === d.data.Company).imageUrl;
+        // vis.svg.append("g")
+        //     .selectAll("path")
+        //     .data(vis.data)
+        //     .join("path")
+        //     .attr("fill", d => vis.emeraldColorScale(d.GrowthRateValue))
+        //     .attr("d", d3.arc()
+        //         .innerRadius(d => vis.ybis(0))
+        //         .outerRadius(d => vis.ybis(d.GrowthRateValue))
+        //         .startAngle(d => vis.x(d.Quarter))
+        //         .endAngle(d => vis.x(d.Quarter) + vis.x.bandwidth())
+        //         .padAngle(0.01)
+        //         .padRadius(vis.innerRadius))
+        //     .on("mouseover", function(event, d) {
+        //         // let imageUrl = companyImages.find(img => img.company === d.data.Company).imageUrl;
     
-                vis.tooltip.transition()    
-                    .duration(200)    
-                    .style("opacity", 1);    
-                vis.tooltip.html(
-                    `
-                    <img class="tooltip-company-img" src="${getTooltipImage(vis.company)}" width="40" height="40" />
-                    <span class="text-lg font-bold text-slate-700">${getCloudCompany(vis.company)}</span><br/>
-                    <span class="text-base font-medium text-slate-500">Quarter: 
-                        <span class="text-slate-600 font-bold">${d.Quarter}</span>
-                    </span><br/>
-                    <span class="text-base font-medium text-slate-500">Market Share: 
-                            <span class="text-purple-600 font-bold">${d.MarketShareValue}%</span>
-                        </span><br/>
-                    <span class="text-base font-medium text-slate-500">YoY Growth Rate: 
-                        <span class="text-emerald-600 font-bold">+${d.GrowthRateValue}%</span>
-                    </span>`
-                )  
-                .style("left", (event.pageX + 20) + "px")   
-                .style("top", (event.pageY - 20) + "px");  
-            })          
-            .on("mouseout", function(d) {   
-                vis.tooltip.transition()    
-                    .duration(500)    
-                    .style("opacity", 0); 
-            });
+        //         vis.tooltip.transition()    
+        //             .duration(200)    
+        //             .style("opacity", 1);    
+        //         vis.tooltip.html(
+        //             `
+        //             <img class="tooltip-company-img" src="${getTooltipImage(vis.company)}" width="40" height="40" />
+        //             <span class="text-lg font-bold text-slate-700">${getCloudCompany(vis.company)}</span><br/>
+        //             <span class="text-base font-medium text-slate-500">Quarter: 
+        //                 <span class="text-slate-600 font-bold">${d.Quarter}</span>
+        //             </span><br/>
+        //             <span class="text-base font-medium text-slate-500">Market Share: 
+        //                     <span class="text-purple-600 font-bold">${d.MarketShareValue}%</span>
+        //                 </span><br/>
+        //             <span class="text-base font-medium text-slate-500">YoY Growth Rate: 
+        //                 <span class="text-emerald-600 font-bold">+${d.GrowthRateValue}%</span>
+        //             </span>`
+        //         )  
+        //         .style("left", (event.pageX + 20) + "px")   
+        //         .style("top", (event.pageY - 20) + "px");  
+        //     })          
+        //     .on("mouseout", function(d) {   
+        //         vis.tooltip.transition()    
+        //             .duration(500)    
+        //             .style("opacity", 0); 
+        //     });
 
         // Add outer labels
+        // vis.svg.append("g")
+        //     .selectAll("g")
+        //     .data(vis.data)
+        //     .join("g")
+        //     .attr("text-anchor", function(d) { return (vis.x(d.Quarter) + vis.x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "end" : "start"; })
+        //     .attr("transform", function(d) { return "rotate(" + ((vis.x(d.Quarter) + vis.x.bandwidth() / 2) * 180 / Math.PI - 90) + ")"+"translate(" + (vis.y(d.MarketShareValue)+10) + ",0)"; })
+        //     .attr("class", "outer-label")
+        //     .append("text")
+        //     .text(d => d.MarketShareValue + "%")
+        //     .attr("class", "text-base font-medium fill-purple-400")
+        //     .attr("transform", function(d) { return (vis.x(d.Quarter) + vis.x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)"; })
+        //     .style("font-size", "11px")
+        //     .attr("alignment-baseline", "middle");
+
         vis.svg.append("g")
-            .selectAll("g")
-            .data(vis.data)
-            .join("g")
-            .attr("text-anchor", function(d) { return (vis.x(d.Quarter) + vis.x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "end" : "start"; })
-            .attr("transform", function(d) { return "rotate(" + ((vis.x(d.Quarter) + vis.x.bandwidth() / 2) * 180 / Math.PI - 90) + ")"+"translate(" + (vis.y(d.MarketShareValue)+10) + ",0)"; })
-            .attr("class", "outer-label")
-            .append("text")
-            .text(d => d.MarketShareValue + "%")
-            .attr("class", "text-base font-medium fill-purple-400")
-            .attr("transform", function(d) { return (vis.x(d.Quarter) + vis.x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)"; })
-            .style("font-size", "11px")
-            .attr("alignment-baseline", "middle");
+        .attr("transform", "translate(0, 32) rotate(30) skewX(-30) scale(1, 0.86062)")
+        .append("rect")
+            .attr("x", -40)
+            .attr("y", -40)
+            .attr("width", 80)
+            .attr("height", 80)
+            .attr("rx", 4)
+            .attr("fill", "lavender");
+
+        vis.svg.append("g")
+            .attr("transform", "translate(0, 15) rotate(30) skewX(-30) scale(1, 0.86062)")
+            .append("rect")
+                .attr("x", -30)
+                .attr("y", -30)
+                .attr("width", 60)
+                .attr("height", 60)
+                .attr("rx", 4)
+                .attr("fill", "slategray");
+
+        vis.svg.append("g")
+            .attr("transform", "rotate(30) skewX(-30) scale(1, 0.86062)")
+            .append("rect")
+                .attr("x", -20)
+                .attr("y", -20)
+                .attr("width", 40)
+                .attr("height", 40)
+                .attr("rx", 4)
+                .attr("fill", "darkslategray");
 
 
-            // Assuming you want to add the image of the first company in companyImage array
-            vis.svg.append("image")
-                .attr("xlink:href", getCenterImage(vis.company))
-                .attr("x", -18) // Adjust x, y, width, and height as needed
-                .attr("y", -18)
-                .attr("width", 36)
-                .attr("height", 36);
-            
+
+        vis.svg.append("g")
+            .attr("transform", "rotate(30) skewX(-30) scale(1, 0.86062)")
+            .append("image")    
+            .attr("href", getCenterImage(vis.company))
+            .attr("x", -18) 
+            .attr("y", -18)
+            .attr("width", 36)
+            .attr("height", 36);
+
+
+        
 
             const legendData = [
                 { title: "Market Share", color: "#a855f7" },
