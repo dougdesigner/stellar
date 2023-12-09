@@ -33,6 +33,7 @@ The current growth in the S&P 500 is significantly influenced by the 'Magnificen
     * [Tailwind CSS](https://tailwindcss.com/)
     * [Alpine.js](https://alpinejs.dev/)
     * [AOS.js](https://michalsnik.github.io/aos/)
+    * [Pattern Fills](https://iros.github.io/patternfills/)
 
 ## Development Environment
 

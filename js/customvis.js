@@ -45,6 +45,61 @@ class CustomVis {
             .attr("id", "doubleradialbar-tooltip")      
             .style("opacity", 0);
 
+        // Define the gradient
+        const gradient = vis.svg.append("defs")
+        .append("linearGradient")
+        .attr("id", "gradient")
+        .attr("x1", "0%") // Gradient starts at the left
+        .attr("y1", "100%")
+        .attr("x2", "0%") // and goes to the right
+        .attr("y2", "0%");
+
+        // Define start and end colors of the gradient
+        gradient.append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "blue"); // Start color
+        gradient.append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "red"); // End color
+
+        // Define a new gradient like the one above
+        const gradient2 = vis.svg.append("defs")
+        .append("linearGradient")
+        .attr("id", "gradient2")
+        .attr("x1", "0%") // Gradient starts at the left
+        .attr("y1", "100%")
+        .attr("x2", "0%") // and goes to the right
+        .attr("y2", "0%");
+
+        // Define start and end colors of the gradient
+        gradient2.append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "#99fcfd"); // Start color
+        gradient2.append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "#0400e5"); // End color
+
+        // Define a new gradient like the one above
+        const gradient3 = vis.svg.append("defs")
+        .append("linearGradient")
+        .attr("id", "gradient3")
+        .attr("x1", "0%") // Gradient starts at the left
+        .attr("y1", "100%")
+        .attr("x2", "0%") // and goes to the right
+        .attr("y2", "0%");
+        // .attr("gradientUnits", "userSpaceOnUse");
+
+        // Define start and end colors of the gradient
+        gradient3.append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "red"); // Start color
+        gradient3.append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "orange"); // End color
+
+
+
+
         vis.wrangleData();
     }
 
@@ -226,6 +281,7 @@ class CustomVis {
         //     .style("font-size", "11px")
         //     .attr("alignment-baseline", "middle");
 
+        // Layer 2
         vis.svg.append("g")
         .attr("transform", "translate(0, 32) rotate(30) skewX(-30) scale(1, 0.86062)")
         .append("rect")
@@ -234,8 +290,24 @@ class CustomVis {
             .attr("width", 80)
             .attr("height", 80)
             .attr("rx", 4)
-            .attr("fill", "lavender");
+            .attr("fill", "url(#gradient2)");
 
+        // Pattern Overlay 2
+        vis.svg.append("g")
+        .attr("transform", "translate(0, 32) rotate(30) skewX(-30) scale(1, 0.86062)")
+        .append("rect")
+            .attr("x", -40)
+            .attr("y", -40)
+            .attr("width", 80)
+            .attr("height", 80)
+            .attr("rx", 4)
+            .attr("opacity", 0.1)
+            .attr("blend-mode", "multiply")
+            // alternative blend mode
+            // .attr("mix-blend-mode", "multiply")
+            .attr("fill", "url(#dots-5)");
+
+        // Layer 1        
         vis.svg.append("g")
             .attr("transform", "translate(0, 15) rotate(30) skewX(-30) scale(1, 0.86062)")
             .append("rect")
@@ -244,28 +316,57 @@ class CustomVis {
                 .attr("width", 60)
                 .attr("height", 60)
                 .attr("rx", 4)
-                .attr("fill", "slategray");
+                .attr("fill", "url(#gradient)");
 
+        // Pattern Overlay 1
         vis.svg.append("g")
-            .attr("transform", "rotate(30) skewX(-30) scale(1, 0.86062)")
+            .attr("transform", "translate(0, 15) rotate(30) skewX(-30) scale(1, 0.86062)")
             .append("rect")
-                .attr("x", -20)
-                .attr("y", -20)
-                .attr("width", 40)
-                .attr("height", 40)
+                .attr("x", -30)
+                .attr("y", -30)
+                .attr("width", 60)
+                .attr("height", 60)
                 .attr("rx", 4)
-                .attr("fill", "darkslategray");
+                .attr("opacity", 0.1)
+                // .attr("stroke-width", 2)
+                // .attr("stroke", "black")
+                .attr("blend-mode", "multiply")
+                .attr("fill", "url(#dots-9)");
 
 
+        // Logo background
+        vis.svg.append("g")
+        .attr("transform", "rotate(30) skewX(-30) scale(1, 0.86062)")
+        .append("rect")
+            .attr("x", -20)
+            .attr("y", -20)
+            .attr("width", 40)
+            .attr("height", 40)
+            .attr("rx", 4)
+            .attr("stroke-width", 2)
+            .attr("stroke", "#0F172A")
+            .attr("fill", "#1E293B");
 
+        // vis.svg.append("g")
+        //     .attr("transform", "rotate(30) skewX(-30) scale(1, 0.86062)")
+        //     .append("rect")
+        //         .attr("x", -20)
+        //         .attr("y", -20)
+        //         .attr("width", 40)
+        //         .attr("height", 40)
+        //         .attr("rx", 4)
+        //         .attr("fill", "url(#dots-5) slategray");
+
+
+        // Company Logo
         vis.svg.append("g")
             .attr("transform", "rotate(30) skewX(-30) scale(1, 0.86062)")
             .append("image")    
             .attr("href", getCenterImage(vis.company))
-            .attr("x", -18) 
-            .attr("y", -18)
-            .attr("width", 36)
-            .attr("height", 36);
+            .attr("x", -16) 
+            .attr("y", -16)
+            .attr("width", 32)
+            .attr("height", 32);
 
 
         
