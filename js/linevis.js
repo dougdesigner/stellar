@@ -151,7 +151,8 @@ class LineVis {
             // Define line generator
             vis.line = d3.line()
                 .x(d => vis.x(d.Quarter))
-                .y(d => vis.y(d[vis.view]));
+                .y(d => vis.y(d[vis.view]))
+                .curve(d3.curveCatmullRom.alpha(0.5));
 
             // Draw lines for each company
             let lines = companyGroup.selectAll(".line")

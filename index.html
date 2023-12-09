@@ -1978,7 +1978,8 @@
     <script src="./js/linevis.js"></script>
     <script src="./js/stackedbarvis.js"></script>
     <script src="./js/barvis.js"></script>
-    <script src="./js/customvis.js"></script>
+    <script src="./js/doubleradialbarvis.js"></script>
+    <!-- <script src="./js/microprocessorvis.js"></script> -->
 
     <!-- Load data, create visualizations -->
     <script src="./js/maind3.js"></script>
@@ -2044,7 +2045,7 @@
             var link = svg.selectAll(".link")
                 .data(links)
               .enter().append("line")
-                .attr("class", "link")
+                .attr("class", "link stroke-purple-500")
                 .attr("x1", function(d) { return nodes[d.source].x; })
                 .attr("y1", function(d) { return nodes[d.source].y; })
                 .attr("x2", function(d) { return nodes[d.target].x; })
