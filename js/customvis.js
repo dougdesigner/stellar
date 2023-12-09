@@ -92,7 +92,7 @@ class CustomVis {
         // Define start and end colors of the gradient
         gradient3.append("stop")
         .attr("offset", "0%")
-        .attr("stop-color", "red"); // Start color
+        .attr("stop-color", "purple"); // Start color
         gradient3.append("stop")
         .attr("offset", "100%")
         .attr("stop-color", "orange"); // End color
@@ -281,7 +281,18 @@ class CustomVis {
         //     .style("font-size", "11px")
         //     .attr("alignment-baseline", "middle");
 
-                // Layer 4
+                        // Layer 4
+                        vis.svg.append("g")
+                        .attr("transform", "translate(0, 80) rotate(30) skewX(-30) scale(1, 0.86062)")
+                        .append("rect")
+                            .attr("x", -40)
+                            .attr("y", -40)
+                            .attr("width", 80)
+                            .attr("height", 80)
+                            .attr("rx", 4)
+                            .attr("fill", "url(#gradient2)");
+
+                // Overlayer 4
                 vis.svg.append("g")
                 .attr("transform", "translate(0, 80) rotate(30) skewX(-30) scale(1, 0.86062)")
                 .append("rect")
@@ -290,6 +301,22 @@ class CustomVis {
                     .attr("width", 80)
                     .attr("height", 80)
                     .attr("rx", 4)
+                    .attr("opacity", 0.1)
+                    .attr("blend-mode", "multiply")
+                    // .attr("fill", "url(#circles-9)")
+                    .attr("fill", "url(#horizontal-stripe-9)");
+
+
+                // Layer 3.2
+                vis.svg.append("g")
+                .attr("transform", "translate(0, 48) rotate(30) skewX(-30) scale(1, 0.86062)")
+                .append("rect")
+                    .attr("x", -40)
+                    .attr("y", -40)
+                    .attr("width", 80)
+                    .attr("height", 80)
+                    .attr("rx", 4)
+                    .attr("opacity", 0.25)
                     .attr("fill", "url(#gradient2)");
 
         // Layer 3
