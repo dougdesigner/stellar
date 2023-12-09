@@ -281,6 +281,28 @@ class CustomVis {
         //     .style("font-size", "11px")
         //     .attr("alignment-baseline", "middle");
 
+                // Layer 4
+                vis.svg.append("g")
+                .attr("transform", "translate(0, 80) rotate(30) skewX(-30) scale(1, 0.86062)")
+                .append("rect")
+                    .attr("x", -40)
+                    .attr("y", -40)
+                    .attr("width", 80)
+                    .attr("height", 80)
+                    .attr("rx", 4)
+                    .attr("fill", "url(#gradient2)");
+
+        // Layer 3
+        vis.svg.append("g")
+        .attr("transform", "translate(0, 40) rotate(30) skewX(-30) scale(1, 0.86062)")
+        .append("rect")
+            .attr("x", -40)
+            .attr("y", -40)
+            .attr("width", 80)
+            .attr("height", 80)
+            .attr("rx", 4)
+            .attr("fill", "url(#gradient2)");
+
         // Layer 2
         vis.svg.append("g")
         .attr("transform", "translate(0, 32) rotate(30) skewX(-30) scale(1, 0.86062)")
