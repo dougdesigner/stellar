@@ -66,36 +66,36 @@ class CustomVis {
         const gradient2 = vis.svg.append("defs")
         .append("linearGradient")
         .attr("id", "gradient2")
-        .attr("x1", "0%") // Gradient starts at the left
+        .attr("x1", "0%") // Gradient starts at the bottom
         .attr("y1", "100%")
-        .attr("x2", "0%") // and goes to the right
+        .attr("x2", "0%") // and goes to the top
         .attr("y2", "0%");
 
         // Define start and end colors of the gradient
         gradient2.append("stop")
         .attr("offset", "0%")
-        .attr("stop-color", "#99fcfd"); // Start color
+        .attr("stop-color", "cyan"); // Start color
         gradient2.append("stop")
         .attr("offset", "100%")
-        .attr("stop-color", "#0400e5"); // End color
+        .attr("stop-color", "blue"); // End color
 
         // Define a new gradient like the one above
         const gradient3 = vis.svg.append("defs")
         .append("linearGradient")
         .attr("id", "gradient3")
-        .attr("x1", "0%") // Gradient starts at the left
+        .attr("x1", "0%") // Gradient starts at the bottom
         .attr("y1", "100%")
-        .attr("x2", "0%") // and goes to the right
+        .attr("x2", "0%") // and goes to the top
         .attr("y2", "0%");
         // .attr("gradientUnits", "userSpaceOnUse");
 
         // Define start and end colors of the gradient
         gradient3.append("stop")
         .attr("offset", "0%")
-        .attr("stop-color", "purple"); // Start color
+        .attr("stop-color", "fuchsia"); // Start color
         gradient3.append("stop")
         .attr("offset", "100%")
-        .attr("stop-color", "orange"); // End color
+        .attr("stop-color", "darkorange"); // End color
 
 
 
@@ -290,7 +290,7 @@ class CustomVis {
                             .attr("width", 80)
                             .attr("height", 80)
                             .attr("rx", 4)
-                            .attr("fill", "url(#gradient2)");
+                            .attr("fill", "url(#gradient3)");
 
                 // Overlayer 4
                 vis.svg.append("g")
@@ -303,8 +303,8 @@ class CustomVis {
                     .attr("rx", 4)
                     .attr("opacity", 0.1)
                     .attr("blend-mode", "multiply")
-                    // .attr("fill", "url(#circles-9)")
-                    .attr("fill", "url(#horizontal-stripe-9)");
+                    .attr("fill", "url(#circles-9)");
+                    // .attr("fill", "url(#horizontal-stripe-9)");
 
 
                 // Layer 3.2

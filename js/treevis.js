@@ -91,9 +91,27 @@ class TreeVis {
                 }
             });
 
+
+            // Create a color scale
+        const colorScale = d3.scaleOrdinal()
+        .domain(['Amazon', 'Microsoft', 'Google'])
+        .range(['#FF9900', '#05A6F0', '#4285F4']); // Colors for each company
+            
+
         vis.nodes.append("circle")
             .attr("stroke", "#fff")
             .attr("stroke-width", 1)
+            .style("fill", function(d) {
+                // let nodeName = d.id.substring(d.id.lastIndexOf(".") + 1);
+                // if (nodeName === "Amazon") return "#FF9900";   // Specify the color for Amazon
+                // if (nodeName === "Microsoft") return "#05A6F0"; // Specify the color for Microsoft
+                // if (nodeName === "Google") return "#4285F4";  // Specify the color for Google
+                // Leaf nodes
+                if (!d.children) {
+                    return "#9333EA"; // Default color for leaf nodes
+                }
+                return "#64748B"; // Default color for other nodes
+            })
             .attr("r", 5);
 
         vis.nodes.append("text")

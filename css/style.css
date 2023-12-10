@@ -58,25 +58,25 @@
   shape-rendering: crispEdges;
 }
 
-.grid line {
-   /* stroke: lightgrey; */
+/* .grid line {
+   stroke: lightgrey;
    stroke-opacity: 0.7;
    shape-rendering: crispEdges;
-}
+} */
 
 /* Custom Vis */
-.node circle {
+/* .node circle {
   fill: #999;
-}
+} */
 
 .node text {
   font: 12px sans-serif;
   fill: white;
 }
 
-.node--internal circle {
+/* .node--internal circle {
   fill: #64748B;
-}
+} */
 
 .node--internal text {
   /* text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff; */
@@ -84,9 +84,9 @@
   font-weight: bold;
 }
 
-.node--leaf circle {
+/* .node--leaf circle {
   fill: #9333EA;
-}
+} */
 
 .node--leaf:hover {
   cursor: pointer;
@@ -108,8 +108,8 @@
 
 .link {
   fill: none;
-  stroke-opacity: 0.4;
-  stroke-width: 1.5px;
+  /* stroke-opacity: 0.4;
+  stroke-width: 1.5px; */
 }
 
 .custom-form {

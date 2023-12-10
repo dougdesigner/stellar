@@ -1895,7 +1895,13 @@
                             </li>
                             <li>
                                 <p class="font-mono text-slate-400">
-                                    Latest market and chip technology data updated Q3 2023. Rapid industry advancements may lead to daily changes. <span id="dataStalenessInfo" class="font-mono text-slate-400"></span>
+                                    Latest market and chip technology data updated Q3 2023. Rapid industry advancements may lead to daily changes.</span>
+                                </p>
+                                
+                            </li>
+                            <li>
+                                <p class="font-mono text-slate-400">
+                                    <span id="dataStalenessInfo" class="font-mono text-slate-400"></span>
                                 </p>
                             </li>
          
@@ -1978,8 +1984,9 @@
     <script src="./js/linevis.js"></script>
     <script src="./js/stackedbarvis.js"></script>
     <script src="./js/barvis.js"></script>
-    <script src="./js/doubleradialbarvis.js"></script>
-    <!-- <script src="./js/microprocessorvis.js"></script> -->
+    <!-- Replace when cleaned up -->
+    <!-- <script src="./js/doubleradialbarvis.js"></script> -->
+    <script src="./js/microprocessorvis.js"></script>
 
     <!-- Load data, create visualizations -->
     <script src="./js/maind3.js"></script>
@@ -1988,17 +1995,70 @@
     <script>
 
         var width = 600,
-            height = 500,
-            nodeSize = 30;
+            height = 300,
+            nodeSize = 20;
         
         // var color = d3.scaleOrdinal(d3.schemeAccent);
 
+        
+
+
         var color = d3.scaleOrdinal()
-            .range(["#0284C7", "#4F46E5", "#9333EA", "#C026D3"]);
+            .range(["url(#radial-gradient)", "url(#radial-gradient3)", "url(#radial-gradient2)", "#C026D3"]);
         
         var svg = d3.select("#neuralvis").append("svg")
             .attr("width", width)
             .attr("height", height);
+
+        // Define the radial gradient
+        const radialGradient = svg.append("defs")
+        .append("radialGradient")
+            .attr("id", "radial-gradient")
+            .attr("cx", "35%") // Center x of the gradient
+            .attr("cy", "35%") // Center y of the gradient
+            .attr("r", "50%"); // Radius of the gradient
+
+        // Define the colors of the gradient
+        radialGradient.append("stop")
+            .attr("offset", "0%")
+            .attr("stop-color", "fuchsia"); // Light color at the center
+        radialGradient.append("stop")
+            .attr("offset", "100%")
+            .attr("stop-color", "darkviolet"); // Darker color towards the edges
+
+
+        // Define the radial gradient
+        const radialGradient2 = svg.append("defs")
+        .append("radialGradient")
+            .attr("id", "radial-gradient2")
+            .attr("cx", "35%") // Center x of the gradient
+            .attr("cy", "35%") // Center y of the gradient
+            .attr("r", "50%"); // Radius of the gradient
+
+        // Define the colors of the gradient
+        radialGradient2.append("stop")
+            .attr("offset", "0%")
+            .attr("stop-color", "deeppink"); // Light color at the center
+        radialGradient2.append("stop")
+            .attr("offset", "100%")
+            .attr("stop-color", "darkorchid"); // Darker color towards the edges
+
+
+        // Define the radial gradient
+        const radialGradient3 = svg.append("defs")
+        .append("radialGradient")
+            .attr("id", "radial-gradient3")
+            .attr("cx", "35%") // Center x of the gradient
+            .attr("cy", "35%") // Center y of the gradient
+            .attr("r", "50%"); // Radius of the gradient
+
+        // Define the colors of the gradient
+        radialGradient3.append("stop")
+            .attr("offset", "0%")
+            .attr("stop-color", "deepskyblue"); // Light color at the center
+        radialGradient3.append("stop")
+            .attr("offset", "100%")
+            .attr("stop-color", "indigo"); // Darker color towards the edges
         
 
         d3.json("/data/data.json").then(function(graph) {
@@ -2029,7 +2089,8 @@
                 var layerStart = midpoint - layerHeight / 2;
 
                 d["x"] = (d.layer - 0.5) * xdist;
-                d["y"] = layerStart + (d.lidx - 0.5) * nodeSize * 1.5; // Adjust y position for each node
+                // Last factor adjusts for spacing between nodes
+                d["y"] = layerStart + (d.lidx - 0.5) * nodeSize * 2.2; // Adjust y position for each node
             });
         
             // autogenerate links
@@ -2037,7 +2098,8 @@
             nodes.map(function(d, i) {
               for (var n in nodes) {
                 if (d.layer + 1 == nodes[n].layer) {
-                  links.push({"source": parseInt(i), "target": parseInt(n), "value": 1}) }
+                // Value is stroke width here
+                  links.push({"source": parseInt(i), "target": parseInt(n), "value": 3}) }
               }
             }).filter(function(d) { return typeof d !== "undefined"; });
         
@@ -2069,6 +2131,9 @@
             node.append("text")
                 .attr("dx", "-.35em")
                 .attr("dy", ".35em")
+                .attr("font-size", "0.5em")
+                .attr("fill", "white")
+                .attr("font-weight", "bold")
                 .text(function(d) { return d.label; });
 
         }).catch(function(error) {
