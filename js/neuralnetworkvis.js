@@ -171,11 +171,12 @@ class NeuralNetworkVis {
     
     
         node.append("text")
-            .attr("dx", "-.35em")
+            .attr("dx", "-8px")
             .attr("dy", ".35em")
-            .attr("font-size", "0.5em")
+            .attr("font-size", "14px")
             .attr("fill", "white")
             .attr("font-weight", "bold")
+            .attr("class", "font-mono")
             .text(function(d) { return d.label; });
 
 

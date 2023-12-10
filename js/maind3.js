@@ -115,7 +115,7 @@ function calculateDataStaleness() {
 
 function displayDataStaleness() {
     const daysStale = calculateDataStaleness();
-    const stalenessInfo = `Data freshness: <span class='font-black'>${daysStale}</span> days`;
+    const stalenessInfo = `Data freshness: <span class='font-black'>${daysStale}</span> Days`;
     
     const dataStalenessElement = document.getElementById("dataStalenessInfo");
     dataStalenessElement.innerHTML = stalenessInfo;
