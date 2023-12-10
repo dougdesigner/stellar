@@ -14,7 +14,7 @@ class LineVis {
       // Set dimensions and margins
       vis.margin = { top: 140, right: 100, bottom: 140, left: 100 };
       vis.width = element.offsetWidth - vis.margin.left - vis.margin.right;
-      vis.height = 600 - vis.margin.top - vis.margin.bottom;
+      vis.height = 500 - vis.margin.top - vis.margin.bottom;
 
       // Append SVG object
       vis.svg = d3.select("#" + vis.parentElement)
@@ -62,7 +62,7 @@ class LineVis {
         .attr("class", "y-label y-label-line")
         .attr("transform", "rotate(-90)")
         .attr("y", -60)
-        .attr("x", -200)
+        .attr("x", -100)
         .style("text-anchor", "middle")
         .style("font-weight", "bold")
         .style("font-size", "14px")
@@ -120,7 +120,7 @@ class LineVis {
 
   updateVis() {
     let vis = this;
-    console.log("Line vis updated");
+    // console.log("Line vis updated");
 
     // Update the y-scale domain based on the selected view
     vis.y.domain([0, d3.max(vis.data, d => d[vis.view])]);
@@ -151,8 +151,8 @@ class LineVis {
             // Define line generator
             vis.line = d3.line()
                 .x(d => vis.x(d.Quarter))
-                .y(d => vis.y(d[vis.view]))
-                .curve(d3.curveCatmullRom.alpha(0.5));
+                .y(d => vis.y(d[vis.view]));
+                // .curve(d3.curveCatmullRom.alpha(0.5));
 
             // Draw lines for each company
             let lines = companyGroup.selectAll(".line")
@@ -276,13 +276,39 @@ class LineVis {
     }
 
     // Call axes
-    vis.svg.selectAll(".x-axis")
-        .call(d3.axisBottom(vis.x));
+    vis.svg.select(".x-axis")
+        .transition()
+        .duration(1000)
+        .call(d3.axisBottom(vis.x))
+        .selectAll("text")
+            .attr("font-size", "12px")
+            .style("text-anchor", "end") // Anchors text at the end
+            .attr("dx", "-.8em") // Adjust distance from the tick
+            .attr("dy", ".15em") // Adjust vertical position
+            .attr("transform", "rotate(-45)"); // Rotate the text
 
-    vis.svg.selectAll(".y-axis")
-      .transition()
-      .duration(1000)
-      .call(d3.axisLeft(vis.y).tickFormat(d3.format(".0%")));
+    // vis.svg.selectAll(".y-axis")
+    //   .transition()
+    //   .duration(1000)
+    //   .call(d3.axisLeft(vis.y).tickFormat(d3.format(".0%")));
+
+
+
+      vis.svg.select(".y-axis")
+            .transition()
+            .duration(1000)
+            .call(d3.axisLeft(vis.y)
+            .ticks(5)
+            .tickSize(-vis.width) // Extend the ticks to create grid lines
+            .tickFormat(d3.format(".0%")))
+        .call(g => g.selectAll(".tick line") // Style the grid lines
+            .attr("stroke-opacity", 0.5))
+            .attr("stroke", "#94A3B8")
+        .call(g => g.select(".domain").remove()) // Optional: Remove the axis line
+        .call(g => g.selectAll(".tick text") // Style the tick texts
+            .attr("x", -10)
+            // .attr("dy", -4)
+            );
 
     // Create a legend group at the bottom of the SVG
     const legend = vis.svg.append("g")

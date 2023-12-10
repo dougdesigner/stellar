@@ -417,6 +417,12 @@ class CustomVis {
             .attr("width", 32)
             .attr("height", 32);
 
+        // Microprocessor name
+        vis.svg.append("text")
+            .attr("transform", "translate(60, 60) rotate(30) skewX(-30) scale(1, 0.86062)")
+            .text("Graviton3")
+            .attr("class", "text-base font-mono font-medium fill-white")
+
 
         
 

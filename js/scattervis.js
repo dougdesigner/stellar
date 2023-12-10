@@ -45,14 +45,15 @@ class ScatterVis {
             .style("fill", "#94A3B8")
             .text("Year");
 
-        // Add Y axis
+        // Add Y axis scale
         vis.y = d3.scaleLinear()
-            .domain([0, d3.max(vis.filteredData, d => d.TransistorCount) + 5000000000])
+            .domain([0, d3.max(vis.filteredData, d => d.TransistorCount)])
             .range([vis.height, 0]);
 
-        let yAxisGroup = vis.svg.append("g")
+        // Add axes groups
+        vis.svg.append("g")
             .attr("class", "y-axis")
-            .call(d3.axisLeft(vis.y).tickFormat(d => `${d / 1e9} B`));
+
 
         // Add Y axis label
         vis.svg.append("text")
@@ -200,12 +201,11 @@ class ScatterVis {
             { company: "AMD", imageUrl: "/images/amd.svg" },
         ];
 
-        const lineOffset = 7; // The same offset used for the dots
 
         // Add the Moore's Law line
         let line = d3.line()
             .x(d => vis.x(d.Year))
-            .y(d => vis.y(d.TransistorCount) - lineOffset)
+            .y(d => vis.y(d.TransistorCount))
             // .curve(d3.curveMonotoneX);
 
         // Update x and y scale domains
@@ -363,6 +363,25 @@ class ScatterVis {
 
         vis.svg.select(".legend").remove(); // Remove the existing legend
         vis.createLegend(vis.selectedDesigner); // Create a new legend with the selected designer
+
+        // Update the y-axis with grid lines
+        vis.svg.select(".y-axis")
+            .transition()
+            .duration(1000)
+            .call(d3.axisLeft(vis.y)
+                .tickFormat(d => `${d / 1e9} B`)
+                .tickSize(-vis.width) // Extend the ticks to create grid lines
+            )
+            .call(g => g.selectAll(".tick line") // Style the grid lines
+                .attr("stroke-opacity", 0.7)) // Adjust opacity as needed
+            .call(g => g.select(".domain").remove()) // Optional: Remove the axis line
+            .call(g => g.selectAll(".tick text") // Style the tick texts
+                .attr("x", -10)
+                // .attr("dy", -4)
+            );
+
+
+
 
     }
 

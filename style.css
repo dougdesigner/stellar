@@ -2174,6 +2174,10 @@ input[type="search"]::-webkit-search-results-decoration {
   fill: #f8fafc;
 }
 
+.fill-white{
+  fill: #fff;
+}
+
 .stroke-purple-500{
   stroke: #a855f7;
 }
@@ -2853,6 +2857,25 @@ input[type="search"]::-webkit-search-results-decoration {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
+}
+
+.tick line {
+  stroke: #64748B;
+}
+
+.x-axis path {
+  stroke: #64748B;
+}
+
+.tick text {
+  fill: #94A3B8;
+  font-weight: bold;
+  stroke: none;
+  font-size: 12px;
+}
+
+.domain {
+  stroke: transparent;
 }
 
 /* .grid line {

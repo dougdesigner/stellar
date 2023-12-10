@@ -110,7 +110,7 @@ class TreeVis {
                 if (!d.children) {
                     return "#9333EA"; // Default color for leaf nodes
                 }
-                return "#64748B"; // Default color for other nodes
+                return "#475569"; // Default color for other nodes
             })
             .attr("r", 5);
 
@@ -180,7 +180,7 @@ class TreeVis {
         }
 
         vis.changed = function() {
-            console.log("changed");
+            // console.log("changed");
             vis.timeout = clearTimeout(vis.timeout);
 
 
@@ -189,7 +189,7 @@ class TreeVis {
             let selectedValue = d3.select('input[name="mode"]:checked').node().value;
             (selectedValue === "tree" ? vis.tree : vis.cluster)(vis.root);
 
-            console.log(selectedValue);
+            // console.log(selectedValue);
 
             var t = d3.transition().duration(750);
             vis.nodes.transition(t).attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });

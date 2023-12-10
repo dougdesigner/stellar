@@ -11,16 +11,19 @@ The current growth in the S&P 500 is significantly influenced by the 'Magnificen
 ## Project Overview
 * Project d3.js Visualization Classes
     * `js/barvis.js` - Grouped Bar Chart
-    * `js/customvis.js` - Custom Chart
     * `js/donutvis.js` - Donut Chart
-    * `js/linevis.js` - Line Chart
-    * `js/scattervis.js` Scatter Plot
+    * `js/doubleradialbarvis.js` - Double Radial Bar Chart
+    * `js/linevis.js` - Stacked Line Chart
+    * `js/microprocessorvis.js` - Bespoke Isometric Microprocessor Visualization
+    * `js/neuralnetworkvis.js` - Neural Network Diagram
+    * `js/scattervis.js` Scatter Plot with Comparative Trend Line
     * `js/stackedbarvis.js` - Stacked Bar Chart
     * `js/treevis.js` - Tree Diagram
 * Project Data Files
     * `data/apple.csv` - Apple M Series Silicion Chip Data
     * `data/clouds.csv` - Cloud Infrastrucutre Provider Market Share & Growth Rates
     * `data/moore.csv`  - Moore's Law Data based on first CPU released in 1970
+    * `data/nodes.json` - Neural Network Node Data
     * `data/stack.csv` - Generative AI Stack Knowledge Base with Links
     * `data/transistors-cpu.csv` - CPU Transistor Data
     * `data/transistors-gpu.csv` - GPU Transistor Data

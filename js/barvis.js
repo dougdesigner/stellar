@@ -69,7 +69,7 @@ class BarVis {
         vis.svg.append("text")
             .attr("transform", "rotate(-90)")
             .attr("y", -60)
-            .attr("x", -140)
+            .attr("x", -180)
             .style("text-anchor", "middle")
             .style("font-weight", "bold")
             .style("font-size", "14px")
@@ -138,8 +138,25 @@ class BarVis {
         vis.yScale.domain([0, d3.max(vis.displayData, d => d.TransistorCount)]);
 
         // Update Chart
-        vis.xAxis.attr("transform", `translate(0,${vis.height})`).call(d3.axisBottom(vis.xScale0));
-        vis.yAxis.call(d3.axisLeft(vis.yScale).tickFormat(d => `${d / 1e9} B`));
+        vis.xAxis.attr("transform", `translate(0,${vis.height})`)
+            .call(d3.axisBottom(vis.xScale0));
+
+        // Update y-axis with grid lines
+        vis.yAxis.transition()
+            .duration(1000)
+            .call(d3.axisLeft(vis.yScale)
+                .ticks(5)
+                .tickFormat(d => `${d / 1e9} B`)
+                .tickSize(-vis.width) // Extend the ticks to create grid lines
+            )
+            .call(g => g.selectAll(".tick line") // Style the grid lines
+                .attr("stroke-opacity", 0.7) // Adjust opacity as needed
+                    ) // Optional: dashed line style
+            .call(g => g.select(".domain").remove()) // Optional: Remove the axis line
+            .call(g => g.selectAll(".tick text") // Style the tick texts
+                .attr("x", -10)
+                .attr("font-size", "12px"));
+                // .attr("dy", -4));
 
         var series = vis.svg.selectAll(".series")
             .data(Array.from(vis.nestedData.entries()), d => d[0])

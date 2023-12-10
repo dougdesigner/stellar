@@ -1,4 +1,4 @@
-let scatterVis, barVis, donutVis, lineVis, stackedVis, customVisAWS, customVisAzure, customVisGC, treeVis;
+let scatterVis, barVis, donutVis, lineVis, stackedVis, drbVisAWS, drbVisAzure, drbVisGC, treeVis, microVis, neuralVis, areaVis;
 
 // Load data with promises
 let promises = [
@@ -9,7 +9,8 @@ let promises = [
     d3.csv("data/transistors-cpu.csv"),
     d3.csv("data/transistors-gpu.csv"),
     d3.csv("data/clouds.csv"),
-    d3.csv("data/stack.csv")
+    d3.csv("data/stack.csv"),
+    d3.json("data/nodes.json")
 ];
 
 Promise.all(promises)
@@ -29,6 +30,7 @@ function createVis(data) {
     let gpuData = data[5];
     let cloudData = data[6];
     let aiStackData = data[7];
+    let neuralData = data[8];
 
     let chipData = cpuData.concat(gpuData);
 
@@ -66,22 +68,56 @@ function createVis(data) {
         d.GrowthRate = parseFloat(d["Growth Rate"].replace(/,/g, ''), 10);
         d['Market Share'] = parseFloat(d['Market Share'].replace('%', '')) / 100;
         d['Growth Rate'] = +d['Growth Rate'].replace('%', '')  / 100;
+        d.RoundRevenue = Math.floor(d['Revenue'] / 1000); // Rounds to nearest billion
     });
+
+    // For brushing
+    let selectedTimeRange = [];
 
     // Create visualization instances
     scatterVis = new ScatterVis("chipvis", chipData, mooreData);
     barVis = new BarVis("applevis", appleData);
     donutVis = new DonutChart("sp500vis", sp500Data);
     lineVis = new LineVis("cloudvis", cloudData);
-    stackedVis = new StackedBarVis("stackedvis", cloudData);
-    customVisAWS = new CustomVis("custom-aws", cloudData, "Amazon");
-    customVisAzure = new CustomVis("custom-azure", cloudData, "Microsoft");
-    customVisGC = new CustomVis("custom-gc", cloudData, "Google");
+    // stackedVis = new StackedBarVis("stackedvis", cloudData);
+    drbVisAWS = new DoubalRadialBarVis("custom-aws", cloudData, "Amazon");
+    drbVisAzure = new DoubalRadialBarVis("custom-azure", cloudData, "Microsoft");
+    drbVisGC = new DoubalRadialBarVis("custom-gc", cloudData, "Google");
     treeVis = new TreeVis("treevis",aiStackData);
+    neuralVis = new NeuralNetworkVis("neuralvis",neuralData);
+    microVis = new CustomVis("micro-aws", cloudData, "Amazon");
+    microVis2 = new CustomVis("micro-azure", cloudData, "Microsoft");
+    microVis3 = new CustomVis("micro-gc", cloudData, "Google");
+    areaVis = new StackedAreaVis("areavis", cloudData);
 }
 
-// Additional Helper Functions
+function brushed() {
+    let selection = d3.brushSelection(d3.select(".brush").node());
 
+    if (selection) {
+        // Get the nearest points on the scale
+        let startIndex = d3.scan(vis.x.domain(), (a, b) => Math.abs(vis.x(a) - selection[0]) - Math.abs(vis.x(b) - selection[0]));
+        let endIndex = d3.scan(vis.x.domain(), (a, b) => Math.abs(vis.x(a) - selection[1]) - Math.abs(vis.x(b) - selection[1]));
+
+        let selectedDomain = vis.x.domain().slice(startIndex, endIndex + 1);
+
+        console.log(selectedDomain);
+        // Update the other visualization
+        // otherVisualizationInstance.updateDataRange(selectedDomain);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+// Additional Helper Functions
 function calculateDataStaleness() {
     const lastUpdatedDate = new Date("2023-11-01"); // Adjust this to your actual last update date
     const currentDate = new Date();
@@ -102,7 +138,21 @@ function displayDataStaleness() {
 
 displayDataStaleness();
 
-function brushed() {
-    // React to 'brushed' event
-    let selectionRange = d3.brushSelection(d3.select(".brush").node());
-}
+// function brushed() {
+//     // Get the selection range from the brush
+//     let selection = d3.brushSelection(d3.select(".brush").node());
+
+//     if (selection) {
+//         // Convert the selection range (pixel values) back to data values
+//         let selectedDomain = selection.map(vis.x.invert);
+
+//         console.log(selection);
+//         console.log(selectedDomain);
+//         // Log the selected domain for debugging
+//         console.log(selectedDomain);
+
+//         // Update the other visualization
+//         // Assuming you have a method in the other visualization class
+//         otherVisualizationInstance.updateDataRange(selectedDomain);
+//     }
+// }

@@ -2,7 +2,7 @@ class StackedBarVis {
     constructor(_parentElement, _data) {
         this.parentElement = _parentElement;
         this.data = _data;
-        this.filteredData = this.data; // Assuming the data is formatted as required
+        this.filteredData = this.data;
 
         this.initVis();
     }
@@ -46,7 +46,7 @@ class StackedBarVis {
         vis.stackedData = vis.stack(vis.dataByQuarter);
 
         // Set y-domain
-        vis.y.domain([0, d3.max(vis.stackedData, d => d3.max(d, d => d[1]))]).nice();
+        vis.y.domain([0, d3.max(vis.stackedData, d => d3.max(d, d => d[1]))]);
         
 
         // Add X axis label

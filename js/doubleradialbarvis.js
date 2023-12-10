@@ -14,9 +14,9 @@ class DoubalRadialBarVis {
 
         vis.element = document.getElementById(vis.parentElement);
 
-        vis.margin = {top: 20, right: 0, bottom: 20, left: 0},
+        vis.margin = {top: 10, right: 0, bottom: 0, left: 0},
         vis.width = vis.element.offsetWidth - vis.margin.left - vis.margin.right,
-        vis.height = 260 - vis.margin.top - vis.margin.bottom,
+        vis.height = 200 - vis.margin.top - vis.margin.bottom,
 
         vis.innerRadius = 40,
         vis.outerRadius = Math.min(vis.width, vis.height) / 2;
@@ -181,90 +181,90 @@ class DoubalRadialBarVis {
             .range(["#065F46", "#34d399"]);
             
         // Add the outer bars
-        // vis.svg.append("g")
-        //     .selectAll("path")
-        //     .data(vis.data)
-        //     .join("path")
-        //     .attr("fill", d => vis.purpleColorScale(d.MarketShareValue))
-        //     .attr("d", d3.arc()
-        //         .innerRadius(vis.innerRadius)
-        //         .outerRadius(d => vis.y(d.MarketShareValue))
-        //         .startAngle(d => vis.x(d.Quarter))
-        //         .endAngle(d => vis.x(d.Quarter) + vis.x.bandwidth())
-        //         .padAngle(0.01)
-        //         .padRadius(vis.innerRadius))
-        //         .on("mouseover", function(event, d) {
-        //             // let imageUrl = companyImages.find(img => img.company === d.data.Company).imageUrl;
+        vis.svg.append("g")
+            .selectAll("path")
+            .data(vis.data)
+            .join("path")
+            .attr("fill", d => vis.purpleColorScale(d.MarketShareValue))
+            .attr("d", d3.arc()
+                .innerRadius(vis.innerRadius)
+                .outerRadius(d => vis.y(d.MarketShareValue))
+                .startAngle(d => vis.x(d.Quarter))
+                .endAngle(d => vis.x(d.Quarter) + vis.x.bandwidth())
+                .padAngle(0.01)
+                .padRadius(vis.innerRadius))
+                .on("mouseover", function(event, d) {
+                    // let imageUrl = companyImages.find(img => img.company === d.data.Company).imageUrl;
         
-        //             vis.tooltip.transition()    
-        //                 .duration(200)    
-        //                 .style("opacity", 1);    
-        //             vis.tooltip.html(
-        //                 `
-        //                 <img class="tooltip-company-img" src="${getTooltipImage(vis.company)}" width="40" height="40" />
+                    vis.tooltip.transition()    
+                        .duration(200)    
+                        .style("opacity", 1);    
+                    vis.tooltip.html(
+                        `
+                        <img class="tooltip-company-img" src="${getTooltipImage(vis.company)}" width="40" height="40" />
                         
-        //                 <span class="text-lg font-bold text-slate-700">${getCloudCompany(vis.company)}</span><br/>
-        //                 <span class="text-base font-medium text-slate-500">Quarter: 
-        //                     <span class="text-slate-600 font-bold">${d.Quarter}</span>
-        //                 </span><br/>
-        //                 <span class="text-base font-medium text-slate-500">Market Share: 
-        //                     <span class="text-purple-600 font-bold">${d.MarketShareValue}%</span>
-        //                 </span><br/>
-        //                 <span class="text-base font-medium text-slate-500">YoY Growth Rate: 
-        //                     <span class="text-emerald-600 font-bold">+${d.GrowthRateValue}%</span>
-        //                 </span>
-        //                 `
-        //             )  
-        //             .style("left", (event.pageX + 20) + "px")   
-        //             .style("top", (event.pageY - 20) + "px");  
-        //         })          
-        //         .on("mouseout", function(d) {   
-        //             vis.tooltip.transition()    
-        //                 .duration(500)    
-        //                 .style("opacity", 0); 
-        //         });
+                        <span class="text-lg font-bold text-slate-700">${getCloudCompany(vis.company)}</span><br/>
+                        <span class="text-base font-medium text-slate-500">Quarter: 
+                            <span class="text-slate-600 font-bold">${d.Quarter}</span>
+                        </span><br/>
+                        <span class="text-base font-medium text-slate-500">Market Share: 
+                            <span class="text-purple-600 font-bold">${d.MarketShareValue}%</span>
+                        </span><br/>
+                        <span class="text-base font-medium text-slate-500">YoY Growth Rate: 
+                            <span class="text-emerald-600 font-bold">+${d.GrowthRateValue}%</span>
+                        </span>
+                        `
+                    )  
+                    .style("left", (event.pageX + 20) + "px")   
+                    .style("top", (event.pageY - 20) + "px");  
+                })          
+                .on("mouseout", function(d) {   
+                    vis.tooltip.transition()    
+                        .duration(500)    
+                        .style("opacity", 0); 
+                });
 
         // Add the inner bars
-        // vis.svg.append("g")
-        //     .selectAll("path")
-        //     .data(vis.data)
-        //     .join("path")
-        //     .attr("fill", d => vis.emeraldColorScale(d.GrowthRateValue))
-        //     .attr("d", d3.arc()
-        //         .innerRadius(d => vis.ybis(0))
-        //         .outerRadius(d => vis.ybis(d.GrowthRateValue))
-        //         .startAngle(d => vis.x(d.Quarter))
-        //         .endAngle(d => vis.x(d.Quarter) + vis.x.bandwidth())
-        //         .padAngle(0.01)
-        //         .padRadius(vis.innerRadius))
-        //     .on("mouseover", function(event, d) {
-        //         // let imageUrl = companyImages.find(img => img.company === d.data.Company).imageUrl;
+        vis.svg.append("g")
+            .selectAll("path")
+            .data(vis.data)
+            .join("path")
+            .attr("fill", d => vis.emeraldColorScale(d.GrowthRateValue))
+            .attr("d", d3.arc()
+                .innerRadius(d => vis.ybis(0))
+                .outerRadius(d => vis.ybis(d.GrowthRateValue))
+                .startAngle(d => vis.x(d.Quarter))
+                .endAngle(d => vis.x(d.Quarter) + vis.x.bandwidth())
+                .padAngle(0.01)
+                .padRadius(vis.innerRadius))
+            .on("mouseover", function(event, d) {
+                // let imageUrl = companyImages.find(img => img.company === d.data.Company).imageUrl;
     
-        //         vis.tooltip.transition()    
-        //             .duration(200)    
-        //             .style("opacity", 1);    
-        //         vis.tooltip.html(
-        //             `
-        //             <img class="tooltip-company-img" src="${getTooltipImage(vis.company)}" width="40" height="40" />
-        //             <span class="text-lg font-bold text-slate-700">${getCloudCompany(vis.company)}</span><br/>
-        //             <span class="text-base font-medium text-slate-500">Quarter: 
-        //                 <span class="text-slate-600 font-bold">${d.Quarter}</span>
-        //             </span><br/>
-        //             <span class="text-base font-medium text-slate-500">Market Share: 
-        //                     <span class="text-purple-600 font-bold">${d.MarketShareValue}%</span>
-        //                 </span><br/>
-        //             <span class="text-base font-medium text-slate-500">YoY Growth Rate: 
-        //                 <span class="text-emerald-600 font-bold">+${d.GrowthRateValue}%</span>
-        //             </span>`
-        //         )  
-        //         .style("left", (event.pageX + 20) + "px")   
-        //         .style("top", (event.pageY - 20) + "px");  
-        //     })          
-        //     .on("mouseout", function(d) {   
-        //         vis.tooltip.transition()    
-        //             .duration(500)    
-        //             .style("opacity", 0); 
-        //     });
+                vis.tooltip.transition()    
+                    .duration(200)    
+                    .style("opacity", 1);    
+                vis.tooltip.html(
+                    `
+                    <img class="tooltip-company-img" src="${getTooltipImage(vis.company)}" width="40" height="40" />
+                    <span class="text-lg font-bold text-slate-700">${getCloudCompany(vis.company)}</span><br/>
+                    <span class="text-base font-medium text-slate-500">Quarter: 
+                        <span class="text-slate-600 font-bold">${d.Quarter}</span>
+                    </span><br/>
+                    <span class="text-base font-medium text-slate-500">Market Share: 
+                            <span class="text-purple-600 font-bold">${d.MarketShareValue}%</span>
+                        </span><br/>
+                    <span class="text-base font-medium text-slate-500">YoY Growth Rate: 
+                        <span class="text-emerald-600 font-bold">+${d.GrowthRateValue}%</span>
+                    </span>`
+                )  
+                .style("left", (event.pageX + 20) + "px")   
+                .style("top", (event.pageY - 20) + "px");  
+            })          
+            .on("mouseout", function(d) {   
+                vis.tooltip.transition()    
+                    .duration(500)    
+                    .style("opacity", 0); 
+            });
 
         // Add outer labels
         // vis.svg.append("g")
@@ -281,120 +281,125 @@ class DoubalRadialBarVis {
         //     .style("font-size", "11px")
         //     .attr("alignment-baseline", "middle");
 
-                        // Layer 4
-                        vis.svg.append("g")
-                        .attr("transform", "translate(0, 80) rotate(30) skewX(-30) scale(1, 0.86062)")
-                        .append("rect")
-                            .attr("x", -40)
-                            .attr("y", -40)
-                            .attr("width", 80)
-                            .attr("height", 80)
-                            .attr("rx", 4)
-                            .attr("fill", "url(#gradient3)");
-
-                // Overlayer 4
-                vis.svg.append("g")
-                .attr("transform", "translate(0, 80) rotate(30) skewX(-30) scale(1, 0.86062)")
-                .append("rect")
-                    .attr("x", -40)
-                    .attr("y", -40)
-                    .attr("width", 80)
-                    .attr("height", 80)
-                    .attr("rx", 4)
-                    .attr("opacity", 0.1)
-                    .attr("blend-mode", "multiply")
-                    // .attr("fill", "url(#circles-9)")
-                    .attr("fill", "url(#horizontal-stripe-9)");
 
 
-                // Layer 3.2
-                vis.svg.append("g")
-                .attr("transform", "translate(0, 48) rotate(30) skewX(-30) scale(1, 0.86062)")
-                .append("rect")
-                    .attr("x", -40)
-                    .attr("y", -40)
-                    .attr("width", 80)
-                    .attr("height", 80)
-                    .attr("rx", 4)
-                    .attr("opacity", 0.25)
-                    .attr("fill", "url(#gradient2)");
-
-        // Layer 3
-        vis.svg.append("g")
-        .attr("transform", "translate(0, 40) rotate(30) skewX(-30) scale(1, 0.86062)")
-        .append("rect")
-            .attr("x", -40)
-            .attr("y", -40)
-            .attr("width", 80)
-            .attr("height", 80)
-            .attr("rx", 4)
-            .attr("fill", "url(#gradient2)");
-
-        // Layer 2
-        vis.svg.append("g")
-        .attr("transform", "translate(0, 32) rotate(30) skewX(-30) scale(1, 0.86062)")
-        .append("rect")
-            .attr("x", -40)
-            .attr("y", -40)
-            .attr("width", 80)
-            .attr("height", 80)
-            .attr("rx", 4)
-            .attr("fill", "url(#gradient2)");
-
-        // Pattern Overlay 2
-        vis.svg.append("g")
-        .attr("transform", "translate(0, 32) rotate(30) skewX(-30) scale(1, 0.86062)")
-        .append("rect")
-            .attr("x", -40)
-            .attr("y", -40)
-            .attr("width", 80)
-            .attr("height", 80)
-            .attr("rx", 4)
-            .attr("opacity", 0.1)
-            .attr("blend-mode", "multiply")
-            // alternative blend mode
-            // .attr("mix-blend-mode", "multiply")
-            .attr("fill", "url(#dots-5)");
-
-        // Layer 1        
-        vis.svg.append("g")
-            .attr("transform", "translate(0, 15) rotate(30) skewX(-30) scale(1, 0.86062)")
-            .append("rect")
-                .attr("x", -30)
-                .attr("y", -30)
-                .attr("width", 60)
-                .attr("height", 60)
-                .attr("rx", 4)
-                .attr("fill", "url(#gradient)");
-
-        // Pattern Overlay 1
-        vis.svg.append("g")
-            .attr("transform", "translate(0, 15) rotate(30) skewX(-30) scale(1, 0.86062)")
-            .append("rect")
-                .attr("x", -30)
-                .attr("y", -30)
-                .attr("width", 60)
-                .attr("height", 60)
-                .attr("rx", 4)
-                .attr("opacity", 0.1)
-                // .attr("stroke-width", 2)
-                // .attr("stroke", "black")
-                .attr("blend-mode", "multiply")
-                .attr("fill", "url(#dots-9)");
 
 
-        // Logo background
-        vis.svg.append("g")
-        .attr("transform", "rotate(30) skewX(-30) scale(1, 0.86062)")
-        .append("rect")
-            .attr("x", -20)
-            .attr("y", -20)
-            .attr("width", 40)
-            .attr("height", 40)
-            .attr("rx", 4)
-            .attr("stroke-width", 2)
-            .attr("stroke", "#0F172A")
-            .attr("fill", "#1E293B");
+
+        //                 // Layer 4
+        //                 vis.svg.append("g")
+        //                 .attr("transform", "translate(0, 80) rotate(30) skewX(-30) scale(1, 0.86062)")
+        //                 .append("rect")
+        //                     .attr("x", -40)
+        //                     .attr("y", -40)
+        //                     .attr("width", 80)
+        //                     .attr("height", 80)
+        //                     .attr("rx", 4)
+        //                     .attr("fill", "url(#gradient3)");
+
+        //         // Overlayer 4
+        //         vis.svg.append("g")
+        //         .attr("transform", "translate(0, 80) rotate(30) skewX(-30) scale(1, 0.86062)")
+        //         .append("rect")
+        //             .attr("x", -40)
+        //             .attr("y", -40)
+        //             .attr("width", 80)
+        //             .attr("height", 80)
+        //             .attr("rx", 4)
+        //             .attr("opacity", 0.1)
+        //             .attr("blend-mode", "multiply")
+        //             // .attr("fill", "url(#circles-9)")
+        //             .attr("fill", "url(#horizontal-stripe-9)");
+
+
+        //         // Layer 3.2
+        //         vis.svg.append("g")
+        //         .attr("transform", "translate(0, 48) rotate(30) skewX(-30) scale(1, 0.86062)")
+        //         .append("rect")
+        //             .attr("x", -40)
+        //             .attr("y", -40)
+        //             .attr("width", 80)
+        //             .attr("height", 80)
+        //             .attr("rx", 4)
+        //             .attr("opacity", 0.25)
+        //             .attr("fill", "url(#gradient2)");
+
+        // // Layer 3
+        // vis.svg.append("g")
+        // .attr("transform", "translate(0, 40) rotate(30) skewX(-30) scale(1, 0.86062)")
+        // .append("rect")
+        //     .attr("x", -40)
+        //     .attr("y", -40)
+        //     .attr("width", 80)
+        //     .attr("height", 80)
+        //     .attr("rx", 4)
+        //     .attr("fill", "url(#gradient2)");
+
+        // // Layer 2
+        // vis.svg.append("g")
+        // .attr("transform", "translate(0, 32) rotate(30) skewX(-30) scale(1, 0.86062)")
+        // .append("rect")
+        //     .attr("x", -40)
+        //     .attr("y", -40)
+        //     .attr("width", 80)
+        //     .attr("height", 80)
+        //     .attr("rx", 4)
+        //     .attr("fill", "url(#gradient2)");
+
+        // // Pattern Overlay 2
+        // vis.svg.append("g")
+        // .attr("transform", "translate(0, 32) rotate(30) skewX(-30) scale(1, 0.86062)")
+        // .append("rect")
+        //     .attr("x", -40)
+        //     .attr("y", -40)
+        //     .attr("width", 80)
+        //     .attr("height", 80)
+        //     .attr("rx", 4)
+        //     .attr("opacity", 0.1)
+        //     .attr("blend-mode", "multiply")
+        //     // alternative blend mode
+        //     // .attr("mix-blend-mode", "multiply")
+        //     .attr("fill", "url(#dots-5)");
+
+        // // Layer 1        
+        // vis.svg.append("g")
+        //     .attr("transform", "translate(0, 15) rotate(30) skewX(-30) scale(1, 0.86062)")
+        //     .append("rect")
+        //         .attr("x", -30)
+        //         .attr("y", -30)
+        //         .attr("width", 60)
+        //         .attr("height", 60)
+        //         .attr("rx", 4)
+        //         .attr("fill", "url(#gradient)");
+
+        // // Pattern Overlay 1
+        // vis.svg.append("g")
+        //     .attr("transform", "translate(0, 15) rotate(30) skewX(-30) scale(1, 0.86062)")
+        //     .append("rect")
+        //         .attr("x", -30)
+        //         .attr("y", -30)
+        //         .attr("width", 60)
+        //         .attr("height", 60)
+        //         .attr("rx", 4)
+        //         .attr("opacity", 0.1)
+        //         // .attr("stroke-width", 2)
+        //         // .attr("stroke", "black")
+        //         .attr("blend-mode", "multiply")
+        //         .attr("fill", "url(#dots-9)");
+
+
+        // // Logo background
+        // vis.svg.append("g")
+        // .attr("transform", "rotate(30) skewX(-30) scale(1, 0.86062)")
+        // .append("rect")
+        //     .attr("x", -20)
+        //     .attr("y", -20)
+        //     .attr("width", 40)
+        //     .attr("height", 40)
+        //     .attr("rx", 4)
+        //     .attr("stroke-width", 2)
+        //     .attr("stroke", "#0F172A")
+        //     .attr("fill", "#1E293B");
 
         // vis.svg.append("g")
         //     .attr("transform", "rotate(30) skewX(-30) scale(1, 0.86062)")
@@ -409,7 +414,7 @@ class DoubalRadialBarVis {
 
         // Company Logo
         vis.svg.append("g")
-            .attr("transform", "rotate(30) skewX(-30) scale(1, 0.86062)")
+            // .attr("transform", "rotate(30) skewX(-30) scale(1, 0.86062)")
             .append("image")    
             .attr("href", getCenterImage(vis.company))
             .attr("x", -16) 

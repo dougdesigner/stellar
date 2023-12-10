@@ -58,6 +58,25 @@
   shape-rendering: crispEdges;
 }
 
+.tick line {
+  stroke: #64748B;
+}
+
+.x-axis path {
+  stroke: #64748B;
+}
+
+.tick text {
+  fill: #94A3B8;
+  font-weight: bold;
+  stroke: none;
+  font-size: 12px;
+}
+
+.domain {
+  stroke: transparent;
+}
+
 /* .grid line {
    stroke: lightgrey;
    stroke-opacity: 0.7;
