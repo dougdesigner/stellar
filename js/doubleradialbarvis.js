@@ -138,10 +138,10 @@ class DoubalRadialBarVis {
         // .attr("transform", "rotate(30) skewX(-30) scale(1, 0.86062)")
         .append("image")    
         .attr("href", getCenterImage(vis.company))
-        .attr("x", -16) 
-        .attr("y", -16)
-        .attr("width", 32)
-        .attr("height", 32);
+        .attr("x", -20) 
+        .attr("y", -20)
+        .attr("width", 40)
+        .attr("height", 40);
 
         vis.wrangleData(); 
     }
@@ -279,15 +279,18 @@ class DoubalRadialBarVis {
                         `
                         <img class="tooltip-company-img" src="${getTooltipImage(vis.company)}" width="40" height="40" />
                         
-                        <span class="text-lg font-bold text-slate-700">${getCloudCompany(vis.company)}</span><br/>
-                        <span class="text-base font-medium text-slate-500">Quarter: 
-                            <span class="text-slate-600 font-bold">${d.Quarter}</span>
+                        <span class="text-md font-semibold text-slate-700">${getCloudCompany(vis.company)}</span><br/>
+                        <span class="mt-1 text-sm font-medium text-slate-600"> 
+                            <span class="text-2xl text-slate-800 font-bold">${d.Quarter}</span>
+                            Quarter
                         </span><br/>
-                        <span class="text-base font-medium text-slate-500">Market Share: 
-                            <span class="text-purple-600 font-bold">${d.MarketShareValue}%</span>
+                        <span class="mt-1 text-sm font-medium text-slate-600"> 
+                            <span class="text-2xl text-slate-800 font-bold">${d.MarketShareValue}%</span>
+                            Market Share
                         </span><br/>
-                        <span class="text-base font-medium text-slate-500">YoY Growth Rate: 
-                            <span class="text-emerald-600 font-bold">+${d.GrowthRateValue}%</span>
+                        <span class="mt-1 text-sm font-medium text-slate-600">
+                            <span class="text-2xl text-emerald-600 font-bold">+${d.GrowthRateValue}%</span>
+                            YoY Growth Rate
                         </span>
                         `
                     )  
