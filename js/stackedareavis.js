@@ -109,27 +109,6 @@ class StackedAreaVis {
         // init brush
         vis.brush = d3.brushX()
             .extent([[0, 0], [vis.width, vis.height]])
-            .on("brush", function (event) {
-                const selection = event.selection;
-                if (selection) {
-                    // Map pixel coordinates to quarters
-                    const [x0, x1] = selection.map(d => {
-                        // Find the closest quarter for each end of the brush
-                        return vis.x.domain().reduce((prev, curr) => {
-                            return (Math.abs(vis.x(curr) - d) < Math.abs(vis.x(prev) - d) ? curr : prev);
-                        });
-                    });
-                    selectedQuarterRange = [x0, x1];
-                    console.log(selectedQuarterRange);
-                    lineVis.wrangleData();
-
-                    // Now you have the start and end quarters (x0 and x1)
-                    // You can filter or highlight data between these quarters
-                } else {
-                    // Handle brush clearing if necessary
-                }
-
-            })
             .on("end", function (event) {
                 const selection = event.selection;
 
@@ -142,6 +121,22 @@ class StackedAreaVis {
                     // For example, resetting the visualization
                     selectedQuarterRange = [];
                     lineVis.wrangleData();
+                    drbVisAWS.wrangleData();
+                    drbVisAzure.wrangleData();
+                    drbVisGC.wrangleData();
+                    } else {
+                        // Map pixel coordinates to quarters
+                    const [x0, x1] = selection.map(d => {
+                        // Find the closest quarter for each end of the brush
+                        return vis.x.domain().reduce((prev, curr) => {
+                            return (Math.abs(vis.x(curr) - d) < Math.abs(vis.x(prev) - d) ? curr : prev);
+                        });
+                    });
+                    selectedQuarterRange = [x0, x1];
+                    lineVis.wrangleData();
+                    drbVisAWS.wrangleData();
+                    drbVisAzure.wrangleData();
+                    drbVisGC.wrangleData();
                     }
                 
             });
@@ -183,7 +178,8 @@ class StackedAreaVis {
         // Update selection
         areas.transition()
             .duration(1000)
-            .attr("d", area);
+            .attr("d", area)
+            ;
 
         // Exit selection
         areas.exit().remove();

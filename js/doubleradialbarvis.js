@@ -3,7 +3,7 @@ class DoubalRadialBarVis {
         this.parentElement = _parentElement;
         this.data = _data;
         this.company = _company;
-        this.displayData = [];
+        this.filteredData = [];
 
         // Initialize visualization
         this.initVis();
@@ -16,16 +16,10 @@ class DoubalRadialBarVis {
 
         vis.margin = {top: 10, right: 0, bottom: 0, left: 0},
         vis.width = vis.element.offsetWidth - vis.margin.left - vis.margin.right,
-        vis.height = 200 - vis.margin.top - vis.margin.bottom,
+        vis.height = 220 - vis.margin.top - vis.margin.bottom,
 
         vis.innerRadius = 40,
         vis.outerRadius = Math.min(vis.width, vis.height) / 2;
-
-        // Define tooltip
-        vis.tooltip = d3.select('body').append('div')
-            .attr("class", "tooltip")
-            .attr("id", "custom-tooltip")
-            .style("opacity", 0);
 
         // Append SVG
         vis.svg = d3.select("#" + vis.parentElement)
@@ -98,28 +92,10 @@ class DoubalRadialBarVis {
         .attr("stop-color", "darkorange"); // End color
 
 
+        vis.colorScale = d3.scaleOrdinal()
+        .domain(['Amazon', 'Microsoft', 'Google'])
+        .range(['#FF9900', '#05A6F0', '#4285F4']); // Colors for each company
 
-
-        vis.wrangleData();
-    }
-
-    wrangleData() {
-        let vis = this;
-
-        // console.log(vis.company);
-
-        vis.data = vis.data.filter(d => d.Company === vis.company);
-
-        // Find the min and max values of MarketShareValue and GrowthRateValue
-        vis.marketShareExtent = d3.extent(vis.data, d => d.MarketShareValue);
-        vis.growthExtent = d3.extent(vis.data, d => d.GrowthRateValue);
-
-        // Update the visualization
-        vis.updateVis();
-    }
-
-    updateVis() {
-        let vis = this;
 
         const companyImage = [
             { company: "Amazon", imageUrl: "/images/m7/AWS.svg" },
@@ -153,12 +129,107 @@ class DoubalRadialBarVis {
             const cloud = companyImagesLight.find(c => c.company === company);
             return cloud ? cloud.imageUrl : null;
         }
+               
+
+
+         
+        // Company Logo
+        vis.svg.append("g")
+        // .attr("transform", "rotate(30) skewX(-30) scale(1, 0.86062)")
+        .append("image")    
+        .attr("href", getCenterImage(vis.company))
+        .attr("x", -16) 
+        .attr("y", -16)
+        .attr("width", 32)
+        .attr("height", 32);
+
+        vis.wrangleData(); 
+    }
+
+    wrangleData() {
+        let vis = this;
+
+        console.log(vis.company);
+        vis.filteredData = vis.data.filter(d => d.Company === vis.company);
+
+        function quarterToComparable(quarterString) {
+            let parts = quarterString.split(" ");
+            let year = parseInt(parts[1], 10);
+            let quarter = parts[0][1]; // Assumes format "Qx YY"
+            
+            return year * 4 + parseInt(quarter, 10); // Simple numerical representation
+        }
+    
+          if (selectedQuarterRange && selectedQuarterRange.length === 2) {
+                let startQuarter = quarterToComparable(selectedQuarterRange[0]);
+                let endQuarter = quarterToComparable(selectedQuarterRange[1]);
+    
+                vis.filteredData = vis.filteredData.filter(d => {
+                    let quarterValue = quarterToComparable(d.Quarter);
+                    return quarterValue >= startQuarter && quarterValue <= endQuarter;
+                });
+    
+          } else {
+                vis.filteredData = vis.data.filter(d => d.Company === vis.company);
+          }
+          console.log("Filtered data:", vis.filteredData);
+
+
+        // Find the min and max values of MarketShareValue and GrowthRateValue
+        vis.marketShareExtent = d3.extent(vis.filteredData, d => d.MarketShareValue);
+        vis.growthExtent = d3.extent(vis.filteredData, d => d.GrowthRateValue);
+
+        // Update the visualization
+        vis.updateVis();
+    }
+
+    updateVis() {
+        let vis = this;
+
+        vis.colorScale = d3.scaleOrdinal()
+        .domain(['Amazon', 'Microsoft', 'Google'])
+        .range(['#FF9900', '#05A6F0', '#4285F4']); // Colors for each company
+
+
+        const companyImage = [
+            { company: "Amazon", imageUrl: "/images/m7/AWS.svg" },
+            { company: "Microsoft", imageUrl: "/images/m7/Azure.svg" },
+            { company: "Google", imageUrl: "/images/m7/GoogleCloud.svg" },
+        ];
+    
+        const companyImagesLight = [
+            { company: "Amazon", imageUrl: "/images/m7/AWS-light.svg" },
+            { company: "Microsoft", imageUrl: "/images/m7/Azure.svg" },
+            { company: "Google", imageUrl: "/images/m7/GoogleCloud.svg" },
+        ];
+
+        const cloudName = [
+            { company: "Amazon", name: "Amazon Web Services" },
+            { company: "Microsoft", name: "Microsoft Azure" },
+            { company: "Google", name: "Google Cloud" },
+        ];
+
+        function getCloudCompany(company) {
+            const cloud = cloudName.find(c => c.company === company);
+            return cloud ? cloud.name : null;
+        }
+
+        function getCenterImage(company) {
+            const cloud = companyImage.find(c => c.company === company);
+            return cloud ? cloud.imageUrl : null;
+        }
+
+        function getTooltipImage(company) {
+            const cloud = companyImagesLight.find(c => c.company === company);
+            return cloud ? cloud.imageUrl : null;
+        }
+               
 
         // X scale for both bars
         vis.x = d3.scaleBand()
             .range([0, 2 * Math.PI])    
             .align(0)                  
-            .domain(vis.data.map(d => d.Quarter)); 
+            .domain(vis.filteredData.map(d => d.Quarter)); 
 
         // Y scale for outer bars
         vis.y = d3.scaleRadial()
@@ -180,18 +251,23 @@ class DoubalRadialBarVis {
             .domain(vis.growthExtent)
             .range(["#065F46", "#34d399"]);
             
-        // Add the outer bars
-        vis.svg.append("g")
-            .selectAll("path")
-            .data(vis.data)
-            .join("path")
-            .attr("fill", d => vis.purpleColorScale(d.MarketShareValue))
+        // // Add the outer bars
+        // vis.svg.append("g")
+
+        let outerBars = vis.svg.selectAll(".outer-bar")
+            .data(vis.filteredData, d => d.Quarter);
+
+        outerBars.enter()
+            .append("path")
+            .attr("class", "outer-bar")
+            .merge(outerBars)
+            .attr("fill", d => vis.colorScale(vis.company))
             .attr("d", d3.arc()
                 .innerRadius(vis.innerRadius)
                 .outerRadius(d => vis.y(d.MarketShareValue))
                 .startAngle(d => vis.x(d.Quarter))
                 .endAngle(d => vis.x(d.Quarter) + vis.x.bandwidth())
-                .padAngle(0.01)
+                .padAngle(0.025)
                 .padRadius(vis.innerRadius))
                 .on("mouseover", function(event, d) {
                     // let imageUrl = companyImages.find(img => img.company === d.data.Company).imageUrl;
@@ -224,18 +300,23 @@ class DoubalRadialBarVis {
                         .style("opacity", 0); 
                 });
 
+            outerBars.exit().remove();
+
         // Add the inner bars
-        vis.svg.append("g")
-            .selectAll("path")
-            .data(vis.data)
-            .join("path")
+        let innerBars = vis.svg.selectAll(".inner-bar")
+            .data(vis.filteredData, d => d.Quarter);
+            
+        innerBars.enter()
+            .append("path")
+            .attr("class", "inner-bar")
+            .merge(innerBars)
             .attr("fill", d => vis.emeraldColorScale(d.GrowthRateValue))
             .attr("d", d3.arc()
                 .innerRadius(d => vis.ybis(0))
                 .outerRadius(d => vis.ybis(d.GrowthRateValue))
                 .startAngle(d => vis.x(d.Quarter))
                 .endAngle(d => vis.x(d.Quarter) + vis.x.bandwidth())
-                .padAngle(0.01)
+                .padAngle(0.025)
                 .padRadius(vis.innerRadius))
             .on("mouseover", function(event, d) {
                 // let imageUrl = companyImages.find(img => img.company === d.data.Company).imageUrl;
@@ -265,6 +346,8 @@ class DoubalRadialBarVis {
                     .duration(500)    
                     .style("opacity", 0); 
             });
+
+        innerBars.exit().remove();
 
         // Add outer labels
         // vis.svg.append("g")
@@ -412,16 +495,7 @@ class DoubalRadialBarVis {
         //         .attr("fill", "url(#dots-5) slategray");
 
 
-        // Company Logo
-        vis.svg.append("g")
-            // .attr("transform", "rotate(30) skewX(-30) scale(1, 0.86062)")
-            .append("image")    
-            .attr("href", getCenterImage(vis.company))
-            .attr("x", -16) 
-            .attr("y", -16)
-            .attr("width", 32)
-            .attr("height", 32);
-
+        
 
         
 
