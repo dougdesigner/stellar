@@ -77,8 +77,8 @@
   stroke: transparent;
 }
 
-btn:hover svg {
-  transform: rotate(30deg);
+.btn:hover svg {
+  transform: rotate(15deg);
 }
 
 /* .grid line {
