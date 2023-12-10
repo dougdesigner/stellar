@@ -77,6 +77,10 @@
   stroke: transparent;
 }
 
+btn:hover svg {
+  transform: rotate(30deg);
+}
+
 /* .grid line {
    stroke: lightgrey;
    stroke-opacity: 0.7;

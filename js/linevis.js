@@ -256,16 +256,23 @@ class LineVis {
                   vis.tooltip.html(
                       `
                       <img class="tooltip-company-img" src="${imageUrl}" width="40" height="40" />
-                      <span class="text-lg font-bold text-slate-700">${matchingCompany}</span><br/>
-                      <span class="text-base font-medium text-slate-500">Market Share: 
-                          <span class="text-slate-600 font-bold">${d.MarketShare}%</span>
-                      </span><br/>
-                      <span class="text-base font-medium text-slate-500">Quarter: 
-                          <span class="text-slate-600 font-bold">${d.Quarter}</span>
-                      </span><br/>
-                      <span class="text-base font-medium text-slate-500">YoY Growth Rate: 
-                          <span class="text-emerald-600 font-bold">+${d.GrowthRate}%</span>
-                      </span>`)
+
+                      <span class="text-base font-bold text-slate-700">${matchingCompany}</span><br/>
+                    
+                    <span class="mt-1 text-sm font-medium text-slate-500"> 
+                        <span class="text-2xl font-semibold" style="color: ${colorScale(d.Company)}">${d.MarketShare}%</span>
+                        Market Share
+                    </span><br/>
+                    <span class="mt-1 text-sm font-medium text-slate-500">
+                        <span class="text-2xl text-emerald-600 font-semibold">+${d.GrowthRate}%</span>
+                        YoY Growth Rate
+                    </span>><br/>
+                    <span class="mt-1 text-sm font-medium text-slate-500"> 
+                        <span class="text-2xl text-slate-600 font-semibold">${d.Quarter}</span>
+                        Quarter
+                    </span><br/>
+                    `
+                )
                       .style("left", (event.pageX + 20) + "px")   
                       .style("top", (event.pageY - 20) + "px");
                 })

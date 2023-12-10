@@ -279,19 +279,20 @@ class DoubalRadialBarVis {
                         `
                         <img class="tooltip-company-img" src="${getTooltipImage(vis.company)}" width="40" height="40" />
                         
-                        <span class="text-md font-medium text-slate-700">${getCloudCompany(vis.company)}</span><br/>
-                        <span class="mt-1 text-sm font-medium text-slate-600"> 
-                            <span class="text-2xl text-slate-800 font-semibold">${d.Quarter}</span>
-                            Quarter
-                        </span><br/>
-                        <span class="mt-1 text-sm font-medium text-slate-600"> 
-                            <span class="text-2xl text-slate-700 font-semibold">${d.MarketShareValue}%</span>
+                        <span class="text-base font-bold text-slate-700">${getCloudCompany(vis.company)}</span><br/>
+                        
+                        <span class="mt-1 text-sm font-medium text-slate-500"> 
+                            <span class="text-2xl font-semibold" style="color: ${vis.colorScale(vis.company)}">${d.MarketShareValue}%</span>
                             Market Share
                         </span><br/>
-                        <span class="mt-1 text-sm font-medium text-slate-600">
+                        <span class="mt-1 text-sm font-medium text-slate-500">
                             <span class="text-2xl text-emerald-600 font-semibold">+${d.GrowthRateValue}%</span>
                             YoY Growth Rate
-                        </span>
+                        </span><br/>
+                        <span class="mt-1 text-sm font-medium text-slate-500"> 
+                            <span class="text-2xl text-slate-600 font-semibold">${d.Quarter}</span>
+                            Quarter
+                        </span><br/>
                         `
                     )  
                     .style("left", (event.pageX + 20) + "px")   
@@ -330,16 +331,22 @@ class DoubalRadialBarVis {
                 vis.tooltip.html(
                     `
                     <img class="tooltip-company-img" src="${getTooltipImage(vis.company)}" width="40" height="40" />
-                    <span class="text-lg font-bold text-slate-700">${getCloudCompany(vis.company)}</span><br/>
-                    <span class="text-base font-medium text-slate-500">Quarter: 
-                        <span class="text-slate-600 font-bold">${d.Quarter}</span>
+                    
+                    <span class="text-base font-bold text-slate-700">${getCloudCompany(vis.company)}</span><br/>
+                    
+                    <span class="mt-1 text-sm font-medium text-slate-500"> 
+                        <span class="text-2xl font-semibold" style="color: ${vis.colorScale(vis.company)}">${d.MarketShareValue}%</span>
+                        Market Share
                     </span><br/>
-                    <span class="text-base font-medium text-slate-500">Market Share: 
-                            <span class="text-purple-600 font-bold">${d.MarketShareValue}%</span>
-                        </span><br/>
-                    <span class="text-base font-medium text-slate-500">YoY Growth Rate: 
-                        <span class="text-emerald-600 font-bold">+${d.GrowthRateValue}%</span>
-                    </span>`
+                    <span class="mt-1 text-sm font-medium text-slate-500">
+                        <span class="text-2xl text-emerald-600 font-semibold">+${d.GrowthRateValue}%</span>
+                        YoY Growth Rate
+                    </span><br/>
+                    <span class="mt-1 text-sm font-medium text-slate-500"> 
+                        <span class="text-2xl text-slate-600 font-semibold">${d.Quarter}</span>
+                        Quarter
+                    </span><br/>
+                    `
                 )  
                 .style("left", (event.pageX + 20) + "px")   
                 .style("top", (event.pageY - 20) + "px");  
