@@ -12,9 +12,9 @@ class LineVis {
 
       const element = document.getElementById(vis.parentElement);
       // Set dimensions and margins
-      vis.margin = { top: 140, right: 100, bottom: 140, left: 100 };
+      vis.margin = { top: 140, right: 100, bottom: 100, left: 100 };
       vis.width = element.offsetWidth - vis.margin.left - vis.margin.right;
-      vis.height = 500 - vis.margin.top - vis.margin.bottom;
+      vis.height = 400 - vis.margin.top - vis.margin.bottom;
 
       // Append SVG object
       vis.svg = d3.select("#" + vis.parentElement)
@@ -276,7 +276,7 @@ class LineVis {
                 })
                 .transition()
                 .duration(1000)
-                .delay((d, i) => i * 100) // Delay each circle's appearance
+                .delay((d, i) => i * 40) // Delay each circle's appearance
                 .attr("r", 6)
                 .attr("stroke-width", 2)
 
@@ -295,14 +295,18 @@ class LineVis {
                     let imageUrl = companyImages.find(img => img.company === d.Company).imageUrl;
                     return imageUrl;
                 })
-                .attr("x", d => vis.x(d.Quarter) + 20) // Position slightly right to the last circle
+                .attr("x", d => vis.x(d.Quarter) + 15) // Position slightly right to the last circle
                 .transition()
                 .duration(1000)
-                .attr("y", d => vis.y(d[vis.view]) - 20) // Adjust y position based on your needs
-                .attr("width", 40)   // Set image width
-                .attr("height", 40); // Set image height
+                .attr("y", d => vis.y(d[vis.view]) - 15) // Adjust y position based on your needs
+                .attr("width", 30)   // Set image width
+                .attr("height", 30); // Set image height
 
-            dots.exit().remove();
+            dots.exit()
+            // .transition()
+            // .duration(500)
+            // .attr("r", 0)
+            .remove();
 
 
       
@@ -357,37 +361,37 @@ class LineVis {
             // .attr("dy", -4)
             );
 
-    // Create a legend group at the bottom of the SVG
-    const legend = vis.svg.append("g")
-        .attr("class", "legend")
-        .attr("transform", `translate(0, ${vis.height + 75})`);
+    // // Create a legend group at the bottom of the SVG
+    // const legend = vis.svg.append("g")
+    //     .attr("class", "legend")
+    //     .attr("transform", `translate(0, ${vis.height + 75})`);
 
-    // Determine spacing for the legend items
-    const legendItemWidth = 150;
+    // // Determine spacing for the legend items
+    // const legendItemWidth = 150;
 
-    // Add legend items for each company
-    companyNames.forEach((company, index) => {
-        const legendItem = legend.append("g")
-            .attr("class", "legend-item")
-            .attr("transform", `translate(${index * legendItemWidth}, 0)`);
+    // // Add legend items for each company
+    // companyNames.forEach((company, index) => {
+    //     const legendItem = legend.append("g")
+    //         .attr("class", "legend-item")
+    //         .attr("transform", `translate(${index * legendItemWidth}, 0)`);
 
-        legendItem.append("rect")
-            .attr("width", 20)
-            .attr("height", 20)
-            .attr("rx", 5)
-            .attr("stroke", "white")
-            .attr("fill", colorScale(company));
+    //     legendItem.append("rect")
+    //         .attr("width", 20)
+    //         .attr("height", 20)
+    //         .attr("rx", 5)
+    //         .attr("stroke", "white")
+    //         .attr("fill", colorScale(company));
 
-        legendItem.append("text")
-            .attr("x", 30)
-            .attr("y", 12)
-            .text(company)
-            .style("fill", "white")
-            .style("font-weight", "bold")
-            .style("font-size", "16px")
-            .attr("text-anchor", "start")
-            .attr("alignment-baseline", "middle");
-    });
+    //     legendItem.append("text")
+    //         .attr("x", 30)
+    //         .attr("y", 12)
+    //         .text(company)
+    //         .style("fill", "white")
+    //         .style("font-weight", "bold")
+    //         .style("font-size", "16px")
+    //         .attr("text-anchor", "start")
+    //         .attr("alignment-baseline", "middle");
+    // });
 
 }
  

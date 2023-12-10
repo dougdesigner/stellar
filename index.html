@@ -1352,9 +1352,9 @@
                 <div class="max-w-6xl mx-auto px-4 sm:px-6 mb-12 md:mb:20">
 
 
-                    <div class="pt-16 md:pt-32 md:pb-20">
+                    <div class="pt-16 md:pt-32">
                         <!-- Section header -->
-                        <div class="max-w-3xl mx-auto text-left pb-12 md:pb-20">
+                        <div class="max-w-3xl mx-auto text-left pb-12">
                             <div>
                                 <div class="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">Capitalizing across The Generative AI Stack</div>
                             </div>
@@ -1365,8 +1365,37 @@
                         </div>
 
 
+                         <!-- Filter -->
+                         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-12">
+                            <!-- We've used 3xl here, but feel free to try other max-widths based on your needs -->
+                            <div class="mx-auto max-w-3xl">
+                              <!-- Content goes here -->
+                              <div>
+                                <p class="text-base font-semibold text-slate-50">View</p>
+                                <p class="text-sm text-slate-400">View Market Share (%) by Revenue or YoY Growth (%) - Relative to Own 12-Month History</p>
+                                <fieldset class="mt-4">
+                                    <legend class="sr-only">View</legend>
+                                    <div class="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
+                                        
+                                        <div class="flex items-center">
+                                            <input checked id="cloudShare" name="cloud" type="radio" class="h-4 w-4 border-slate-300 text-indigo-600 focus:ring-indigo-600">
+                                            <label for="cloudShare" class="ml-3 block text-sm font-medium leading-6 text-slate-50">Market Share</label>
+                                        </div>
+
+                                        <div class="flex items-center">
+                                            <input id="cloudGrowth" name="cloud" type="radio"  class="h-4 w-4 border-slate-300 text-indigo-600 focus:ring-indigo-600">
+                                            <label for="cloudGrowth" class="ml-3 block text-sm font-medium leading-6 text-slate-50">YoY Growth</label>
+                                        </div>
+
+                                    </div>
+                                </fieldset>
+                              </div>
+                            </div>
+                        </div>
+
+
                                                 <!-- Highlighted boxes -->
-                                                <div class="relative pb-12 md:pb-20">
+                                                <div class="relative pb-12">
                                                     <!-- Blurred shape -->
                                                     <div class="absolute bottom-0 -mb-20 left-1/2 -translate-x-1/2 blur-2xl opacity-50 pointer-events-none" aria-hidden="true">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="434" height="427">
@@ -1540,7 +1569,7 @@
 
 
                         <!-- Highlighted boxes -->
-                        <div class="relative pb-6">
+                        <div class="relative">
                             <!-- Blurred shape -->
                             <!-- <div class="absolute bottom-0 -mb-20 left-1/2 -translate-x-1/2 blur-2xl opacity-50 pointer-events-none" aria-hidden="true">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="434" height="427">
@@ -1574,33 +1603,7 @@
 
 
 
-                        <!-- Filter -->
-                        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-12 md:pb-20">
-                            <!-- We've used 3xl here, but feel free to try other max-widths based on your needs -->
-                            <div class="mx-auto max-w-3xl">
-                              <!-- Content goes here -->
-                              <div>
-                                <p class="text-base font-semibold text-slate-50">View</p>
-                                <p class="text-sm text-slate-400">View Market Share (%) by Revenue or YoY Growth (%) - Relative to Own 12-Month History</p>
-                                <fieldset class="mt-4">
-                                    <legend class="sr-only">View</legend>
-                                    <div class="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
-                                        
-                                        <div class="flex items-center">
-                                            <input checked id="cloudShare" name="cloud" type="radio" class="h-4 w-4 border-slate-300 text-indigo-600 focus:ring-indigo-600">
-                                            <label for="cloudShare" class="ml-3 block text-sm font-medium leading-6 text-slate-50">Market Share</label>
-                                        </div>
-
-                                        <div class="flex items-center">
-                                            <input id="cloudGrowth" name="cloud" type="radio"  class="h-4 w-4 border-slate-300 text-indigo-600 focus:ring-indigo-600">
-                                            <label for="cloudGrowth" class="ml-3 block text-sm font-medium leading-6 text-slate-50">YoY Growth</label>
-                                        </div>
-
-                                    </div>
-                                </fieldset>
-                              </div>
-                            </div>
-                        </div>
+                       
 
 
 
