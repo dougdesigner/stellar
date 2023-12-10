@@ -68,7 +68,7 @@ class NeuralNetworkVis {
              .attr("stop-color", "deeppink"); // Light color at the center
          radialGradient2.append("stop")
              .attr("offset", "100%")
-             .attr("stop-color", "darkorchid"); // Darker color towards the edges
+             .attr("stop-color", "darkmagenta"); // Darker color towards the edges
  
  
          // Define the radial gradient
