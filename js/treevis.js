@@ -11,7 +11,7 @@ class TreeVis {
         let vis = this;
 
         // Initialize SVG drawing area
-        vis.margin = { top: 10, right: 160, bottom: 10, left: 120 };
+        vis.margin = { top: 10, right: 160, bottom: 10, left: 130 };
         vis.width = document.getElementById(vis.parentElement).offsetWidth - vis.margin.left - vis.margin.right;
         vis.height = 600 - vis.margin.top - vis.margin.bottom;
 

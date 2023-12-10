@@ -279,16 +279,16 @@ class ScatterVis {
                 let offset;
                 switch (position) {
                     case 0: 
-                        offset = -24; // Far Left
+                        offset = 8; // Right
                         break;
                     case 1:
-                        offset = -8; // Slightly Left
+                        offset = 24; // Far Right
                         break;
                     case 2:
-                        offset = 8; // Slightly Right
+                        offset = 40; // Very Far Right
                         break;
                     case 3:
-                        offset = 24; // Far Right
+                        offset = 56; // Very very Far Right
                         break;
                 }
                 return vis.x(d.Year) + offset;
