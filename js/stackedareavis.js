@@ -100,7 +100,7 @@ class StackedAreaVis {
             .attr("text-anchor", "left")
             .style("font-size", "16px")
             .style("fill", "#94A3B8")
-            .text("Over 40 billion in total revenue the last two quarters");
+            .text("Over 40 billion in total revenue the past two quarters");
 
 
 
