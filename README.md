@@ -25,7 +25,7 @@ The current growth in the S&P 500 is significantly influenced by the 'Magnificen
     * `data/transistors-cpu.csv` - CPU Transistor Data
     * `data/transistors-gpu.csv` - GPU Transistor Data
 * Other Project Files
-    * `index.html` - S
+    * `index.html`
     * `css/style.css` - Custom Styles
     * `js/maind3.js` - Creates all d3.js Visualizations
 * Libraries Used
