@@ -18,7 +18,7 @@ class DoubalRadialBarVis {
         vis.width = vis.element.offsetWidth - vis.margin.left - vis.margin.right,
         vis.height = 220 - vis.margin.top - vis.margin.bottom,
 
-        vis.innerRadius = 40,
+        vis.innerRadius = 60,
         vis.outerRadius = Math.min(vis.width, vis.height) / 2;
 
         // Append SVG
