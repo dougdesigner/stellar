@@ -200,7 +200,7 @@ class StackedAreaVis {
         vis.svg.select(".y-axis")
             .transition()
             .duration(1000)
-            .call(d3.axisLeft(vis.y).tickFormat(d => `${d} B`)
+            .call(d3.axisLeft(vis.y).tickFormat(d => `$${d} B`)
             .ticks(5)
             .tickSize(-vis.width) // Extend the ticks to create grid lines
             )
