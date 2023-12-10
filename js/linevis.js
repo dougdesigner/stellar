@@ -62,7 +62,7 @@ class LineVis {
         .attr("class", "y-label y-label-line")
         .attr("transform", "rotate(-90)")
         .attr("y", -60)
-        .attr("x", -100)
+        .attr("x", -80)
         .style("text-anchor", "middle")
         .style("font-weight", "bold")
         .style("font-size", "14px")
