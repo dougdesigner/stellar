@@ -2,7 +2,7 @@ class LineVis {
   constructor(_parentElement, _data) {
       this.parentElement = _parentElement;
       this.data = _data;
-      this.filteredData = this.data;
+      this.filteredData = this.data; // This will initially be the same as the full dataset
 
       this.initVis();
   }
@@ -103,17 +103,46 @@ class LineVis {
         .attr("class", "x-axis")
         .attr("transform", `translate(0, ${vis.height})`)
 
-        // Process data to group by company
-        vis.companyData = Array.from(d3.group(vis.data, d => d.Company), ([key, value]) => ({ key, value }));
-
         // Set domains for the scales
         vis.x.domain([...new Set(vis.data.map(d => d.Quarter))]);
+
+        vis.groupData();
 
       vis.wrangleData();
   }
 
+  groupData() {
+    let vis = this;
+    // Process data to group by company
+    vis.companyData = Array.from(d3.group(vis.filteredData, d => d.Company), ([key, value]) => ({ key, value }));
+
+  }
+
   wrangleData() {
       let vis = this;
+
+      function quarterToComparable(quarterString) {
+        let parts = quarterString.split(" ");
+        let year = parseInt(parts[1], 10);
+        let quarter = parts[0][1]; // Assumes format "Qx YY"
+        
+        return year * 4 + parseInt(quarter, 10); // Simple numerical representation
+    }
+
+      if (selectedQuarterRange && selectedQuarterRange.length === 2) {
+            let startQuarter = quarterToComparable(selectedQuarterRange[0]);
+            let endQuarter = quarterToComparable(selectedQuarterRange[1]);
+
+            vis.filteredData = vis.data.filter(d => {
+                let quarterValue = quarterToComparable(d.Quarter);
+                return quarterValue >= startQuarter && quarterValue <= endQuarter;
+            });
+
+      } else {
+            vis.filteredData = vis.data;
+      }
+
+      vis.groupData();
 
       vis.updateVis();
   }
@@ -121,9 +150,11 @@ class LineVis {
   updateVis() {
     let vis = this;
     // console.log("Line vis updated");
+    // Update the x-scale domain
+    vis.x.domain([...new Set(vis.filteredData.map(d => d.Quarter))]);
 
     // Update the y-scale domain based on the selected view
-    vis.y.domain([0, d3.max(vis.data, d => d[vis.view])]);
+    vis.y.domain([0, d3.max(vis.filteredData, d => d[vis.view])]);
 
     // Create a color scale based on company names
     const companyNames = vis.companyData.map(d => d.key);
@@ -165,11 +196,22 @@ class LineVis {
                 .attr("stroke", d => colorScale(d[0].Company))
                 .attr("stroke-width", 4)
                 .attr("stroke-linecap", "round")
-                .transition()
-                .duration(1000)
-                .attr("d", vis.line);
+                .attr("d", vis.line)
+                .call(transitionLine);
 
             lines.exit().remove();
+
+            // Function to handle the line drawing transition
+            function transitionLine(path) {
+                path.transition()
+                    .duration(1000)
+                    .attrTween("stroke-dasharray", function() {
+                        const length = this.getTotalLength();
+                        return function(t) {
+                            return (t * length) + " " + length;
+                        };
+                    });
+            }
 
             const companyCloud = [
                 { company: "Amazon", cloud: "Amazon Web Services" },
@@ -196,11 +238,12 @@ class LineVis {
 
             dots.enter().append("circle")
                 .merge(dots)
+                .attr("cx", d => vis.x(d.Quarter))
+                .attr("cy", d => vis.y(d[vis.view]))
+                .attr("r", 0)
                 .attr("fill", d => colorScale(d.Company))
                 .attr("stroke", "white")
-                .attr("stroke-width", 2)
-                .attr("cx", d => vis.x(d.Quarter))
-                .attr("r", 6)
+                .attr("stroke-width", 0)
                 .on("mouseover", function(event, d) {
 
                 let matchingCompany = companyCloud.find(c => c.company === d.Company).cloud;
@@ -233,7 +276,11 @@ class LineVis {
                 })
                 .transition()
                 .duration(1000)
-                .attr("cy", d => vis.y(d[vis.view]));
+                .delay((d, i) => i * 100) // Delay each circle's appearance
+                .attr("r", 6)
+                .attr("stroke-width", 2)
+
+                ;
 
             // Find the last data point for each company
             let lastDataPoint = d.value[d.value.length - 1];

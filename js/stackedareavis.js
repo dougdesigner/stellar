@@ -102,6 +102,51 @@ class StackedAreaVis {
             .style("fill", "#94A3B8")
             .text("Over 40 billion in total revenue the last two quarters");
 
+
+
+        
+
+        // init brush
+        vis.brush = d3.brushX()
+            .extent([[0, 0], [vis.width, vis.height]])
+            .on("brush", function (event) {
+                const selection = event.selection;
+                if (selection) {
+                    // Map pixel coordinates to quarters
+                    const [x0, x1] = selection.map(d => {
+                        // Find the closest quarter for each end of the brush
+                        return vis.x.domain().reduce((prev, curr) => {
+                            return (Math.abs(vis.x(curr) - d) < Math.abs(vis.x(prev) - d) ? curr : prev);
+                        });
+                    });
+                    selectedQuarterRange = [x0, x1];
+                    console.log(selectedQuarterRange);
+                    lineVis.wrangleData();
+
+                    // Now you have the start and end quarters (x0 and x1)
+                    // You can filter or highlight data between these quarters
+                } else {
+                    // Handle brush clearing if necessary
+                }
+
+            })
+            .on("end", function (event) {
+                const selection = event.selection;
+
+                // If the selection is null, the brush has been cleared
+                if (!selection) {
+                    // Handle the removal of the brush
+                    console.log("Brush has been removed");
+
+                    // Call any function or perform actions needed when brush is cleared
+                    // For example, resetting the visualization
+                    selectedQuarterRange = [];
+                    lineVis.wrangleData();
+                    }
+                
+            });
+
+
         vis.wrangleData();
     }
 
@@ -118,39 +163,6 @@ class StackedAreaVis {
         const colorScale = d3.scaleOrdinal()
             .domain(['Amazon', 'Microsoft', 'Google'])
             .range(['#FF9900', '#05A6F0', '#4285F4']); // Colors for each company
-
-        // // Bind data to stack
-        // let bars = vis.svg.selectAll(".stack")
-        //     .data(vis.stackedData);
-
-        // // Enter selection
-        // bars.enter().append("g")
-        //     .attr("class", "stack")
-        //     .attr("fill", d => colorScale(d.key))
-        //     .selectAll("rect")
-        //     .data(d => d)
-        //     .enter().append("rect")
-        //         .attr("x", d => vis.x(d.data.Quarter))
-        //         .attr("y", d => vis.y(d[1]))
-        //         .attr("height", d => vis.y(d[0]) - vis.y(d[1]))
-        //         .attr("width", vis.x.bandwidth());
-
-        // // Update selection
-        // bars.selectAll("rect")
-        //     .data(d => d)
-        //     .transition()
-        //     .duration(1000)
-        //     .attr("x", d => vis.x(d.data.Quarter))
-        //     .attr("y", d => vis.y(d[1]))
-        //     .attr("height", d => vis.y(d[0]) - vis.y(d[1]))
-        //     .attr("width", vis.x.bandwidth());
-
-        // // Exit selection
-        // bars.exit().remove();
-
-        // // Call axes
-        // vis.svg.select(".x-axis")
-        //     .call(d3.axisBottom(vis.x));
 
         // Define the area generator
         var area = d3.area()
@@ -205,42 +217,13 @@ class StackedAreaVis {
             // .attr("dy", -4)
         );
 
-        // // Initialize brush component
-		// let brush = d3.brushX()
-        //     .extent([[0, 0], [vis.width, vis.height]])
-        //     .on("brush", brushed);
-
         // init brushGroup:
-        // vis.brushGroup = vis.svg.append("g")
-        //     .attr("class", "brush");
-
-        // // init brush
-        // vis.brush = d3.brushX()
-        //     .extent([[0, 0], [vis.width, vis.height]])
-        //     .on("brush end", brushed);
-
-        // // Append brush component here
-        // vis.svg.append("g")
-        //     .attr("class", "x brush")
-        //     .call(brush)
-        //     .selectAll("rect")
-        //     .attr("y", -6)
-        //     .attr("height", vis.height + 7);
-
-        // Initialize brush component
-        vis.brush = d3.brushX()
-            .extent([[0, 0], [vis.width, vis.height]])
-            .on("brush end", brushed);
-
-        // Initialize brush group
         vis.brushGroup = vis.svg.append("g")
             .attr("class", "brush");
 
-        // Append brush component to the brush group
-        vis.brushGroup.call(vis.brush)
-            .selectAll("rect")
-            .attr("y", -6)
-            .attr("height", vis.height + 7);
+        vis.brushGroup
+            .call(vis.brush);
+
 
         }
 

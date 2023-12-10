@@ -1,4 +1,6 @@
 let scatterVis, barVis, donutVis, lineVis, stackedVis, drbVisAWS, drbVisAzure, drbVisGC, treeVis, microVis, neuralVis, areaVis;
+// Brushing
+let selectedQuarterRange = [];
 
 // Load data with promises
 let promises = [
@@ -71,9 +73,6 @@ function createVis(data) {
         d.RoundRevenue = Math.floor(d['Revenue'] / 1000); // Rounds to nearest billion
     });
 
-    // For brushing
-    let selectedTimeRange = [];
-
     // Create visualization instances
     scatterVis = new ScatterVis("chipvis", chipData, mooreData);
     barVis = new BarVis("applevis", appleData);
@@ -89,24 +88,10 @@ function createVis(data) {
     microVis2 = new CustomVis("micro-azure", cloudData, "Microsoft");
     microVis3 = new CustomVis("micro-gc", cloudData, "Google");
     areaVis = new StackedAreaVis("areavis", cloudData);
+
+
+    
 }
-
-function brushed() {
-    let selection = d3.brushSelection(d3.select(".brush").node());
-
-    if (selection) {
-        // Get the nearest points on the scale
-        let startIndex = d3.scan(vis.x.domain(), (a, b) => Math.abs(vis.x(a) - selection[0]) - Math.abs(vis.x(b) - selection[0]));
-        let endIndex = d3.scan(vis.x.domain(), (a, b) => Math.abs(vis.x(a) - selection[1]) - Math.abs(vis.x(b) - selection[1]));
-
-        let selectedDomain = vis.x.domain().slice(startIndex, endIndex + 1);
-
-        console.log(selectedDomain);
-        // Update the other visualization
-        // otherVisualizationInstance.updateDataRange(selectedDomain);
-    }
-}
-
 
 
 

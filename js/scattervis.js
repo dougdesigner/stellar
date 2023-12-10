@@ -294,7 +294,8 @@ class ScatterVis {
                 return vis.x(d.Year) + offset;
             })
             .attr("cy", vis.height)
-            .attr("r", 7)
+            .attr("r", 0)
+            .attr('stroke-width', 0)
             .style('stroke', 'white')
             .attr("class", d => {
                 if (d.Designer === vis.selectedDesigner) {
@@ -306,7 +307,7 @@ class ScatterVis {
             .style("opacity", d => d.Designer === vis.selectedDesigner ? ".99" : ".22")
             .style("fill", d => d.Designer === vis.selectedDesigner ? `${colorScale(vis.selectedDesigner)}` : "#1e293b")
             .style("stroke", "white")
-            .attr('stroke-width', 2)
+            .attr("cy", d => circleYPosition(d))
             .on("mouseover", function(event, d) {
                 let imageObj = companyImages.find(img => img.company === d.Designer);
                 let imageUrl = imageObj ? imageObj.imageUrl : null;
@@ -356,10 +357,16 @@ class ScatterVis {
             })
             .transition()
             .duration(1000)
-            .attr("cy", d => circleYPosition(d));
+            .attr("r", 7)
+            .attr('stroke-width', 2)
+            ;
             // .style("stroke", d => d.Designer === vis.selectedDesigner ? "#ff7f0e" : "white");
 
-        vis.dots.exit().remove();
+        vis.dots.exit()
+        // .transition()
+        // .duration(500)
+        // .attr("r", 0)
+        .remove();
 
         vis.svg.select(".legend").remove(); // Remove the existing legend
         vis.createLegend(vis.selectedDesigner); // Create a new legend with the selected designer
