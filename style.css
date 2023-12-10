@@ -2573,6 +2573,11 @@ input[type="search"]::-webkit-search-results-decoration {
   color: transparent;
 }
 
+.text-white{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
 .underline{
   text-decoration-line: underline;
 }
@@ -3668,6 +3673,10 @@ input[type="search"]::-webkit-search-results-decoration {
 
   .md\:pt-52{
     padding-top: 13rem;
+  }
+
+  .md\:pb-0{
+    padding-bottom: 0px;
   }
 }
 
