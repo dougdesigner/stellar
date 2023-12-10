@@ -285,7 +285,7 @@ class DoubalRadialBarVis {
                             Quarter
                         </span><br/>
                         <span class="mt-1 text-sm font-medium text-slate-600"> 
-                            <span class="text-2xl text-slate-800 font-semibold">${d.MarketShareValue}%</span>
+                            <span class="text-2xl text-slate-700 font-semibold">${d.MarketShareValue}%</span>
                             Market Share
                         </span><br/>
                         <span class="mt-1 text-sm font-medium text-slate-600">
