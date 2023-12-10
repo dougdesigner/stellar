@@ -253,26 +253,49 @@ class LineVis {
                     .duration(200)      
                     .style("opacity", 1);
 
-                  vis.tooltip.html(
-                      `
-                      <img class="tooltip-company-img" src="${imageUrl}" width="40" height="40" />
+                    if (vis.view === "Market Share") { 
+                        vis.html = `
+                        <img class="tooltip-company-img" src="${imageUrl}" width="40" height="40" />
+    
+                        <span class="text-base font-bold text-slate-700">${matchingCompany}</span><br/>
+                        
+                        <span class="mt-1 text-sm font-medium text-slate-500"> 
+                            <span class="text-2xl font-semibold" style="color: ${colorScale(d.Company)}">${d.MarketShare}%</span>
+                            Market Share
+                        </span><br/>
+                        <span class="mt-1 text-sm font-medium text-slate-500">
+                            <span class="text-sm text-emerald-600 font-semibold">+${d.GrowthRate}%</span>
+                            YoY Growth Rate
+                        </span>><br/>
+                        <span class="mt-1 text-sm font-medium text-slate-500"> 
+                            <span class="text-sm text-slate-600 font-semibold">${d.Quarter}</span>
+                            Quarter
+                        </span><br/>
+                        `
+                    } else { 
+                        vis.html = `
+                        <img class="tooltip-company-img" src="${imageUrl}" width="40" height="40" />
+    
+                        <span class="text-base font-bold text-slate-700">${matchingCompany}</span><br/>
+                        
+                        <span class="mt-1 text-sm font-medium text-slate-500">
+                            <span class="text-2xl text-emerald-600 font-semibold">+${d.GrowthRate}%</span>
+                            YoY Growth Rate
+                        </span>><br/>
+                        
+                        <span class="mt-1 text-sm font-medium text-slate-500"> 
+                            <span class="text-sm font-semibold" style="color: ${colorScale(d.Company)}">${d.MarketShare}%</span>
+                            Market Share
+                        </span><br/>
+                        
+                        <span class="mt-1 text-sm font-medium text-slate-500"> 
+                            <span class="text-sm text-slate-600 font-semibold">${d.Quarter}</span>
+                            Quarter
+                        </span><br/>
+                        `
+                    }
 
-                      <span class="text-base font-bold text-slate-700">${matchingCompany}</span><br/>
-                    
-                    <span class="mt-1 text-sm font-medium text-slate-500"> 
-                        <span class="text-2xl font-semibold" style="color: ${colorScale(d.Company)}">${d.MarketShare}%</span>
-                        Market Share
-                    </span><br/>
-                    <span class="mt-1 text-sm font-medium text-slate-500">
-                        <span class="text-2xl text-emerald-600 font-semibold">+${d.GrowthRate}%</span>
-                        YoY Growth Rate
-                    </span>><br/>
-                    <span class="mt-1 text-sm font-medium text-slate-500"> 
-                        <span class="text-2xl text-slate-600 font-semibold">${d.Quarter}</span>
-                        Quarter
-                    </span><br/>
-                    `
-                )
+                  vis.tooltip.html(vis.html)
                       .style("left", (event.pageX + 20) + "px")   
                       .style("top", (event.pageY - 20) + "px");
                 })

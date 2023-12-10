@@ -286,11 +286,11 @@ class DoubalRadialBarVis {
                             Market Share
                         </span><br/>
                         <span class="mt-1 text-sm font-medium text-slate-500">
-                            <span class="text-2xl text-emerald-600 font-semibold">+${d.GrowthRateValue}%</span>
+                            <span class="text-sm text-emerald-600 font-semibold">+${d.GrowthRateValue}%</span>
                             YoY Growth Rate
                         </span><br/>
                         <span class="mt-1 text-sm font-medium text-slate-500"> 
-                            <span class="text-2xl text-slate-600 font-semibold">${d.Quarter}</span>
+                            <span class="text-sm text-slate-600 font-semibold">${d.Quarter}</span>
                             Quarter
                         </span><br/>
                         `
@@ -334,16 +334,18 @@ class DoubalRadialBarVis {
                     
                     <span class="text-base font-bold text-slate-700">${getCloudCompany(vis.company)}</span><br/>
                     
-                    <span class="mt-1 text-sm font-medium text-slate-500"> 
-                        <span class="text-2xl font-semibold" style="color: ${vis.colorScale(vis.company)}">${d.MarketShareValue}%</span>
-                        Market Share
-                    </span><br/>
                     <span class="mt-1 text-sm font-medium text-slate-500">
                         <span class="text-2xl text-emerald-600 font-semibold">+${d.GrowthRateValue}%</span>
                         YoY Growth Rate
                     </span><br/>
+
                     <span class="mt-1 text-sm font-medium text-slate-500"> 
-                        <span class="text-2xl text-slate-600 font-semibold">${d.Quarter}</span>
+                        <span class="text-sm font-semibold" style="color: ${vis.colorScale(vis.company)}">${d.MarketShareValue}%</span>
+                        Market Share
+                    </span><br/>
+                    
+                    <span class="mt-1 text-sm font-medium text-slate-500"> 
+                        <span class="text-sm text-slate-600 font-semibold">${d.Quarter}</span>
                         Quarter
                     </span><br/>
                     `

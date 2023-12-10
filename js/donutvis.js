@@ -188,18 +188,27 @@ class DonutChart {
                     .duration(200)    
                     .style("opacity", 1);    
                 vis.tooltip.html(
+
                     `
                     <img class="tooltip-company-img" src="${imageUrl}" width="40" height="40" />
-                    <span class="text-lg font-bold text-slate-700">${d.data.Company}</span><<br/>
-                    <span class="text-base font-medium text-slate-500">Percentage: 
-                        <span class="text-slate-600 font-bold">${Number((d.data.proportionalPercentage * 100).toFixed(2))}%</span>
+
+                    <span class="text-base font-bold text-slate-700">${d.data.Company}</span><br/>
+                    
+                    <span class="mt-1 text-sm font-medium text-slate-500">
+                        <span class="text-2xl text-slate-600 font-semibold">${Number((d.data.proportionalPercentage * 100).toFixed(2))}% </span>
+                        Index Percentage
                     </span><br/>
-                    <span class="text-base font-medium text-slate-500">Market Cap: 
-                        <span class="text-slate-600 font-bold">${d.data.MarketCap}</span>
+                    <span class="mt-1 text-sm font-medium text-slate-500"> 
+                        <span class="text-sm text-emerald-600 font-semibold">${d.data.ReturnYTD} </span>
+                        Return YTD
                     </span><br/>
-                    <span class="text-base font-medium text-slate-500">Return YTD: 
-                        <span class="text-emerald-600 font-bold">${d.data.ReturnYTD}
-                    </span>`
+                    <span class="mt-1 text-sm font-medium text-slate-500"> 
+                        <span class="text-sm text-slate-600 font-semibold">${d.data.MarketCap} </span>
+                        Market Cap
+                    </span><br/>
+                    
+        
+                `
                 )  
                 .style("left", (event.pageX + 20) + "px")   
                 .style("top", (event.pageY - 20) + "px");  

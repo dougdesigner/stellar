@@ -316,7 +316,7 @@ class ScatterVis {
                 let translateValue = d3.format(",.2r")(d.TransistorCount);
 
                 if (d.TransistorCount > 1e9) {
-                    translateValue = d.TransistorCount / 1e9 + " billion";
+                    translateValue = d.TransistorCount / 1e9 + " B";
                 }
 
                 if (isNaN(d.TransistorCount)) {
@@ -331,20 +331,26 @@ class ScatterVis {
                 vis.tooltip.html(
                     `
                     ${imageUrl ? `<img class="tooltip-company-img" src="${imageUrl}" width="40" height="40" />` : ''}
-                    <span class="text-lg font-bold text-slate-700">${d.Designer}</span><<br/>
-                    <span class="text-base font-medium text-slate-500">Processor: 
-                        <span class="text-slate-600 font-bold">${d.Processor}</span>
-                    </span><br/>
-                    
-                    <span class="text-base font-medium text-slate-500">Transistors: 
-                        <span class="text-slate-600 font-bold">${translateValue}</span>
-                    </span><br/>
-                    <span class="text-base font-medium text-slate-500">Year: 
-                        <span class="text-slate-600 font-bold">${d.Year.getFullYear()}</span>
-                    </span><br/>
-                    <span class="text-base font-medium text-slate-500">Type: 
-                        <span class="text-slate-600 font-bold">${d.Type}</span>
-                    </span><br/>
+
+                        <span class="text-base font-bold text-slate-700">${d.Designer}</span><br/>
+                        
+                        
+                        <span class="mt-1 text-sm font-medium text-slate-500"> 
+                            <span class="text-2xl text-slate-600 font-semibold">${translateValue} </span>
+                            Transistors
+                        </span><br/>
+                        <span class="mt-1 text-sm font-medium text-slate-500">
+                            <span class="text-sm text-slate-600 font-semibold">${d.Processor} </span>
+                            Processor
+                        </span><br/>
+                        <span class="mt-1 text-sm font-medium text-slate-500"> 
+                            <span class="text-sm text-slate-600 font-semibold">${d.Year.getFullYear()} </span>
+                            Release Date
+                        </span><br/>
+                        <span class="mt-1 text-sm font-medium text-slate-500"> 
+                            <span class="text-sm text-slate-600 font-semibold">${d.Type} </span>
+                            Processor Type
+                        </span><br/>
                     `
                 )  
                 .style("left", (event.pageX + 20) + "px")   

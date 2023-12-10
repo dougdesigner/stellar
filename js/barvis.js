@@ -205,13 +205,19 @@ class BarVis {
                     .duration(200)      
                     .style("opacity", 1);      
                 vis.tooltip.html(
-                    `<span class="text-lg font-bold text-slate-700">${d.product}</span><<br/>
-                    <span class="text-base font-medium text-slate-500">Transistors: 
-                        <span class="text-slate-600 font-bold">${translateValue} billion</span>
-                    </span><br/>
-                    <span class="text-base font-medium text-slate-500">Release Date: 
-                        <span class="text-slate-600 font-bold">${d.date}</span>
-                    </span>`
+
+                    `
+                        <span class="text-base font-bold text-slate-700">${d.product}</span><br/>
+                        
+                        <span class="mt-1 text-sm font-medium text-slate-500">
+                            <span class="text-2xl text-slate-600 font-semibold">${translateValue}</span>
+                            Transistors (billion)
+                        </span><br/>
+                        <span class="mt-1 text-sm font-medium text-slate-500"> 
+                            <span class="text-sm text-slate-600 font-semibold">${d.date} </span>
+                            Release Date
+                        </span><br/>
+                    `
                 )
                 .style("left", (event.pageX) + "px")     
                 .style("top", (event.pageY - 28) + "px");
