@@ -69,7 +69,7 @@ class BarVis {
         vis.svg.append("text")
             .attr("transform", "rotate(-90)")
             .attr("y", -60)
-            .attr("x", -180)
+            .attr("x", -100)
             .style("text-anchor", "middle")
             .style("font-weight", "bold")
             .style("font-size", "14px")
