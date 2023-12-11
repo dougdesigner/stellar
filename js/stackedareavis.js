@@ -100,7 +100,7 @@ class StackedAreaVis {
             .attr("text-anchor", "left")
             .style("font-size", "16px")
             .style("fill", "#94A3B8")
-            .text("Drag to select range. Over 40 billion in total revenue the past two quarters");
+            .text("Drag to select range. Over 40 billion in total revenue in the past two quarters");
 
 
 
