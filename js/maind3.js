@@ -102,7 +102,7 @@ function createVis(data) {
 
     areaVis = new StackedAreaVis("areavis", cloudData);
 
-
+    logoVis = new LogoVis("logo-vis", cloudData, "Amazon", chipData, "AWS Graviton");
     
 }
 

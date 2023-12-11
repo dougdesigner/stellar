@@ -170,7 +170,14 @@ class NeuralNetworkVis {
             // .attr("stroke-width","2px")
             // .attr("stroke-opacity", "0.1")
             .attr("r", vis.nodeSize)
-            .style("fill", function(d) { return vis.color(d.layer); });
+            .style("fill", function(d) { 
+                // return d.layer === 1 || d.layer === Object.keys(netsize).length ? vis.color(d.layer) : "url(#radial-gradient3)";
+                if (d.layer === Object.keys(netsize).length) {
+                    return "url(#radial-gradient3)"; // Replace with your desired color
+                } else {
+                    return vis.color(d.layer); // Keeps existing coloring for other layers
+                }
+             });
     
     
         node.append("text")

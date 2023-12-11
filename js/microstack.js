@@ -1,4 +1,4 @@
-class CustomVis {
+class LogoVis {
     constructor(_parentElement, _data, _company, _chipData, _chip) {
         this.parentElement = _parentElement;
         this.data = _data;
@@ -18,9 +18,9 @@ class CustomVis {
 
         vis.element = document.getElementById(vis.parentElement);
 
-        vis.margin = {top: 20, right: 100, bottom: 20, left: 0},
+        vis.margin = {top: 20, right: 100, bottom: 0, left:100},
         vis.width = vis.element.offsetWidth - vis.margin.left - vis.margin.right,
-        vis.height = 260 - vis.margin.top - vis.margin.bottom,
+        vis.height = 160 - vis.margin.top - vis.margin.bottom,
 
         // Define tooltip
         vis.tooltip = d3.select('body').append('div')
@@ -89,10 +89,10 @@ class CustomVis {
         // Define start and end colors of the gradient
         gradient3.append("stop")
         .attr("offset", "0%")
-        .attr("stop-color", "fuchsia"); // Start color
+        .attr("stop-color", "lime"); // Start color
         gradient3.append("stop")
         .attr("offset", "100%")
-        .attr("stop-color", "darkorange"); // End color
+        .attr("stop-color", "teal"); // End color
 
 
 
@@ -200,7 +200,7 @@ class CustomVis {
             .attr("rx", 4)
             .attr("opacity", 0.1)
             .attr("blend-mode", "multiply")
-            .attr("fill", "url(#circles-9)");
+            .attr("fill", "url(#dots-9)");
             // .attr("fill", "url(#horizontal-stripe-9)");
 
         // Layer 3.2
@@ -250,49 +250,37 @@ class CustomVis {
             .attr("blend-mode", "multiply")
             // alternative blend mode
             // .attr("mix-blend-mode", "multiply")
-            .attr("fill", "url(#dots-5)");
+            .attr("fill", "url(#horizontal-stripe-9)");
 
         
 
-                // Layer 1        
-                vis.svg.append("g")
-                .attr("transform", "translate(0, 60) rotate(30) skewX(-30) scale(1, 0.86062)")
-                .append("rect")
-                    .attr("x", -30)
-                    .attr("y", -30)
-                    // base the height on the square root of the vis.specifcChipData.TransistorCount
-                    .attr("width", sqrtTransistorBillion)
-                    .attr("height", sqrtTransistorBillion)
-                    .attr("rx", 4)
-                    .attr("fill", "url(#gradient)");
-        
 
         // Layer 1        
         vis.svg.append("g")
-            .attr("transform", "translate(0, 40) rotate(30) skewX(-30) scale(1, 0.86062)")
+            .attr("transform", "translate(0, 20) rotate(30) skewX(-30) scale(1, 0.86062)")
             .append("rect")
                 .attr("x", -30)
                 .attr("y", -30)
                 // base the height on the square root of the vis.specifcChipData.TransistorCount
-                .attr("width", sqrtTransistorBillion)
-                .attr("height", sqrtTransistorBillion)
+                .attr("width", 60)
+                .attr("height", 60)
                 .attr("rx", 4)
                 .attr("fill", "url(#gradient)");
 
         // Pattern Overlay 1
         vis.svg.append("g")
-            .attr("transform", "translate(0, 40) rotate(30) skewX(-30) scale(1, 0.86062)")
+            .attr("transform", "translate(0, 20) rotate(30) skewX(-30) scale(1, 0.86062)")
             .append("rect")
                 .attr("x", -30)
                 .attr("y", -30)
-                .attr("width", sqrtTransistorBillion)
-                .attr("height", sqrtTransistorBillion)
+                .attr("width", 60)
+                .attr("height", 60)
                 .attr("rx", 4)
                 .attr("opacity", 0.1)
                 // .attr("stroke-width", 2)
                 // .attr("stroke", "black")
                 .attr("blend-mode", "multiply")
-                .attr("fill", "url(#dots-9)");
+                .attr("fill", "url(#circles-9)");
 
 
         // Logo background
@@ -319,29 +307,29 @@ class CustomVis {
             .attr("width", 32)
             .attr("height", 32);
 
-        // Designer name
-        vis.svg.append("text")
-            .attr("transform", "translate(80, 40) rotate(30) skewX(-30) scale(1, 0.86062)")
-            .text(`${vis.specificChipData.Designer}`)
-            .attr("class", "text-base font-mono font-medium fill-white")
+        // // Designer name
+        // vis.svg.append("text")
+        //     .attr("transform", "translate(80, 40) rotate(30) skewX(-30) scale(1, 0.86062)")
+        //     .text(`${vis.specificChipData.Designer}`)
+        //     .attr("class", "text-base font-mono font-medium fill-white")
 
 
-        // Microprocessor name
-        vis.svg.append("text")
-            .attr("transform", "translate(60, 60) rotate(30) skewX(-30) scale(1, 0.86062)")
-            .text(`${vis.specificChipData.Processor}`)
-            .attr("class", "text-base font-mono font-medium fill-white")
+        // // Microprocessor name
+        // vis.svg.append("text")
+        //     .attr("transform", "translate(60, 60) rotate(30) skewX(-30) scale(1, 0.86062)")
+        //     .text(`${vis.specificChipData.Processor}`)
+        //     .attr("class", "text-base font-mono font-medium fill-white")
 
-        // Microprocessor Data
-        vis.svg.append("text")
-            .attr("transform", "translate(40, 80) rotate(30) skewX(-30) scale(1, 0.86062)")
-            .text(`${vis.billionCount} B Transistors`)
-            .attr("class", "text-xs font-mono font-medium fill-white")
+        // // Microprocessor Data
+        // vis.svg.append("text")
+        //     .attr("transform", "translate(40, 80) rotate(30) skewX(-30) scale(1, 0.86062)")
+        //     .text(`${vis.billionCount} B Transistors`)
+        //     .attr("class", "text-xs font-mono font-medium fill-white")
 
-        vis.svg.append("text")
-            .attr("transform", "translate(20, 100) rotate(30) skewX(-30) scale(1, 0.86062)")
-            .text(`${vis.specificChipData.Type}`)
-            .attr("class", "text-xs font-mono font-medium fill-white")
+        // vis.svg.append("text")
+        //     .attr("transform", "translate(20, 100) rotate(30) skewX(-30) scale(1, 0.86062)")
+        //     .text(`${vis.specificChipData.Type}`)
+        //     .attr("class", "text-xs font-mono font-medium fill-white")
 
     }
 
