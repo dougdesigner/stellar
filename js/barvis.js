@@ -167,6 +167,21 @@ class BarVis {
             )
             .attr("transform", d => `translate(${vis.xScale0(d[0])},0)`);
 
+
+        const chipImages = [
+            { Name: "M1", imageUrl: "/images/m7/AWS.svg" },
+            { Name: "M1 Pro", imageUrl: "/images/m7/Azure.svg" },
+            { Name: "M1 Max", imageUrl: "/images/m7/GoogleCloud.svg" },
+            { Name: "M1 Ultra", imageUrl: "/images/m7/AWS.svg" },
+            { Name: "M2", imageUrl: "/images/m7/Azure.svg" },
+            { Name: "M2 Pro", imageUrl: "/images/m7/GoogleCloud.svg" },
+            { Name: "M2 Max", imageUrl: "/images/m7/AWS.svg" },
+            { Name: "M2 Ultra", imageUrl: "/images/m7/Azure.svg" },
+            { Name: "M3", imageUrl: "/images/m7/GoogleCloud.svg" },
+            { Name: "M3 Pro", imageUrl: "/images/m7/AWS.svg" },
+            { Name: "M3 Max", imageUrl: "/images/m7/Azure.svg" },
+        ];
+
         var bars = series.selectAll("rect")
             .data(d => {
                 return vis.groupings.map(v => {
@@ -201,12 +216,20 @@ class BarVis {
             .on("mouseover", function(event, d) {
                 // console.log(d.date)
                 const translateValue = d.value / 1e9
+
+                console.log(d);
+
+                let imageUrl = chipImages.find(img => img.Name === d["Name"]).imageUrl;
+                // console.log(imageUrl);
+
                 vis.tooltip.transition()        
                     .duration(200)      
                     .style("opacity", 1);      
                 vis.tooltip.html(
 
                     `
+                        <img class="tooltip-company-img" src="${imageUrl}" width="40" height="40" />
+
                         <span class="text-base font-bold text-slate-700">${d.product}</span><br/>
                         
                         <span class="mt-1 text-sm font-medium text-slate-500">
