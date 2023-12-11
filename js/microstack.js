@@ -205,14 +205,14 @@ class LogoVis {
 
         // Layer 3.2
         vis.svg.append("g")
-        .attr("transform", "translate(0, 48) rotate(30) skewX(-30) scale(1, 0.86062)")
+        .attr("transform", "translate(0, 60) rotate(30) skewX(-30) scale(1, 0.86062)")
         .append("rect")
             .attr("x", -40)
             .attr("y", -40)
-            .attr("width", 60)
-            .attr("height", 60)
+            .attr("width", 80)
+            .attr("height", 80)
             .attr("rx", 4)
-            .attr("opacity", 0.25)
+            .attr("opacity", .25)
             .attr("fill", "url(#gradient2)");
 
         // Layer 3
