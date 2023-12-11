@@ -107,6 +107,39 @@ class BarVis {
             .attr("id", "bar-tooltip")      
             .style("opacity", 0);
 
+
+
+
+        // Update the legend
+        let legendEntries = vis.legend.selectAll(".legend-entry")
+            .data(vis.colorScale.domain())
+            .join(
+                enter => enter.append("g").attr("class", "legend-entry"),
+                update => update,
+                exit => exit.remove()
+            )
+            .attr("transform", (d, i) => `translate(${i * 120},0)`);
+
+        legendEntries.append("rect")
+            .attr("x", 0)
+            .attr("width", 20)
+            .attr("height", 20)
+            .attr("rx", "5")
+            .attr("stroke", "white")
+            .attr("fill", d => vis.colorScale(d));
+
+        legendEntries.append("text")
+            .attr("x", 30)
+            .attr("y", 12)
+            .text(d => d)
+            .style("fill", "white")
+            .style("font-weight", "bold")
+            .style("font-size", "16px")
+            .attr("alignment-baseline", "middle");
+
+
+
+
         vis.wrangleData();
     }
 
@@ -258,32 +291,7 @@ class BarVis {
 
         bars.exit().remove();
 
-        // Update the legend
-        let legendEntries = vis.legend.selectAll(".legend-entry")
-            .data(vis.colorScale.domain())
-            .join(
-                enter => enter.append("g").attr("class", "legend-entry"),
-                update => update,
-                exit => exit.remove()
-            )
-            .attr("transform", (d, i) => `translate(${i * 120},0)`);
-
-        legendEntries.append("rect")
-            .attr("x", 0)
-            .attr("width", 20)
-            .attr("height", 20)
-            .attr("rx", "5")
-            .attr("stroke", "white")
-            .attr("fill", d => vis.colorScale(d));
-
-        legendEntries.append("text")
-            .attr("x", 30)
-            .attr("y", 12)
-            .text(d => d)
-            .style("fill", "white")
-            .style("font-weight", "bold")
-            .style("font-size", "16px")
-            .attr("alignment-baseline", "middle");
+        
     }
 
 }
