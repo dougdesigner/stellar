@@ -20,8 +20,8 @@ The current growth in the S&P 500 is significantly influenced by the 'Magnificen
     * `js/stackedbarvis.js` - Stacked Bar Chart (Not Initialized)
     * `js/treevis.js` - Tree Diagram
 * Project Data Files
-    * `data/apple.csv` - Apple M Series Silicion Chip Data
-    * `data/clouds.csv` - Cloud Infrastrucutre Provider Revenue, Market Share, and Growth Rates
+    * `data/apple.csv` - Apple M Series Silicon Chip Data
+    * `data/clouds.csv` - Cloud Infrastructure Provider Revenue, Market Share, and Growth Rates
     * `data/moore.csv`  - Moore's Law Data based on first CPU released in 1970
     * `data/nodes.json` - Neural Network Node Data
     * `data/stack.csv` - Generative AI Stack Knowledge Base
@@ -45,7 +45,7 @@ The current growth in the S&P 500 is significantly influenced by the 'Magnificen
 * This website comes with a ready-to-use package file called `package.json`. You just need to run `npm install` to install all of the dependencies into the project.
 * When `npm` has finished with the install, run `npm run build` to recompile the `style.css` file in the root directory.
 
-You're ready to go! The most useful task for rapid development is `npm run dev`, which rebuild the CSS every time you make a change in the HML or JS files.
+You're ready to go! The most useful task for rapid development is `npm run dev`, which rebuilds the CSS every time you make a change in the HTML or JS files.
 
 
 ## Disclaimers
