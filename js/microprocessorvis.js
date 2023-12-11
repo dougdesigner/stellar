@@ -287,26 +287,42 @@ class CustomVis {
         vis.svg.append("text")
             .attr("transform", `translate(32, 16) rotate(30) skewX(-30) scale(1, 0.86062)`)
             .text(`${vis.specificChipData.Processor}`)
-            .attr("class", "text-sm font-mono font-medium fill-white")
+            .attr("class", "text-sm font-mono font-medium fill-slate-50")
 
 
         // Microprocessor name
         vis.svg.append("text")
             .attr("transform", `translate(60, ${sqrtTransistorBillion + 40}) rotate(30) skewX(-30) scale(1, 0.86062)`)
             .text(`${vis.specificChipData.Designer}`)
-            .attr("class", "text-xs font-mono font-light fill-white")
+            .attr("class", "text-xs font-mono font-light fill-slate-400")
 
         vis.svg.append("text")
         .attr("transform", `translate(40, ${sqrtTransistorBillion + 50}) rotate(30) skewX(-30) scale(1, 0.86062)`)
         .text(`${vis.specificChipData.Type}`)
-        .attr("class", "text-xs font-mono font-light fill-white")
+        .attr("class", "text-xs font-mono font-light fill-slate-400")
 
 
         // Microprocessor Data
         vis.svg.append("text")
             .attr("transform", `translate(20, ${sqrtTransistorBillion + 60}) rotate(30) skewX(-30) scale(1, 0.86062)`)
+            .text(`${vis.specificChipData.Year.getFullYear()}`)
+            .attr("class", "text-xs font-mono font-bold fill-slate-400")
+
+
+                    // Microprocessor Data
+        vis.svg.append("text")
+        .attr("transform", `translate(-50, ${sqrtTransistorBillion + 45}) rotate(-30) skewX(30) scale(1, 0.86062)`)
+        .text(`Transistors`)
+        .attr("text-anchor", "end")
+        .attr("class", "text-sm font-mono font-normal fill-slate-400")
+
+        // Microprocessor Data
+        vis.svg.append("text")
+            .attr("transform", `translate(-30, ${sqrtTransistorBillion + 60}) rotate(-30) skewX(30) scale(1, 0.86062)`)
             .text(`${vis.billionCount} B`)
-            .attr("class", "text-xs font-mono font-bold fill-white")
+            .attr("text-anchor", "end")
+            .attr("class", "text-xl font-mono font-bold fill-slate-200")
+
 
    
 
