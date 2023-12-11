@@ -166,6 +166,9 @@ class NeuralNetworkVis {
     
         var circle = node.append("circle")
             .attr("class", "node")
+            // .attr("stroke", "white")
+            // .attr("stroke-width","2px")
+            // .attr("stroke-opacity", "0.1")
             .attr("r", vis.nodeSize)
             .style("fill", function(d) { return vis.color(d.layer); });
     
