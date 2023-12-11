@@ -7,7 +7,10 @@
     {"label": "h1", "layer": 2},
     {"label": "h2", "layer": 2},
     {"label": "h3", "layer": 2},
-    {"label": "o0", "layer": 3},
-    {"label": "o1", "layer": 3}
+    {"label": "h1", "layer": 3},
+    {"label": "h2", "layer": 3},
+    {"label": "h3", "layer": 3},
+    {"label": "o0", "layer": 4},
+    {"label": "o1", "layer": 4}
   ]
 }
