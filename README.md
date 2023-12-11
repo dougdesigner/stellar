@@ -5,8 +5,8 @@ The current growth in the S&P 500 is significantly influenced by the 'Magnificen
 ## Project Links
 * [Live Site](https://ai.doug.design)
 * [Github Repo](https://github.com/dougdesigner/stellar)
-* [Screencast (Google Drive)](https://github.com/dougdesigner/stellar)
-* [Screencast (Youtube)](https://github.com/dougdesigner/stellar)
+* [Screencast (Google Drive)](https://drive.google.com/file/d/1cnalp_Kn1FQc2EuSWfejM-KnnpGQiYCf/view?usp=sharing)
+* [Screencast (Youtube)](https://youtu.be/IvCfwysDGIM)
 
 ## Project Overview
 * Project d3.js Visualization Classes
