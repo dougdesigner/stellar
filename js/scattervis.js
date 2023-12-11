@@ -320,7 +320,7 @@ class ScatterVis {
                 }
 
                 if (isNaN(d.TransistorCount)) {
-                    translateValue = "Not Publicly Available";
+                    translateValue = "?";
                 }
 
                 const trans = d.value / 1e9

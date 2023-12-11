@@ -207,7 +207,7 @@ HiSilicon Kirin 990 4G,"8,000,000,000",2019,Huawei,7 nm,90.00 mm 2,"89,000,000
 IBM z15 SC chip (960 MB L4 cache),"12,200,000,000",2019,IBM,14 nm,696 mm 2,"17,530,000",CPU
 "AMD Ryzen 9 3900X (64-bit, SIMD , caches, I/O die)","9,890,000,000",2019,AMD,7 & 12 nm ( TSMC ),273 mm 2,"36,230,000",CPU
 HiSilicon Kirin 990 5G,"10,300,000,000",2019,Huawei,7 nm,113.31 mm 2,"90,900,000",CPU
-"AWS Graviton2 (64-bit, 64-core ARM-based, SIMD , caches)","30,000,000,000",2019,Amazon,7 nm,?,?,CPU
+"AWS Graviton2","30,000,000,000",2019,Amazon,7 nm,?,?,CPU
 "AMD Epyc Rome (64-bit, SIMD , caches)","39,540,000,000",2019,AMD,7 & 12 nm ( TSMC ),"1,008 mm 2","39,226,000",CPU
 "Qualcomm Snapdragon 865 (octa-core 64/32-bit ARM64 ""mobile SoC"", SIMD , caches)","10,300,000,000",2019,Qualcomm,7 nm,83.54 mm 2 [147],"123,300,000",CPU
 "TI Jacinto TDA4VM (ARM A72, DSP, SRAM)","3,500,000,000",2020,Texas Instruments,16 nm,?,?,CPU
@@ -247,7 +247,7 @@ AWS Graviton4,100000000000,2023,Amazon,?,?,?,CPU
 AWS Tranium,?,2020,Amazon,?,?,?,GPU
 AWS Inferentia,?,2018,Amazon,?,?,?,AI Accelerator
 AWS Inferentia2,?,2023,Amazon,?,?,?,AI Accelerator
-Azure Maia 100,"105,000,000,000",2023,Microsoft,?,?,?,GPU
+Azure Maia 100,"105,000,000,000",2023,Microsoft,?,?,?,AI Accelerator
 Azure Cobalt 100,?,2023,Microsoft,?,?,?,CPU
 TPUv1,"2,500,000,000",2016,Google,?,?,?,AI Accelerator
 TPUv2,?,2017,Google,?,?,?,AI Accelerator
@@ -256,4 +256,4 @@ TPUv4,22000000000,2021,Google,?,?,?,AI Accelerator
 TPUv5,?,2023,Google,?,?,?,AI Accelerator
 FSD Chip,6000000000,2017,Tesla,?,?,?,CPU
 D1 Chip,50000000000,2021,Tesla,?,?,?,CPU
-AWS Tranium2,?,2023,Amazon,?,?,?,GPU
+AWS Tranium2,?,2023,Amazon,?,?,?,AI Accelerator

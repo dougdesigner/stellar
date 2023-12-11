@@ -84,9 +84,18 @@ function createVis(data) {
     drbVisGC = new DoubalRadialBarVis("custom-gc", cloudData, "Google");
     treeVis = new TreeVis("treevis",aiStackData);
     neuralVis = new NeuralNetworkVis("neuralvis",neuralData);
-    microVis = new CustomVis("micro-aws", cloudData, "Amazon", chipData);
-    microVis2 = new CustomVis("micro-azure", cloudData, "Microsoft", chipData);
-    microVis3 = new CustomVis("micro-gc", cloudData, "Google", chipData);
+
+    microAWSVis = new CustomVis("micro-aws", cloudData, "Amazon", chipData, "AWS Graviton");
+    microAWSVis2 = new CustomVis("micro-aws2", cloudData, "Amazon", chipData, "AWS Graviton2");
+    microAWSVis3 = new CustomVis("micro-aws3", cloudData, "Amazon", chipData, "AWS Graviton3");
+    microAWSVis4 = new CustomVis("micro-aws4", cloudData, "Amazon", chipData, "AWS Graviton4");
+
+    microVis2 = new CustomVis("micro-azure", cloudData, "Microsoft", chipData, "Azure Maia 100");
+
+    microGCVis = new CustomVis("micro-gc", cloudData, "Google", chipData, "TPUv1");
+    microGCVis3 = new CustomVis("micro-gc3", cloudData, "Google", chipData, "TPUv3");
+    microGCVis4 = new CustomVis("micro-gc4", cloudData, "Google", chipData, "TPUv4");
+
     areaVis = new StackedAreaVis("areavis", cloudData);
 
 
