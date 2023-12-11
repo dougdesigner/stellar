@@ -2174,20 +2174,16 @@ input[type="search"]::-webkit-search-results-decoration {
   fill: #cbd5e1;
 }
 
+.fill-slate-400{
+  fill: #94a3b8;
+}
+
 .fill-slate-50{
   fill: #f8fafc;
 }
 
 .fill-white{
   fill: #fff;
-}
-
-.fill-slate-400{
-  fill: #94a3b8;
-}
-
-.fill-slate-500{
-  fill: #64748b;
 }
 
 .stroke-purple-500{

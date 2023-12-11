@@ -18,7 +18,7 @@ class CustomVis {
 
         vis.element = document.getElementById(vis.parentElement);
 
-        vis.margin = {top: 0, right: 100, bottom: 0, left: 100},
+        vis.margin = {top: -20, right: 100, bottom: 0, left: 100},
         vis.width = vis.element.offsetWidth - vis.margin.left - vis.margin.right,
         vis.height = 350 - vis.margin.top - vis.margin.bottom,
 
