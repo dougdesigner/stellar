@@ -229,7 +229,7 @@ class BarVis {
                 vis.tooltip.html(
 
                     `
-                        <img class="tooltip-company-img mb-2" src="${imageUrl}" width="400" height="auto" />
+                        <img class="tooltip-company-img mb-2 rounded-md" src="${imageUrl}" width="400" height="auto" />
 
                         <span class="text-base font-bold text-slate-700">${d.product}</span><br/>
                         
