@@ -34,7 +34,7 @@ class BarVis {
         // Color scale for Chip Series
         vis.colorScale = d3.scaleOrdinal()
             .domain(["Baseline", "Pro", "Max", "Ultra"])
-            .range(["#FB923C", "#0284C7", "#9333EA", "#C026D3"]);
+            .range(["#FB923C", "#0284C7", "#6D28D9", "#C026D3"]);
 
         vis.sort = "byVersion"; // Set the initial view
 
