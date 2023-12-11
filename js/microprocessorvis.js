@@ -293,19 +293,19 @@ class CustomVis {
         // Microprocessor name
         vis.svg.append("text")
             .attr("transform", `translate(60, ${sqrtTransistorBillion + 40}) rotate(30) skewX(-30) scale(1, 0.86062)`)
-            .text(`${vis.specificChipData.Designer}`)
+            .text(`- ${vis.specificChipData.Designer}`)
             .attr("class", "text-xs font-mono font-light fill-slate-400")
 
         vis.svg.append("text")
         .attr("transform", `translate(40, ${sqrtTransistorBillion + 50}) rotate(30) skewX(-30) scale(1, 0.86062)`)
-        .text(`${vis.specificChipData.Type}`)
+        .text(`- ${vis.specificChipData.Type}`)
         .attr("class", "text-xs font-mono font-light fill-slate-400")
 
 
         // Microprocessor Data
         vis.svg.append("text")
             .attr("transform", `translate(20, ${sqrtTransistorBillion + 60}) rotate(30) skewX(-30) scale(1, 0.86062)`)
-            .text(`${vis.specificChipData.Year.getFullYear()}`)
+            .text(`- ${vis.specificChipData.Year.getFullYear()}`)
             .attr("class", "text-xs font-mono font-bold fill-slate-400")
 
 
