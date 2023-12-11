@@ -169,17 +169,17 @@ class BarVis {
 
 
         const chipImages = [
-            { Name: "M1", imageUrl: "/images/m7/AWS.svg" },
-            { Name: "M1 Pro", imageUrl: "/images/m7/Azure.svg" },
-            { Name: "M1 Max", imageUrl: "/images/m7/GoogleCloud.svg" },
-            { Name: "M1 Ultra", imageUrl: "/images/m7/AWS.svg" },
-            { Name: "M2", imageUrl: "/images/m7/Azure.svg" },
-            { Name: "M2 Pro", imageUrl: "/images/m7/GoogleCloud.svg" },
-            { Name: "M2 Max", imageUrl: "/images/m7/AWS.svg" },
-            { Name: "M2 Ultra", imageUrl: "/images/m7/Azure.svg" },
-            { Name: "M3", imageUrl: "/images/m7/GoogleCloud.svg" },
-            { Name: "M3 Pro", imageUrl: "/images/m7/AWS.svg" },
-            { Name: "M3 Max", imageUrl: "/images/m7/Azure.svg" },
+            { Name: "M1", imageUrl: "/images/Apple/M1/M1.png" },
+            { Name: "M1 Pro", imageUrl: "/images/Apple/M1/M1pro.png" },
+            { Name: "M1 Max", imageUrl: "/images/Apple/M1/M1max.png" },
+            { Name: "M1 Ultra", imageUrl: "/images/Apple/M1/M1ultra.png" },
+            { Name: "M2", imageUrl: "/images/Apple/M2/M2.png" },
+            { Name: "M2 Pro", imageUrl: "/images/Apple/M2/M2pro.png" },
+            { Name: "M2 Max", imageUrl: "/images/Apple/M2/M2max.png" },
+            { Name: "M2 Ultra", imageUrl: "/images/Apple/M2/M2ultra.png" },
+            { Name: "M3", imageUrl: "/images/Apple/M3.jpg" },
+            { Name: "M3 Pro", imageUrl: "/images/Apple/M3.jpg" },
+            { Name: "M3 Max", imageUrl: "/images/Apple/M3.jpg" },
         ];
 
         var bars = series.selectAll("rect")
@@ -197,6 +197,7 @@ class BarVis {
                         value: item ? item.TransistorCount : 0,
                         version: item ? item.Version : null,
                         product: item ? item.Product : null,
+                        name: item ? item.Name : null,
                         date: item ? item.ReleaseDate : null // Format the date
                     };
                 });
@@ -219,8 +220,8 @@ class BarVis {
 
                 console.log(d);
 
-                let imageUrl = chipImages.find(img => img.Name === d["Name"]).imageUrl;
-                // console.log(imageUrl);
+                let imageUrl = chipImages.find(img => img.Name === d.name).imageUrl;
+                console.log(imageUrl);
 
                 vis.tooltip.transition()        
                     .duration(200)      
@@ -228,7 +229,7 @@ class BarVis {
                 vis.tooltip.html(
 
                     `
-                        <img class="tooltip-company-img" src="${imageUrl}" width="40" height="40" />
+                        <img class="tooltip-company-img mb-2" src="${imageUrl}" width="400" height="auto" />
 
                         <span class="text-base font-bold text-slate-700">${d.product}</span><br/>
                         
