@@ -18,9 +18,9 @@ class CustomVis {
 
         vis.element = document.getElementById(vis.parentElement);
 
-        vis.margin = {top: 20, right: 100, bottom: 20, left: 100},
+        vis.margin = {top: 0, right: 100, bottom: 0, left: 100},
         vis.width = vis.element.offsetWidth - vis.margin.left - vis.margin.right,
-        vis.height = 320 - vis.margin.top - vis.margin.bottom,
+        vis.height = 350 - vis.margin.top - vis.margin.bottom,
 
         // Define tooltip
         vis.tooltip = d3.select('body').append('div')
@@ -38,8 +38,7 @@ class CustomVis {
 
         // Tooltip
         vis.tooltip = d3.select('body').append('div')
-            .attr("class", "tooltip")
-            .attr("id", "doubleradialbar-tooltip")      
+            .attr("class", "tooltip microprocessor-tooltip")
             .style("opacity", 0);
 
         // Define the gradient
@@ -94,9 +93,27 @@ class CustomVis {
         .attr("offset", "100%")
         .attr("stop-color", "darkorange"); // End color
 
+        // Define a new gradient like the one above
+        const gradient4 = vis.svg.append("defs")
+        .append("linearGradient")
+        .attr("id", "gradient4")
+        .attr("x1", "0%") // Gradient starts at the bottom
+        .attr("y1", "100%")
+        .attr("x2", "0%") // and goes to the top
+        .attr("y2", "0%");
+        // .attr("gradientUnits", "userSpaceOnUse");
+
+        // Define start and end colors of the gradient
+        gradient4.append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "lime"); // Start color
+        gradient4.append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "teal"); // End color
+
         // Pattern and Gradient Scales  
         vis.color = d3.scaleOrdinal()
-        .range(["url(#gradient)", "url(#gradient2)", "url(#gradient3)"])
+        .range(["url(#gradient)", "url(#gradient2)", "url(#gradient4)"])
         .domain(["AI Accelorator", "CPU", "GPU"]);
 
         vis.pattern = d3.scaleOrdinal()
@@ -130,6 +147,7 @@ class CustomVis {
             { company: "Amazon", imageUrl: "/images/m7/AWS.svg" },
             { company: "Microsoft", imageUrl: "/images/m7/Azure.svg" },
             { company: "Google", imageUrl: "/images/m7/GoogleCloud.svg" },
+            { company: "Nvidia", imageUrl: "/images/m7/Nvidia-n.svg" },
         ];
     
         const companyImagesLight = [
@@ -183,83 +201,6 @@ class CustomVis {
         vis.billionScaled = vis.billionCount * 250;
 
         let sqrtTransistorBillion = Math.sqrt(vis.billionScaled);
-
-
-
-        // // Layer 4
-        // vis.svg.append("g")
-        // .attr("transform", "translate(0, 80) rotate(30) skewX(-30) scale(1, 0.86062)")
-        // .append("rect")
-        //     .attr("x", -40)
-        //     .attr("y", -40)
-        //     .attr("width", 80)
-        //     .attr("height", 80)
-        //     .attr("rx", 4)
-        //     .attr("fill", "url(#gradient3)");
-
-        // // Overlayer 4
-        // vis.svg.append("g")
-        // .attr("transform", "translate(0, 80) rotate(30) skewX(-30) scale(1, 0.86062)")
-        // .append("rect")
-        //     .attr("x", -40)
-        //     .attr("y", -40)
-        //     .attr("width", 80)
-        //     .attr("height", 80)
-        //     .attr("rx", 4)
-        //     .attr("opacity", 0.1)
-        //     .attr("blend-mode", "multiply")
-        //     .attr("fill", "url(#circles-9)");
-        //     // .attr("fill", "url(#horizontal-stripe-9)");
-
-        // // Layer 3.2
-        // vis.svg.append("g")
-        // .attr("transform", "translate(0, 48) rotate(30) skewX(-30) scale(1, 0.86062)")
-        // .append("rect")
-        //     .attr("x", -40)
-        //     .attr("y", -40)
-        //     .attr("width", 60)
-        //     .attr("height", 60)
-        //     .attr("rx", 4)
-        //     .attr("opacity", 0.25)
-        //     .attr("fill", "url(#gradient2)");
-
-        // // Layer 3
-        // vis.svg.append("g")
-        // .attr("transform", "translate(0, 40) rotate(30) skewX(-30) scale(1, 0.86062)")
-        // .append("rect")
-        //     .attr("x", -40)
-        //     .attr("y", -40)
-        //     .attr("width", 80)
-        //     .attr("height", 80)
-        //     .attr("rx", 4)
-        //     .attr("fill", "url(#gradient2)");
-
-        // // Layer 2
-        // vis.svg.append("g")
-        // .attr("transform", "translate(0, 32) rotate(30) skewX(-30) scale(1, 0.86062)")
-        // .append("rect")
-        //     .attr("x", -40)
-        //     .attr("y", -40)
-        //     .attr("width", 80)
-        //     .attr("height", 80)
-        //     .attr("rx", 4)
-        //     .attr("fill", "url(#gradient2)");
-
-        // // Pattern Overlay 2
-        // vis.svg.append("g")
-        // .attr("transform", "translate(0, 32) rotate(30) skewX(-30) scale(1, 0.86062)")
-        // .append("rect")
-        //     .attr("x", -40)
-        //     .attr("y", -40)
-        //     .attr("width", 80)
-        //     .attr("height", 80)
-        //     .attr("rx", 4)
-        //     .attr("opacity", 0.1)
-        //     .attr("blend-mode", "multiply")
-        //     // alternative blend mode
-        //     // .attr("mix-blend-mode", "multiply")
-        //     .attr("fill", "url(#dots-5)");
-
         
 
         // Layer 3  - No Pattern (Foundation)      
@@ -351,19 +292,19 @@ class CustomVis {
 
         // Microprocessor name
         vis.svg.append("text")
-            .attr("transform", `translate(35, ${sqrtTransistorBillion + 14}) rotate(30) skewX(-30) scale(1, 0.86062)`)
+            .attr("transform", `translate(60, ${sqrtTransistorBillion + 40}) rotate(30) skewX(-30) scale(1, 0.86062)`)
             .text(`${vis.specificChipData.Designer}`)
             .attr("class", "text-xs font-mono font-light fill-white")
 
         vis.svg.append("text")
-        .attr("transform", `translate(25, ${sqrtTransistorBillion + 22}) rotate(30) skewX(-30) scale(1, 0.86062)`)
+        .attr("transform", `translate(40, ${sqrtTransistorBillion + 50}) rotate(30) skewX(-30) scale(1, 0.86062)`)
         .text(`${vis.specificChipData.Type}`)
         .attr("class", "text-xs font-mono font-light fill-white")
 
 
         // Microprocessor Data
         vis.svg.append("text")
-            .attr("transform", `translate(15, ${sqrtTransistorBillion + 30}) rotate(30) skewX(-30) scale(1, 0.86062)`)
+            .attr("transform", `translate(20, ${sqrtTransistorBillion + 60}) rotate(30) skewX(-30) scale(1, 0.86062)`)
             .text(`${vis.billionCount} B`)
             .attr("class", "text-xs font-mono font-bold fill-white")
 

@@ -249,7 +249,7 @@ class DoubalRadialBarVis {
         // Create a linear scale for emerald
         vis.emeraldColorScale = d3.scaleLinear()
             .domain(vis.growthExtent)
-            .range(["#065F46", "#34d399"]);
+            .range(["teal", "lime"]);
             
         // // Add the outer bars
         // vis.svg.append("g")

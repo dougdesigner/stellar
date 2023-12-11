@@ -96,6 +96,10 @@ function createVis(data) {
     microGCVis3 = new CustomVis("micro-gc3", cloudData, "Google", chipData, "TPUv3");
     microGCVis4 = new CustomVis("micro-gc4", cloudData, "Google", chipData, "TPUv4");
 
+    microNVis = new CustomVis("micro-n", cloudData, "Nvidia", chipData, "GH100 Hopper");
+    microNVis2 = new CustomVis("micro-n2", cloudData, "Nvidia", chipData, "AD102 Ada Lovelace");
+    microNVis3 = new CustomVis("micro-n3", cloudData, "Nvidia", chipData, "GA100 Ampere");
+
     areaVis = new StackedAreaVis("areavis", cloudData);
 
 
