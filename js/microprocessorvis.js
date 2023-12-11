@@ -1,8 +1,9 @@
 class CustomVis {
-    constructor(_parentElement, _data, _company) {
+    constructor(_parentElement, _data, _company, _chipData) {
         this.parentElement = _parentElement;
         this.data = _data;
         this.company = _company;
+        this._chipData = _chipData;
         this.displayData = [];
 
         // Initialize visualization
@@ -33,7 +34,7 @@ class CustomVis {
                 .attr("width", vis.width + vis.margin.left + vis.margin.right)
                 .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
             .append("g")
-                .attr("transform", `translate(${vis.width/2 + vis.margin.left}, ${vis.height/2 + vis.margin.top})`);
+                .attr("transform", `translate(${vis.width/2 + vis.margin.left}, ${vis.margin.top})`);
 
         // Isometric top view
         // vis.svg.append("g")

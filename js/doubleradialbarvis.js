@@ -149,7 +149,7 @@ class DoubalRadialBarVis {
     wrangleData() {
         let vis = this;
 
-        console.log(vis.company);
+        // console.log(vis.company);
         vis.filteredData = vis.data.filter(d => d.Company === vis.company);
 
         function quarterToComparable(quarterString) {
@@ -172,7 +172,7 @@ class DoubalRadialBarVis {
           } else {
                 vis.filteredData = vis.data.filter(d => d.Company === vis.company);
           }
-          console.log("Filtered data:", vis.filteredData);
+        //   console.log("Filtered data:", vis.filteredData);
 
 
         // Find the min and max values of MarketShareValue and GrowthRateValue
