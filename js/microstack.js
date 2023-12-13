@@ -54,10 +54,10 @@ class LogoVis {
         // Define start and end colors of the gradient
         gradient.append("stop")
         .attr("offset", "0%")
-        .attr("stop-color", "blue"); // Start color
+        .attr("stop-color", "indigo"); // Start color
         gradient.append("stop")
         .attr("offset", "100%")
-        .attr("stop-color", "red"); // End color
+        .attr("stop-color", "dodgerblue"); // End color
 
         // Define a new gradient like the one above
         const gradient2 = vis.svg.append("defs")
