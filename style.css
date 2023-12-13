@@ -2965,6 +2965,21 @@ input[type="search"]::-webkit-search-results-decoration {
   bottom: 10px;
 }
 
+.microprocessor-vis  rect.layer {
+  transition: opacity 0.3s;
+  /* Smooth transition for opacity change */
+}
+
+.microprocessor-vis:hover rect.layer {
+  opacity: 0.5;
+  /* General hover rule: all rects to half opacity */
+}
+
+.microprocessor-vis rect.layer:hover {
+  opacity: 1;
+  /* Specific rect being hovered maintains full opacity */
+}
+
 .before\:pointer-events-none::before{
   content: var(--tw-content);
   pointer-events: none;

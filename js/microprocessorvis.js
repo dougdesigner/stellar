@@ -33,8 +33,10 @@ class CustomVis {
             .append("svg")
                 .attr("width", vis.width + vis.margin.left + vis.margin.right)
                 .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
+                .attr("class", "microprocessor-vis")
             .append("g")
-            .attr("transform", `translate(${(vis.width + vis.margin.left + vis.margin.right) / 2}, ${(vis.height/2 + vis.margin.top + vis.margin.bottom) / 2})`);
+                .attr("class", "microprocessor-vis-g")
+                .attr("transform", `translate(${(vis.width + vis.margin.left + vis.margin.right) / 2}, ${(vis.height/2 + vis.margin.top + vis.margin.bottom) / 2})`);
 
         // Tooltip
         vis.tooltip = d3.select('body').append('div')
@@ -207,6 +209,7 @@ class CustomVis {
         vis.svg.append("g")
         .attr("transform", "translate(0, 80) rotate(30) skewX(-30) scale(1, 0.86062)")
         .append("rect")
+            .attr("class", "layer layer-3 gradient-layer")
             .attr("x", -30)
             .attr("y", -30)
             // base the height on the square root of the vis.specifcChipData.TransistorCount
@@ -221,6 +224,7 @@ class CustomVis {
         vis.svg.append("g")
             .attr("transform", "translate(0, 60) rotate(30) skewX(-30) scale(1, 0.86062)")
             .append("rect")
+                .attr("class", "layer layer-2 gradient-layer")
                 .attr("x", -30)
                 .attr("y", -30)
                 // base the height on the square root of the vis.specifcChipData.TransistorCount
@@ -235,6 +239,7 @@ class CustomVis {
         vis.svg.append("g")
             .attr("transform", "translate(0, 40) rotate(30) skewX(-30) scale(1, 0.86062)")
             .append("rect")
+                .attr("class", "layer layer-1 gradient-layer")
                 .attr("x", -30)
                 .attr("y", -30)
                 // base the height on the square root of the vis.specifcChipData.TransistorCount
@@ -247,6 +252,7 @@ class CustomVis {
         vis.svg.append("g")
             .attr("transform", "translate(0, 40) rotate(30) skewX(-30) scale(1, 0.86062)")
             .append("rect")
+                .attr("class", "pattern-overlay")
                 .attr("x", -30)
                 .attr("y", -30)
                 .attr("width", sqrtTransistorBillion)
@@ -263,6 +269,7 @@ class CustomVis {
         vis.svg.append("g")
         .attr("transform", "rotate(30) skewX(-30) scale(1, 0.86062)")
         .append("rect")
+            .attr("class", "logo-background")
             .attr("x", -20)
             .attr("y", -20)
             .attr("width", 40)
