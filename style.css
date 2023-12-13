@@ -2980,6 +2980,11 @@ input[type="search"]::-webkit-search-results-decoration {
   /* Specific rect being hovered maintains full opacity */
 }
 
+.microprocessor-vis rect.pattern-overlay:hover + rect.layer {
+  opacity: 1;
+  /* Specific rect being hovered maintains full opacity */
+}
+
 .before\:pointer-events-none::before{
   content: var(--tw-content);
   pointer-events: none;

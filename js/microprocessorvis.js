@@ -252,7 +252,7 @@ class CustomVis {
         vis.svg.append("g")
             .attr("transform", "translate(0, 40) rotate(30) skewX(-30) scale(1, 0.86062)")
             .append("rect")
-                .attr("class", "pattern-overlay")
+                .attr("class", "pattern-overlay pointer-events-none")
                 .attr("x", -30)
                 .attr("y", -30)
                 .attr("width", sqrtTransistorBillion)

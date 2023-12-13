@@ -157,3 +157,7 @@
 .microprocessor-vis rect.layer:hover {
   opacity: 1; /* Specific rect being hovered maintains full opacity */
 }
+
+.microprocessor-vis rect.pattern-overlay:hover + rect.layer {
+  opacity: 1; /* Specific rect being hovered maintains full opacity */
+}
