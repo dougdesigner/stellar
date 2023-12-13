@@ -321,7 +321,8 @@ class CustomVis {
         .attr("transform", `translate(-50, ${sqrtTransistorBillion + 45}) rotate(-30) skewX(30) scale(1, 0.86062)`)
         .text(`Transistors`)
         .attr("text-anchor", "end")
-        .attr("class", "text-xs font-mono font-normal fill-slate-400");
+        .attr("font-size", "10px")
+        .attr("class", "font-mono font-normal fill-slate-400");
 
         // Microprocessor Data
         vis.svg.append("text")
