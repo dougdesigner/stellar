@@ -55,10 +55,17 @@ class CustomVis {
         // Define start and end colors of the gradient
         gradient.append("stop")
         .attr("offset", "0%")
-        .attr("stop-color", "rebeccapurple"); // Start color
+        .attr("stop-color", "blue"); // Start color
         gradient.append("stop")
         .attr("offset", "100%")
-        .attr("stop-color", "dodgerblue"); // End color
+        .attr("stop-color", "red"); // End color
+
+        // gradient.append("stop")
+        // .attr("offset", "0%")
+        // .attr("stop-color", "rebeccapurple"); // Start color
+        // gradient.append("stop")
+        // .attr("offset", "100%")
+        // .attr("stop-color", "dodgerblue"); // End color
 
         // Define a new gradient like the one above
         const gradient2 = vis.svg.append("defs")

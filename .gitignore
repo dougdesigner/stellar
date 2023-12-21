@@ -2,7 +2,6 @@
 lib-cov
 *.seed
 *.log
-# *.csv
 *.dat
 *.out
 *.pid
@@ -27,3 +26,7 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
+
+## Envirnoment
+.editorconfig
+.vscode
